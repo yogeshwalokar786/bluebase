@@ -658,7 +658,7 @@
             <!-- Slide 1: OMG Rental Bikes -->
             <div class="story-slide">
               <div class="story-image-wrap">
-                <img src="{{ asset('images/stories/omg-rental-bikes.png') }}" alt="OMG Rental Bikes Fleet ERP &amp; Booking Platform" loading="lazy">
+                <img src="{{ asset('images/stories/omg-rental-bikes-brand.png') }}" alt="OMG Rental Bikes" loading="lazy">
               </div>
               <div class="story-content">
                 <div class="story-tags">
