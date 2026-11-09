@@ -275,34 +275,34 @@
         <!-- Right: The Startup Commitment Box -->
         <div class="research-right">
           <div class="research-card-box" data-viewport="true" data-animation="fade-scale">
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
-              <span class="section-tag" style="margin-bottom: 0;">Our Commitment</span>
+            <div class="commitment-tag-wrap">
+              <span class="section-tag">Our Commitment</span>
             </div>
             <h3 class="research-card-title">Simple. Honest. Built to Ship.</h3>
-            <p style="font-size: 0.9rem; color: var(--color-gray-600); line-height: 1.6; margin-bottom: 20px;">
+            <p class="research-card-desc">
               We treat every client project like our own product. You get complete transparency, regular progress demos, and zero corporate bureaucracy.
             </p>
 
-            <ul style="list-style: none; padding: 0; margin: 0 0 28px; display: flex; flex-direction: column; gap: 12px;">
-              <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--color-primary); font-weight: 500;">
-                <svg viewBox="0 0 20 20" fill="var(--color-accent)" style="width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px;"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            <ul class="commitment-list">
+              <li>
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                 <span>Live staging links updated every sprint</span>
               </li>
-              <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--color-primary); font-weight: 500;">
-                <svg viewBox="0 0 20 20" fill="var(--color-accent)" style="width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px;"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <li>
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                 <span>Milestone-based pay as you verify</span>
               </li>
-              <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--color-primary); font-weight: 500;">
-                <svg viewBox="0 0 20 20" fill="var(--color-accent)" style="width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px;"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <li>
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                 <span>Clean, modular, and maintainable source code</span>
               </li>
-              <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--color-primary); font-weight: 500;">
-                <svg viewBox="0 0 20 20" fill="var(--color-accent)" style="width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px;"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <li>
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                 <span>Post-launch support &amp; handover documentation</span>
               </li>
             </ul>
 
-            <a href="{{ route('contact') }}" class="c-btn -primary" style="width: 100%; justify-content: center;">
+            <a href="{{ route('contact') }}" class="c-btn -primary commitment-btn">
               <span class="c-btn__txt">Talk to Our Engineering Team</span>
               <span class="c-btn__ico">
                 <span class="c-btn__ico-base">
