@@ -272,37 +272,13 @@
           </div>
         </div>
 
-        <!-- Right: The Startup Commitment Box -->
+        <!-- Right: Spotlight Preview Card -->
         <div class="research-right">
           <div class="research-card-box" data-viewport="true" data-animation="fade-scale">
-            <div class="commitment-tag-wrap">
-              <span class="section-tag">Our Commitment</span>
-            </div>
-            <h3 class="research-card-title">Simple. Honest. Built to Ship.</h3>
-            <p class="research-card-desc">
-              We treat every client project like our own product. You get complete transparency, regular progress demos, and zero corporate bureaucracy.
-            </p>
-
-            <ul class="commitment-list">
-              <li>
-                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                <span>Live staging links updated every sprint</span>
-              </li>
-              <li>
-                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                <span>Milestone-based pay as you verify</span>
-              </li>
-              <li>
-                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                <span>Clean, modular, and maintainable source code</span>
-              </li>
-              <li>
-                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                <span>Post-launch support &amp; handover documentation</span>
-              </li>
-            </ul>
-
-            <a href="{{ route('contact') }}" class="c-btn -primary commitment-btn">
+            <img src="{{ asset('images/footer-logo.svg') }}" alt="Bluebase Logo" class="research-card-logo">
+            <h3 class="research-card-title">The Founder's Playbook: Building &amp; Launching Digital Products Faster</h3>
+            <img src="{{ asset('images/stories/sapinsider-thumb.jpg') }}" alt="Playbook Spotlight Cover" class="research-card-thumb">
+            <a href="{{ route('contact') }}" class="c-btn -primary" style="width: 100%; justify-content: center;">
               <span class="c-btn__txt">Talk to Our Engineering Team</span>
               <span class="c-btn__ico">
                 <span class="c-btn__ico-base">
