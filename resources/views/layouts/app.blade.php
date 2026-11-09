@@ -67,8 +67,8 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
 
-  <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+  <!-- Core Stylesheet with Cache Busting -->
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ file_exists(public_path('css/style.css')) ? filemtime(public_path('css/style.css')) : time() }}">
   @stack('styles')
 
   <!-- Injected Custom Header Scripts (e.g. Analytics / GTM) -->

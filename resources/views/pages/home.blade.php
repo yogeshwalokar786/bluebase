@@ -3,6 +3,383 @@
 @section('title', 'Bluebase Technologies | Digital Engineering, Web & Mobile App Development Startup')
 @section('meta_description', 'Bluebase Technologies is an agile, remote-first digital engineering startup based in India. We build high-performance custom websites, web applications, mobile apps, SaaS MVPs, and e-commerce platforms for growing brands and founders worldwide.')
 
+@push('styles')
+<style>
+/* ==========================================================================
+   SECTION 4: WHY CHOOSE US & STARTUP COMMITMENT CARD ENHANCEMENTS
+   ========================================================================== */
+.research-section {
+  position: relative;
+  background: #ffffff;
+}
+
+.research-card-box {
+  background: linear-gradient(160deg, #ffffff 0%, #f8fafc 100%) !important;
+  border: 1px solid rgba(0, 80, 231, 0.16) !important;
+  border-radius: 20px !important;
+  padding: 38px 34px !important;
+  box-shadow: 0 20px 45px -12px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(0, 80, 231, 0.04) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  text-align: left !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease !important;
+}
+
+.research-card-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #0050e7 0%, #38bdf8 100%);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.research-card-box:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 28px 55px -12px rgba(0, 80, 231, 0.16), 0 0 0 1px rgba(0, 80, 231, 0.12) !important;
+  border-color: rgba(0, 80, 231, 0.32) !important;
+}
+
+.commitment-tag-wrap {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin-bottom: 16px !important;
+}
+
+.commitment-tag-wrap .section-tag {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  background: rgba(0, 80, 231, 0.08) !important;
+  color: #0050e7 !important;
+  border: 1px solid rgba(0, 80, 231, 0.2) !important;
+  padding: 5px 12px !important;
+  border-radius: 9999px !important;
+  font-size: 0.74rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  margin-bottom: 0 !important;
+}
+
+.commitment-tag-wrap .section-tag::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  background: #0050e7 !important;
+  box-shadow: 0 0 8px rgba(0, 80, 231, 0.6) !important;
+}
+
+.research-card-box .research-card-title {
+  font-size: clamp(1.4rem, 2vw, 1.75rem) !important;
+  font-weight: 700 !important;
+  color: #0f172a !important;
+  line-height: 1.25 !important;
+  margin-bottom: 12px !important;
+  letter-spacing: -0.02em !important;
+  text-align: left !important;
+}
+
+.research-card-desc {
+  font-size: 0.94rem !important;
+  line-height: 1.6 !important;
+  color: #475569 !important;
+  margin-bottom: 24px !important;
+  text-align: left !important;
+}
+
+.commitment-list {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 0 26px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.commitment-list li {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  padding: 12px 14px !important;
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 12px !important;
+  transition: all 0.25s ease !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.02) !important;
+  text-align: left !important;
+  margin: 0 !important;
+}
+
+.commitment-list li:hover {
+  background: #f8fafc !important;
+  border-color: rgba(0, 80, 231, 0.3) !important;
+  transform: translateX(4px) !important;
+  box-shadow: 0 4px 14px rgba(0, 80, 231, 0.08) !important;
+}
+
+.commitment-icon-wrap {
+  width: 22px !important;
+  height: 22px !important;
+  min-width: 22px !important;
+  min-height: 22px !important;
+  border-radius: 50% !important;
+  background: rgba(0, 80, 231, 0.12) !important;
+  color: #0050e7 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  margin-top: 1px !important;
+}
+
+.commitment-icon-wrap svg {
+  width: 13px !important;
+  height: 13px !important;
+  fill: #0050e7 !important;
+  display: block !important;
+}
+
+.commitment-list li span {
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  color: #1e293b !important;
+  line-height: 1.4 !important;
+  flex: 1 !important;
+  text-align: left !important;
+  margin: 0 !important;
+}
+
+.commitment-btn {
+  width: 100% !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  padding: 14px 20px !important;
+  background: #0050e7 !important;
+  color: #ffffff !important;
+  font-size: 0.94rem !important;
+  font-weight: 600 !important;
+  border-radius: 9999px !important;
+  border: 1px solid #0050e7 !important;
+  box-sizing: border-box !important;
+  box-shadow: 0 8px 22px rgba(0, 80, 231, 0.28) !important;
+  text-decoration: none !important;
+  white-space: normal !important;
+  text-align: center !important;
+  transition: all 0.25s ease !important;
+  cursor: pointer !important;
+}
+
+.commitment-btn:hover {
+  background: #003db3 !important;
+  border-color: #003db3 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 12px 28px rgba(0, 80, 231, 0.38) !important;
+}
+
+.commitment-btn .c-btn__txt {
+  color: #ffffff !important;
+  line-height: 1.25 !important;
+}
+
+.commitment-btn .c-btn__ico {
+  flex-shrink: 0 !important;
+}
+
+/* Responsive Alignment */
+@media (max-width: 991px) {
+  .research-layout {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+    align-items: stretch !important;
+  }
+
+  .research-left,
+  .research-right {
+    width: 100% !important;
+    text-align: left !important;
+  }
+
+  .research-card-box {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    padding: 28px 20px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .research-section {
+    padding: 50px 0 !important;
+  }
+
+  .research-left-header {
+    text-align: left !important;
+    margin-bottom: 22px !important;
+  }
+
+  .research-left-header .section-tag {
+    margin-bottom: 10px !important;
+    align-self: flex-start !important;
+  }
+
+  .research-left-header .section-title {
+    font-size: clamp(1.6rem, 5vw, 2.2rem) !important;
+    line-height: 1.2 !important;
+    margin-bottom: 12px !important;
+    text-align: left !important;
+  }
+
+  .research-left-header .section-subtitle {
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
+    text-align: left !important;
+  }
+
+  .stats-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 10px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .stat-item {
+    border-left: 3px solid #0050e7 !important;
+    padding: 0 0 0 10px !important;
+    text-align: left !important;
+    margin: 0 !important;
+  }
+
+  .stat-number {
+    font-size: clamp(1.55rem, 5vw, 2.1rem) !important;
+    line-height: 1 !important;
+    margin-bottom: 4px !important;
+    justify-content: flex-start !important;
+  }
+
+  .stat-label {
+    font-size: 0.74rem !important;
+    line-height: 1.35 !important;
+    text-align: left !important;
+  }
+
+  .stat-sub-bar {
+    padding: 14px 0 0 0 !important;
+    border-top: 1px solid var(--color-gray-200) !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+    text-align: left !important;
+    margin-top: 0 !important;
+    margin-bottom: 28px !important;
+  }
+
+  .stat-sub-number {
+    font-size: 1.5rem !important;
+    line-height: 1 !important;
+    flex-shrink: 0 !important;
+    text-align: left !important;
+  }
+
+  .stat-sub-bar .stat-label {
+    font-size: 0.8rem !important;
+    line-height: 1.4 !important;
+    text-align: left !important;
+  }
+
+  .research-card-box {
+    padding: 22px 16px !important;
+    border-radius: 14px !important;
+    text-align: left !important;
+  }
+
+  .research-card-box .research-card-title {
+    font-size: 1.3rem !important;
+    margin-bottom: 8px !important;
+    text-align: left !important;
+  }
+
+  .research-card-desc {
+    font-size: 0.86rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 16px !important;
+    text-align: left !important;
+  }
+
+  .commitment-list {
+    gap: 8px !important;
+    margin-bottom: 18px !important;
+    text-align: left !important;
+  }
+
+  .commitment-list li {
+    padding: 10px 12px !important;
+    font-size: 0.84rem !important;
+    gap: 10px !important;
+    border-radius: 10px !important;
+    text-align: left !important;
+  }
+
+  .commitment-list li span {
+    font-size: 0.82rem !important;
+    line-height: 1.35 !important;
+    text-align: left !important;
+  }
+
+  .commitment-btn {
+    padding: 12px 16px !important;
+    border-radius: 9999px !important;
+  }
+
+  .commitment-btn .c-btn__txt {
+    font-size: 0.86rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .stat-item {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 12px !important;
+    padding: 10px 12px !important;
+    background: #f8fafc !important;
+    border-radius: 8px !important;
+    border-left: 3px solid #0050e7 !important;
+  }
+
+  .stat-number {
+    min-width: 65px !important;
+    font-size: 1.75rem !important;
+    margin-bottom: 0 !important;
+  }
+
+  .commitment-btn .c-btn__txt {
+    font-size: 0.82rem !important;
+  }
+}
+</style>
+@endpush
+
 @section('content')
 <!-- ========================================================================
      MAIN CONTENT
