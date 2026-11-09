@@ -228,18 +228,18 @@
     </div>
   </section>
 
-  <!-- 4. RESEARCH & STATS -->
-  <section class="research-section">
+  <!-- 4. WHY CHOOSE US (THE STARTUP ADVANTAGE) -->
+  <section class="research-section" id="why-us">
     <div class="container">
       <div class="research-layout">
         
-        <!-- Left: Stats -->
+        <!-- Left: Why Choose Us Content & Core Promises -->
         <div class="research-left">
           <div class="research-left-header" data-viewport="true">
-            <span class="section-tag">The Startup Advantage</span>
-            <h2 class="section-title">Why Modern Founders &amp; Brands Choose <br><mark>Bluebase Engineering.</mark></h2>
+            <span class="section-tag">Why Choose Us</span>
+            <h2 class="section-title">Built by Founders, <br>For Ambitious <mark>Founders &amp; Brands.</mark></h2>
             <p class="section-subtitle">
-              Traditional consultancies burden you with non-technical middlemen, bloated retainers, and junior developer markups. Bluebase gives you direct access to skilled engineers who build cleanly and ship on time.
+              Big agencies slow you down with sales pitches, bloated retainers, and junior developer markups. As an agile engineering startup, we give you direct access to skilled builders who ship clean, production-ready code on time.
             </p>
           </div>
 
@@ -248,38 +248,62 @@
               <div class="stat-number">
                 <span class="stat-number-val" data-target="3">0</span><span class="stat-symbol">X</span>
               </div>
-              <div class="stat-label">faster time-to-market with focused milestone sprints</div>
+              <div class="stat-label">Faster time-to-market with weekly milestone sprints</div>
             </div>
 
             <div class="stat-item stagger-2" data-viewport="true">
               <div class="stat-number">
                 <span class="stat-number-val" data-target="100">0</span><span class="stat-symbol">%</span>
               </div>
-              <div class="stat-label">intellectual property and code ownership transferred to you</div>
+              <div class="stat-label">Code and intellectual property ownership from day one</div>
             </div>
 
             <div class="stat-item stagger-3" data-viewport="true">
               <div class="stat-number">
-                <span class="stat-number-val" data-target="0">0</span><span class="stat-symbol"></span>
+                <span class="stat-number-val" data-target="1">0</span><span class="stat-symbol">:1</span>
               </div>
-              <div class="stat-label">zero proprietary vendor lock-in or recurring licensing traps</div>
+              <div class="stat-label">Direct collaboration with your dedicated developers</div>
             </div>
           </div>
 
           <div class="stat-sub-bar stagger-4" data-viewport="true">
-            <div class="stat-sub-number">100%</div>
-            <div class="stat-label">direct collaboration with the developers building your software</div>
+            <div class="stat-sub-number">0%</div>
+            <div class="stat-label">Vendor lock-in. Transparent milestone billing with no surprise charges or ongoing license fees.</div>
           </div>
         </div>
 
-        <!-- Right: Spotlight Preview Card -->
+        <!-- Right: The Startup Commitment Box -->
         <div class="research-right">
           <div class="research-card-box" data-viewport="true" data-animation="fade-scale">
-            <img src="{{ asset('images/footer-logo.svg') }}" alt="Bluebase Logo" class="research-card-logo">
-            <h3 class="research-card-title">The Founder's Playbook: Building &amp; Launching Digital Products Faster</h3>
-            <img src="{{ asset('images/stories/sapinsider-thumb.jpg') }}" alt="Playbook Spotlight Cover" class="research-card-thumb">
-            <a href="{{ route('company') }}" class="c-btn -primary" style="width: 100%; justify-content: center;">
-              <span class="c-btn__txt">Explore Our Story &amp; Approach</span>
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+              <span class="section-tag" style="margin-bottom: 0;">Our Commitment</span>
+            </div>
+            <h3 class="research-card-title">Simple. Honest. Built to Ship.</h3>
+            <p style="font-size: 0.9rem; color: var(--color-gray-600); line-height: 1.6; margin-bottom: 20px;">
+              We treat every client project like our own product. You get complete transparency, regular progress demos, and zero corporate bureaucracy.
+            </p>
+
+            <ul style="list-style: none; padding: 0; margin: 0 0 28px; display: flex; flex-direction: column; gap: 12px;">
+              <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--color-primary); font-weight: 500;">
+                <svg viewBox="0 0 20 20" fill="var(--color-accent)" style="width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px;"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>Live staging links updated every sprint</span>
+              </li>
+              <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--color-primary); font-weight: 500;">
+                <svg viewBox="0 0 20 20" fill="var(--color-accent)" style="width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px;"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>Milestone-based pay as you verify</span>
+              </li>
+              <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--color-primary); font-weight: 500;">
+                <svg viewBox="0 0 20 20" fill="var(--color-accent)" style="width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px;"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>Clean, modular, and maintainable source code</span>
+              </li>
+              <li style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--color-primary); font-weight: 500;">
+                <svg viewBox="0 0 20 20" fill="var(--color-accent)" style="width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px;"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span>Post-launch support &amp; handover documentation</span>
+              </li>
+            </ul>
+
+            <a href="{{ route('contact') }}" class="c-btn -primary" style="width: 100%; justify-content: center;">
+              <span class="c-btn__txt">Talk to Our Engineering Team</span>
               <span class="c-btn__ico">
                 <span class="c-btn__ico-base">
                   <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
