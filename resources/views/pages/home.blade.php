@@ -320,36 +320,47 @@
     </div>
   </section>
 
-  <!-- 5. STICKY FEATURES SECTION (The Bluebase Engineering Standard) -->
-  <section class="sticky-features-section" id="platform">
+  <!-- 5. HOW WE WORK (OUR 4-STEP AGILE PROCESS) -->
+  <section class="sticky-features-section" id="how-we-work">
     <div class="container">
       <div class="sticky-layout">
         
         <!-- Left Sticky -->
         <div class="sticky-left" data-viewport="true">
-          <span class="section-tag light">Our Engineering Standard</span>
-          <h2 class="section-title">Direct Collaboration, <mark>Zero Operational Bloat.</mark></h2>
+          <span class="section-tag light">How We Work</span>
+          <h2 class="section-title">From Concept to Code, <br><mark>Shipped in 4 Clear Steps.</mark></h2>
           <p class="section-subtitle light">
-            We operate as an agile, remote-first software development team. You communicate directly with the engineers writing your code, reviewing live staging links as each milestone progresses.
+            We operate as an agile, remote-first software studio. You communicate directly with the engineers writing your code, reviewing live staging links as each milestone progresses.
           </p>
           <div class="sticky-image-wrap">
             <img src="{{ asset('images/illustrations/workflow-canvas.jpg') }}" alt="Bluebase Engineering Workflow">
+          </div>
+          <div style="margin-top: 24px;">
+            <a href="{{ route('contact') }}" class="c-btn -primary" style="display: inline-flex;">
+              <span class="c-btn__txt">Start With Step 1</span>
+              <span class="c-btn__ico">
+                <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
+                <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
+              </span>
+            </a>
           </div>
         </div>
 
         <!-- Right Scrolling Feature Cards -->
         <div class="sticky-right">
           
+          <!-- Step 1 -->
           <div class="feature-scroll-card stagger-1" data-viewport="true">
             <div class="feature-card-icon">
-              <img src="{{ asset('images/icons/tool.svg') }}" alt="Builder Icon" width="24" height="24">
+              <img src="{{ asset('images/icons/tool.svg') }}" alt="Scope Icon" width="24" height="24">
             </div>
-            <h3 class="feature-card-title">Builders First, Not Middlemen</h3>
+            <div style="font-size: 0.75rem; font-weight: 700; color: var(--color-accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;">Step 01 &bull; Discovery &amp; Scope</div>
+            <h3 class="feature-card-title">1. Technical Blueprint &amp; Fixed Milestones</h3>
             <p class="feature-card-desc">
-              When you partner with Bluebase, you communicate directly with senior full-stack developers and UI designers. No layers of non-technical managers slowing down decision-making.
+              We clarify your core feature requirements, choose the right technology stack, architect the database schema, and define concrete weekly sprint milestones with transparent pricing.
             </p>
-            <a href="{{ route('company') }}" class="c-btn -link">
-              <span class="c-btn__txt">How We Collaborate</span>
+            <a href="{{ route('contact') }}" class="c-btn -link">
+              <span class="c-btn__txt">Discuss Your Project Scope</span>
               <span class="c-btn__ico">
                 <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
                 <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
@@ -357,16 +368,18 @@
             </a>
           </div>
 
+          <!-- Step 2 -->
           <div class="feature-scroll-card stagger-2" data-viewport="true">
             <div class="feature-card-icon">
-              <img src="{{ asset('images/icons/code-bar.svg') }}" alt="Agile Icon" width="24" height="24">
+              <img src="{{ asset('images/icons/cube.svg') }}" alt="Design Icon" width="24" height="24">
             </div>
-            <h3 class="feature-card-title">Sprint-Based Milestone Delivery</h3>
+            <div style="font-size: 0.75rem; font-weight: 700; color: var(--color-accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;">Step 02 &bull; Design &amp; Flow</div>
+            <h3 class="feature-card-title">2. UI/UX Wireframes &amp; Interactive Prototype</h3>
             <p class="feature-card-desc">
-              We work in focused 2-week sprints. Every sprint produces testable, working software on private staging environments, ensuring you always see progress before approving milestones.
+              Before writing heavy backend code, our designers build pixel-perfect Figma layouts and interactive user flows. You test and approve the exact user experience before development starts.
             </p>
-            <a href="{{ route('book-a-demo') }}" class="c-btn -link">
-              <span class="c-btn__txt">Schedule a Consultation</span>
+            <a href="{{ route('services.ui-ux-design') }}" class="c-btn -link">
+              <span class="c-btn__txt">Explore UI/UX Process</span>
               <span class="c-btn__ico">
                 <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
                 <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
@@ -374,16 +387,37 @@
             </a>
           </div>
 
+          <!-- Step 3 -->
           <div class="feature-scroll-card stagger-3" data-viewport="true">
             <div class="feature-card-icon">
-              <img src="{{ asset('images/icons/diagram.svg') }}" alt="IP Icon" width="24" height="24">
+              <img src="{{ asset('images/icons/code-bar.svg') }}" alt="Sprint Icon" width="24" height="24">
             </div>
-            <h3 class="feature-card-title">100% Client-Owned Code &amp; IP</h3>
+            <div style="font-size: 0.75rem; font-weight: 700; color: var(--color-accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;">Step 03 &bull; Agile Engineering</div>
+            <h3 class="feature-card-title">3. Weekly Sprints &amp; Live Staging Demos</h3>
             <p class="feature-card-desc">
-              You own every repository, commit, design asset, and database schema from day one. Zero proprietary runtime locks, zero recurring vendor license traps.
+              We build in fast 1 to 2 week sprints. At the end of every sprint, you receive a live private staging link to test real features, provide feedback, and verify progress directly with the developers.
             </p>
-            <a href="{{ route('company') }}" class="c-btn -link">
-              <span class="c-btn__txt">Read Code Ownership Policy</span>
+            <a href="{{ route('company.how-we-work') }}" class="c-btn -link">
+              <span class="c-btn__txt">Learn About Sprints</span>
+              <span class="c-btn__ico">
+                <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
+                <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
+              </span>
+            </a>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="feature-scroll-card stagger-4" data-viewport="true">
+            <div class="feature-card-icon">
+              <img src="{{ asset('images/icons/diagram.svg') }}" alt="Launch Icon" width="24" height="24">
+            </div>
+            <div style="font-size: 0.75rem; font-weight: 700; color: var(--color-accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;">Step 04 &bull; Launch &amp; Handover</div>
+            <h3 class="feature-card-title">4. Thorough QA, Launch &amp; 100% IP Handover</h3>
+            <p class="feature-card-desc">
+              We run cross-browser and mobile device audits, deploy directly to your production cloud hosting, and transfer full repository ownership, documentation, and credentials to your team.
+            </p>
+            <a href="{{ route('book-a-demo') }}" class="c-btn -link">
+              <span class="c-btn__txt">Schedule Free Consultation</span>
               <span class="c-btn__ico">
                 <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
                 <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
