@@ -72,10 +72,10 @@
   <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
     <div>
       <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 4px;">Dynamic Content &amp; CMS Shortcuts</h3>
-      <p style="font-size: 0.82rem; color: var(--text-muted);">Manage enterprise solutions, technical articles, case studies, client testimonials, and site configuration directly.</p>
+      <p style="font-size: 0.82rem; color: var(--text-muted);">Manage client logos, technical articles, case studies, client testimonials, and site configuration directly.</p>
     </div>
     <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-      <a href="{{ route('admin.cms.solutions.create') }}" class="btn btn-secondary btn-sm">+ Add Solution</a>
+      <a href="{{ route('admin.cms.clients.create') }}" class="btn btn-secondary btn-sm">+ Add Client Logo</a>
       <a href="{{ route('admin.cms.blogs.create') }}" class="btn btn-secondary btn-sm">+ New Article</a>
       <a href="{{ route('admin.settings') }}" class="btn btn-primary btn-sm">Edit Site Settings</a>
     </div>

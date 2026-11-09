@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\PageSeo;
 use App\Models\SiteSetting;
 use App\Models\Blog;
-use App\Models\Solution;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
@@ -192,8 +191,7 @@ class SeoController extends Controller
 
         $pagesCount = PageSeo::where('is_in_sitemap', true)->count();
         $blogsCount = Blog::where('is_published', true)->count();
-        $solutionsCount = Solution::where('is_active', true)->count();
-        $totalUrls = $pagesCount + $blogsCount + $solutionsCount;
+        $totalUrls = $pagesCount + $blogsCount;
 
         $lastGeneratedSetting = SiteSetting::get('sitemap_last_generated', $lastModified);
 
@@ -205,7 +203,6 @@ class SeoController extends Controller
             'xmlContent',
             'pagesCount',
             'blogsCount',
-            'solutionsCount',
             'totalUrls'
         ));
     }
@@ -241,19 +238,6 @@ class SeoController extends Controller
             $xml .= "    <lastmod>{$lastmod}</lastmod>\n";
             $xml .= "    <changefreq>weekly</changefreq>\n";
             $xml .= "    <priority>0.7</priority>\n";
-            $xml .= "  </url>\n";
-        }
-
-        // 3. Active Solutions
-        $solutions = Solution::where('is_active', true)->orderBy('display_order', 'asc')->get();
-        foreach ($solutions as $sol) {
-            $loc = $baseUrl . '/solutions#' . $sol->slug;
-            $lastmod = $sol->updated_at ? $sol->updated_at->format('Y-m-d') : date('Y-m-d');
-            $xml .= "  <url>\n";
-            $xml .= "    <loc>" . htmlspecialchars($loc, ENT_XML1) . "</loc>\n";
-            $xml .= "    <lastmod>{$lastmod}</lastmod>\n";
-            $xml .= "    <changefreq>weekly</changefreq>\n";
-            $xml .= "    <priority>0.8</priority>\n";
             $xml .= "  </url>\n";
         }
 

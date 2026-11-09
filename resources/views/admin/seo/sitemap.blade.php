@@ -42,7 +42,7 @@
   <div class="card" style="margin-bottom: 0; padding: 18px;">
     <div style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: var(--text-dim); letter-spacing: 0.05em;">Total Indexed URLs</div>
     <div style="font-size: 1.8rem; font-weight: 800; color: #fff; margin-top: 4px;">{{ $totalUrls }}</div>
-    <div style="font-size: 0.72rem; color: var(--text-dim); margin-top: 2px;">{{ $pagesCount }} pages, {{ $blogsCount }} articles, {{ $solutionsCount }} solutions</div>
+    <div style="font-size: 0.72rem; color: var(--text-dim); margin-top: 2px;">{{ $pagesCount }} pages, {{ $blogsCount }} articles</div>
   </div>
 
   <div class="card" style="margin-bottom: 0; padding: 18px;">

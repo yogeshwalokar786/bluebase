@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use App\Models\Solution;
 use App\Models\ContactInquiry;
 use App\Models\DemoBooking;
 use App\Models\TrialRequest;
@@ -29,76 +28,11 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // 3. Strategic Industry Solutions
-        $solutions = [
-            [
-                'title' => 'Warehouse & Yard Management Mobility',
-                'slug' => 'warehouse-yard-management',
-                'tagline' => 'High-velocity receiving, picking, putaway, and cycle counting',
-                'icon' => 'box-seam',
-                'summary' => 'End-to-end mobile barcode scanning and inventory movement apps with offline synchronization for fast warehouse execution.',
-                'description' => 'Streamline every stock movement inside your fulfillment centers and logistics yards with real-time barcode scanning and instant ERP synchronization.',
-                'features' => [
-                    'Real-time bin location tracking & automated route pick optimization',
-                    'Instant SAP IM / WM / EWM delta synchronization',
-                    'Cycle counting with discrepancy alerts'
-                ],
-                'is_active' => true,
-                'display_order' => 1,
-            ],
-            [
-                'title' => 'Predictive Asset Health & Maintenance',
-                'slug' => 'asset-health-maintenance',
-                'tagline' => 'Maximize asset uptime with IoT sensors and AI diagnosis',
-                'icon' => 'tools',
-                'summary' => 'Empower field engineers with predictive maintenance schedules, equipment telemetry history, and digital work order sign-offs.',
-                'description' => 'Prevent catastrophic machinery failures with AI-driven anomaly alerts and mobile-first work order execution directly tied to Plant Maintenance (PM).',
-                'features' => [
-                    'Automated work order creation from sensor thresholds',
-                    'Offline equipment manuals & interactive schematic diagrams',
-                    'Photo and audio capture for maintenance evidence',
-                    'Digital signatures & regulatory compliance documentation'
-                ],
-                'is_active' => true,
-                'display_order' => 2,
-            ],
-            [
-                'title' => 'Secure Supplier & Vendor Portals',
-                'slug' => 'supplier-vendor-portals',
-                'tagline' => 'Frictionless collaboration for global procurement networks',
-                'icon' => 'people',
-                'summary' => 'Self-service supplier onboarding, purchase order confirmations, advance shipping notifications (ASN), and automated invoice matching.',
-                'description' => 'Cut down procurement email overhead by 70%. Provide suppliers a branded, secure portal for PO acknowledgement, order tracking, and discrepancy resolution.',
-                'features' => [
-                    'Self-service vendor profile & tax certification management',
-                    'PO flip to electronic invoice with 3-way matching',
-                    'Real-time delivery milestone notifications',
-                    'Multi-currency and global tax jurisdiction support'
-                ],
-                'is_active' => true,
-                'display_order' => 3,
-            ],
-            [
-                'title' => 'Global Inventory & Supply Chain Sync',
-                'slug' => 'inventory-supply-chain',
-                'tagline' => 'Real-time multi-echelon stock visibility and forecasting',
-                'icon' => 'globe2',
-                'summary' => 'Unify inventory across regional warehouses, transit hubs, and retail points for accurate fulfillment promises and reduced carrying costs.',
-                'description' => 'Eliminate phantom stock and costly stockouts with bi-directional real-time data sync across all your ERP instances, 3PL partners, and sales channels.',
-                'features' => [
-                    'Multi-location aggregated stock availability',
-                    'Safety stock dynamic recalculation based on lead time variance',
-                    'Inter-company transfer order automation',
-                    'Comprehensive audit trail with serialized unit tracking'
-                ],
-                'is_active' => true,
-                'display_order' => 4,
-            ],
-        ];
-
-        foreach ($solutions as $solution) {
-            Solution::updateOrCreate(['slug' => $solution['slug']], $solution);
-        }
+        // 2. Client Logos & Blog Categories
+        $this->call([
+            ClientLogoSeeder::class,
+            BlogCategorySeeder::class,
+        ]);
 
         // 4. Sample Leads
         ContactInquiry::updateOrCreate(

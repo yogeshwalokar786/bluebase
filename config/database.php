@@ -47,7 +47,7 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DB_URL'),
-            'host' => (PHP_OS_FAMILY === 'Linux' && (string) env('DB_PORT') === '3307') ? 'localhost' : env('DB_HOST', '127.0.0.1'),
+            'host' => (PHP_OS_FAMILY === 'Windows') ? '127.0.0.1' : ((string) env('DB_PORT') === '3307' ? 'localhost' : env('DB_HOST', 'localhost')),
             'port' => (PHP_OS_FAMILY === 'Linux' && (string) env('DB_PORT') === '3307') ? '3306' : env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'laravel'),
             'username' => env('DB_USERNAME', 'root'),

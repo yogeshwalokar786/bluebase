@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 
 @section('title', 'Contact Bluebase | Remote-First Digital Engineering & AI Consultancy')
 @section('meta_description', 'Connect with Bluebase. We operate as a remote-first digital engineering consultancy delivering custom software, autonomous AI agent architectures, and cloud modernization to clients worldwide.')
@@ -48,38 +48,7 @@
     </section>
 
   <!-- CLIENT LOGO MARQUEE -->
-  <section class="marquee-section">
-    <div class="container">
-      <h2 class="marquee-heading" data-viewport="true">Trusted by 600+ high-growth companies and global enterprises to engineer mission-critical digital products</h2>
-    </div>
-    <div class="marquee-container">
-          <div class="marquee-track">
-      <div class="marquee-item"><img src="{{ asset('images/clients/aarohi-logo.webp') }}" alt="Aarohi Classic Championship" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/aarya-logo.webp') }}" alt="Aarya Waste Innovations" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/austin-logo.webp') }}" alt="Austin Moto Premium" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/diets-logo.webp') }}" alt="Diets by Dietitian" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/dream-logo.webp') }}" alt="Dreamland Vacations" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/omg-logo.webp') }}" alt="OMG Rental Bikes" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/rednetik-logo.webp') }}" alt="Rednetik" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/shine-interior-logo.png') }}" alt="Shinne Interior" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/shristiyam_logo.webp') }}" alt="Shristiyam" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/trevanta_logo.webp') }}" alt="Trevanta International" loading="lazy"></div>
-
-      <!-- Loop duplicates for continuous smooth marquee scroller -->
-      <div class="marquee-item"><img src="{{ asset('images/clients/aarohi-logo.webp') }}" alt="Aarohi Classic Championship" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/aarya-logo.webp') }}" alt="Aarya Waste Innovations" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/austin-logo.webp') }}" alt="Austin Moto Premium" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/diets-logo.webp') }}" alt="Diets by Dietitian" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/dream-logo.webp') }}" alt="Dreamland Vacations" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/omg-logo.webp') }}" alt="OMG Rental Bikes" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/rednetik-logo.webp') }}" alt="Rednetik" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/shine-interior-logo.png') }}" alt="Shinne Interior" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/shristiyam_logo.webp') }}" alt="Shristiyam" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/trevanta_logo.webp') }}" alt="Trevanta International" loading="lazy"></div>
-    </div>
-  </div>
-    </div>
-  </section>
+  @include('partials.client-marquee', ['heading' => 'Trusted by 600+ high-growth companies and global enterprises to engineer mission-critical digital products'])
 
     <!-- REMOTE-FIRST CONTACT & COMMUNICATION HUBS SECTION -->
     <section class="subpage-section" style="padding-top: 30px;">
@@ -88,12 +57,12 @@
           
           <!-- Remote-First Details Left -->
           <div data-viewport="true">
-            <span class="section-tag">Nagpur, India • Remote-First</span>
+            <span class="section-tag">Nagpur, India â€¢ Remote-First</span>
             <h2 style="font-size: 2.1rem; font-weight: 700; margin: 12px 0 16px; color: var(--color-primary); line-height: 1.25;">
               Nagpur-Born Startup, <mark style="background: none; color: var(--color-accent);">Global Engineering Reach</mark>.
             </h2>
             <p style="color: var(--color-gray-600); margin-bottom: 28px; font-size: 1.05rem; line-height: 1.6;">
-              Bluebase was founded and is headquartered in <strong>Nagpur, Maharashtra, India</strong>. We operate with a modern remote-first model—giving you direct access to top-tier senior software architects and AI engineers across India without traditional agency overhead.
+              Bluebase was founded and is headquartered in <strong>Nagpur, Maharashtra, India</strong>. We operate with a modern remote-first modelâ€”giving you direct access to top-tier senior software architects and AI engineers across India without traditional agency overhead.
             </p>
             
             <div style="display: flex; flex-direction: column; gap: 18px;">

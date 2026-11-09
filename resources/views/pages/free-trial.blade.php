@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 
 @section('title', 'Request a Project Proposal & Architecture Audit | Bluebase')
 @section('meta_description', 'Get a comprehensive, zero-cost architecture review and customized engineering proposal for your web app, mobile app, or AI project.')
@@ -14,7 +14,7 @@
           Get a Tailored Project Proposal &amp; <mark>Architecture Audit</mark>.
         </h1>
         <p class="hero-description stagger-2" data-viewport="true">
-          Share your project requirements and receive a comprehensive technical proposal within 48 hours—including architecture diagrams, sprint timelines, and transparent pricing.
+          Share your project requirements and receive a comprehensive technical proposal within 48 hoursâ€”including architecture diagrams, sprint timelines, and transparent pricing.
         </p>
 
         <div class="hero-buttons stagger-3" data-viewport="true">
@@ -48,38 +48,7 @@
     </section>
 
   <!-- CLIENT LOGO MARQUEE -->
-  <section class="marquee-section">
-    <div class="container">
-      <h2 class="marquee-heading" data-viewport="true">Trusted by 600+ high-growth companies and global enterprises to engineer mission-critical digital products</h2>
-    </div>
-    <div class="marquee-container">
-          <div class="marquee-track">
-      <div class="marquee-item"><img src="{{ asset('images/clients/aarohi-logo.webp') }}" alt="Aarohi Classic Championship" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/aarya-logo.webp') }}" alt="Aarya Waste Innovations" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/austin-logo.webp') }}" alt="Austin Moto Premium" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/diets-logo.webp') }}" alt="Diets by Dietitian" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/dream-logo.webp') }}" alt="Dreamland Vacations" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/omg-logo.webp') }}" alt="OMG Rental Bikes" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/rednetik-logo.webp') }}" alt="Rednetik" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/shine-interior-logo.png') }}" alt="Shinne Interior" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/shristiyam_logo.webp') }}" alt="Shristiyam" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/trevanta_logo.webp') }}" alt="Trevanta International" loading="lazy"></div>
-
-      <!-- Loop duplicates for continuous smooth marquee scroller -->
-      <div class="marquee-item"><img src="{{ asset('images/clients/aarohi-logo.webp') }}" alt="Aarohi Classic Championship" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/aarya-logo.webp') }}" alt="Aarya Waste Innovations" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/austin-logo.webp') }}" alt="Austin Moto Premium" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/diets-logo.webp') }}" alt="Diets by Dietitian" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/dream-logo.webp') }}" alt="Dreamland Vacations" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/omg-logo.webp') }}" alt="OMG Rental Bikes" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/rednetik-logo.webp') }}" alt="Rednetik" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/shine-interior-logo.png') }}" alt="Shinne Interior" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/shristiyam_logo.webp') }}" alt="Shristiyam" loading="lazy"></div>
-      <div class="marquee-item"><img src="{{ asset('images/clients/trevanta_logo.webp') }}" alt="Trevanta International" loading="lazy"></div>
-    </div>
-  </div>
-    </div>
-  </section>
+  @include('partials.client-marquee', ['heading' => 'Trusted by 600+ high-growth companies and global enterprises to engineer mission-critical digital products'])
 
     <!-- PROPOSAL REQUEST FORM SECTION -->
     <section class="subpage-section" style="padding-top: 20px;">
@@ -88,7 +57,7 @@
           <div class="text-center" style="margin-bottom: 36px;">
             <span class="section-tag">Zero-Cost Technical Review</span>
             <h2 style="font-size: 2rem; margin-top: 10px; font-weight: 700;">Request a Custom Project Proposal &amp; Architecture Audit</h2>
-            <p style="color: var(--color-gray-600); font-size: 1rem;">Receive a comprehensive technical proposal within 48 hours—including architecture diagrams, sprint timelines, and transparent fixed-pod pricing.</p>
+            <p style="color: var(--color-gray-600); font-size: 1rem;">Receive a comprehensive technical proposal within 48 hoursâ€”including architecture diagrams, sprint timelines, and transparent fixed-pod pricing.</p>
           </div>
 
           <form id="proposalForm" onsubmit="event.preventDefault(); document.getElementById('proposalSuccessMsg').style.display='block'; this.style.display='none';">

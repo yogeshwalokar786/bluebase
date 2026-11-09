@@ -1082,12 +1082,12 @@
       </a>
 
       <div class="menu-group-title">Content Management (CMS)</div>
-      <a href="{{ route('admin.cms.solutions.index') }}" class="nav-item {{ request()->routeIs('admin.cms.solutions*') ? 'active' : '' }}">
+      <a href="{{ route('admin.cms.clients.index') }}" class="nav-item {{ request()->routeIs('admin.cms.clients*') ? 'active' : '' }}">
         <span class="nav-item-content">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
-          <span>Solutions CMS</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>Client Logos</span>
         </span>
-        <span class="nav-count">{{ \App\Models\Solution::count() }}</span>
+        <span class="nav-count">{{ \App\Models\ClientLogo::count() }}</span>
       </a>
       <a href="{{ route('admin.cms.blogs.index') }}" class="nav-item {{ request()->routeIs('admin.cms.blogs*') ? 'active' : '' }}">
         <span class="nav-item-content">

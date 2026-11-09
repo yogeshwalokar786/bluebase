@@ -14,7 +14,7 @@ use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\LeadController;
-use App\Http\Controllers\Admin\SolutionCmsController;
+use App\Http\Controllers\Admin\ClientLogoCmsController;
 use App\Http\Controllers\Admin\BlogCmsController;
 use App\Http\Controllers\Admin\TestimonialCmsController;
 use App\Http\Controllers\Admin\SettingsCmsController;
@@ -174,14 +174,15 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     // B. FULL CMS (CONTENT MANAGEMENT SYSTEM)
     // ------------------------------------------
     Route::prefix('cms')->name('cms.')->group(function () {
-        // Solutions CMS
-        Route::get('/solutions', [SolutionCmsController::class, 'index'])->name('solutions.index');
-        Route::get('/solutions/create', [SolutionCmsController::class, 'create'])->name('solutions.create');
-        Route::post('/solutions', [SolutionCmsController::class, 'store'])->name('solutions.store');
-        Route::get('/solutions/{id}/edit', [SolutionCmsController::class, 'edit'])->name('solutions.edit');
-        Route::post('/solutions/{id}', [SolutionCmsController::class, 'update'])->name('solutions.update');
-        Route::delete('/solutions/{id}', [SolutionCmsController::class, 'destroy'])->name('solutions.destroy');
-        Route::post('/solutions/{id}/toggle', [SolutionCmsController::class, 'toggleActive'])->name('solutions.toggle');
+        // Client Logos CMS
+        Route::get('/clients', [ClientLogoCmsController::class, 'index'])->name('clients.index');
+        Route::get('/clients/create', [ClientLogoCmsController::class, 'create'])->name('clients.create');
+        Route::post('/clients', [ClientLogoCmsController::class, 'store'])->name('clients.store');
+        Route::get('/clients/{id}/edit', [ClientLogoCmsController::class, 'edit'])->name('clients.edit');
+        Route::post('/clients/{id}', [ClientLogoCmsController::class, 'update'])->name('clients.update');
+        Route::delete('/clients/{id}', [ClientLogoCmsController::class, 'destroy'])->name('clients.destroy');
+        Route::post('/clients/{id}/toggle', [ClientLogoCmsController::class, 'toggleActive'])->name('clients.toggle');
+        Route::post('/clients/reorder', [ClientLogoCmsController::class, 'reorder'])->name('clients.reorder');
 
         // Blogs / Case Studies CMS
         Route::get('/blogs', [BlogCmsController::class, 'index'])->name('blogs.index');
@@ -203,7 +204,7 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     });
 
     // Backward-compatible CMS aliases
-    Route::get('/solutions', fn() => redirect()->route('admin.cms.solutions.index'))->name('solutions');
+    Route::get('/clients', fn() => redirect()->route('admin.cms.clients.index'))->name('clients');
 
     // ------------------------------------------
     // C. FILE MANAGER & MEDIA LIBRARY
