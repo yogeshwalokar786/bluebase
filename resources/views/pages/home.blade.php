@@ -92,14 +92,14 @@
   <!-- 2. BRAND LOGO MARQUEE -->
   @include('partials.client-marquee', ['heading' => 'Trusted by modern brands, ambitious startups, and fast-growing businesses worldwide'])
 
-  <!-- 3. USE CASE / CORE CAPABILITIES CARDS -->
-  <section class="usecases-section" id="solutions">
+  <!-- 3. OUR SERVICES SECTION -->
+  <section class="usecases-section" id="services">
     <div class="container">
       <div class="usecases-header" data-viewport="true">
-        <span class="section-tag">What We Build</span>
+        <span class="section-tag">Our Services</span>
         <h2 class="section-title">Every Great Product Starts <br>With Clean Engineering.</h2>
         <p class="section-subtitle" style="margin: 0 auto 24px;">
-          From rapid SaaS MVPs and cross-platform mobile apps to custom e-commerce stores, we turn your requirements into production-ready software.
+          From rapid SaaS MVPs and cross-platform mobile apps to custom e-commerce stores and robust backend APIs, we turn your requirements into production-ready software.
         </p>
         <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
           <a href="{{ route('services') }}" class="c-btn -secondary">
@@ -121,18 +121,20 @@
 
       <div class="usecases-grid">
         
-        <!-- Card 1 -->
+        <!-- Card 1: Web App Development -->
         <article class="usecase-card stagger-1" data-viewport="true">
           <img src="{{ asset('images/illustrations/watermark.png') }}" alt="" class="usecase-watermark" aria-hidden="true">
           <div class="usecase-card-header">
             <div class="usecase-card-icon">
               <img src="{{ asset('images/icons/tool.svg') }}" alt="Code Icon" width="22" height="22">
             </div>
-            <h3 class="usecase-card-title">Custom Web Apps &amp; SaaS MVPs</h3>
+            <h3 class="usecase-card-title">
+              <a href="{{ route('services.web-development') }}" style="color: inherit; text-decoration: none;">Custom Web App Development</a>
+            </h3>
           </div>
           <div class="usecase-card-body">
             <p>Full-stack web applications, SaaS dashboards, and portal architectures engineered with Laravel, React, Vue, and modern relational databases.</p>
-            <a href="{{ route('products.neptune-dxp') }}" class="c-btn -link">
+            <a href="{{ route('services.web-development') }}" class="c-btn -link">
               <span class="c-btn__txt">Explore Web Apps</span>
               <span class="c-btn__ico">
                 <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
@@ -142,18 +144,20 @@
           </div>
         </article>
 
-        <!-- Card 2 -->
+        <!-- Card 2: Mobile App Development -->
         <article class="usecase-card stagger-2" data-viewport="true">
           <img src="{{ asset('images/illustrations/watermark.png') }}" alt="" class="usecase-watermark" aria-hidden="true">
           <div class="usecase-card-header">
             <div class="usecase-card-icon">
               <img src="{{ asset('images/icons/code-bar.svg') }}" alt="Mobile Icon" width="22" height="22">
             </div>
-            <h3 class="usecase-card-title">Cross-Platform Mobile Apps</h3>
+            <h3 class="usecase-card-title">
+              <a href="{{ route('services.mobile-app-development') }}" style="color: inherit; text-decoration: none;">Cross-Platform Mobile Apps</a>
+            </h3>
           </div>
           <div class="usecase-card-body">
             <p>Responsive, high-performance iOS and Android applications built with Flutter and React Native, featuring smooth animations and offline data caching.</p>
-            <a href="{{ route('use-cases.run-mobile-in-offline') }}" class="c-btn -link">
+            <a href="{{ route('services.mobile-app-development') }}" class="c-btn -link">
               <span class="c-btn__txt">Explore Mobile Apps</span>
               <span class="c-btn__ico">
                 <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
@@ -163,18 +167,43 @@
           </div>
         </article>
 
-        <!-- Card 3 -->
+        <!-- Card 3: SaaS MVP Engineering -->
         <article class="usecase-card stagger-3" data-viewport="true">
+          <img src="{{ asset('images/illustrations/watermark.png') }}" alt="" class="usecase-watermark" aria-hidden="true">
+          <div class="usecase-card-header">
+            <div class="usecase-card-icon">
+              <img src="{{ asset('images/icons/ai-agent.svg') }}" alt="SaaS MVP Icon" width="22" height="22">
+            </div>
+            <h3 class="usecase-card-title">
+              <a href="{{ route('services.saas-mvp-development') }}" style="color: inherit; text-decoration: none;">SaaS MVP Engineering</a>
+            </h3>
+          </div>
+          <div class="usecase-card-body">
+            <p>Turn your product concept into a launch-ready, testable MVP in 3 to 6 weeks to validate real market demand with paying subscribers and investor pitches.</p>
+            <a href="{{ route('services.saas-mvp-development') }}" class="c-btn -link">
+              <span class="c-btn__txt">Explore SaaS MVP</span>
+              <span class="c-btn__ico">
+                <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
+                <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
+              </span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 4: E-Commerce & Online Stores -->
+        <article class="usecase-card stagger-4" data-viewport="true">
           <img src="{{ asset('images/illustrations/watermark.png') }}" alt="" class="usecase-watermark" aria-hidden="true">
           <div class="usecase-card-header">
             <div class="usecase-card-icon">
               <img src="{{ asset('images/icons/diagram.svg') }}" alt="E-Commerce Icon" width="22" height="22">
             </div>
-            <h3 class="usecase-card-title">E-Commerce &amp; Online Stores</h3>
+            <h3 class="usecase-card-title">
+              <a href="{{ route('services.ecommerce-development') }}" style="color: inherit; text-decoration: none;">E-Commerce &amp; Online Stores</a>
+            </h3>
           </div>
           <div class="usecase-card-body">
             <p>Modern online storefronts with seamless product catalogs, custom carts, secure payment gateway integrations (Stripe, Razorpay), and order management.</p>
-            <a href="{{ route('use-cases.supplier-portals') }}" class="c-btn -link">
+            <a href="{{ route('services.ecommerce-development') }}" class="c-btn -link">
               <span class="c-btn__txt">Explore E-Commerce</span>
               <span class="c-btn__ico">
                 <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
@@ -184,19 +213,44 @@
           </div>
         </article>
 
-        <!-- Card 4 -->
-        <article class="usecase-card stagger-4" data-viewport="true">
+        <!-- Card 5: UI/UX Design & Prototyping -->
+        <article class="usecase-card stagger-1" data-viewport="true">
           <img src="{{ asset('images/illustrations/watermark.png') }}" alt="" class="usecase-watermark" aria-hidden="true">
           <div class="usecase-card-header">
             <div class="usecase-card-icon">
               <img src="{{ asset('images/icons/cube.svg') }}" alt="Design Icon" width="22" height="22">
             </div>
-            <h3 class="usecase-card-title">UI/UX Design &amp; Prototyping</h3>
+            <h3 class="usecase-card-title">
+              <a href="{{ route('services.ui-ux-design') }}" style="color: inherit; text-decoration: none;">UI/UX Design &amp; Prototyping</a>
+            </h3>
           </div>
           <div class="usecase-card-body">
-            <p>Pixel-perfect Figma wireframes, accessible component libraries, interactive prototypes, and modern visual identities built before writing a single line of code.</p>
-            <a href="{{ route('modernization.sap-fiori') }}" class="c-btn -link">
+            <p>Pixel-perfect Figma wireframes, accessible component libraries, interactive prototypes, and modern visual identities built before writing code.</p>
+            <a href="{{ route('services.ui-ux-design') }}" class="c-btn -link">
               <span class="c-btn__txt">Explore UI/UX Design</span>
+              <span class="c-btn__ico">
+                <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
+                <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
+              </span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 6: API & Backend Development -->
+        <article class="usecase-card stagger-2" data-viewport="true">
+          <img src="{{ asset('images/illustrations/watermark.png') }}" alt="" class="usecase-watermark" aria-hidden="true">
+          <div class="usecase-card-header">
+            <div class="usecase-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 22px; height: 22px; color: var(--color-primary-light);"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+            </div>
+            <h3 class="usecase-card-title">
+              <a href="{{ route('services.api-backend-development') }}" style="color: inherit; text-decoration: none;">API &amp; Backend Systems</a>
+            </h3>
+          </div>
+          <div class="usecase-card-body">
+            <p>High-throughput REST and GraphQL APIs, event streaming with Redis, third-party payment integrations, and sub-10ms transactional database architectures.</p>
+            <a href="{{ route('services.api-backend-development') }}" class="c-btn -link">
+              <span class="c-btn__txt">Explore API &amp; Backend</span>
               <span class="c-btn__ico">
                 <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
                 <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
