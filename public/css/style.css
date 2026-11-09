@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
       Brand Colors:
    - Deep Plum: #38112a
    - Neptune Orange: #0050E7
@@ -2143,6 +2143,104 @@ ol {
   .system-arch-pill {
     font-size: 0.8rem;
     padding: 5px 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .video-section {
+    padding: 60px 0 !important;
+  }
+
+  .video-header {
+    margin-bottom: 28px !important;
+  }
+
+  .video-container {
+    padding: 20px 14px !important;
+    border-radius: 16px !important;
+  }
+
+  .system-arch-tier {
+    padding: 16px 14px !important;
+    border-radius: 10px !important;
+  }
+
+  .system-arch-tier.-channels,
+  .system-arch-tier.-record,
+  .system-arch-tier.-connected {
+    padding: 16px 14px !important;
+  }
+
+  .system-arch-tier.-neptune {
+    padding: 18px 14px 16px !important;
+  }
+
+  .system-arch-connectors {
+    height: 22px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .system-arch-conn {
+    display: none !important;
+  }
+
+  .system-arch-connectors::after {
+    content: '' !important;
+    display: block !important;
+    width: 2px !important;
+    height: 100% !important;
+    background: linear-gradient(180deg, rgba(0, 80, 231, 0.7) 0%, rgba(0, 80, 231, 0.15) 100%) !important;
+    margin: 0 auto !important;
+  }
+
+  .system-arch-work-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .system-arch-work-card {
+    padding: 14px 16px !important;
+  }
+
+  .system-arch-bottom-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .system-arch-pills {
+    gap: 6px !important;
+  }
+
+  .system-arch-pill {
+    font-size: 0.76rem !important;
+    padding: 5px 10px !important;
+    border-radius: 6px !important;
+  }
+
+  .system-arch-pill.-highlight {
+    font-size: 0.74rem !important;
+    padding: 6px 12px !important;
+    text-align: center !important;
+    width: 100% !important;
+    white-space: normal !important;
+    line-height: 1.4 !important;
+  }
+
+  .system-arch-tag {
+    font-size: 0.65rem !important;
+    margin-bottom: 10px !important;
+  }
+
+  .work-card-title {
+    font-size: 0.95rem !important;
+    margin-bottom: 4px !important;
+  }
+
+  .work-card-desc {
+    font-size: 0.8rem !important;
   }
 }
 

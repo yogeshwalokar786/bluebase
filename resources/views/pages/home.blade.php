@@ -431,17 +431,17 @@
     </div>
   </section>
 
-  <!-- 6. MODERN SYSTEM ARCHITECTURE -->
-  <section class="video-section">
+  <!-- 6. MODERN SYSTEM ARCHITECTURE & TECH STACK -->
+  <section class="video-section" id="tech-stack">
     <div class="container">
       <div class="video-header" data-viewport="true">
-        <span class="section-tag light">Our Technology Stack</span>
+        <span class="section-tag light">Our Tech Stack</span>
         <h2 class="section-title">
-          Modern Stacks.<br>
-          <mark>Resilient Digital Engineering.</mark>
+          Battle-Tested Technologies,<br>
+          <mark>Built to Scale Without Bloat.</mark>
         </h2>
         <p class="section-subtitle light" style="margin: 0 auto;">
-          We build with battle-tested, high-productivity technologies that are fast, secure, easy to maintain, and cost-effective to scale.
+          We build with high-productivity, modern stacks that allow your startup to ship rapidly, keep hosting costs low, and scale smoothly as your user base grows.
         </p>
       </div>
 
@@ -450,12 +450,14 @@
           
           <!-- TIER 1: USERS & CHANNELS -->
           <div class="system-arch-tier -channels">
-            <div class="system-arch-tag">&lt; USER TOUCHPOINTS &amp; CHANNELS /&gt;</div>
+            <div class="system-arch-tag">&lt; FRONTEND &amp; MOBILE CHANNELS /&gt;</div>
             <div class="system-arch-pills">
-              <span class="system-arch-pill">Web Applications</span>
-              <span class="system-arch-pill">iOS &amp; Android Apps</span>
-              <span class="system-arch-pill">E-Commerce Stores</span>
-              <span class="system-arch-pill">Admin Consoles</span>
+              <span class="system-arch-pill">Next.js &amp; React</span>
+              <span class="system-arch-pill">Vue.js &amp; Inertia</span>
+              <span class="system-arch-pill">Flutter &amp; React Native</span>
+              <span class="system-arch-pill">Tailwind CSS</span>
+              <span class="system-arch-pill">High-Speed Web Apps</span>
+              <span class="system-arch-pill">Admin Dashboards</span>
             </div>
           </div>
 
@@ -478,7 +480,7 @@
             </div>
           </div>
 
-          <!-- TIER 2: BLUEBASE Â· CORE APPLICATION ENGINE (CENTERPIECE) -->
+          <!-- TIER 2: BLUEBASE · CORE APPLICATION ENGINE (CENTERPIECE) -->
           <div class="system-arch-tier -neptune">
             <canvas class="system-arch-beam-canvas" aria-hidden="true"></canvas>
 
@@ -494,13 +496,13 @@
               <!-- Col 1: High-Speed Frontend -->
               <div class="system-arch-work-card">
                 <h4 class="work-card-title">Modern Frontend</h4>
-                <p class="work-card-desc">React, Vue, Next.js &amp; Tailwind</p>
+                <p class="work-card-desc">React, Vue, Next.js, Blade &amp; Tailwind</p>
               </div>
 
               <!-- Col 2: Robust Backend Engine -->
               <div class="system-arch-work-card">
                 <h4 class="work-card-title">Backend Architecture</h4>
-                <p class="work-card-desc">Laravel, PHP, Node.js &amp; REST APIs</p>
+                <p class="work-card-desc">Laravel, PHP 8.3, Node.js &amp; REST APIs</p>
               </div>
 
               <!-- Col 3: Data & State -->
@@ -512,7 +514,7 @@
 
             <!-- Bottom Pill inside Bluebase Box -->
             <div class="system-arch-work-footer">
-              <span class="system-arch-pill -highlight">Clean architecture &middot; responsive design &middot; high performance</span>
+              <span class="system-arch-pill -highlight">Clean architecture &middot; Sub-10ms queries &middot; 100% Client Code Ownership</span>
             </div>
           </div>
 
@@ -542,18 +544,20 @@
               <div class="system-arch-tag">&lt; CLOUD HOSTING &amp; DEPLOYMENT /&gt;</div>
               <div class="system-arch-pills">
                 <span class="system-arch-pill">AWS / DigitalOcean</span>
-                <span class="system-arch-pill">Vercel</span>
-                <span class="system-arch-pill">SSL &amp; CDN</span>
+                <span class="system-arch-pill">Vercel Edge</span>
+                <span class="system-arch-pill">Docker Containers</span>
+                <span class="system-arch-pill">Automated Backups</span>
               </div>
             </div>
 
             <!-- Right Box: THIRD-PARTY INTEGRATIONS -->
             <div class="system-arch-tier -connected">
-              <div class="system-arch-tag">&lt; THIRD-PARTY INTEGRATIONS /&gt;</div>
+              <div class="system-arch-tag">&lt; PAYMENTS &amp; THIRD-PARTY INTEGRATIONS /&gt;</div>
               <div class="system-arch-pills">
-                <span class="system-arch-pill">Stripe / Razorpay</span>
-                <span class="system-arch-pill">Auth</span>
-                <span class="system-arch-pill">Custom APIs</span>
+                <span class="system-arch-pill">Stripe &amp; Razorpay</span>
+                <span class="system-arch-pill">OAuth &amp; JWT Auth</span>
+                <span class="system-arch-pill">Transactional Mail</span>
+                <span class="system-arch-pill">REST Webhooks</span>
               </div>
             </div>
           </div>
