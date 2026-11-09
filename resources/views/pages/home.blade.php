@@ -72,8 +72,8 @@
     </div>
 
     @if($videoEnabled)
-      <!-- Digital Workspace Feed Pill in bottom right of hero -->
-      <div class="hero-video-badge" id="heroVideoBadgeWrap">
+      <!-- Digital Workspace Feed Pill in bottom right of hero (desktop only) -->
+      <div class="hero-video-badge hide-on-mobile" id="heroVideoBadgeWrap">
         <button type="button" class="hero-video-toggle" id="heroVideoToggleBtn" aria-label="Pause/Resume background video" title="Engineering Workspace Video">
           <span class="video-live-dot"></span>
           <span class="video-label" id="heroVideoStateLabel">Engineering Studio Live</span>
@@ -332,7 +332,7 @@
           <p class="section-subtitle light">
             We operate as an agile, remote-first software studio. You communicate directly with the engineers writing your code, reviewing live staging links as each milestone progresses.
           </p>
-          <div class="sticky-image-wrap">
+          <div class="sticky-image-wrap hide-on-mobile">
             <img src="{{ asset('images/illustrations/workflow-canvas.jpg') }}" alt="Bluebase Engineering Workflow">
           </div>
           <div style="margin-top: 24px;">
@@ -603,7 +603,7 @@
               </span>
             </a>
           </div>
-          <img src="{{ asset('images/illustrations/ui-illustration.jpg') }}" alt="Bluebase Product Experience" style="max-height: 260px; object-fit: cover; border-radius: 12px; margin-top: 20px;">
+          <img src="{{ asset('images/illustrations/ui-illustration.jpg') }}" alt="Bluebase Product Experience" class="hide-on-mobile" style="max-height: 260px; object-fit: cover; border-radius: 12px; margin-top: 20px;">
         </div>
 
         <!-- Cards Right -->

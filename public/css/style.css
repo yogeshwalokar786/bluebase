@@ -13606,3 +13606,525 @@ input:checked + .saas-slider:before {
   max-width: 100%;
   width: 100%;
 }
+
+
+/* ==========================================================================
+   BLUEBASE MOBILE-FIRST RESPONSIVE PERFECTION
+   Optimized for seamless phone viewing, zero horizontal overflow, and clean readability
+   ========================================================================== */
+
+/* Universal Utility Visibility Classes */
+@media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+  .show-on-mobile {
+    display: block !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .show-on-mobile {
+    display: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hide-on-small-mobile {
+    display: none !important;
+  }
+}
+
+/* Base Mobile Safety & Fluid Viewport */
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+  }
+
+  .container,
+  .container-wide {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .section-title {
+    font-size: clamp(1.75rem, 6.2vw, 2.2rem) !important;
+    line-height: 1.2 !important;
+    margin-bottom: 14px !important;
+  }
+
+  .section-subtitle {
+    font-size: 0.94rem !important;
+    line-height: 1.58 !important;
+  }
+
+  /* Section Spacings: Remove excessive desktop padding */
+  .usecases-section,
+  .research-section,
+  .sticky-features-section,
+  .nextmove-section,
+  .stories-section,
+  .insights-section,
+  .faq-section {
+    padding: 56px 0 !important;
+  }
+
+  /* 1. HERO SECTION */
+  .hero-section {
+    padding-top: calc(var(--header-height, 70px) + 24px) !important;
+    padding-bottom: 50px !important;
+    min-height: auto !important;
+  }
+
+  .hero-pretitle {
+    font-size: 0.78rem !important;
+    padding: 5px 14px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .hero-title {
+    font-size: clamp(2.1rem, 7.5vw, 2.8rem) !important;
+    line-height: 1.1 !important;
+    margin-bottom: 16px !important;
+  }
+
+  .hero-description {
+    font-size: 0.98rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: 24px !important;
+  }
+
+  .hero-buttons {
+    gap: 12px !important;
+    margin-bottom: 28px !important;
+  }
+
+  .hero-badges {
+    gap: 8px !important;
+  }
+
+  .hero-badge-item {
+    font-size: 0.78rem !important;
+    padding: 6px 14px !important;
+  }
+
+  /* 2. CLIENT LOGO MARQUEE */
+  .marquee-section {
+    padding: 36px 0 28px !important;
+  }
+
+  .marquee-heading {
+    font-size: 0.85rem !important;
+    margin-bottom: 20px !important;
+    padding: 0 10px !important;
+    line-height: 1.4 !important;
+  }
+
+  .marquee-track {
+    gap: 40px !important;
+    animation-duration: 35s !important;
+  }
+
+  .marquee-item img {
+    max-height: 30px !important;
+    max-width: 100px !important;
+  }
+
+  /* 3. OUR SERVICES SECTION */
+  .usecases-header {
+    margin-bottom: 32px !important;
+  }
+
+  .usecases-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .usecase-card {
+    padding: 26px 20px !important;
+    border-radius: 14px !important;
+  }
+
+  .usecase-card-header {
+    gap: 14px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .usecase-card-icon {
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 10px !important;
+  }
+
+  .usecase-card-title {
+    font-size: 1.25rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .usecase-card-body p {
+    font-size: 0.9rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: 18px !important;
+  }
+
+  .usecase-watermark {
+    display: none !important; /* Hide watermark on mobile to keep contrast crisp */
+  }
+
+  /* 4. WHY CHOOSE US */
+  .research-layout {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  .research-left-header {
+    margin-bottom: 24px !important;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  .stat-item {
+    padding: 14px 10px !important;
+    text-align: center !important;
+  }
+
+  .stat-number {
+    font-size: 1.6rem !important;
+    margin-bottom: 4px !important;
+  }
+
+  .stat-label {
+    font-size: 0.74rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .stat-sub-bar {
+    padding: 14px 16px !important;
+    margin-top: 14px !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+    text-align: center !important;
+  }
+
+  .stat-sub-number {
+    font-size: 1.5rem !important;
+  }
+
+  .research-card-box {
+    padding: 24px 18px !important;
+    border-radius: 14px !important;
+  }
+
+  .research-card-title {
+    font-size: 1.25rem !important;
+    margin-bottom: 12px !important;
+  }
+
+  /* 5. HOW WE WORK (AGILE STEPS) */
+  .sticky-layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  .sticky-left {
+    position: static !important;
+    margin-bottom: 24px !important;
+  }
+
+  .sticky-left .sticky-image-wrap {
+    display: none !important; /* Hide bulky static illustration on mobile */
+  }
+
+  .feature-scroll-card {
+    padding: 22px 18px !important;
+    margin-bottom: 14px !important;
+    border-radius: 14px !important;
+  }
+
+  .feature-card-icon {
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 10px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .feature-card-title {
+    font-size: 1.18rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 8px !important;
+  }
+
+  .feature-card-desc {
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: 16px !important;
+  }
+
+  /* 6. TECH STACK (ARCH DIAGRAM) */
+  .video-section {
+    padding: 56px 0 !important;
+  }
+
+  .video-container {
+    padding: 18px 12px !important;
+    border-radius: 14px !important;
+  }
+
+  .system-arch-tier {
+    padding: 14px 12px !important;
+    border-radius: 10px !important;
+  }
+
+  .system-arch-tag {
+    font-size: 0.65rem !important;
+    letter-spacing: 0.05em !important;
+    margin-bottom: 8px !important;
+  }
+
+  .system-arch-pills {
+    gap: 6px !important;
+    justify-content: center !important;
+  }
+
+  .system-arch-pill {
+    font-size: 0.74rem !important;
+    padding: 5px 9px !important;
+  }
+
+  .system-arch-connectors {
+    height: 16px !important;
+  }
+
+  /* 7. COLLABORATION MODELS */
+  .nextmove-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .nextmove-card-full {
+    padding: 24px 18px !important;
+    border-radius: 14px !important;
+  }
+
+  .nextmove-card-full .section-title {
+    font-size: 1.45rem !important;
+  }
+
+  .nextmove-card-full p {
+    font-size: 0.9rem !important;
+    line-height: 1.55 !important;
+  }
+
+  .nextmove-card-small {
+    padding: 22px 18px !important;
+    border-radius: 14px !important;
+  }
+
+  .nextmove-card-small h3 {
+    font-size: 1.25rem !important;
+    margin-bottom: 8px !important;
+  }
+
+  .nextmove-card-small p {
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
+  }
+
+  /* 8. STORIES SLIDER (OMG RENTAL BIKES) */
+  .stories-header {
+    margin-bottom: 28px !important;
+  }
+
+  .slider-track-wrap {
+    border-radius: 14px !important;
+  }
+
+  .story-slide {
+    grid-template-columns: 1fr !important;
+  }
+
+  .story-image-wrap {
+    min-height: 200px !important;
+    max-height: 240px !important;
+  }
+
+  .story-content {
+    padding: 24px 18px !important;
+  }
+
+  .story-tags {
+    gap: 6px !important;
+    margin-bottom: 12px !important;
+    flex-wrap: wrap !important;
+  }
+
+  .story-tag {
+    font-size: 0.72rem !important;
+    padding: 3px 10px !important;
+  }
+
+  .story-title {
+    font-size: 1.25rem !important;
+    line-height: 1.35 !important;
+    margin-bottom: 12px !important;
+  }
+
+  .story-content p {
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: 18px !important;
+  }
+
+  .slider-controls {
+    margin-top: 18px !important;
+  }
+
+  .slider-btn {
+    width: 42px !important;
+    height: 42px !important;
+  }
+
+  /* 9. ENGINEERING INSIGHTS & TABS */
+  .insights-header-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 14px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .insights-tabs-nav {
+    display: flex !important;
+    width: 100% !important;
+    gap: 8px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .tab-btn {
+    flex: 1 !important;
+    text-align: center !important;
+    padding: 10px 12px !important;
+    font-size: 0.82rem !important;
+    white-space: nowrap !important;
+  }
+
+  .articles-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .article-card {
+    border-radius: 14px !important;
+  }
+
+  .article-thumb {
+    height: 180px !important;
+  }
+
+  .article-body {
+    padding: 20px 18px !important;
+  }
+
+  .article-title {
+    font-size: 1.15rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .article-desc {
+    font-size: 0.86rem !important;
+    line-height: 1.55 !important;
+  }
+
+  /* 10. CLOSING CTA BANNER */
+  .cta-banner-section {
+    padding: 32px 0 !important;
+  }
+
+  .cta-banner-box {
+    padding: 36px 18px !important;
+    border-radius: 16px !important;
+  }
+
+  .cta-banner-title {
+    font-size: clamp(1.5rem, 5.8vw, 2rem) !important;
+    line-height: 1.22 !important;
+    margin-bottom: 20px !important;
+  }
+
+  .cta-pills-row {
+    gap: 6px !important;
+    margin-top: 22px !important;
+    justify-content: center !important;
+  }
+
+  .cta-pill-item {
+    font-size: 0.74rem !important;
+    padding: 5px 10px !important;
+  }
+
+  /* 11. FAQ ACCORDION */
+  .faq-layout {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  .faq-left {
+    text-align: left !important;
+  }
+
+  .accordion-trigger {
+    padding: 16px 14px !important;
+    font-size: 0.92rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .accordion-inner {
+    padding: 0 14px 16px !important;
+    font-size: 0.86rem !important;
+    line-height: 1.55 !important;
+  }
+}
+
+/* Extra-Small Mobile Screens (Smartphones <= 480px) */
+@media (max-width: 480px) {
+  .container,
+  .container-wide {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .hero-buttons {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  .hero-buttons .c-btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .stat-item {
+    display: flex !important;
+    align-items: center !important;
+    text-align: left !important;
+    gap: 14px !important;
+    padding: 12px 14px !important;
+  }
+
+  .stat-number {
+    margin-bottom: 0 !important;
+    min-width: 70px !important;
+  }
+
+  .cta-banner-box .c-btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
