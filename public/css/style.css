@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
       Brand Colors:
    - Deep Plum: #38112a
    - Neptune Orange: #0050E7
@@ -13585,4 +13585,24 @@ input:checked + .saas-slider:before {
     align-items: flex-start;
     gap: 12px;
   }
+}
+
+
+/* Slider Integration for Spotlight Slides */
+.spotlight-section .slider-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.story-slide.spotlight-slide {
+  min-width: 100%;
+  display: block;
+}
+
+.story-slide.spotlight-slide .spotlight-card {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  max-width: 100%;
+  width: 100%;
 }
