@@ -1055,8 +1055,19 @@
                 <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-text-muted); margin-bottom: 24px;">
                   OMG Rental Bikes partnered with Bluebase to build and manage their complete digital operating system. We developed their custom fleet management software (real-time vehicle inventory, paperless digital KYC, and automated rental agreements), high-converting booking portal at <a href="https://omgrentalbikes.com" target="_blank" rel="noopener noreferrer" style="color: var(--color-accent); font-weight: 600; text-decoration: underline;">omgrentalbikes.com</a>, and fully manage their top-ranking Google My Business profile and social media marketing.
                 </p>
-                <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
-                  <a href="https://omgrentalbikes.com" target="_blank" rel="noopener noreferrer" class="c-btn -link">
+                <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap;">
+                  <a href="{{ route('customer-stories.omg-rental-bikes') }}" class="c-btn -primary" style="padding: 12px 24px;">
+                    <span class="c-btn__txt">Read Case Study</span>
+                    <span class="c-btn__ico">
+                      <span class="c-btn__ico-base">
+                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
+                      </span>
+                      <span class="c-btn__ico-hover">
+                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
+                      </span>
+                    </span>
+                  </a>
+                  <a href="https://omgrentalbikes.com" target="_blank" rel="noopener noreferrer" class="c-btn -secondary" style="padding: 12px 22px;">
                     <span class="c-btn__txt">Visit Live Website</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">

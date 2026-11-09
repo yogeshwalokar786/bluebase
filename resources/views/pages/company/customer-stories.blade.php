@@ -129,7 +129,34 @@
           <p class="section-subtitle" style="margin: 0 auto;">Detailed case studies of how our engineering pods deliver rapid business outcomes.</p>
         </div>
         <div class="features-grid-3">
-        <div class="feature-card-clean stagger-1" data-viewport="true">
+        <!-- Flagship Case Study: OMG Rental Bikes -->
+        <div class="feature-card-clean stagger-1" data-viewport="true" style="border: 2px solid rgba(0, 80, 231, 0.25); background: linear-gradient(160deg, #ffffff 0%, #f8fafc 100%);">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
+              <span style="background: rgba(0, 80, 231, 0.1); color: var(--color-accent); font-weight: 700; font-size: 0.76rem; padding: 4px 10px; border-radius: 6px;">Mobility &amp; Fleet ERP</span>
+              <span style="background: #ecfdf5; color: #047857; font-weight: 700; font-size: 0.74rem; padding: 4px 10px; border-radius: 6px;">100% Managed</span>
+            </div>
+            <div style="margin-bottom: 14px;">
+              <img src="{{ asset('images/stories/omg-rental-bikes-brand.png') }}" alt="OMG Rental Bikes" style="height: 36px; width: auto; object-fit: contain;">
+            </div>
+            <h3 class="card-title-lg">OMG Rental Bikes: Custom Fleet ERP &amp; Booking Engine</h3>
+            <p class="card-text">Engineered a custom fleet management ERP, web booking portal with automated digital KYC, and local Google search domination—scaling direct online bookings by 3.5X.</p>
+          </div>
+          <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 18px;">
+            <a href="{{ route('customer-stories.omg-rental-bikes') }}" class="c-btn -primary" style="padding: 10px 20px; font-size: 0.88rem;">
+              <span class="c-btn__txt">Read Case Study</span>
+              <span class="c-btn__ico">
+                <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
+                <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
+              </span>
+            </a>
+            <a href="https://omgrentalbikes.com" target="_blank" rel="noopener noreferrer" class="c-btn -link" style="font-size: 0.88rem;">
+              <span class="c-btn__txt">Visit Live Website</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="feature-card-clean stagger-2" data-viewport="true">
           <div>
             <div class="card-icon-box">
               <img src="{{ asset('images/icons/cube.svg') }}" alt="" width="26" height="26">

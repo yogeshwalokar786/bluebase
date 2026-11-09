@@ -21,6 +21,11 @@ class CompanyController extends Controller
         return view('pages.company.customer-stories');
     }
 
+    public function omgRentalBikesStory()
+    {
+        return view('pages.company.omg-rental-bikes');
+    }
+
     public function complianceSecurity()
     {
         return view('pages.company.compliance-security');
