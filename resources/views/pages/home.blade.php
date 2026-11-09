@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Bluebase Technologies | Digital Engineering, Web & Mobile App Development Startup')
 @section('meta_description', 'Bluebase Technologies is an agile, remote-first digital engineering startup based in India. We build high-performance custom websites, web applications, mobile apps, SaaS MVPs, and e-commerce platforms for growing brands and founders worldwide.')
@@ -213,52 +213,17 @@
           </div>
         </article>
 
-        <!-- Card 5: UI/UX Design & Prototyping -->
-        <article class="usecase-card stagger-1" data-viewport="true">
-          <img src="{{ asset('images/illustrations/watermark.png') }}" alt="" class="usecase-watermark" aria-hidden="true">
-          <div class="usecase-card-header">
-            <div class="usecase-card-icon">
-              <img src="{{ asset('images/icons/cube.svg') }}" alt="Design Icon" width="22" height="22">
-            </div>
-            <h3 class="usecase-card-title">
-              <a href="{{ route('services.ui-ux-design') }}" style="color: inherit; text-decoration: none;">UI/UX Design &amp; Prototyping</a>
-            </h3>
-          </div>
-          <div class="usecase-card-body">
-            <p>Pixel-perfect Figma wireframes, accessible component libraries, interactive prototypes, and modern visual identities built before writing code.</p>
-            <a href="{{ route('services.ui-ux-design') }}" class="c-btn -link">
-              <span class="c-btn__txt">Explore UI/UX Design</span>
-              <span class="c-btn__ico">
-                <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
-                <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
-              </span>
-            </a>
-          </div>
-        </article>
+      </div>
 
-        <!-- Card 6: API & Backend Development -->
-        <article class="usecase-card stagger-2" data-viewport="true">
-          <img src="{{ asset('images/illustrations/watermark.png') }}" alt="" class="usecase-watermark" aria-hidden="true">
-          <div class="usecase-card-header">
-            <div class="usecase-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 22px; height: 22px; color: var(--color-primary-light);"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-            </div>
-            <h3 class="usecase-card-title">
-              <a href="{{ route('services.api-backend-development') }}" style="color: inherit; text-decoration: none;">API &amp; Backend Systems</a>
-            </h3>
-          </div>
-          <div class="usecase-card-body">
-            <p>High-throughput REST and GraphQL APIs, event streaming with Redis, third-party payment integrations, and sub-10ms transactional database architectures.</p>
-            <a href="{{ route('services.api-backend-development') }}" class="c-btn -link">
-              <span class="c-btn__txt">Explore API &amp; Backend</span>
-              <span class="c-btn__ico">
-                <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
-                <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
-              </span>
-            </a>
-          </div>
-        </article>
-
+      <!-- More Services CTA Button -->
+      <div style="display: flex; justify-content: center; align-items: center; margin-top: 48px;" data-viewport="true">
+        <a href="{{ route('services') }}" class="c-btn -primary" style="padding: 16px 36px; font-size: 1rem; border-radius: 9999px;">
+          <span class="c-btn__txt">Explore All Services</span>
+          <span class="c-btn__ico">
+            <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
+            <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
+          </span>
+        </a>
       </div>
     </div>
   </section>
