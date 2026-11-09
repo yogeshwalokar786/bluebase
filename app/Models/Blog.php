@@ -10,6 +10,7 @@ class Blog extends Model
     protected $fillable = [
         'title',
         'slug',
+        'category_id',
         'category',
         'tags',
         'author',
@@ -22,6 +23,16 @@ class Blog extends Model
         'is_published',
         'is_featured',
         'published_at',
+        'meta_title',
+        'meta_description',
+        'meta_keywords',
+        'focus_keyword',
+        'canonical_url',
+        'og_title',
+        'og_description',
+        'og_image',
+        'robots',
+        'schema_type',
     ];
 
     protected $casts = [
@@ -72,9 +83,34 @@ class Blog extends Model
         return strtoupper(substr($parts[0], 0, 2));
     }
 
+    public function blogCategory()
+    {
+        return $this->belongsTo(BlogCategory::class, 'category_id');
+    }
+
+    public function getEffectiveCategoryNameAttribute(): string
+    {
+        return $this->blogCategory?->name ?? $this->category ?? 'Engineering';
+    }
+
     public function getCategorySlugAttribute(): string
     {
-        return Str::slug($this->category);
+        return $this->blogCategory?->slug ?? Str::slug($this->category ?? 'engineering');
+    }
+
+    public function getSeoTitleAttribute(): string
+    {
+        return $this->meta_title ?: ($this->title . ' — Bluebase Tech Blog');
+    }
+
+    public function getSeoDescriptionAttribute(): string
+    {
+        return $this->meta_description ?: Str::limit(strip_tags($this->excerpt ?? $this->content), 155);
+    }
+
+    public function getSeoOgImageAttribute(): string
+    {
+        return $this->og_image ?: $this->image ?: 'images/stories/hauni.jpg';
     }
 
     public function getRelatedPosts($limit = 3)
@@ -82,8 +118,12 @@ class Blog extends Model
         return static::published()
             ->where('id', '!=', $this->id)
             ->where(function ($q) {
-                $q->where('category', $this->category)
-                  ->orWhere('category', 'like', '%' . explode(' ', $this->category)[0] . '%');
+                if ($this->category_id) {
+                    $q->where('category_id', $this->category_id);
+                } else {
+                    $q->where('category', $this->category)
+                      ->orWhere('category', 'like', '%' . explode(' ', $this->category)[0] . '%');
+                }
             })
             ->take($limit)
             ->get();

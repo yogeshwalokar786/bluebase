@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\BlogCategory;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -12,11 +13,42 @@ class BlogController extends Controller
      */
     public function index(Request $request)
     {
-        $selectedCategory = $request->query('category', 'all');
+        return $this->renderBlogListing($request);
+    }
+
+    /**
+     * Dedicated category-wise blog listing page.
+     */
+    public function category(string $slug, Request $request)
+    {
+        $category = BlogCategory::where('slug', $slug)->first();
+
+        // If not found in BlogCategory, check if any published blog matches category string
+        if (!$category) {
+            $fallbackBlog = Blog::published()->where('category', 'like', "%{$slug}%")->first();
+            if ($fallbackBlog) {
+                $category = BlogCategory::firstOrCreate(
+                    ['slug' => $fallbackBlog->category_slug],
+                    ['name' => $fallbackBlog->category, 'display_order' => 10]
+                );
+            } else {
+                abort(404, 'Category not found');
+            }
+        }
+
+        return $this->renderBlogListing($request, $category);
+    }
+
+    /**
+     * Internal helper to render blog index or category archive.
+     */
+    protected function renderBlogListing(Request $request, ?BlogCategory $currentCategory = null)
+    {
+        $selectedCategory = $currentCategory ? $currentCategory->slug : $request->query('category', 'all');
         $searchQuery = trim($request->query('q', ''));
 
         // Query builder for published blogs
-        $query = Blog::published();
+        $query = Blog::published()->with('blogCategory');
 
         if (!empty($searchQuery)) {
             $query->where(function ($q) use ($searchQuery) {
@@ -28,75 +60,68 @@ class BlogController extends Controller
             });
         }
 
-        if ($selectedCategory !== 'all') {
+        if ($currentCategory) {
+            $query->where(function ($q) use ($currentCategory) {
+                $q->where('category_id', $currentCategory->id)
+                  ->orWhere('category', 'like', "%{$currentCategory->name}%");
+            });
+        } elseif ($selectedCategory !== 'all') {
             $query->where(function ($q) use ($selectedCategory) {
-                $q->where('category', 'like', "%{$selectedCategory}%");
+                $q->whereHas('blogCategory', function ($cq) use ($selectedCategory) {
+                    $cq->where('slug', $selectedCategory);
+                })->orWhere('category', 'like', "%{$selectedCategory}%");
             });
         }
 
-        // Get Featured Article
-        $featuredBlog = Blog::published()
-            ->where('is_featured', true)
-            ->first();
+        // Get Featured Article (only on main blog index without search/filter)
+        $featuredBlog = null;
+        if (!$currentCategory && $selectedCategory === 'all' && empty($searchQuery)) {
+            $featuredBlog = Blog::published()
+                ->where('is_featured', true)
+                ->first();
 
-        // If no featured flagged, use the latest published blog
-        if (!$featuredBlog) {
-            $featuredBlog = Blog::published()->first();
+            if (!$featuredBlog) {
+                $featuredBlog = Blog::published()->first();
+            }
         }
 
-        // Get all articles (if all, exclude featured from grid so it isn't duplicated; if filtering, show matching)
+        // Get articles
         $blogsQuery = clone $query;
-        if ($selectedCategory === 'all' && empty($searchQuery) && $featuredBlog) {
+        if ($featuredBlog) {
             $blogsQuery->where('id', '!=', $featuredBlog->id);
         }
-        $blogs = $blogsQuery->get();
+        $blogs = $blogsQuery->paginate(12)->withQueryString();
 
-        // Categories with counts
-        $allPublished = Blog::published()->get();
+        // Dynamic categories with live article counts
+        $dbCategories = BlogCategory::active()->withCount('publishedBlogs')->get();
+        $totalPublished = Blog::published()->count();
+
         $categories = [
             'all' => [
                 'name' => 'All Articles',
                 'slug' => 'all',
-                'count' => $allPublished->count(),
-            ],
-            'saas' => [
-                'name' => 'SaaS Architecture',
-                'slug' => 'saas',
-                'count' => $allPublished->filter(fn($b) => stripos($b->category, 'SaaS') !== false)->count(),
-            ],
-            'frontend' => [
-                'name' => 'Frontend & Next.js',
-                'slug' => 'frontend',
-                'count' => $allPublished->filter(fn($b) => stripos($b->category, 'Frontend') !== false)->count(),
-            ],
-            'backend' => [
-                'name' => 'API & Backend',
-                'slug' => 'backend',
-                'count' => $allPublished->filter(fn($b) => stripos($b->category, 'Backend') !== false || stripos($b->category, 'API') !== false)->count(),
-            ],
-            'security' => [
-                'name' => 'DevSecOps & Security',
-                'slug' => 'security',
-                'count' => $allPublished->filter(fn($b) => stripos($b->category, 'Security') !== false || stripos($b->category, 'DevSecOps') !== false)->count(),
-            ],
-            'mobile' => [
-                'name' => 'Mobile Engineering',
-                'slug' => 'mobile',
-                'count' => $allPublished->filter(fn($b) => stripos($b->category, 'Mobile') !== false)->count(),
-            ],
-            'ai' => [
-                'name' => 'AI & Systems',
-                'slug' => 'ai',
-                'count' => $allPublished->filter(fn($b) => stripos($b->category, 'AI') !== false)->count(),
+                'count' => $totalPublished,
+                'url' => route('blog'),
             ],
         ];
+
+        foreach ($dbCategories as $cat) {
+            $categories[$cat->slug] = [
+                'name' => $cat->name,
+                'slug' => $cat->slug,
+                'count' => $cat->published_blogs_count,
+                'url' => route('blog.category', $cat->slug),
+                'description' => $cat->description,
+            ];
+        }
 
         return view('pages.resources.blog', compact(
             'featuredBlog',
             'blogs',
             'categories',
             'selectedCategory',
-            'searchQuery'
+            'searchQuery',
+            'currentCategory'
         ));
     }
 
@@ -106,6 +131,7 @@ class BlogController extends Controller
     public function show(string $slug)
     {
         $blog = Blog::published()
+            ->with('blogCategory')
             ->where('slug', $slug)
             ->firstOrFail();
 
@@ -113,9 +139,13 @@ class BlogController extends Controller
         $relatedBlogs = Blog::published()
             ->where('id', '!=', $blog->id)
             ->where(function ($q) use ($blog) {
-                $categoryKeyword = explode(' ', $blog->category)[0] ?? '';
-                if (!empty($categoryKeyword)) {
-                    $q->where('category', 'like', "%{$categoryKeyword}%");
+                if ($blog->category_id) {
+                    $q->where('category_id', $blog->category_id);
+                } else {
+                    $categoryKeyword = explode(' ', $blog->category)[0] ?? '';
+                    if (!empty($categoryKeyword)) {
+                        $q->where('category', 'like', "%{$categoryKeyword}%");
+                    }
                 }
             })
             ->take(3)
@@ -133,4 +163,3 @@ class BlogController extends Controller
         return view('pages.resources.blog-single', compact('blog', 'relatedBlogs'));
     }
 }
-

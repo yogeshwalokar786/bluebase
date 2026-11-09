@@ -5,11 +5,11 @@
 
   $pageTitle = $__env->yieldContent('title', $seo->meta_title ?? $globalSettings['seo_default_title'] ?? 'Bluebase Technologies | Digital Engineering & Autonomous AI Services');
   $pageDescription = $__env->yieldContent('meta_description', $seo->meta_description ?? $globalSettings['seo_default_description'] ?? 'Bluebase is an elite digital engineering and autonomous AI services startup.');
-  $pageKeywords = $seo->meta_keywords ?? $globalSettings['seo_default_keywords'] ?? 'digital engineering, AI agents, enterprise mobility, SAP integration';
-  $canonicalUrl = $seo->canonical_url ?? url()->current();
-  $ogImage = $seo->og_image ?? $globalSettings['seo_default_og_image'] ?? 'images/stories/hauni.jpg';
+  $pageKeywords = $__env->yieldContent('meta_keywords', $seo->meta_keywords ?? $globalSettings['seo_default_keywords'] ?? 'digital engineering, AI agents, enterprise mobility, SAP integration');
+  $canonicalUrl = $__env->yieldContent('canonical_url', $seo->canonical_url ?? url()->current());
+  $ogImage = $__env->yieldContent('og_image', $seo->og_image ?? $globalSettings['seo_default_og_image'] ?? 'images/stories/hauni.jpg');
   $twitterHandle = $globalSettings['seo_twitter_handle'] ?? '@bluebase_tech';
-  $robotsTag = $seo->robots ?? $globalSettings['seo_robots'] ?? 'index, follow';
+  $robotsTag = $__env->yieldContent('robots', $seo->robots ?? $globalSettings['seo_robots'] ?? 'index, follow');
   $googleVerification = $globalSettings['seo_google_verification'] ?? null;
   $headerScripts = $globalSettings['seo_header_scripts'] ?? null;
   $footerScripts = $globalSettings['seo_footer_scripts'] ?? null;

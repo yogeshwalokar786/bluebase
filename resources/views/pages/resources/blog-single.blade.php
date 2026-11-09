@@ -1,18 +1,25 @@
 @extends('layouts.app')
 
-@section('title', $blog->title . ' — Bluebase Tech Blog | Bluebase Technologies')
-@section('meta_description', Str::limit(strip_tags($blog->excerpt ?? $blog->content), 155))
+@section('title', $blog->seo_title)
+@section('meta_description', $blog->seo_description)
+@if($blog->meta_keywords || $blog->tags)
+  @section('meta_keywords', $blog->meta_keywords ?: $blog->tags)
+@endif
+@section('canonical_url', $blog->canonical_url ?: route('blog.show', $blog->slug))
+@if($blog->seo_og_image)
+  @section('og_image', $blog->seo_og_image)
+@endif
 
 @section('content')
 
-<!-- ARTICLE STRUCTURED DATA (SCHEMA.ORG TECHARTICLE) -->
+<!-- ARTICLE STRUCTURED DATA (SCHEMA.ORG) -->
 <script type="application/ld+json">
 {
   "@@context": "https://schema.org",
-  "@@type": "TechArticle",
-  "headline": "{{ addslashes($blog->title) }}",
-  "description": "{{ addslashes(strip_tags($blog->excerpt ?? $blog->title)) }}",
-  "image": "{{ asset($blog->image ?: 'images/stories/screens-clicks.jpg') }}",
+  "@@type": "{{ $blog->schema_type ?: 'TechArticle' }}",
+  "headline": "{{ addslashes($blog->meta_title ?: $blog->title) }}",
+  "description": "{{ addslashes(strip_tags($blog->meta_description ?: ($blog->excerpt ?: $blog->title))) }}",
+  "image": "{{ asset($blog->seo_og_image) }}",
   "author": {
     "@@type": "Person",
     "name": "{{ addslashes($blog->author) }}"
@@ -63,17 +70,28 @@
             <path d="M6 12l4-4-4-4"/>
           </svg>
         </li>
-        <li class="breadcrumb-item -current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <span itemprop="name" aria-current="page">{{ Str::limit($blog->title, 38) }}</span>
+        <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="{{ route('blog.category', $blog->category_slug) }}" itemprop="item" class="breadcrumb-link">
+            <span itemprop="name">{{ $blog->effective_category_name }}</span>
+          </a>
           <meta itemprop="position" content="3">
+        </li>
+        <li class="breadcrumb-sep" aria-hidden="true">
+          <svg viewBox="0 0 16 16" width="9" height="9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 12l4-4-4-4"/>
+          </svg>
+        </li>
+        <li class="breadcrumb-item -current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name" aria-current="page">{{ Str::limit($blog->title, 32) }}</span>
+          <meta itemprop="position" content="4">
         </li>
       </ol>
     </nav>
 
     <!-- Category Pill & Read Meta -->
     <div style="display: flex; align-items: center; gap: 10px; margin-top: 10px;" data-viewport="true">
-      <a href="{{ route('blog') }}?category={{ $blog->category_slug }}" class="blog-cat-badge">
-        {{ $blog->category }}
+      <a href="{{ route('blog.category', $blog->category_slug) }}" class="blog-cat-badge">
+        {{ $blog->effective_category_name }}
       </a>
       <span class="blog-read-time" style="color: #94a3b8; font-size: 0.82rem; font-weight: 500;">
         {{ $blog->read_time }} &bull; {{ $blog->published_at ? $blog->published_at->format('M d, Y') : 'Recent' }}

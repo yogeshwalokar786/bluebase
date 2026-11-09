@@ -87,6 +87,7 @@ Route::get('/find-a-partner', [CompanyController::class, 'findPartner'])->name('
 // Resources & Legal
 Route::get('/whitepapers', [ResourceController::class, 'whitepapers'])->name('whitepapers');
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+Route::get('/blog/category/{slug}', [BlogController::class, 'category'])->name('blog.category');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 Route::get('/suits-blog', fn() => redirect()->route('blog', [], 301))->name('suits-blog');
 Route::get('/suits-blog/{slug}', fn($slug) => redirect()->route('blog.show', ['slug' => $slug], 301));
@@ -200,6 +201,7 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
         Route::post('/blogs/{id}', [BlogCmsController::class, 'update'])->name('blogs.update');
         Route::delete('/blogs/{id}', [BlogCmsController::class, 'destroy'])->name('blogs.destroy');
         Route::post('/blogs/{id}/toggle', [BlogCmsController::class, 'togglePublish'])->name('blogs.toggle');
+        Route::post('/blogs/categories/ajax-store', [BlogCmsController::class, 'ajaxStoreCategory'])->name('blogs.categories.ajax');
 
         // Testimonials CMS
         Route::get('/testimonials', [TestimonialCmsController::class, 'index'])->name('testimonials.index');
