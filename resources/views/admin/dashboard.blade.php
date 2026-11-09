@@ -7,12 +7,12 @@
 <!-- Metric Cards Grid -->
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 28px;">
   <!-- Total Leads -->
-  <div class="card" style="margin-bottom: 0; background: linear-gradient(135deg, rgba(0, 80, 231, 0.2), rgba(15, 23, 42, 0.8)); border-color: rgba(96, 165, 250, 0.3);">
+  <div class="card card-featured" style="margin-bottom: 0;">
     <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
       <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--accent); letter-spacing: 0.05em;">Total Leads</span>
       <svg style="width: 20px; height: 20px; color: var(--accent);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
     </div>
-    <div style="font-size: 2.2rem; font-weight: 800; color: #fff; line-height: 1;">{{ $stats['total_leads'] }}</div>
+    <div class="metric-value">{{ $stats['total_leads'] }}</div>
     <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 8px;">Across all conversion channels</div>
   </div>
 
@@ -22,7 +22,7 @@
       <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-dim); letter-spacing: 0.05em;">Contact Inquiries</span>
       <span class="badge badge-new">{{ $stats['inquiries_new'] }} New</span>
     </div>
-    <div style="font-size: 2.2rem; font-weight: 800; color: #fff; line-height: 1;">{{ $stats['inquiries_count'] }}</div>
+    <div class="metric-value">{{ $stats['inquiries_count'] }}</div>
     <a href="{{ route('admin.leads.inquiries') }}" style="display: inline-block; font-size: 0.75rem; color: var(--accent); margin-top: 8px; text-decoration: none;">View inquiries &rarr;</a>
   </div>
 
@@ -32,7 +32,7 @@
       <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-dim); letter-spacing: 0.05em;">Demo Bookings</span>
       <span class="badge badge-pending">{{ $stats['demos_pending'] }} Pending</span>
     </div>
-    <div style="font-size: 2.2rem; font-weight: 800; color: #fff; line-height: 1;">{{ $stats['demos_count'] }}</div>
+    <div class="metric-value">{{ $stats['demos_count'] }}</div>
     <a href="{{ route('admin.leads.demos') }}" style="display: inline-block; font-size: 0.75rem; color: var(--accent); margin-top: 8px; text-decoration: none;">Manage bookings &rarr;</a>
   </div>
 
@@ -42,7 +42,7 @@
       <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-dim); letter-spacing: 0.05em;">Trial Sandboxes</span>
       <span class="badge badge-confirmed">Active</span>
     </div>
-    <div style="font-size: 2.2rem; font-weight: 800; color: #fff; line-height: 1;">{{ $stats['trials_count'] }}</div>
+    <div class="metric-value">{{ $stats['trials_count'] }}</div>
     <a href="{{ route('admin.leads.trials') }}" style="display: inline-block; font-size: 0.75rem; color: var(--accent); margin-top: 8px; text-decoration: none;">Inspect trials &rarr;</a>
   </div>
 
@@ -52,7 +52,7 @@
       <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-dim); letter-spacing: 0.05em;">Partners</span>
       <svg style="width: 18px; height: 18px; color: var(--warning);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
     </div>
-    <div style="font-size: 2.2rem; font-weight: 800; color: #fff; line-height: 1;">{{ $stats['partners_count'] }}</div>
+    <div class="metric-value">{{ $stats['partners_count'] }}</div>
     <a href="{{ route('admin.leads.partners') }}" style="display: inline-block; font-size: 0.75rem; color: var(--accent); margin-top: 8px; text-decoration: none;">View partners &rarr;</a>
   </div>
 
@@ -62,13 +62,13 @@
       <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-dim); letter-spacing: 0.05em;">Subscribers</span>
       <svg style="width: 18px; height: 18px; color: var(--success);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
     </div>
-    <div style="font-size: 2.2rem; font-weight: 800; color: #fff; line-height: 1;">{{ $stats['subscribers_count'] }}</div>
+    <div class="metric-value">{{ $stats['subscribers_count'] }}</div>
     <a href="{{ route('admin.leads.subscribers') }}" style="display: inline-block; font-size: 0.75rem; color: var(--accent); margin-top: 8px; text-decoration: none;">Subscribers list &rarr;</a>
   </div>
 </div>
 
 <!-- CMS Quick Access Bar -->
-<div class="card" style="background: rgba(9, 14, 35, 0.5); border-style: dashed;">
+<div class="card card-dashed">
   <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
     <div>
       <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 4px;">Dynamic Content &amp; CMS Shortcuts</h3>

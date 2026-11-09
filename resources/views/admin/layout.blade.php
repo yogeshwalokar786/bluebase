@@ -459,232 +459,22 @@
       border: 1px solid var(--border-color);
     }
     .pagination .active span { background: var(--primary); border-color: var(--primary); color: #fff; }
-  
-    /* ==========================================================
-       LIGHT THEME SYSTEM OVERRIDES (.light-mode)
-       ========================================================== */
-    html.light-mode {
-      --bg-dark: #F8FAFC;
-      --bg-surface: #FFFFFF;
-      --bg-card: #FFFFFF;
-      --bg-card-hover: #F1F5F9;
-      --border-color: #E2E8F0;
-      --border-hover: #CBD5E1;
-      --primary: #0050E7;
-      --primary-hover: #1D68FF;
-      --primary-glow: rgba(0, 80, 231, 0.2);
-      --accent: #0050E7;
-      --text: #0F172A;
-      --text-muted: #475569;
-      --text-dim: #64748B;
-      --success: #059669;
-      --warning: #D97706;
-      --danger: #DC2626;
-      --purple: #7C3AED;
-    }
-    html.light-mode body {
-      background: var(--bg-dark);
-      color: var(--text);
-    }
-    html.light-mode .admin-sidebar {
-      background: #FFFFFF;
-      border-right: 1px solid #E2E8F0;
-      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.02);
-    }
-    html.light-mode .sidebar-header {
-      border-bottom: 1px solid #E2E8F0;
-    }
-    html.light-mode .sidebar-footer {
-      background: #F8FAFC;
-      border-top: 1px solid #E2E8F0;
-    }
-    html.light-mode .user-name { color: #0F172A; }
-    html.light-mode .nav-item {
-      color: #475569;
-    }
-    html.light-mode .nav-item:hover {
-      background: #F1F5F9;
-      color: #0F172A;
-    }
-    html.light-mode .nav-item.active {
-      background: rgba(0, 80, 231, 0.08);
-      color: #0050E7;
-      border-left: 3px solid #0050E7;
-    }
-    html.light-mode .nav-count {
-      background: #E2E8F0;
-      color: #475569;
-    }
-    html.light-mode .nav-item.active .nav-count {
-      background: rgba(0, 80, 231, 0.15);
-      color: #0050E7;
-    }
-    html.light-mode .admin-topbar {
-      background: rgba(255, 255, 255, 0.95);
-      border-bottom: 1px solid #E2E8F0;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
-    }
-    html.light-mode .topbar-title { color: #0F172A; }
-    html.light-mode .card {
-      background: #FFFFFF;
-      border: 1px solid #E2E8F0;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
-    }
-    html.light-mode .card-title { color: #0F172A; }
-    html.light-mode .form-label { color: #1E293B; }
-    html.light-mode .form-control, html.light-mode .form-select {
-      background: #FFFFFF;
-      border: 1px solid #CBD5E1;
-      color: #0F172A;
-    }
-    html.light-mode .form-control:focus, html.light-mode .form-select:focus {
-      background: #FFFFFF;
-      border-color: #0050E7;
-      box-shadow: 0 0 0 3px rgba(0, 80, 231, 0.12);
-    }
-    html.light-mode .form-select option {
-      background: #FFFFFF;
-      color: #0F172A;
-    }
-    html.light-mode .btn-secondary {
-      background: #F1F5F9;
-      color: #1E293B;
-      border: 1px solid #CBD5E1;
-    }
-    html.light-mode .btn-secondary:hover {
-      background: #E2E8F0;
-      color: #0F172A;
-    }
-    html.light-mode .data-table th {
-      background: #F8FAFC;
-      color: #475569;
-      border-bottom: 1px solid #E2E8F0;
-    }
-    html.light-mode .data-table td {
-      border-bottom: 1px solid #E2E8F0;
-      color: #0F172A;
-    }
-    html.light-mode .data-table tr:hover td {
-      background: #F8FAFC;
-    }
-    html.light-mode .filter-tabs {
-      background: #F1F5F9;
-      border: 1px solid #E2E8F0;
-    }
-    html.light-mode .filter-tab {
-      color: #475569;
-    }
-    html.light-mode .filter-tab:hover {
-      color: #0F172A;
-      background: #E2E8F0;
-    }
-    html.light-mode .filter-tab.active {
-      background: #0050E7;
-      color: #FFFFFF;
-    }
-    html.light-mode .message-box {
-      background: #F8FAFC;
-      border: 1px solid #E2E8F0;
-      color: #1E293B;
-    }
-    html.light-mode .info-value { color: #0F172A; }
-    html.light-mode .info-label { color: #64748B; }
-    html.light-mode .media-preview-container {
-      background: #F8FAFC;
-      border: 1px solid #CBD5E1;
-    }
-    /* Quill Light Theme */
-    html.light-mode .ql-toolbar.ql-snow {
-      background: #F8FAFC;
-      border: 1px solid #CBD5E1;
-    }
-    html.light-mode .ql-container.ql-snow {
-      background: #FFFFFF;
-      border: 1px solid #CBD5E1;
-      color: #0F172A;
-    }
-    html.light-mode .ql-snow .ql-stroke { stroke: #475569; }
-    html.light-mode .ql-snow .ql-fill { fill: #475569; }
-    html.light-mode .ql-snow .ql-picker { color: #475569; }
-    html.light-mode .ql-snow .ql-picker-options {
-      background: #FFFFFF !important;
-      border: 1px solid #E2E8F0 !important;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    }
-    html.light-mode .ql-snow .ql-picker-item { color: #475569; }
-    html.light-mode .editor-html-source {
-      background: #0F172A;
-      color: #86EFAC;
-    }
-    /* File Manager Modal Light Mode */
-    html.light-mode .fm-modal-window {
-      background: #FFFFFF;
-      border: 1px solid #E2E8F0;
-      color: #0F172A;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
-    }
-    html.light-mode .fm-modal-header {
-      background: #F8FAFC;
-      border-bottom: 1px solid #E2E8F0;
-    }
-    html.light-mode .fm-modal-title { color: #0F172A; }
-    html.light-mode .fm-top-controls {
-      background: #F8FAFC;
-      border-bottom: 1px solid #E2E8F0;
-    }
-    html.light-mode .fm-item-card {
-      background: #FFFFFF;
-      border: 1px solid #E2E8F0;
-    }
-    html.light-mode .fm-item-thumb {
-      background: #F1F5F9;
-      border-bottom: 1px solid #E2E8F0;
-    }
-    html.light-mode .fm-item-name { color: #0F172A; }
-    html.light-mode .fm-details-sidebar {
-      background: #F8FAFC;
-      border-left: 1px solid #E2E8F0;
-    }
-    html.light-mode .fm-modal-footer {
-      background: #F8FAFC;
-      border-top: 1px solid #E2E8F0;
-    }
-    html.light-mode #fmMetaName, html.light-mode #fmMetaDim, html.light-mode #fmMetaSize {
-      color: #0F172A !important;
-    }
-    html.light-mode #fmModalDropzone {
-      background: #F8FAFC;
-      border-color: #CBD5E1;
-    }
-    /* Theme toggle button */
-    .btn-theme-toggle {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      cursor: pointer;
-      border: 1px solid var(--border-color);
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--text-muted);
-      transition: all 0.2s ease;
-    }
-    .btn-theme-toggle:hover {
-      background: rgba(255, 255, 255, 0.12);
-      color: var(--text);
-    }
-    html.light-mode .btn-theme-toggle {
-      background: #F1F5F9;
-      border-color: #CBD5E1;
-      color: #1E293B;
-    }
-    html.light-mode .btn-theme-toggle:hover {
-      background: #E2E8F0;
-      color: #0F172A;
-    }
 
+    .metric-value {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1;
+    }
+    .card-featured {
+      background: linear-gradient(135deg, rgba(0, 80, 231, 0.2), rgba(15, 23, 42, 0.8));
+      border-color: rgba(96, 165, 250, 0.3);
+    }
+    .card-dashed {
+      background: rgba(9, 14, 35, 0.5);
+      border-style: dashed;
+    }
+  
   </style>
   @stack('styles')
   <!-- Quill Snow WYSIWYG Stylesheet -->
@@ -1064,6 +854,17 @@
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
     }
     html.light-mode .card-title { color: #0F172A; }
+    html.light-mode .card.card-featured {
+      background: linear-gradient(135deg, #EFF6FF, #FFFFFF) !important;
+      border-color: #BFDBFE !important;
+    }
+    html.light-mode .card.card-dashed {
+      background: #F8FAFC !important;
+      border-color: #CBD5E1 !important;
+    }
+    html.light-mode .metric-value {
+      color: #0F172A;
+    }
     html.light-mode .form-label { color: #1E293B; }
     html.light-mode .form-control, html.light-mode .form-select {
       background: #FFFFFF;
@@ -1979,41 +1780,51 @@
   });
   </script>
 
-
-  // ========================================================
-  // THEME SWITCHER ENGINE (LIGHT / DARK ADMIN THEME)
-  // ========================================================
+  <!-- Theme Switcher Engine (Light / Dark Admin Theme) -->
+  <script>
   (function() {
-    const btn = document.getElementById('themeToggleBtn');
-    const moonIcon = document.getElementById('themeMoonIcon');
-    const sunIcon = document.getElementById('themeSunIcon');
-    const toggleText = document.getElementById('themeToggleText');
+    function initThemeSwitcher() {
+      const btn = document.getElementById('themeToggleBtn');
+      const moonIcon = document.getElementById('themeMoonIcon');
+      const sunIcon = document.getElementById('themeSunIcon');
+      const toggleText = document.getElementById('themeToggleText');
 
-    function syncThemeUI() {
-      const isLight = document.documentElement.classList.contains('light-mode');
-      if (moonIcon && sunIcon && toggleText) {
-        if (isLight) {
-          moonIcon.style.display = 'none';
-          sunIcon.style.display = 'inline-block';
-          toggleText.innerText = 'Dark Mode';
-        } else {
-          moonIcon.style.display = 'inline-block';
-          sunIcon.style.display = 'none';
-          toggleText.innerText = 'Light Mode';
+      function syncThemeUI() {
+        const isLight = document.documentElement.classList.contains('light-mode');
+        if (moonIcon && sunIcon && toggleText) {
+          if (isLight) {
+            moonIcon.style.display = 'none';
+            sunIcon.style.display = 'inline-block';
+            toggleText.innerText = 'Dark Mode';
+          } else {
+            moonIcon.style.display = 'inline-block';
+            sunIcon.style.display = 'none';
+            toggleText.innerText = 'Light Mode';
+          }
         }
       }
+
+      if (btn) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const isLight = document.documentElement.classList.toggle('light-mode');
+          try {
+            localStorage.setItem('bluebase_admin_theme', isLight ? 'light' : 'dark');
+          } catch (err) {}
+          syncThemeUI();
+        });
+      }
+
+      syncThemeUI();
     }
 
-    if (btn) {
-      btn.addEventListener('click', function() {
-        const isLight = document.documentElement.classList.toggle('light-mode');
-        localStorage.setItem('bluebase_admin_theme', isLight ? 'light' : 'dark');
-        syncThemeUI();
-      });
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initThemeSwitcher);
+    } else {
+      initThemeSwitcher();
     }
-
-    syncThemeUI();
   })();
+  </script>
 
 </body>
 </html>
