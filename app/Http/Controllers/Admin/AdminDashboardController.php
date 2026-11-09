@@ -8,7 +8,6 @@ use App\Models\DemoBooking;
 use App\Models\TrialRequest;
 use App\Models\PartnerApplication;
 use App\Models\NewsletterSubscriber;
-use App\Models\Service;
 use App\Models\Solution;
 use App\Models\Blog;
 use App\Models\Testimonial;
@@ -27,7 +26,6 @@ class AdminDashboardController extends Controller
             'trials_count' => TrialRequest::count(),
             'partners_count' => PartnerApplication::count(),
             'subscribers_count' => NewsletterSubscriber::count(),
-            'services_count' => Service::count(),
             'solutions_count' => Solution::count(),
             'blogs_count' => Blog::count(),
             'testimonials_count' => Testimonial::count(),

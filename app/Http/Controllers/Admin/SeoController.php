@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\PageSeo;
 use App\Models\SiteSetting;
 use App\Models\Blog;
-use App\Models\Service;
 use App\Models\Solution;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -193,9 +192,8 @@ class SeoController extends Controller
 
         $pagesCount = PageSeo::where('is_in_sitemap', true)->count();
         $blogsCount = Blog::where('is_published', true)->count();
-        $servicesCount = Service::where('is_active', true)->count();
         $solutionsCount = Solution::where('is_active', true)->count();
-        $totalUrls = $pagesCount + $blogsCount + $servicesCount + $solutionsCount;
+        $totalUrls = $pagesCount + $blogsCount + $solutionsCount;
 
         $lastGeneratedSetting = SiteSetting::get('sitemap_last_generated', $lastModified);
 
@@ -207,7 +205,6 @@ class SeoController extends Controller
             'xmlContent',
             'pagesCount',
             'blogsCount',
-            'servicesCount',
             'solutionsCount',
             'totalUrls'
         ));
@@ -237,7 +234,7 @@ class SeoController extends Controller
         // 2. Published Blog Posts & Case Studies
         $blogs = Blog::where('is_published', true)->latest()->get();
         foreach ($blogs as $b) {
-            $loc = $baseUrl . '/suits-blog#' . $b->slug;
+            $loc = $baseUrl . '/blog/' . $b->slug;
             $lastmod = $b->updated_at ? $b->updated_at->format('Y-m-d') : date('Y-m-d');
             $xml .= "  <url>\n";
             $xml .= "    <loc>" . htmlspecialchars($loc, ENT_XML1) . "</loc>\n";
@@ -247,20 +244,7 @@ class SeoController extends Controller
             $xml .= "  </url>\n";
         }
 
-        // 3. Active Services
-        $services = Service::where('is_active', true)->orderBy('display_order', 'asc')->get();
-        foreach ($services as $s) {
-            $loc = $baseUrl . '/services#' . $s->slug;
-            $lastmod = $s->updated_at ? $s->updated_at->format('Y-m-d') : date('Y-m-d');
-            $xml .= "  <url>\n";
-            $xml .= "    <loc>" . htmlspecialchars($loc, ENT_XML1) . "</loc>\n";
-            $xml .= "    <lastmod>{$lastmod}</lastmod>\n";
-            $xml .= "    <changefreq>weekly</changefreq>\n";
-            $xml .= "    <priority>0.8</priority>\n";
-            $xml .= "  </url>\n";
-        }
-
-        // 4. Active Solutions
+        // 3. Active Solutions
         $solutions = Solution::where('is_active', true)->orderBy('display_order', 'asc')->get();
         foreach ($solutions as $sol) {
             $loc = $baseUrl . '/solutions#' . $sol->slug;

@@ -203,7 +203,6 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     });
 
     // Backward-compatible CMS aliases
-    Route::get('/services', fn() => redirect()->route('admin.cms.services.index'))->name('services');
     Route::get('/solutions', fn() => redirect()->route('admin.cms.solutions.index'))->name('solutions');
 
     // ------------------------------------------
