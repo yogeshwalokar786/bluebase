@@ -397,7 +397,7 @@
             <p class="feature-card-desc">
               We build in fast 1 to 2 week sprints. At the end of every sprint, you receive a live private staging link to test real features, provide feedback, and verify progress directly with the developers.
             </p>
-            <a href="{{ route('company.how-we-work') }}" class="c-btn -link">
+            <a href="{{ route('how-we-work') }}" class="c-btn -link">
               <span class="c-btn__txt">Learn About Sprints</span>
               <span class="c-btn__ico">
                 <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
