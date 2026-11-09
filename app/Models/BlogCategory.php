@@ -55,3 +55,4 @@ class BlogCategory extends Model
         return route('blog.category', $this->slug);
     }
 }
+

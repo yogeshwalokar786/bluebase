@@ -319,7 +319,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -328,7 +328,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (1,'0001_01_01_000000_create_users_table',1),(2,'0001_01_01_000001_create_cache_table',1),(3,'0001_01_01_000002_create_jobs_table',1),(4,'2026_11_01_000001_create_bluebase_tables',1),(5,'2026_11_02_000001_create_cms_and_enhancements',1),(6,'2026_11_02_000002_create_seo_tables',1),(7,'2026_11_08_000001_add_metadata_to_blogs_table',2),(8,'2026_11_09_000001_create_blog_categories_and_seo_fields',3);
+INSERT INTO `migrations` VALUES (1,'0001_01_01_000000_create_users_table',1),(2,'0001_01_01_000001_create_cache_table',1),(3,'0001_01_01_000002_create_jobs_table',1),(4,'2026_11_01_000001_create_bluebase_tables',1),(5,'2026_11_02_000001_create_cms_and_enhancements',1),(6,'2026_11_02_000002_create_seo_tables',1),(7,'2026_11_08_000001_add_metadata_to_blogs_table',2),(8,'2026_11_09_000001_create_blog_categories_and_seo_fields',3),(9,'2026_11_09_000002_drop_services_table',4);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -455,41 +455,6 @@ CREATE TABLE `password_reset_tokens` (
 LOCK TABLES `password_reset_tokens` WRITE;
 /*!40000 ALTER TABLE `password_reset_tokens` DISABLE KEYS */;
 /*!40000 ALTER TABLE `password_reset_tokens` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `services`
---
-
-DROP TABLE IF EXISTS `services`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `services` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) NOT NULL,
-  `slug` varchar(255) NOT NULL,
-  `tagline` varchar(255) DEFAULT NULL,
-  `icon` varchar(255) DEFAULT NULL,
-  `summary` text DEFAULT NULL,
-  `description` longtext DEFAULT NULL,
-  `features` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`features`)),
-  `is_active` tinyint(1) NOT NULL DEFAULT 1,
-  `display_order` int(11) NOT NULL DEFAULT 0,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `services_slug_unique` (`slug`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `services`
---
-
-LOCK TABLES `services` WRITE;
-/*!40000 ALTER TABLE `services` DISABLE KEYS */;
-INSERT INTO `services` VALUES (1,'Custom Web & Cloud Engineering','custom-web-cloud-engineering','High-velocity cloud native architectures','code-square','High-performance web applications, distributed cloud backends, and microservices architectures built for infinite scale and 99.99% reliability.','Architecting and deploying resilient, scalable web applications and cloud-native distributed microservices on AWS, Azure, and Google Cloud with deterministic enterprise security.','[\"Multi-cloud cloud-native architectures\",\"Microservices & event-driven data streaming\",\"High-concurrency API gateways & GraphQL\",\"99.99% SLA uptime with automated failover\"]',1,1,'2026-11-06 06:01:20','2026-11-06 06:01:20'),(2,'Autonomous AI Agents & Copilots','ai-agents-copilots','Enterprise-grade LLMs and autonomous multi-agent workflows','cpu','Multi-agent AI workflows that connect directly to your databases and APIs, automating complex multi-step operational tasks with deterministic safety.','Bridge the gap between enterprise data and cognitive automation. Our AI agents execute multi-step workflows, retrieve real-time context from ERPs, and run autonomous decision cycles safely.','[\"Deterministic retrieval-augmented generation (RAG)\",\"Multi-agent task orchestration & tool calling\",\"Native ERP & database operational access\",\"Guardrailed compliance and human-in-the-loop audit trails\"]',1,2,'2026-11-06 06:01:20','2026-11-06 06:01:20'),(3,'Legacy Modernization & Cloud Migration','legacy-modernization','De-risk legacy migrations with zero downtime','arrow-repeat','Phased strangler-fig migrations that decouple legacy monoliths into cloud-native microservices with zero operational downtime and zero data loss.','Transform dated monoliths and mission-critical legacy applications into agile, modern cloud stacks without interrupting everyday business operations.','[\"Strangler fig modernization patterns\",\"Mainframe & legacy ERP decoupling\",\"Zero-downtime database replication & cutover\",\"Containerization on Kubernetes & serverless\"]',1,3,'2026-11-06 06:01:20','2026-11-06 06:01:20'),(4,'Offline-First Enterprise Mobility','offline-first-mobility','Rugged industrial mobile apps that never drop out','phone','Mission-critical iOS and Android applications with local SQLite synchronization and hardware barcode/RFID verification that never drop out.','Keep your frontline teams productive in remote plants, deep underground warehouses, and off-grid facilities with guaranteed two-way delta sync.','[\"Hardware barcode, RFID & Bluetooth peripheral integration\",\"Robust conflict resolution & delta data synchronization\",\"Native iOS, Android & ruggedized Zebra\\/Honeywell device support\",\"Sub-millisecond local SQLite transaction response\"]',1,4,'2026-11-06 06:01:20','2026-11-06 06:01:20'),(5,'SAP Native Integration & Optimization','sap-native-integration','Direct ABAP integration without complex middleware','layers','Connect modern digital frontends directly to SAP S/4HANA and ECC using certified ABAP APIs, slashing latency and eliminating costly middleware licensing.','Unlock direct, certified communication between your front-end customer experiences and SAP ERP backbones without paying middleware bloat.','[\"Direct ABAP RFC \\/ OData certified connectors\",\"Sub-second transactional round-trip response times\",\"Preservation of SAP security roles and authorization matrix\",\"Bypass third-party API integration tolls\"]',1,5,'2026-11-06 06:01:20','2026-11-06 06:01:20'),(6,'Enterprise UI/UX & Design Systems','design-systems-dxp','Consumer-grade ergonomics for mission-critical enterprise tools','palette','Transform frustrating green-screen and cluttered ERP interfaces into sleek, intuitive, accessible design systems that cut training costs by 80%.','Design user journeys that maximize frontline velocity and eliminate user fatigue. We engineer cohesive component libraries and accessible design systems.','[\"Component design systems with Figma & Storybook sync\",\"WCAG 2.1 AA accessibility compliance\",\"Touch-optimized industrial UI for rugged handheld terminals\",\"Rapid interactive prototyping and user velocity benchmarking\"]',1,6,'2026-11-06 06:01:20','2026-11-06 06:01:20');
-/*!40000 ALTER TABLE `services` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -691,4 +656,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-11-09 11:29:57
+-- Dump completed on 2026-11-09 11:36:28

@@ -14,7 +14,6 @@ use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\LeadController;
-use App\Http\Controllers\Admin\ServiceCmsController;
 use App\Http\Controllers\Admin\SolutionCmsController;
 use App\Http\Controllers\Admin\BlogCmsController;
 use App\Http\Controllers\Admin\TestimonialCmsController;
@@ -175,15 +174,6 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     // B. FULL CMS (CONTENT MANAGEMENT SYSTEM)
     // ------------------------------------------
     Route::prefix('cms')->name('cms.')->group(function () {
-        // Services CMS
-        Route::get('/services', [ServiceCmsController::class, 'index'])->name('services.index');
-        Route::get('/services/create', [ServiceCmsController::class, 'create'])->name('services.create');
-        Route::post('/services', [ServiceCmsController::class, 'store'])->name('services.store');
-        Route::get('/services/{id}/edit', [ServiceCmsController::class, 'edit'])->name('services.edit');
-        Route::post('/services/{id}', [ServiceCmsController::class, 'update'])->name('services.update');
-        Route::delete('/services/{id}', [ServiceCmsController::class, 'destroy'])->name('services.destroy');
-        Route::post('/services/{id}/toggle', [ServiceCmsController::class, 'toggleActive'])->name('services.toggle');
-
         // Solutions CMS
         Route::get('/solutions', [SolutionCmsController::class, 'index'])->name('solutions.index');
         Route::get('/solutions/create', [SolutionCmsController::class, 'create'])->name('solutions.create');

@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use App\Models\Service;
 use App\Models\Solution;
 use App\Models\ContactInquiry;
 use App\Models\DemoBooking;
@@ -29,110 +28,6 @@ class DatabaseSeeder extends Seeder
                 'email_verified_at' => now(),
             ]
         );
-
-        // 2. Core Enterprise Services
-        $services = [
-            [
-                'title' => 'Custom Web & Cloud Engineering',
-                'slug' => 'custom-web-cloud-engineering',
-                'tagline' => 'High-velocity cloud native architectures',
-                'icon' => 'code-square',
-                'summary' => 'High-performance web applications, distributed cloud backends, and microservices architectures built for infinite scale and 99.99% reliability.',
-                'description' => 'Architecting and deploying resilient, scalable web applications and cloud-native distributed microservices on AWS, Azure, and Google Cloud with deterministic enterprise security.',
-                'features' => [
-                    'Multi-cloud cloud-native architectures',
-                    'Microservices & event-driven data streaming',
-                    'High-concurrency API gateways & GraphQL',
-                    '99.99% SLA uptime with automated failover'
-                ],
-                'is_active' => true,
-                'display_order' => 1,
-            ],
-            [
-                'title' => 'Autonomous AI Agents & Copilots',
-                'slug' => 'ai-agents-copilots',
-                'tagline' => 'Enterprise-grade LLMs and autonomous multi-agent workflows',
-                'icon' => 'cpu',
-                'summary' => 'Multi-agent AI workflows that connect directly to your databases and APIs, automating complex multi-step operational tasks with deterministic safety.',
-                'description' => 'Bridge the gap between enterprise data and cognitive automation. Our AI agents execute multi-step workflows, retrieve real-time context from ERPs, and run autonomous decision cycles safely.',
-                'features' => [
-                    'Deterministic retrieval-augmented generation (RAG)',
-                    'Multi-agent task orchestration & tool calling',
-                    'Native ERP & database operational access',
-                    'Guardrailed compliance and human-in-the-loop audit trails'
-                ],
-                'is_active' => true,
-                'display_order' => 2,
-            ],
-            [
-                'title' => 'Legacy Modernization & Cloud Migration',
-                'slug' => 'legacy-modernization',
-                'tagline' => 'De-risk legacy migrations with zero downtime',
-                'icon' => 'arrow-repeat',
-                'summary' => 'Phased strangler-fig migrations that decouple legacy monoliths into cloud-native microservices with zero operational downtime and zero data loss.',
-                'description' => 'Transform dated monoliths and mission-critical legacy applications into agile, modern cloud stacks without interrupting everyday business operations.',
-                'features' => [
-                    'Strangler fig modernization patterns',
-                    'Mainframe & legacy ERP decoupling',
-                    'Zero-downtime database replication & cutover',
-                    'Containerization on Kubernetes & serverless'
-                ],
-                'is_active' => true,
-                'display_order' => 3,
-            ],
-            [
-                'title' => 'Offline-First Enterprise Mobility',
-                'slug' => 'offline-first-mobility',
-                'tagline' => 'Rugged industrial mobile apps that never drop out',
-                'icon' => 'phone',
-                'summary' => 'Mission-critical iOS and Android applications with local SQLite synchronization and hardware barcode/RFID verification that never drop out.',
-                'description' => 'Keep your frontline teams productive in remote plants, deep underground warehouses, and off-grid facilities with guaranteed two-way delta sync.',
-                'features' => [
-                    'Hardware barcode, RFID & Bluetooth peripheral integration',
-                    'Robust conflict resolution & delta data synchronization',
-                    'Native iOS, Android & ruggedized Zebra/Honeywell device support',
-                    'Sub-millisecond local SQLite transaction response'
-                ],
-                'is_active' => true,
-                'display_order' => 4,
-            ],
-            [
-                'title' => 'SAP Native Integration & Optimization',
-                'slug' => 'sap-native-integration',
-                'tagline' => 'Direct ABAP integration without complex middleware',
-                'icon' => 'layers',
-                'summary' => 'Connect modern digital frontends directly to SAP S/4HANA and ECC using certified ABAP APIs, slashing latency and eliminating costly middleware licensing.',
-                'description' => 'Unlock direct, certified communication between your front-end customer experiences and SAP ERP backbones without paying middleware bloat.',
-                'features' => [
-                    'Direct ABAP RFC / OData certified connectors',
-                    'Sub-second transactional round-trip response times',
-                    'Preservation of SAP security roles and authorization matrix',
-                    'Bypass third-party API integration tolls'
-                ],
-                'is_active' => true,
-                'display_order' => 5,
-            ],
-            [
-                'title' => 'Enterprise UI/UX & Design Systems',
-                'slug' => 'design-systems-dxp',
-                'tagline' => 'Consumer-grade ergonomics for mission-critical enterprise tools',
-                'icon' => 'palette',
-                'summary' => 'Transform frustrating green-screen and cluttered ERP interfaces into sleek, intuitive, accessible design systems that cut training costs by 80%.',
-                'description' => 'Design user journeys that maximize frontline velocity and eliminate user fatigue. We engineer cohesive component libraries and accessible design systems.',
-                'features' => [
-                    'Component design systems with Figma & Storybook sync',
-                    'WCAG 2.1 AA accessibility compliance',
-                    'Touch-optimized industrial UI for rugged handheld terminals',
-                    'Rapid interactive prototyping and user velocity benchmarking'
-                ],
-                'is_active' => true,
-                'display_order' => 6,
-            ],
-        ];
-
-        foreach ($services as $service) {
-            Service::updateOrCreate(['slug' => $service['slug']], $service);
-        }
 
         // 3. Strategic Industry Solutions
         $solutions = [

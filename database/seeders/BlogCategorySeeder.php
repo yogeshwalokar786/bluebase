@@ -102,3 +102,4 @@ class BlogCategorySeeder extends Seeder
         ]);
     }
 }
+

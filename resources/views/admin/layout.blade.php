@@ -1082,13 +1082,6 @@
       </a>
 
       <div class="menu-group-title">Content Management (CMS)</div>
-      <a href="{{ route('admin.cms.services.index') }}" class="nav-item {{ request()->routeIs('admin.cms.services*') ? 'active' : '' }}">
-        <span class="nav-item-content">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-          <span>Services CMS</span>
-        </span>
-        <span class="nav-count">{{ \App\Models\Service::count() }}</span>
-      </a>
       <a href="{{ route('admin.cms.solutions.index') }}" class="nav-item {{ request()->routeIs('admin.cms.solutions*') ? 'active' : '' }}">
         <span class="nav-item-content">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
