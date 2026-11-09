@@ -2242,6 +2242,58 @@ ol {
   .work-card-desc {
     font-size: 0.8rem !important;
   }
+
+  /* Next Move Section Mobile Tuning */
+  .nextmove-section {
+    padding: 60px 0 !important;
+  }
+
+  .nextmove-header {
+    margin-bottom: 32px !important;
+  }
+
+  .nextmove-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .nextmove-card-full {
+    padding: 28px 20px !important;
+    border-radius: 16px !important;
+  }
+
+  .nextmove-card-full .section-title {
+    font-size: 1.55rem !important;
+    margin-bottom: 10px !important;
+  }
+
+  .nextmove-card-full p {
+    font-size: 0.95rem !important;
+    margin-bottom: 20px !important;
+  }
+
+  .nextmove-card-full img {
+    margin-top: 18px !important;
+  }
+
+  .nextmove-column-stack {
+    gap: 16px !important;
+  }
+
+  .nextmove-card-small {
+    padding: 24px 20px !important;
+    border-radius: 16px !important;
+  }
+
+  .nextmove-card-small h3 {
+    font-size: 1.25rem !important;
+    margin-bottom: 8px !important;
+  }
+
+  .nextmove-card-small p {
+    font-size: 0.92rem !important;
+    margin-bottom: 16px !important;
+  }
 }
 
 /* ==========================================================================

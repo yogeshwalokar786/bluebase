@@ -568,23 +568,29 @@
   </section>
 
   <!-- 7. CHOOSE YOUR NEXT MOVE -->
-  <section class="nextmove-section">
+  <section class="nextmove-section" id="collaboration">
     <div class="container">
       <div class="nextmove-header" data-viewport="true">
-        <span class="section-tag">Tailored For Your Goals</span>
-        <h2 class="section-title">Choose Your <mark>Next Move</mark>.</h2>
+        <span class="section-tag">Let's Build Together</span>
+        <h2 class="section-title">Choose How We <mark>Collaborate</mark>.</h2>
         <p class="section-subtitle" style="margin: 0 auto;">
-          Whether you're validating an MVP, building a custom business platform, or redesigning an existing website, we're one conversation away.
+          Whether you're launching a new startup MVP from scratch, modernizing a business platform, or looking for dedicated sprint capacity, we're one message away.
         </p>
       </div>
 
       <div class="nextmove-grid">
         
-        <!-- Card Left -->
+        <!-- Card Left: For Founders & Startups -->
         <div class="nextmove-card-full stagger-1" data-viewport="true">
           <div>
-            <h3 class="section-title" style="font-size: 1.85rem;">For Founders &amp; Startups</h3>
-            <p>Turn your product vision into launched software in weeks. We design, code, and deploy custom web applications and SaaS MVPs with transparent milestone pricing and 100% intellectual property ownership.</p>
+            <div style="font-size: 0.75rem; font-weight: 700; color: var(--color-accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;">For Founders &amp; Startups</div>
+            <h3 class="section-title" style="font-size: 1.85rem; margin-bottom: 12px;">Launchpad MVP Sprints</h3>
+            <p>Go from idea to a launched, production-ready web or mobile app in 3 to 6 weeks. You get transparent milestone-based pricing, weekly staging demos, and 100% intellectual property ownership from day one.</p>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px;">
+              <span class="service-badge" style="font-size: 0.75rem; padding: 4px 10px;">3-6 Week Turnaround</span>
+              <span class="service-badge" style="font-size: 0.75rem; padding: 4px 10px;">Milestone Billing</span>
+              <span class="service-badge" style="font-size: 0.75rem; padding: 4px 10px;">100% Code Ownership</span>
+            </div>
             <a href="{{ route('contact') }}" class="c-btn -link">
               <span class="c-btn__txt">Start Your Startup MVP</span>
               <span class="c-btn__ico">
@@ -597,15 +603,16 @@
               </span>
             </a>
           </div>
-          <img src="{{ asset('images/illustrations/ui-illustration.jpg') }}" alt="Bluebase Product Experience">
+          <img src="{{ asset('images/illustrations/ui-illustration.jpg') }}" alt="Bluebase Product Experience" style="max-height: 260px; object-fit: cover; border-radius: 12px; margin-top: 20px;">
         </div>
 
         <!-- Cards Right -->
         <div class="nextmove-column-stack">
           <div class="nextmove-card-small stagger-2" data-viewport="true">
             <div>
-              <h3>For Growing Businesses &amp; Brands</h3>
-              <p>Elevate your digital presence with custom websites, fast e-commerce storefronts, and automated client portals that drive real customer engagement.</p>
+              <div style="font-size: 0.75rem; font-weight: 700; color: var(--color-accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;">For Growing Businesses</div>
+              <h3>Custom Platforms &amp; Stores</h3>
+              <p>Elevate your business with high-converting marketing websites, modern e-commerce storefronts, and automated client portals engineered for speed and conversion.</p>
             </div>
             <a href="{{ route('services') }}" class="c-btn -link">
               <span class="c-btn__txt">Explore Services</span>
@@ -618,11 +625,12 @@
 
           <div class="nextmove-card-small stagger-3" data-viewport="true">
             <div>
-              <h3>For Teams Needing Extra Capacity</h3>
-              <p>Add skilled full-stack engineering capacity to your sprints. We collaborate seamlessly via Slack and GitHub to accelerate your product releases.</p>
+              <div style="font-size: 0.75rem; font-weight: 700; color: var(--color-accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;">For Scaling Teams</div>
+              <h3>Dedicated Developer Sprints</h3>
+              <p>Add skilled full-stack engineering capacity directly into your team. Direct daily Slack collaboration, fast PR reviews, and zero agency middlemen.</p>
             </div>
             <a href="{{ route('book-a-demo') }}" class="c-btn -link">
-              <span class="c-btn__txt">Schedule a Consultation</span>
+              <span class="c-btn__txt">Talk to Our Team</span>
               <span class="c-btn__ico">
                 <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
                 <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
