@@ -643,134 +643,175 @@
     </div>
   </section>
 
-  <!-- 8. CUSTOMER STORIES SLIDER -->
-  <section class="stories-section" id="stories">
+  <!-- 8. FEATURED CLIENT SPOTLIGHT: OMG RENTAL BIKES -->
+  <section class="stories-section spotlight-section" id="stories">
     <div class="container">
       <div class="stories-header" data-viewport="true">
-        <span class="section-tag">Client Success</span>
-        <h2 class="section-title">Digital Products We Help Bring to Life.</h2>
+        <span class="section-tag">Featured Client Spotlight</span>
+        <h2 class="section-title">Scaling an Urban Mobility Startup: <mark>OMG Rental Bikes</mark>.</h2>
+        <p class="section-subtitle" style="margin: 16px auto 0; text-align: center;">
+          How Bluebase built and continuously manages their entire digital ecosystem—from booking website and proprietary fleet management software to local search dominance and social media growth.
+        </p>
       </div>
 
-      <div class="slider-container" data-viewport="true" data-animation="fade-scale">
-        <div class="slider-track-wrap">
-          <div class="slider-track">
-            
-            <!-- Slide 1 -->
-            <div class="story-slide">
-              <div class="story-image-wrap">
-                <img src="{{ asset('images/stories/asia-express-food.png') }}" alt="Real-time Tracking Platform">
-              </div>
-              <div class="story-content">
-                <div class="story-tags">
-                  <span class="story-tag">Web Application</span>
-                  <span class="story-tag">Real-Time Data</span>
-                </div>
-                <h3 class="story-title">Custom Order Tracking &amp; Inventory Management Platform for Modern Distribution.</h3>
-                <a href="{{ route('customer-stories') }}" class="c-btn -link">
-                  <span class="c-btn__txt">Read Story</span>
-                  <span class="c-btn__ico">
-                    <span class="c-btn__ico-base">
-                      <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                    </span>
-                    <span class="c-btn__ico-hover">
-                      <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                    </span>
-                  </span>
-                </a>
-              </div>
+      <div class="spotlight-card" data-viewport="true" data-animation="fade-up">
+        <!-- Top Spotlight Banner -->
+        <div class="spotlight-header-bar">
+          <div class="spotlight-client-identity">
+            <div class="spotlight-logo-wrap">
+              <img src="{{ asset('images/clients/omg-logo.webp') }}" alt="OMG Rental Bikes" class="spotlight-logo" loading="lazy">
             </div>
-
-            <!-- Slide 2 -->
-            <div class="story-slide">
-              <div class="story-image-wrap">
-                <img src="{{ asset('images/stories/compass.png') }}" alt="Frontline Mobile App">
-              </div>
-              <div class="story-content">
-                <div class="story-tags">
-                  <span class="story-tag">Mobile App</span>
-                  <span class="story-tag">Productivity</span>
-                </div>
-                <h3 class="story-title">Cross-Platform Mobile Application Eliminating Manual Paper Logs for Field Teams.</h3>
-                <a href="{{ route('customer-stories') }}" class="c-btn -link">
-                  <span class="c-btn__txt">Read Story</span>
-                  <span class="c-btn__ico">
-                    <span class="c-btn__ico-base">
-                      <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                    </span>
-                    <span class="c-btn__ico-hover">
-                      <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                    </span>
-                  </span>
-                </a>
-              </div>
+            <div class="spotlight-client-meta">
+              <span class="spotlight-client-name">OMG Rental Bikes</span>
+              <span class="spotlight-client-industry">Urban Two-Wheeler Mobility &amp; Bike Rentals</span>
             </div>
-
-            <!-- Slide 3 -->
-            <div class="story-slide">
-              <div class="story-image-wrap">
-                <img src="{{ asset('images/stories/alba.jpg') }}" alt="Client Extranet Portal">
-              </div>
-              <div class="story-content">
-                <div class="story-tags">
-                  <span class="story-tag">Client Portal</span>
-                  <span class="story-tag">Security</span>
-                </div>
-                <h3 class="story-title">Self-Service Customer Extranet Providing Real-Time Billing &amp; Project Updates.</h3>
-                <a href="{{ route('customer-stories') }}" class="c-btn -link">
-                  <span class="c-btn__txt">Read Story</span>
-                  <span class="c-btn__ico">
-                    <span class="c-btn__ico-base">
-                      <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                    </span>
-                    <span class="c-btn__ico-hover">
-                      <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                    </span>
-                  </span>
-                </a>
-              </div>
-            </div>
-
-            <!-- Slide 4 -->
-            <div class="story-slide">
-              <div class="story-image-wrap">
-                <img src="{{ asset('images/stories/rust-oleum.png') }}" alt="E-Commerce Fulfillment">
-              </div>
-              <div class="story-content">
-                <div class="story-tags">
-                  <span class="story-tag">E-Commerce</span>
-                  <span class="story-tag">Fulfillment</span>
-                </div>
-                <h3 class="story-title">High-Conversion E-Commerce Platform with Real-Time Stock Sync &amp; Frictionless Checkout.</h3>
-                <a href="{{ route('customer-stories') }}" class="c-btn -link">
-                  <span class="c-btn__txt">Read Story</span>
-                  <span class="c-btn__ico">
-                    <span class="c-btn__ico-base">
-                      <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                    </span>
-                    <span class="c-btn__ico-hover">
-                      <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                    </span>
-                  </span>
-                </a>
-              </div>
-            </div>
-
+          </div>
+          <div class="spotlight-badges">
+            <span class="spotlight-badge badge-managed"><span class="badge-dot"></span> Fully Managed by Bluebase</span>
+            <span class="spotlight-badge badge-accent">Live in Production</span>
           </div>
         </div>
 
-        <!-- Controls -->
-        <div class="slider-controls">
-          <div class="slider-dots"></div>
-          <div class="slider-arrows">
-            <button class="slider-btn slider-btn-prev" aria-label="Previous Slide">
-              <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
-            </button>
-            <button class="slider-btn slider-btn-next" aria-label="Next Slide">
-              <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
-            </button>
+        <!-- Spotlight Body: Two Columns -->
+        <div class="spotlight-body">
+          <div class="spotlight-intro">
+            <span class="spotlight-eyebrow">End-to-End Startup Partnership</span>
+            <h3 class="spotlight-headline">
+              A 360-Degree Operating Engine Built &amp; Managed for Non-Stop Fleet Growth.
+            </h3>
+            <p class="spotlight-desc">
+              OMG Rental Bikes partnered with Bluebase to replace fragmented spreadsheets and manual verification with an automated, custom software engine. From initial architecture to ongoing daily operations, Bluebase manages their technology and digital growth end-to-end so their founding team can focus entirely on scaling their fleet.
+            </p>
+
+            <!-- Metrics / Key Deliverables Row -->
+            <div class="spotlight-metrics-grid">
+              <div class="spotlight-metric">
+                <span class="spotlight-metric-value">4-in-1</span>
+                <span class="spotlight-metric-label">Unified Stack (Software, Web, GMB &amp; Social)</span>
+              </div>
+              <div class="spotlight-metric">
+                <span class="spotlight-metric-value">100%</span>
+                <span class="spotlight-metric-label">Paperless Digital KYC &amp; Verification</span>
+              </div>
+              <div class="spotlight-metric">
+                <span class="spotlight-metric-value">#1</span>
+                <span class="spotlight-metric-label">Top Local Search &amp; Google Map Visibility</span>
+              </div>
+              <div class="spotlight-metric">
+                <span class="spotlight-metric-value">24/7</span>
+                <span class="spotlight-metric-label">Managed Infrastructure &amp; Support</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4 Core Pillars Grid -->
+          <div class="spotlight-pillars">
+            <h4 class="pillars-heading">What Bluebase Built &amp; Continuously Manages:</h4>
+
+            <div class="pillars-grid">
+              <!-- Pillar 1: Fleet ERP -->
+              <div class="pillar-card">
+                <div class="pillar-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                  </svg>
+                </div>
+                <div class="pillar-content">
+                  <h5 class="pillar-title">Custom Fleet Management Software (ERP)</h5>
+                  <p class="pillar-text">
+                    Custom-engineered operations dashboard managing real-time vehicle availability, paperless digital KYC validation, rental agreements, security deposit tracking, and vehicle maintenance schedules.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Pillar 2: Booking Website -->
+              <div class="pillar-card">
+                <div class="pillar-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                  </svg>
+                </div>
+                <div class="pillar-content">
+                  <h5 class="pillar-title">High-Converting Booking Website</h5>
+                  <p class="pillar-text">
+                    Modern, responsive web platform at <a href="https://omgrentalbikes.com" target="_blank" rel="noopener noreferrer" class="external-inline-link">omgrentalbikes.com</a> featuring dynamic vehicle catalogs, transparent pricing tiers, instant booking flow, and fast page speeds.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Pillar 3: GMB & Local SEO -->
+              <div class="pillar-card">
+                <div class="pillar-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                </div>
+                <div class="pillar-content">
+                  <h5 class="pillar-title">Google My Business &amp; Local SEO</h5>
+                  <p class="pillar-text">
+                    Comprehensive local search optimization, Google Maps ranking, review automation workflows, and targeted search keywords that generate consistent organic rental phone calls and direct walk-ins daily.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Pillar 4: Social Media Growth -->
+              <div class="pillar-card">
+                <div class="pillar-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="18" cy="5" r="3"></circle>
+                    <circle cx="6" cy="12" r="3"></circle>
+                    <circle cx="18" cy="19" r="3"></circle>
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                  </svg>
+                </div>
+                <div class="pillar-content">
+                  <h5 class="pillar-title">Social Media Growth &amp; Marketing</h5>
+                  <p class="pillar-text">
+                    Multi-channel brand campaigns across Instagram and Facebook with high-impact visual creatives, commuter promotions, student special campaigns, and proactive community engagement.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
+        <!-- Spotlight Footer / CTA Bar -->
+        <div class="spotlight-footer">
+          <div class="spotlight-footer-info">
+            <span class="spotlight-footer-label">Managed Partnership:</span>
+            <span class="spotlight-footer-desc">Active technical stewardship, continuous feature updates, and infrastructure managed 100% by Bluebase.</span>
+          </div>
+          <div class="spotlight-actions">
+            <a href="https://omgrentalbikes.com" target="_blank" rel="noopener noreferrer" class="c-btn -secondary">
+              <span class="c-btn__txt">Visit Live Website</span>
+              <span class="c-btn__ico">
+                <span class="c-btn__ico-base">
+                  <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
+                </span>
+                <span class="c-btn__ico-hover">
+                  <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
+                </span>
+              </span>
+            </a>
+            <a href="{{ route('contact') }}" class="c-btn -primary">
+              <span class="c-btn__txt">Build Your Startup Software</span>
+              <span class="c-btn__ico">
+                <span class="c-btn__ico-base">
+                  <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                </span>
+                <span class="c-btn__ico-hover">
+                  <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                </span>
+              </span>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
