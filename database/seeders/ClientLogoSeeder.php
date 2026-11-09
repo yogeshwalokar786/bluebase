@@ -93,3 +93,4 @@ class ClientLogoSeeder extends Seeder
         }
     }
 }
+

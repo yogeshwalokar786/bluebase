@@ -30,3 +30,4 @@ class ClientLogo extends Model
         return $query->where('is_active', true)->orderBy('display_order', 'asc')->orderBy('id', 'asc');
     }
 }
+

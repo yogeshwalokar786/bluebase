@@ -180,3 +180,4 @@ class ClientLogoCmsController extends Controller
         return response()->json(['success' => true, 'message' => 'Client logos reordered successfully.']);
     }
 }
+
