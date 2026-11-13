@@ -26,6 +26,11 @@ class CompanyController extends Controller
         return view('pages.company.omg-rental-bikes');
     }
 
+    public function aarohiClassicStory()
+    {
+        return view('pages.company.aarohi-classic-2024');
+    }
+
     public function complianceSecurity()
     {
         return view('pages.company.compliance-security');

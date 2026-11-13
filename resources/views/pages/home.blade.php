@@ -1093,6 +1093,59 @@
               </div>
             </div>
 
+            <!-- Slide 2: Aarohi Classic 2024 -->
+            <div class="story-slide">
+              <div class="story-image-wrap">
+                <img src="{{ asset('images/stories/aarohi-classic-brand.png') }}" alt="Aarohi Classic 2024" loading="lazy">
+              </div>
+              <div class="story-content">
+                <div class="story-tags">
+                  <span class="story-tag">Sports &amp; Fitness Event</span>
+                  <span class="story-tag">Event Tech &amp; Ops</span>
+                  <span class="story-tag" style="background: #ecfdf5; color: #047857;">Fully Managed</span>
+                </div>
+                <h3 class="story-title">Online Athlete Registrations, High-ROAS Performance Ads &amp; WhatsApp Operations for Aarohi Classic 2024.</h3>
+                <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-text-muted); margin-bottom: 24px;">
+                  Aarohi Classic partnered with Bluebase Technologies to architect their complete digital championship ecosystem. We deployed high-performance Meta and Google advertising funnels (12X ROAS), managed official social media handles with motion graphics, engineered a custom online athlete registration portal with instant QR e-passes, and automated weigh-in and stage call notifications via WhatsApp Business API.
+                </p>
+                <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap;">
+                  <a href="{{ route('customer-stories.aarohi-classic-2024') }}" class="c-btn -primary" style="padding: 12px 24px;">
+                    <span class="c-btn__txt">Read Case Study</span>
+                    <span class="c-btn__ico">
+                      <span class="c-btn__ico-base">
+                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
+                      </span>
+                      <span class="c-btn__ico-hover">
+                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
+                      </span>
+                    </span>
+                  </a>
+                  <a href="{{ route('contact') }}" class="c-btn -secondary" style="padding: 12px 22px;">
+                    <span class="c-btn__txt">Power Your Next Event</span>
+                    <span class="c-btn__ico">
+                      <span class="c-btn__ico-base">
+                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
+                      </span>
+                      <span class="c-btn__ico-hover">
+                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
+                      </span>
+                    </span>
+                  </a>
+                  <a href="{{ route('customer-stories') }}" class="c-btn -link" style="color: var(--color-accent);">
+                    <span class="c-btn__txt">All Customer Stories</span>
+                    <span class="c-btn__ico">
+                      <span class="c-btn__ico-base">
+                        <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                      </span>
+                      <span class="c-btn__ico-hover">
+                        <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                      </span>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
             <!-- Future slides can be added directly here as additional .story-slide elements -->
 
           </div>

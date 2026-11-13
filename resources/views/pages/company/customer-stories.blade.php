@@ -474,6 +474,87 @@
 
       </div>
 
+      <!-- Spotlight Card 2: Aarohi Classic 2024 -->
+      <div class="story-spotlight-card" data-viewport="true" style="margin-top: 48px;">
+        
+        <!-- Brand Header Bar -->
+        <div class="story-card-header">
+          <div class="story-brand-info">
+            <div class="story-logo-container" style="background: #0f172a; padding: 10px 16px;">
+              <img src="{{ asset('images/stories/aarohi-classic-brand.png') }}" alt="Aarohi Classic 2024 Banner">
+            </div>
+            <div class="story-brand-text">
+              <h3>Aarohi Classic 2024</h3>
+              <div class="story-pills">
+                <span class="story-pill">Sports &amp; Fitness Championship</span>
+                <span class="story-pill">Digital Event Tech &amp; Ads</span>
+                <span class="story-pill highlight">100% Managed by Bluebase</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <span style="font-size: 0.85rem; color: var(--color-text-muted); font-weight: 600;">
+              Championship Event Tech
+            </span>
+          </div>
+        </div>
+
+        <!-- Headline & Description -->
+        <h2 class="story-headline">
+          Online Athlete Registrations, High-ROAS Performance Ads &amp; WhatsApp Operations
+        </h2>
+
+        <p class="story-summary-text">
+          Aarohi Classic partnered with Bluebase Technologies to architect their complete digital championship ecosystem. We deployed high-performance Meta and Google advertising funnels, managed official social media handles with motion creatives, launched a custom online athlete and spectator registration portal with digital QR e-passes, and automated backstage stage call notifications via WhatsApp Business API.
+        </p>
+
+        <!-- 4 Verified Result Metrics -->
+        <div class="story-metrics-row">
+          <div class="story-metric-item">
+            <div class="story-metric-val">5,000<span>+</span></div>
+            <div class="story-metric-lbl">Registrations Handled</div>
+            <p class="story-metric-sub">Seamless digital registration of competing athletes and spectator attendees with zero system downtime.</p>
+          </div>
+
+          <div class="story-metric-item">
+            <div class="story-metric-val">12<span>X</span></div>
+            <div class="story-metric-lbl">Return On Ad Spend (ROAS)</div>
+            <p class="story-metric-sub">Precision micro-targeted Meta and Google ads driving sold-out auditorium passes and athlete signups.</p>
+          </div>
+
+          <div class="story-metric-item">
+            <div class="story-metric-val">100<span>%</span></div>
+            <div class="story-metric-lbl">WhatsApp Broadcast Delivery</div>
+            <p class="story-metric-sub">Instant automated alerts for official weigh-in time slots, rule handbooks, and backstage calls.</p>
+          </div>
+
+          <div class="story-metric-item">
+            <div class="story-metric-val">Zero</div>
+            <div class="story-metric-lbl">Gate Check-In Delays</div>
+            <p class="story-metric-sub">Paperless digital QR e-pass scanning cleared athlete entry and spectator queues in under 10 seconds.</p>
+          </div>
+        </div>
+
+        <!-- Card CTA Actions -->
+        <div class="story-card-actions">
+          <a href="{{ route('customer-stories.aarohi-classic-2024') }}" class="c-btn -primary" style="padding: 14px 28px;">
+            <span class="c-btn__txt">Read In-Depth Case Study</span>
+            <span class="c-btn__ico">
+              <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
+              <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
+            </span>
+          </a>
+          <a href="{{ route('contact') }}" class="c-btn -secondary" style="padding: 14px 24px;">
+            <span class="c-btn__txt">Power Your Next Event</span>
+          </a>
+          <a href="{{ route('contact') }}" class="c-btn -link" style="color: var(--color-accent); font-weight: 600;">
+            Schedule Tech Discovery &rarr;
+          </a>
+        </div>
+
+      </div>
+
       <!-- Active Sprints / Upcoming Pipeline Card -->
       <div class="pipeline-card" data-viewport="true">
         <div class="pipeline-content">

@@ -20,6 +20,7 @@
           <h4>Client Success</h4>
           <ul>
             <li><a href="{{ route('customer-stories.omg-rental-bikes') }}">OMG Rental Bikes</a></li>
+            <li><a href="{{ route('customer-stories.aarohi-classic-2024') }}">Aarohi Classic 2024</a></li>
             <li><a href="{{ route('customer-stories') }}">Client Success Hub</a></li>
             <li><a href="{{ route('contact') }}">Start Your Project</a></li>
           </ul>
