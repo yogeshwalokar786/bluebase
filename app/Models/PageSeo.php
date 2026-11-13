@@ -41,7 +41,7 @@ class PageSeo extends Model
             'meta_description' => $defaultDesc ?? 'Bluebase is an elite digital engineering and autonomous AI services platform building cloud-native architectures, AI copilots, and enterprise web & mobile products.',
             'meta_keywords' => 'digital engineering, AI agents, enterprise mobility, SAP integration, cloud architecture',
             'canonical_url' => url()->current(),
-            'og_image' => 'images/stories/hauni.jpg',
+            'og_image' => 'images/stories/omg-rental-bikes-brand.png',
             'robots' => 'index, follow',
             'changefreq' => 'weekly',
             'priority' => 0.8,

@@ -17,13 +17,11 @@
         </div>
 
         <div class="footer-col">
-          <h4>Case Studies</h4>
+          <h4>Client Success</h4>
           <ul>
-            <li><a href="{{ route('customer-stories') }}">Johnson &amp; Johnson</a></li>
-            <li><a href="{{ route('customer-stories') }}">Secil Group</a></li>
-            <li><a href="{{ route('customer-stories') }}">Dussmann Group</a></li>
-            <li><a href="{{ route('customer-stories') }}">Vattenfall Energy</a></li>
-            <li><a href="{{ route('customer-stories') }}">Asia Express Food</a></li>
+            <li><a href="{{ route('customer-stories.omg-rental-bikes') }}">OMG Rental Bikes</a></li>
+            <li><a href="{{ route('customer-stories') }}">Client Success Hub</a></li>
+            <li><a href="{{ route('contact') }}">Start Your Project</a></li>
           </ul>
         </div>
 

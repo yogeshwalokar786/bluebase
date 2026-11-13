@@ -110,7 +110,7 @@ class Blog extends Model
 
     public function getSeoOgImageAttribute(): string
     {
-        return $this->og_image ?: $this->image ?: 'images/stories/hauni.jpg';
+        return $this->og_image ?: $this->image ?: 'images/stories/omg-rental-bikes-brand.png';
     }
 
     public function getRelatedPosts($limit = 3)

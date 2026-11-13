@@ -114,7 +114,7 @@ class SeoController extends Controller
             'meta_description' => $request->meta_description,
             'meta_keywords' => $request->meta_keywords,
             'canonical_url' => $request->canonical_url ?: url($request->url_path),
-            'og_image' => $request->og_image ?: 'images/stories/hauni.jpg',
+            'og_image' => $request->og_image ?: 'images/stories/omg-rental-bikes-brand.png',
             'robots' => $request->robots,
             'priority' => $request->priority,
             'changefreq' => $request->changefreq,

@@ -1,413 +1,554 @@
 @extends('layouts.app')
 
-@section('title', 'Client Transformation Stories & Case Studies | Bluebase')
-@section('meta_description', 'Explore how global leaders and ambitious startups accelerated their engineering roadmaps, cut downtime, and automated workflows with Bluebase.')
+@section('title', 'Client Success Stories & Engineering Impact | Bluebase')
+@section('meta_description', 'Discover how Bluebase partners with ambitious founders to engineer custom web booking engines, mobile apps, and fleet ERP software—scaling revenue and automating operations.')
+
+@push('styles')
+<style>
+/* ==========================================================================
+   CUSTOMER STORIES SPOTLIGHT STYLING
+   ========================================================================== */
+.stories-hero {
+  padding: 120px 0 60px;
+  background: radial-gradient(circle at 80% 20%, rgba(0, 80, 231, 0.05) 0%, transparent 60%), #ffffff;
+  position: relative;
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+.stories-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background: rgba(0, 80, 231, 0.08);
+  border: 1px solid rgba(0, 80, 231, 0.2);
+  color: var(--color-accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 20px;
+}
+
+.stories-badge::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 8px rgba(0, 80, 231, 0.6);
+}
+
+.stories-hero-title {
+  font-size: clamp(2.3rem, 4.5vw, 3.6rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  margin-bottom: 20px;
+  max-width: 900px;
+}
+
+.stories-hero-desc {
+  font-size: 1.15rem;
+  line-height: 1.65;
+  color: var(--color-text-muted);
+  max-width: 820px;
+  margin-bottom: 34px;
+}
+
+/* OMG Rental Bikes Featured Master Card */
+.story-spotlight-section {
+  padding: 80px 0;
+  background: #ffffff;
+}
+
+.story-spotlight-card {
+  background: linear-gradient(150deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid rgba(0, 80, 231, 0.18);
+  border-radius: 24px;
+  padding: 48px;
+  box-shadow: 0 20px 50px rgba(10, 15, 36, 0.06);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 50px;
+}
+
+.story-spotlight-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #0050e7 0%, #38bdf8 100%);
+}
+
+.story-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+.story-brand-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.story-logo-container {
+  background: #ffffff;
+  border: 1px solid var(--color-gray-200);
+  border-radius: 14px;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+}
+
+.story-logo-container img {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+}
+
+.story-brand-text h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 6px;
+}
+
+.story-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.story-pill {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: var(--color-gray-100);
+  color: var(--color-text-muted);
+}
+
+.story-pill.highlight {
+  background: #ecfdf5;
+  color: #047857;
+  font-weight: 700;
+}
+
+.story-headline {
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1.25;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.story-summary-text {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+  max-width: 860px;
+  margin-bottom: 36px;
+}
+
+/* 4 Metrics Highlight Grid */
+.story-metrics-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.story-metric-item {
+  background: #ffffff;
+  border: 1px solid var(--color-gray-200);
+  border-radius: 16px;
+  padding: 24px 20px;
+  box-shadow: 0 4px 14px rgba(10, 15, 36, 0.02);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.story-metric-item:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 80, 231, 0.3);
+}
+
+.story-metric-val {
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+  margin-bottom: 8px;
+  letter-spacing: -0.03em;
+}
+
+.story-metric-val span {
+  color: var(--color-accent);
+}
+
+.story-metric-lbl {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 4px;
+}
+
+.story-metric-sub {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Action Buttons inside Card */
+.story-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Pipeline Note Card */
+.pipeline-card {
+  background: #f8fafc;
+  border: 1px solid var(--color-gray-200);
+  border-radius: 20px;
+  padding: 36px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.pipeline-content h4 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+
+.pipeline-content p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  max-width: 680px;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .story-spotlight-card {
+    padding: 32px 24px;
+  }
+
+  .story-metrics-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .stories-hero {
+    padding: 100px 0 40px;
+  }
+
+  .story-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .story-card-actions {
+    width: 100%;
+  }
+
+  .story-card-actions .c-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .story-metrics-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .pipeline-card {
+    padding: 24px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pipeline-card .c-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+</style>
+@endpush
 
 @section('content')
 <main id="main-content">
-    <!-- HERO SECTION -->
-    <section class="hero-section">
-      <img src="{{ asset('images/hero-v2-bg.svg') }}" alt="" class="hero-bg" aria-hidden="true">
-      <div class="container hero-content">
-        <p class="hero-pretitle" data-viewport="true">Proven Engineering Track Record</p>
-        <h1 class="hero-title stagger-1" data-viewport="true">
-          Proven Impact Across <mark>Startups & Global Leaders</mark>.
-        </h1>
-        <p class="hero-description stagger-2" data-viewport="true">
-          Discover how Bluebase engineering pods have delivered mission-critical web platforms, autonomous AI pipelines, and digital transformations for enterprises worldwide.
+
+  <!-- ========================================================================
+       HERO SECTION
+       ======================================================================== -->
+  <section class="stories-hero">
+    <div class="container">
+      
+      <span class="stories-badge">Client Success &amp; Transformation</span>
+      
+      <h1 class="stories-hero-title">
+        Real-World Engineering Impact for <mark>Ambitious Startups</mark>.
+      </h1>
+
+      <p class="stories-hero-desc">
+        We partner with startup founders and growing brands to design, engineer, and fully manage their core digital operating systems—from custom web booking portals and cloud ERPs to local search domination.
+      </p>
+
+      <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-bottom: 34px;">
+        <a href="#featured-success" class="c-btn -primary" style="padding: 14px 30px;">
+          <span class="c-btn__txt">View Featured Case Study</span>
+          <span class="c-btn__ico">
+            <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
+            <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
+          </span>
+        </a>
+        <a href="{{ route('free-trial') }}" class="c-btn -secondary" style="padding: 14px 28px;">
+          <span class="c-btn__txt">Get Free Project Estimate</span>
+        </a>
+      </div>
+
+      <div class="hero-badges" data-viewport="true" style="margin-top: 10px;">
+        <div class="hero-badge-item">100% Client Code Ownership</div>
+        <div class="hero-badge-item">Fully Managed Tech Infrastructure</div>
+        <div class="hero-badge-item">Direct Builder Collaboration</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       FEATURED CLIENT SPOTLIGHT: OMG RENTAL BIKES
+       ======================================================================== -->
+  <section class="story-spotlight-section" id="featured-success">
+    <div class="container">
+      
+      <div class="text-center" style="max-width: 800px; margin: 0 auto 48px;" data-viewport="true">
+        <span class="section-tag">Featured Success Story</span>
+        <h2 class="section-title">From Manual Spreadsheets to an Automated Fleet Engine</h2>
+        <p class="section-subtitle" style="margin: 0 auto;">How Bluebase engineered a complete digital operating system for OMG Rental Bikes.</p>
+      </div>
+
+      <!-- Spotlight Card -->
+      <div class="story-spotlight-card" data-viewport="true">
+        
+        <!-- Brand Header Bar -->
+        <div class="story-card-header">
+          <div class="story-brand-info">
+            <div class="story-logo-container">
+              <img src="{{ asset('images/stories/omg-rental-bikes-brand.png') }}" alt="OMG Rental Bikes Logo">
+            </div>
+            <div class="story-brand-text">
+              <h3>OMG Rental Bikes</h3>
+              <div class="story-pills">
+                <span class="story-pill">Two-Wheeler Mobility</span>
+                <span class="story-pill">Custom Fleet ERP</span>
+                <span class="story-pill highlight">100% Fully Managed by Bluebase</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <a href="https://omgrentalbikes.com" target="_blank" rel="noopener noreferrer" style="font-size: 0.92rem; color: var(--color-accent); font-weight: 600; text-decoration: underline;">
+              omgrentalbikes.com &nearr;
+            </a>
+          </div>
+        </div>
+
+        <!-- Headline & Description -->
+        <h2 class="story-headline">
+          Custom Fleet Management ERP, Online Booking Portal &amp; Local Search Domination
+        </h2>
+
+        <p class="story-summary-text">
+          OMG Rental Bikes partnered with Bluebase to replace paper contracts, physical ID photocopying, and double-booking headaches with a modern, cloud-based fleet operations ecosystem. We engineered their high-converting web booking portal at omgrentalbikes.com, custom fleet management software with paperless digital KYC, and fully manage their #1 ranking Google Business Profile and social growth marketing.
         </p>
 
-        <div class="hero-buttons stagger-3" data-viewport="true">
-          <a href="{{ route('contact') }}" class="c-btn -primary">
-                    <span class="c-btn__txt">Schedule Client Transformation Call</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                    </span>
-                  </a> <a href="{{ route('free-trial') }}" class="c-btn -secondary">
-                    <span class="c-btn__txt">Request Specific Case Study PDF</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                    </span>
-                  </a>
+        <!-- 4 Verified Result Metrics -->
+        <div class="story-metrics-row">
+          <div class="story-metric-item">
+            <div class="story-metric-val">3.5<span>X</span></div>
+            <div class="story-metric-lbl">Direct Online Bookings</div>
+            <p class="story-metric-sub">Direct reservations increased significantly, reducing reliance on 25% third-party aggregator commissions.</p>
+          </div>
+
+          <div class="story-metric-item">
+            <div class="story-metric-val">45<span>%</span></div>
+            <div class="story-metric-lbl">Idle Fleet Reduction</div>
+            <p class="story-metric-sub">Live vehicle inventory tracking eliminated double-bookings and minimized vehicle idle time across hubs.</p>
+          </div>
+
+          <div class="story-metric-item">
+            <div class="story-metric-val">#<span>1</span></div>
+            <div class="story-metric-lbl">Google Maps Search Rank</div>
+            <p class="story-metric-sub">Secured top position on Google Maps and organic local queries for primary city bike rental keywords.</p>
+          </div>
+
+          <div class="story-metric-item">
+            <div class="story-metric-val">100<span>%</span></div>
+            <div class="story-metric-lbl">Paperless Digital KYC</div>
+            <p class="story-metric-sub">Instant mobile driving license upload and digital signature generating PDF agreements in under 60 seconds.</p>
+          </div>
         </div>
 
-        <div class="hero-badges stagger-4" data-viewport="true">
-          <div class="hero-badge-item">120+ Products Delivered</div><div class="hero-badge-item">85% Faster Deployment</div><div class="hero-badge-item">99.99% Reliability</div>
+        <!-- Card CTA Actions -->
+        <div class="story-card-actions">
+          <a href="{{ route('customer-stories.omg-rental-bikes') }}" class="c-btn -primary" style="padding: 14px 28px;">
+            <span class="c-btn__txt">Read In-Depth Case Study</span>
+            <span class="c-btn__ico">
+              <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
+              <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
+            </span>
+          </a>
+          <a href="https://omgrentalbikes.com" target="_blank" rel="noopener noreferrer" class="c-btn -secondary" style="padding: 14px 24px;">
+            <span class="c-btn__txt">Visit Live Website</span>
+          </a>
+          <a href="{{ route('contact') }}" class="c-btn -link" style="color: var(--color-accent); font-weight: 600;">
+            Build Your Startup Platform &rarr;
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Active Sprints / Upcoming Pipeline Card -->
+      <div class="pipeline-card" data-viewport="true">
+        <div class="pipeline-content">
+          <span class="section-tag" style="margin-bottom: 8px;">Active Sprints</span>
+          <h4>More Client Projects Shipped in 2-Week Sprints</h4>
+          <p>
+            We are actively engineering custom web applications, mobile platforms, and business automation software for growing startups across logistics, e-commerce, and SaaS. Additional detailed client case studies are currently being documented and will be published following their public launch.
+          </p>
+        </div>
+        <div>
+          <a href="{{ route('contact') }}" class="c-btn -primary" style="padding: 12px 26px; white-space: nowrap;">
+            <span class="c-btn__txt">Start Your Project</span>
+          </a>
         </div>
       </div>
-    </section>
 
-  <!-- CLIENT LOGO MARQUEE -->
-  @include('partials.client-marquee', ['heading' => 'Trusted by 600+ high-growth companies and global enterprises to engineer mission-critical digital products'])
+    </div>
+  </section>
 
-    <!-- STICKY FEATURE SECTION -->
-    <section class="sticky-features-section">
-      <div class="container">
-        <div class="sticky-layout">
-          <div class="sticky-left" data-viewport="true">
-            <span class="section-tag light">Proven Client Impact</span>
-            <h2 class="section-title">Real-World Engineering Impact Across <mark>Startups & Global Leaders.</mark></h2>
-            <p class="section-subtitle light">Discover how Bluebase engineering pods partner with high-growth startups and Fortune 500 enterprises to solve complex software challenges, automate workflows, and drive measurable revenue.</p>
-            <div class="sticky-image-wrap">
-              <img src="{{ asset('images/illustrations/ui-illustration.jpg') }}" alt="Real-World Engineering Impact Across <mark>Startups & Global Leaders.</mark>">
-            </div>
-          </div>
-          <div class="sticky-right">
-            <div class="feature-scroll-card stagger-1" data-viewport="true">
-              <div class="feature-card-icon">
-                <img src="{{ asset('images/icons/tool.svg') }}" alt="" width="24" height="24">
-              </div>
-              <h3 class="feature-card-title">Johnson & Johnson: Global Clinical Logistics</h3>
-              <p class="feature-card-desc">Replaced fragmented spreadsheet tracking with an automated, GxP-validated inventory platform deployed across 40+ global distribution hubs.</p>
-              <a href="{{ route('contact') }}" class="c-btn -link">
-                    <span class="c-btn__txt">View Architecture</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                    </span>
-                  </a>
-            </div>
-            <div class="feature-scroll-card stagger-2" data-viewport="true">
-              <div class="feature-card-icon">
-                <img src="{{ asset('images/icons/diagram.svg') }}" alt="" width="24" height="24">
-              </div>
-              <h3 class="feature-card-title">Secil Group: 17 Industrial Apps in 3 Months</h3>
-              <p class="feature-card-desc">Deployed dedicated Bluebase pods to deliver 17 mobile plant maintenance and quarry dispatch apps, cutting unplanned equipment downtime by 38%.</p>
-              <a href="{{ route('customer-stories') }}" class="c-btn -link">
-                    <span class="c-btn__txt">Read Full Story</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                    </span>
-                  </a>
-            </div>
-            <div class="feature-scroll-card stagger-3" data-viewport="true">
-              <div class="feature-card-icon">
-                <img src="{{ asset('images/icons/cube.svg') }}" alt="" width="24" height="24">
-              </div>
-              <h3 class="feature-card-title">Bell Food Group: 20+ Offline Mobile Apps</h3>
-              <p class="feature-card-desc">Engineered offline-first mobile picking and quality inspection apps for thousands of frontline workers operating inside cold-storage food facilities.</p>
-              <a href="{{ route('use-cases.run-mobile-in-offline') }}" class="c-btn -link">
-                    <span class="c-btn__txt">Explore Mobile Stack</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                    </span>
-                  </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>    <!-- FEATURE GRID SECTION -->
-    <section class="usecases-section">
-      <div class="container">
-        <div class="text-center" style="max-width: 820px; margin: 0 auto 56px;" data-viewport="true">
-          <span class="section-tag">Featured Case Studies</span>
-          <h2 class="section-title">Transformation Stories Across Industries</h2>
-          <p class="section-subtitle" style="margin: 0 auto;">Detailed case studies of how our engineering pods deliver rapid business outcomes.</p>
-        </div>
-        <div class="features-grid-3">
-        <!-- Flagship Case Study: OMG Rental Bikes -->
-        <div class="feature-card-clean stagger-1" data-viewport="true" style="border: 2px solid rgba(0, 80, 231, 0.25); background: linear-gradient(160deg, #ffffff 0%, #f8fafc 100%);">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
-              <span style="background: rgba(0, 80, 231, 0.1); color: var(--color-accent); font-weight: 700; font-size: 0.76rem; padding: 4px 10px; border-radius: 6px;">Mobility &amp; Fleet ERP</span>
-              <span style="background: #ecfdf5; color: #047857; font-weight: 700; font-size: 0.74rem; padding: 4px 10px; border-radius: 6px;">100% Managed</span>
-            </div>
-            <div style="margin-bottom: 14px;">
-              <img src="{{ asset('images/stories/omg-rental-bikes-brand.png') }}" alt="OMG Rental Bikes" style="height: 36px; width: auto; object-fit: contain;">
-            </div>
-            <h3 class="card-title-lg">OMG Rental Bikes: Custom Fleet ERP &amp; Booking Engine</h3>
-            <p class="card-text">Engineered a custom fleet management ERP, web booking portal with automated digital KYC, and local Google search domination—scaling direct online bookings by 3.5X.</p>
-          </div>
-          <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 18px;">
-            <a href="{{ route('customer-stories.omg-rental-bikes') }}" class="c-btn -primary" style="padding: 10px 20px; font-size: 0.88rem;">
-              <span class="c-btn__txt">Read Case Study</span>
-              <span class="c-btn__ico">
-                <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
-                <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
-              </span>
-            </a>
-            <a href="https://omgrentalbikes.com" target="_blank" rel="noopener noreferrer" class="c-btn -link" style="font-size: 0.88rem;">
-              <span class="c-btn__txt">Visit Live Website</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="feature-card-clean stagger-2" data-viewport="true">
-          <div>
-            <div class="card-icon-box">
-              <img src="{{ asset('images/icons/cube.svg') }}" alt="" width="26" height="26">
-            </div>
-            <h3 class="card-title-lg">Asia Express Food: Supply Chain Logistics</h3>
-            <p class="card-text">Engineered real-time order tracking and warehouse barcode verification, eliminating shipping errors and accelerating fulfillment by 30%.</p>
-          </div>
-          <a href="{{ route('use-cases.warehouse-logistics') }}" class="c-btn -link">
-                    <span class="c-btn__txt">Read Case Study</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                    </span>
-                  </a>
-        </div>
-        <div class="feature-card-clean stagger-2" data-viewport="true">
-          <div>
-            <div class="card-icon-box">
-              <img src="{{ asset('images/icons/tool.svg') }}" alt="" width="26" height="26">
-            </div>
-            <h3 class="card-title-lg">Compass Group: Frontline Hospitality Operations</h3>
-            <p class="card-text">Custom tablet interfaces replaced manual paper audits across hundreds of kitchens, saving 15,000 manager hours annually.</p>
-          </div>
-          <a href="{{ route('contact') }}" class="c-btn -link">
-                    <span class="c-btn__txt">Read Case Study</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                    </span>
-                  </a>
-        </div>
-        <div class="feature-card-clean stagger-3" data-viewport="true">
-          <div>
-            <div class="card-icon-box">
-              <img src="{{ asset('images/icons/diagram.svg') }}" alt="" width="26" height="26">
-            </div>
-            <h3 class="card-title-lg">ALBA Group: Paperless Employee Portal</h3>
-            <p class="card-text">Unified multi-tenant HR and contractor extranet serving 8,000+ employees with automated approvals and mobile self-service.</p>
-          </div>
-          <a href="{{ route('use-cases.supplier-portals') }}" class="c-btn -link">
-                    <span class="c-btn__txt">Read Case Study</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                    </span>
-                  </a>
-        </div>
-        <div class="feature-card-clean stagger-1" data-viewport="true">
-          <div>
-            <div class="card-icon-box">
-              <img src="{{ asset('images/icons/code-bar.svg') }}" alt="" width="26" height="26">
-            </div>
-            <h3 class="card-title-lg">Rust-Oleum: 100% Paperless Smart Warehouse</h3>
-            <p class="card-text">Engineered rugged mobile scanning apps synchronizing inventory transactions in real time with enterprise ERP backends.</p>
-          </div>
-          <a href="{{ route('use-cases.stock-inventory-management') }}" class="c-btn -link">
-                    <span class="c-btn__txt">Read Case Study</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                    </span>
-                  </a>
-        </div>
-        <div class="feature-card-clean stagger-2" data-viewport="true">
-          <div>
-            <div class="card-icon-box">
-              <img src="{{ asset('images/icons/ai-agent.svg') }}" alt="" width="26" height="26">
-            </div>
-            <h3 class="card-title-lg">Hauni Technologies: IoT Predictive Maintenance</h3>
-            <p class="card-text">Real-time edge telemetry and AI anomaly detection platforms connecting high-speed cigarette machinery worldwide.</p>
-          </div>
-          <a href="{{ route('use-cases.asset-management') }}" class="c-btn -link">
-                    <span class="c-btn__txt">Read Case Study</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                    </span>
-                  </a>
-        </div>
-        <div class="feature-card-clean stagger-3" data-viewport="true">
-          <div>
-            <div class="card-icon-box">
-              <img src="{{ asset('images/icons/tool.svg') }}" alt="" width="26" height="26">
-            </div>
-            <h3 class="card-title-lg">Dussmann Group: Smart Facility Management</h3>
-            <p class="card-text">Cross-platform mobile apps for 60,000+ service staff, digitizing hospital cleaning validation and facility maintenance.</p>
-          </div>
-          <a href="{{ route('company') }}" class="c-btn -link">
-                    <span class="c-btn__txt">Read Case Study</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                    </span>
-                  </a>
-        </div>
-        </div>
-      </div>
-    </section>
-
-  <!-- FAQ ACCORDION -->
-  <section class="faq-section">
+  <!-- ========================================================================
+       FAQ ACCORDION SECTION
+       ======================================================================== -->
+  <section class="faq-section" style="border-top: 1px solid var(--color-gray-200);">
     <div class="container">
       <div class="faq-layout">
         <div class="faq-left" data-viewport="true">
           <span class="section-tag">FAQ</span>
           <h2 class="section-title">Frequently Asked <mark>Questions</mark></h2>
-          <p class="section-subtitle">Everything you need to know about our engineering services, pod structure, and delivery model.</p>
+          <p class="section-subtitle">Everything you need to know about our engineering pod model, code ownership, and sprint delivery.</p>
         </div>
         <div class="faq-right">
           <div class="accordion-list">
-              <div class="accordion-item open stagger-1" data-viewport="true">
-                <button class="accordion-trigger" aria-expanded="true">
-                  <span>What services does Bluebase provide?</span>
-                  <div class="accordion-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
-                  </div>
-                </button>
-                <div class="accordion-content">
-                  <div class="accordion-inner">
-                    <p>Bluebase is a modern digital engineering and AI consultancy startup. We provide end-to-end custom software development, autonomous AI agent workflows, generative AI fine-tuning, cloud-native modernization, offline-first mobile applications, and dedicated cross-functional engineering pods.</p>
-                  </div>
+            <div class="accordion-item open stagger-1" data-viewport="true">
+              <button class="accordion-trigger" aria-expanded="true">
+                <span>Who owns the intellectual property and source code?</span>
+                <div class="accordion-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
+              </button>
+              <div class="accordion-content">
+                <div class="accordion-inner">
+                  <p>You own 100% of all intellectual property, source code, database schemas, and design assets from day one. Everything is committed directly to your private GitHub/GitLab repositories with zero vendor lock-in or ongoing royalty fees.</p>
                 </div>
               </div>
-              <div class="accordion-item stagger-2" data-viewport="true">
-                <button class="accordion-trigger" aria-expanded="false">
-                  <span>How does Bluebase engage with clients?</span>
-                  <div class="accordion-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
-                  </div>
-                </button>
-                <div class="accordion-content">
-                  <div class="accordion-inner">
-                    <p>We offer three flexible engagement models tailored to your project stage: Dedicated Engineering Pods (senior cross-functional teams that integrate into your roadmap), Fixed-Outcome Product Builds (turnkey MVP or feature engineering with guaranteed delivery milestones), and Fractional Architecture & AI Advisory.</p>
-                  </div>
+            </div>
+
+            <div class="accordion-item stagger-2" data-viewport="true">
+              <button class="accordion-trigger" aria-expanded="false">
+                <span>How does your sprint milestone model work?</span>
+                <div class="accordion-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
+              </button>
+              <div class="accordion-content">
+                <div class="accordion-inner">
+                  <p>We work in disciplined 2-week agile sprints. Before each sprint begins, we define explicit deliverables and acceptance criteria. You test working software on live staging links and only pay as milestones are verified.</p>
                 </div>
               </div>
-              <div class="accordion-item stagger-3" data-viewport="true">
-                <button class="accordion-trigger" aria-expanded="false">
-                  <span>Who owns the intellectual property and code?</span>
-                  <div class="accordion-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
-                  </div>
-                </button>
-                <div class="accordion-content">
-                  <div class="accordion-inner">
-                    <p>You own 100% of all intellectual property, source code, data pipelines, and design assets created during our engagement. Everything is developed directly in your repositories with zero vendor lock-in.</p>
-                  </div>
+            </div>
+
+            <div class="accordion-item stagger-3" data-viewport="true">
+              <button class="accordion-trigger" aria-expanded="false">
+                <span>Do you offer post-launch maintenance and managed support?</span>
+                <div class="accordion-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
+              </button>
+              <div class="accordion-content">
+                <div class="accordion-inner">
+                  <p>Yes. As demonstrated with OMG Rental Bikes, we offer fully managed technology partnerships where we monitor server health 24/7, deploy security patches, handle automated backups, and roll out feature updates so founders never worry about in-house IT overhead.</p>
                 </div>
               </div>
-              <div class="accordion-item stagger-4" data-viewport="true">
-                <button class="accordion-trigger" aria-expanded="false">
-                  <span>How fast can an engineering pod ramp up and start shipping?</span>
-                  <div class="accordion-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
-                  </div>
-                </button>
-                <div class="accordion-content">
-                  <div class="accordion-inner">
-                    <p>Our senior engineering pods can be assembled and onboarded in as little as 1 to 2 weeks. Every pod includes a Lead Solutions Architect, Senior Full-Stack Engineers, and QA specialists who hit the ground running with production-ready code in sprint one.</p>
-                  </div>
+            </div>
+
+            <div class="accordion-item stagger-4" data-viewport="true">
+              <button class="accordion-trigger" aria-expanded="false">
+                <span>How fast can an engineering pod begin?</span>
+                <div class="accordion-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>
+              </button>
+              <div class="accordion-content">
+                <div class="accordion-inner">
+                  <p>Following an initial discovery scoping session, our senior builders assemble your architecture roadmap and begin shipping production-ready code in as little as 1 week.</p>
                 </div>
               </div>
-              <div class="accordion-item stagger-5" data-viewport="true">
-                <button class="accordion-trigger" aria-expanded="false">
-                  <span>How does Bluebase handle enterprise security, compliance, and confidentiality?</span>
-                  <div class="accordion-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
-                  </div>
-                </button>
-                <div class="accordion-content">
-                  <div class="accordion-inner">
-                    <p>We operate under strict enterprise security protocols. Bluebase is SOC 2 Type II compliant, adheres to ISO 27001 standards, and follows GDPR and HIPAA guidelines. We sign comprehensive NDAs before any technical architecture discussions.</p>
-                  </div>
-                </div>
-              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CLOSING CALL TO ACTION BANNER -->
+  <!-- ========================================================================
+       CLOSING CTA BANNER
+       ======================================================================== -->
   <section class="cta-banner-section">
     <div class="container">
-      <div class="cta-banner-box" data-viewport="true" data-animation="fade-scale">
+      <div class="cta-banner-box" data-viewport="true">
         <img src="{{ asset('images/hero-v2-bg.svg') }}" alt="" class="cta-banner-bg" aria-hidden="true">
         <div class="cta-banner-content">
           <h2 class="cta-banner-title stagger-1" data-viewport="true">
-            Ready to Write Your Success Story?<br><mark>Partner with Bluebase Engineering</mark>.
+            Ready to Build Your Startup's Next Move?<br><mark>Partner with Bluebase Engineering</mark>.
           </h2>
           <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;" class="stagger-2" data-viewport="true">
             <a href="{{ route('contact') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
-                    <span class="c-btn__txt">Schedule a Discovery Call</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                    </span>
-                  </a>
+              <span class="c-btn__txt">Start Your Project</span>
+              <span class="c-btn__ico">
+                <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
+                <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
+              </span>
+            </a>
             <a href="{{ route('free-trial') }}" class="c-btn -outline-white" style="padding: 14px 32px; font-size: 1.05rem;">
-                    <span class="c-btn__txt">Request a Project Proposal</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                    </span>
-                  </a>
-          </div>
-
-          <div class="cta-pills-row stagger-3" data-viewport="true">
-            <div class="cta-pill-item">Dedicated senior engineering pods</div>
-            <div class="cta-pill-item">Autonomous AI &amp; custom LLMs</div>
-            <div class="cta-pill-item">100% client-owned code &amp; IP</div>
-            <div class="cta-pill-item">Enterprise SOC 2 &amp; ISO 27001</div>
-            <div class="cta-pill-item">Sprint-one velocity guarantee</div>
+              <span class="c-btn__txt">Request Project Estimate</span>
+              <span class="c-btn__ico">
+                <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
+                <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
+              </span>
+            </a>
           </div>
         </div>
       </div>
     </div>
   </section>
-  </main>
 
-      <!-- SITE FOOTER -->
+</main>
 @endsection

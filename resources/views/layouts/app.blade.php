@@ -7,7 +7,7 @@
   $pageDescription = $__env->yieldContent('meta_description', $seo->meta_description ?? $globalSettings['seo_default_description'] ?? 'Bluebase is an elite digital engineering and autonomous AI services startup.');
   $pageKeywords = $__env->yieldContent('meta_keywords', $seo->meta_keywords ?? $globalSettings['seo_default_keywords'] ?? 'digital engineering, AI agents, enterprise mobility, SAP integration');
   $canonicalUrl = $__env->yieldContent('canonical_url', $seo->canonical_url ?? url()->current());
-  $ogImage = $__env->yieldContent('og_image', $seo->og_image ?? $globalSettings['seo_default_og_image'] ?? 'images/stories/hauni.jpg');
+  $ogImage = $__env->yieldContent('og_image', $seo->og_image ?? $globalSettings['seo_default_og_image'] ?? 'images/stories/omg-rental-bikes-brand.png');
   $twitterHandle = $globalSettings['seo_twitter_handle'] ?? '@bluebase_tech';
   $robotsTag = $__env->yieldContent('robots', $seo->robots ?? $globalSettings['seo_robots'] ?? 'index, follow');
   $googleVerification = $globalSettings['seo_google_verification'] ?? null;
