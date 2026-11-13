@@ -29,7 +29,7 @@
                       </span>
                     </span>
                   </a> <a href="{{ route('book-a-demo') }}" class="c-btn -secondary">
-                    <span class="c-btn__txt">Schedule Live Discovery Call</span>
+                    <span class="c-btn__txt">Schedule Discovery Call</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
                         <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
@@ -42,7 +42,7 @@
         </div>
 
         <div class="hero-badges stagger-4" data-viewport="true">
-          <div class="hero-badge-item">24-Hour Response Guarantee</div><div class="hero-badge-item">Nagpur, India (Startup HQ)</div><div class="hero-badge-item">Operating in IST (UTC+05:30)</div>
+          <div class="hero-badge-item">24-Hour Response Guarantee</div><div class="hero-badge-item">India (Startup HQ)</div><div class="hero-badge-item">Operating in IST (UTC+05:30)</div>
         </div>
       </div>
     </section>

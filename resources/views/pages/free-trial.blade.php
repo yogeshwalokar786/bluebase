@@ -29,7 +29,7 @@
                       </span>
                     </span>
                   </a> <a href="{{ route('book-a-demo') }}" class="c-btn -secondary">
-                    <span class="c-btn__txt">Schedule Live Call Instead</span>
+                    <span class="c-btn__txt">Schedule a Call Instead</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
                         <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
