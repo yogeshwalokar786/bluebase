@@ -106,8 +106,8 @@ Route::get('/sitemap.xml', [SeoController::class, 'publicSitemap'])->name('sitem
 Route::get('/contact', [InquiryController::class, 'contactForm'])->name('contact');
 Route::post('/contact', [InquiryController::class, 'storeContact'])->name('contact.store');
 
-Route::get('/book-a-demo', [InquiryController::class, 'demoForm'])->name('book-a-demo');
-Route::post('/book-a-demo', [InquiryController::class, 'storeDemo'])->name('book-a-demo.store');
+Route::get('/book-a-demo', fn() => redirect()->route('contact', [], 301))->name('book-a-demo');
+Route::post('/book-a-demo', [InquiryController::class, 'storeContact'])->name('book-a-demo.store');
 
 Route::get('/free-trial', [InquiryController::class, 'trialForm'])->name('free-trial');
 Route::post('/free-trial', [InquiryController::class, 'storeTrial'])->name('free-trial.store');

@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Technical Whitepapers & Enterprise Research | Bluebase')
 @section('meta_description', 'Download actionable guides, enterprise architecture blueprints, and AI deployment frameworks written by Bluebase principal architects.')
@@ -18,7 +18,7 @@
         </p>
 
         <div class="hero-buttons stagger-3" data-viewport="true">
-          <a href="{{ route('book-a-demo') }}" class="c-btn -primary">
+          <a href="{{ route('contact') }}" class="c-btn -primary">
                     <span class="c-btn__txt">Request Research Consultation</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -137,7 +137,7 @@
             <h3 class="card-title-lg">AI-Augmented Engineering Benchmark</h3>
             <p class="card-text">Empirical study measuring sprint velocity, defect rates, and code review throughput in teams leveraging agentic AI workflows.</p>
           </div>
-          <a href="{{ route('book-a-demo') }}" class="c-btn -link">
+          <a href="{{ route('contact') }}" class="c-btn -link">
                     <span class="c-btn__txt">Download Report</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -345,7 +345,7 @@
             Ready to Deepen Your Technical Architecture?<br><mark>Download the Complete Bluebase Library</mark>.
           </h2>
           <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;" class="stagger-2" data-viewport="true">
-            <a href="{{ route('book-a-demo') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
+            <a href="{{ route('contact') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
                     <span class="c-btn__txt">Schedule a Discovery Call</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">

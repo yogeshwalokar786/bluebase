@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Website Design & UI/UX Services | Bespoke Digital Experiences | Bluebase Technologies')
 @section('meta_description', 'We design and build bespoke, high-converting websites and digital product interfaces for modern brands, founders, and startups. Core Web Vitals 90+ guaranteed, clickable Figma prototypes, and 100% code ownership.')
@@ -51,7 +51,7 @@
           </span>
         </span>
       </a>
-      <a href="{{ route('book-a-demo') }}" class="c-btn -secondary">
+      <a href="{{ route('contact') }}" class="c-btn -secondary">
         <span class="c-btn__txt">Schedule a Call</span>
         <span class="c-btn__ico">
           <span class="c-btn__ico-base">
@@ -446,7 +446,7 @@
               </span>
             </span>
           </a>
-          <a href="{{ route('book-a-demo') }}" class="c-btn -outline-white" style="padding: 14px 32px; font-size: 1.05rem;">
+          <a href="{{ route('contact') }}" class="c-btn -outline-white" style="padding: 14px 32px; font-size: 1.05rem;">
             <span class="c-btn__txt">Schedule a Design Call</span>
             <span class="c-btn__ico">
               <span class="c-btn__ico-base">

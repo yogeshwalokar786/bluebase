@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Enterprise API Integration & Microservices Architecture | Bluebase')
 @section('meta_description', 'Connect legacy databases, modern cloud SaaS, ERPs, and custom microservices with event-driven integration architectures engineered by Bluebase.')
@@ -18,7 +18,7 @@
         </p>
 
         <div class="hero-buttons stagger-3" data-viewport="true">
-          <a href="{{ route('book-a-demo') }}" class="c-btn -primary">
+          <a href="{{ route('contact') }}" class="c-btn -primary">
                     <span class="c-btn__txt">Schedule Integration Review</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -69,7 +69,7 @@
               </div>
               <h3 class="feature-card-title">Event-Driven Message Streaming</h3>
               <p class="feature-card-desc">Kafka, RabbitMQ, and AWS SQS pipelines enabling asynchronous, non-blocking data exchange across high-throughput enterprise systems.</p>
-              <a href="{{ route('book-a-demo') }}" class="c-btn -link">
+              <a href="{{ route('contact') }}" class="c-btn -link">
                     <span class="c-btn__txt">Event Architectures</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -137,7 +137,7 @@
             <h3 class="card-title-lg">RESTful & GraphQL Gateways</h3>
             <p class="card-text">High-performance API gateways that consolidate multiple backend services into a single clean endpoint.</p>
           </div>
-          <a href="{{ route('book-a-demo') }}" class="c-btn -link">
+          <a href="{{ route('contact') }}" class="c-btn -link">
                     <span class="c-btn__txt">API Gateways</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -345,7 +345,7 @@
             Ready to Unify Your Enterprise Systems?<br><mark>Engineer Resilient APIs with Bluebase</mark>.
           </h2>
           <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;" class="stagger-2" data-viewport="true">
-            <a href="{{ route('book-a-demo') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
+            <a href="{{ route('contact') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
                     <span class="c-btn__txt">Schedule a Discovery Call</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">

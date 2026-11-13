@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Become a Partner | Bluebase Partner Network')
 @section('meta_description', 'Join our global partner program. Get access to engineering accelerators, referral commissions, co-marketing opportunities, and dedicated architect support.')
@@ -295,7 +295,7 @@
             Ready to Partner with Bluebase?<br><mark>Let's Grow Together</mark>.
           </h2>
           <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;" class="stagger-2" data-viewport="true">
-            <a href="{{ route('book-a-demo') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
+            <a href="{{ route('contact') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
                     <span class="c-btn__txt">Schedule a Discovery Call</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">

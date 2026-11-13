@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'E-Commerce Development Services | Custom Online Stores | Bluebase Technologies')
 @section('meta_description', 'Custom e-commerce store development, bespoke storefronts, and payment gateway integrations with Stripe, Razorpay, and Shopify. Engineered for speed and maximum checkout conversions.')
@@ -762,7 +762,7 @@
               </span>
             </span>
           </a>
-          <a href="{{ route('book-a-demo') }}" class="c-btn -outline-white" style="padding: 14px 32px; font-size: 1.05rem;">
+          <a href="{{ route('contact') }}" class="c-btn -outline-white" style="padding: 14px 32px; font-size: 1.05rem;">
             <span class="c-btn__txt">Schedule a Call</span>
             <span class="c-btn__ico">
               <span class="c-btn__ico-base">

@@ -36,7 +36,7 @@ class InquiryController extends Controller
 
     public function demoForm()
     {
-        return view('pages.book-a-demo');
+        return redirect()->route('contact', [], 301);
     }
 
     public function storeDemo(Request $request)

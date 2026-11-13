@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Terms of Service & MSA | Bluebase Technologies Inc.')
 @section('meta_description', 'Master Services Agreement, terms of service, engagement models, and intellectual property ownership provisions for Bluebase engineering clients.')
@@ -177,7 +177,7 @@
             Ready to Partner with Clear, Fair Contractual Terms?<br><mark>Let's Build Together</mark>.
           </h2>
           <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;" class="stagger-2" data-viewport="true">
-            <a href="{{ route('book-a-demo') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
+            <a href="{{ route('contact') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
                     <span class="c-btn__txt">Schedule a Discovery Call</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">

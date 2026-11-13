@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Generative AI, Custom LLMs & AI Copilots | Bluebase')
 @section('meta_description', 'Custom LLM fine-tuning, retrieval-augmented generation (RAG), and domain-specific AI copilots engineered on your proprietary enterprise data.')
@@ -18,7 +18,7 @@
         </p>
 
         <div class="hero-buttons stagger-3" data-viewport="true">
-          <a href="{{ route('book-a-demo') }}" class="c-btn -primary">
+          <a href="{{ route('contact') }}" class="c-btn -primary">
                     <span class="c-btn__txt">Schedule GenAI Strategy Call</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -69,7 +69,7 @@
               </div>
               <h3 class="feature-card-title">Hybrid Vector & Keyword RAG</h3>
               <p class="feature-card-desc">Combining dense vector embeddings with BM25 keyword matching and cross-encoder rerankers for pinpoint factual accuracy across millions of documents.</p>
-              <a href="{{ route('book-a-demo') }}" class="c-btn -link">
+              <a href="{{ route('contact') }}" class="c-btn -link">
                     <span class="c-btn__txt">Explore RAG Stack</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -137,7 +137,7 @@
             <h3 class="card-title-lg">Enterprise Knowledge Search</h3>
             <p class="card-text">Ask complex natural language questions across millions of internal PDFs, wikis, and technical manuals with direct citations.</p>
           </div>
-          <a href="{{ route('book-a-demo') }}" class="c-btn -link">
+          <a href="{{ route('contact') }}" class="c-btn -link">
                     <span class="c-btn__txt">Knowledge Search</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -197,7 +197,7 @@
             <h3 class="card-title-lg">Multilingual Translation & Tone</h3>
             <p class="card-text">Preserve regulatory compliance and technical terminology across real-time global communications in 50+ languages.</p>
           </div>
-          <a href="{{ route('book-a-demo') }}" class="c-btn -link">
+          <a href="{{ route('contact') }}" class="c-btn -link">
                     <span class="c-btn__txt">Language Pipelines</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -345,7 +345,7 @@
             Ready to Unleash Custom Enterprise GenAI?<br><mark>Build Your Private Model</mark>.
           </h2>
           <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;" class="stagger-2" data-viewport="true">
-            <a href="{{ route('book-a-demo') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
+            <a href="{{ route('contact') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
                     <span class="c-btn__txt">Schedule a Discovery Call</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">

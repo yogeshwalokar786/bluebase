@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Enterprise Asset Management & Industrial IoT | Bluebase')
 @section('meta_description', 'Engineer custom IoT telemetry platforms, predictive maintenance engines, and mobile asset tracking applications for heavy industry and manufacturing.')
@@ -18,7 +18,7 @@
         </p>
 
         <div class="hero-buttons stagger-3" data-viewport="true">
-          <a href="{{ route('book-a-demo') }}" class="c-btn -primary">
+          <a href="{{ route('contact') }}" class="c-btn -primary">
                     <span class="c-btn__txt">Schedule IoT Consultation</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -69,7 +69,7 @@
               </div>
               <h3 class="feature-card-title">Edge Sensor Telemetry Ingestion</h3>
               <p class="feature-card-desc">High-throughput MQTT and Kafka pipelines ingesting vibration, temperature, and pressure data from thousands of edge sensors.</p>
-              <a href="{{ route('book-a-demo') }}" class="c-btn -link">
+              <a href="{{ route('contact') }}" class="c-btn -link">
                     <span class="c-btn__txt">Edge Architecture</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -137,7 +137,7 @@
             <h3 class="card-title-lg">Digital Asset Registry</h3>
             <p class="card-text">Centralized lifecycle tracking for heavy machinery, calibration schedules, warranty contracts, and service history.</p>
           </div>
-          <a href="{{ route('book-a-demo') }}" class="c-btn -link">
+          <a href="{{ route('contact') }}" class="c-btn -link">
                     <span class="c-btn__txt">Asset Registry</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -345,7 +345,7 @@
             Ready to Eliminate Industrial Downtime?<br><mark>Engineer Smart Asset Systems with Bluebase</mark>.
           </h2>
           <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;" class="stagger-2" data-viewport="true">
-            <a href="{{ route('book-a-demo') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
+            <a href="{{ route('contact') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
                     <span class="c-btn__txt">Schedule a Discovery Call</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">

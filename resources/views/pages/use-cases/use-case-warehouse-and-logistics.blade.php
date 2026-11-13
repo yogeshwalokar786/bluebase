@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Supply Chain & Logistics Software Engineering | Bluebase')
 @section('meta_description', 'Custom warehouse management, fleet dispatch, route optimization, and real-time tracking systems engineered for high-velocity logistics operations.')
@@ -18,7 +18,7 @@
         </p>
 
         <div class="hero-buttons stagger-3" data-viewport="true">
-          <a href="{{ route('book-a-demo') }}" class="c-btn -primary">
+          <a href="{{ route('contact') }}" class="c-btn -primary">
                     <span class="c-btn__txt">Schedule Logistics Scoping Call</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -69,7 +69,7 @@
               </div>
               <h3 class="feature-card-title">Automated Warehouse Execution (WES)</h3>
               <p class="feature-card-desc">Wave picking, directed putaway, cross-docking, and inventory slotting optimized for maximum throughput.</p>
-              <a href="{{ route('book-a-demo') }}" class="c-btn -link">
+              <a href="{{ route('contact') }}" class="c-btn -link">
                     <span class="c-btn__txt">WES Solutions</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -137,7 +137,7 @@
             <h3 class="card-title-lg">Dock & Yard Management</h3>
             <p class="card-text">Automated trailer check-in, dock door assignment, and turn-time tracking reducing carrier dwell time.</p>
           </div>
-          <a href="{{ route('book-a-demo') }}" class="c-btn -link">
+          <a href="{{ route('contact') }}" class="c-btn -link">
                     <span class="c-btn__txt">Yard Management</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -345,7 +345,7 @@
             Ready to Transform Your Supply Chain Software?<br><mark>Build High-Velocity Logistics with Bluebase</mark>.
           </h2>
           <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;" class="stagger-2" data-viewport="true">
-            <a href="{{ route('book-a-demo') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
+            <a href="{{ route('contact') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
                     <span class="c-btn__txt">Schedule a Discovery Call</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">

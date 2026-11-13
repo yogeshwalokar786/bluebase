@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'About Bluebase Technologies | Digital Engineering Studio & Remote-First Team')
 @section('meta_description', 'Bluebase Technologies is an agile, remote-first digital engineering studio based in India. We architect custom websites, web applications, mobile apps, and scalable digital solutions for growing businesses worldwide.')
@@ -473,7 +473,7 @@
               <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
             </span>
           </a>
-          <a href="{{ route('book-a-demo') }}" class="c-btn -outline-white" style="padding: 14px 32px; font-size: 1.05rem;">
+          <a href="{{ route('contact') }}" class="c-btn -outline-white" style="padding: 14px 32px; font-size: 1.05rem;">
             <span class="c-btn__txt">Schedule a Call</span>
             <span class="c-btn__ico">
               <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>

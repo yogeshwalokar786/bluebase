@@ -1,6 +1,6 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
-@section('title', 'How We Work â€” Direct Developer Access & Agile Sprints | Bluebase Technologies')
+@section('title', 'How We Work — Direct Developer Access & Agile Sprints | Bluebase Technologies')
 @section('meta_description', 'Explore our engineering delivery model: Direct senior developer access, 2-week milestone sprints, 100% client code ownership, fixed transparent pricing, and free technical consultation.')
 
 @section('content')
@@ -61,7 +61,7 @@
           <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
         </span>
       </a>
-      <a href="{{ route('book-a-demo') }}" class="c-btn -secondary">
+      <a href="{{ route('contact') }}" class="c-btn -secondary">
         <span class="c-btn__txt">Schedule a Call</span>
         <span class="c-btn__ico">
           <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
@@ -585,7 +585,7 @@
         </div>
 
         <div style="margin-top: 30px;">
-          <a href="{{ route('book-a-demo') }}" class="c-btn -primary" style="width: 100%; justify-content: center;">
+          <a href="{{ route('contact') }}" class="c-btn -primary" style="width: 100%; justify-content: center;">
             <span class="c-btn__txt">Schedule Free 30-Min Call</span>
             <span class="c-btn__ico">
               <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
@@ -744,7 +744,7 @@
             <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
           </span>
         </a>
-        <a href="{{ route('book-a-demo') }}" class="c-btn -secondary" style="border-color: rgba(255,255,255,0.2); color: #ffffff;">
+        <a href="{{ route('contact') }}" class="c-btn -secondary" style="border-color: rgba(255,255,255,0.2); color: #ffffff;">
           <span class="c-btn__txt">Book Discovery Call</span>
           <span class="c-btn__ico">
             <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
@@ -795,7 +795,7 @@ document.addEventListener('DOMContentLoaded', function() {
       "@@type": "WebPage",
       "@@id": "{{ url()->current() }}#webpage",
       "url": "{{ url()->current() }}",
-      "name": "How We Work â€” Direct Developer Access & Agile Sprints | Bluebase Technologies",
+      "name": "How We Work — Direct Developer Access & Agile Sprints | Bluebase Technologies",
       "description": "Explore our engineering delivery model: Direct senior developer access, 2-week milestone sprints, 100% client code ownership, fixed transparent pricing, and free technical consultation.",
       "publisher": {
         "@@type": "Organization",

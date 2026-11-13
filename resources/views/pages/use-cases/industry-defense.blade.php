@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Defense & Mission-Critical Software Engineering | Bluebase')
 @section('meta_description', 'High-assurance software engineering for defense contractors, government agencies, and regulated industries requiring air-gapped security and compliance.')
@@ -18,7 +18,7 @@
         </p>
 
         <div class="hero-buttons stagger-3" data-viewport="true">
-          <a href="{{ route('book-a-demo') }}" class="c-btn -primary">
+          <a href="{{ route('contact') }}" class="c-btn -primary">
                     <span class="c-btn__txt">Schedule Cleared Consultation</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -105,7 +105,7 @@
               </div>
               <h3 class="feature-card-title">Role-Based Military Authorizations</h3>
               <p class="feature-card-desc">Multi-factor cryptographic authentication, CAC/PIV card integration, and granular security clearance attribute-based access.</p>
-              <a href="{{ route('book-a-demo') }}" class="c-btn -link">
+              <a href="{{ route('contact') }}" class="c-btn -link">
                     <span class="c-btn__txt">Access Architecture</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -345,7 +345,7 @@
             Ready to Build Mission-Critical Defense Systems?<br><mark>Engineer with Highest Assurance</mark>.
           </h2>
           <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;" class="stagger-2" data-viewport="true">
-            <a href="{{ route('book-a-demo') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
+            <a href="{{ route('contact') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
                     <span class="c-btn__txt">Schedule a Discovery Call</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">

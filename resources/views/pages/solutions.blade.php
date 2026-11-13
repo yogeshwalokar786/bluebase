@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Digital Engineering Solutions | Bluebase Technologies')
 @section('meta_description', 'Purpose-built digital engineering solutions for founders, startups, and growing businesses: SaaS MVP development, custom web platforms, e-commerce stores, and code optimization.')
@@ -545,7 +545,7 @@
               </span>
             </span>
           </a>
-          <a href="{{ route('book-a-demo') }}" class="c-btn -outline-white" style="padding: 14px 32px; font-size: 1.05rem;">
+          <a href="{{ route('contact') }}" class="c-btn -outline-white" style="padding: 14px 32px; font-size: 1.05rem;">
             <span class="c-btn__txt">Schedule a Call</span>
             <span class="c-btn__ico">
               <span class="c-btn__ico-base">

@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Contact Bluebase | Remote-First Digital Engineering & AI Consultancy')
 @section('meta_description', 'Connect with Bluebase. We operate as a remote-first digital engineering consultancy delivering custom software, autonomous AI agent architectures, and cloud modernization to clients worldwide.')
@@ -28,8 +28,8 @@
                         <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
                       </span>
                     </span>
-                  </a> <a href="{{ route('book-a-demo') }}" class="c-btn -secondary">
-                    <span class="c-btn__txt">Schedule Discovery Call</span>
+                  </a> <a href="{{ route('free-trial') }}" class="c-btn -secondary">
+                    <span class="c-btn__txt">Request Project Estimate</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
                         <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
@@ -277,7 +277,7 @@
             <h3 class="card-title-lg">Weekly Sprint Demos</h3>
             <p class="card-text">Live video walkthroughs showcasing tangible software shipped in the preceding two-week cycle.</p>
           </div>
-          <a href="{{ route('book-a-demo') }}" class="c-btn -link">
+          <a href="{{ route('contact') }}" class="c-btn -link">
                     <span class="c-btn__txt">Sprint Reviews</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -398,8 +398,8 @@
             Ready to Build Something Extraordinary?<br><mark>Contact Bluebase Engineering Today</mark>.
           </h2>
           <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;" class="stagger-2" data-viewport="true">
-            <a href="{{ route('book-a-demo') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
-                    <span class="c-btn__txt">Schedule a Discovery Call</span>
+            <a href="#contactForm" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
+                    <span class="c-btn__txt">Send Us a Message</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
                         <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>

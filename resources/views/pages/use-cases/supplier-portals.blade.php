@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Custom B2B & Supplier Collaboration Portals | Bluebase')
 @section('meta_description', 'Streamline procurement, purchase orders, RFQs, and invoice approvals with secure, self-service supplier portals engineered by Bluebase.')
@@ -18,7 +18,7 @@
         </p>
 
         <div class="hero-buttons stagger-3" data-viewport="true">
-          <a href="{{ route('book-a-demo') }}" class="c-btn -primary">
+          <a href="{{ route('contact') }}" class="c-btn -primary">
                     <span class="c-btn__txt">Schedule Supplier Portal Demo</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -69,7 +69,7 @@
               </div>
               <h3 class="feature-card-title">Self-Service Vendor Onboarding</h3>
               <p class="feature-card-desc">Automated tax form verification (W-9/W-8BEN), bank details verification, and compliance credentialing in minutes.</p>
-              <a href="{{ route('book-a-demo') }}" class="c-btn -link">
+              <a href="{{ route('contact') }}" class="c-btn -link">
                     <span class="c-btn__txt">Vendor Onboarding</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -177,7 +177,7 @@
             <h3 class="card-title-lg">Catalog & Price Management</h3>
             <p class="card-text">Vendor catalog management with automated approval workflows for contract pricing updates.</p>
           </div>
-          <a href="{{ route('book-a-demo') }}" class="c-btn -link">
+          <a href="{{ route('contact') }}" class="c-btn -link">
                     <span class="c-btn__txt">Catalog Controls</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -345,7 +345,7 @@
             Ready to Automate Supplier Collaboration?<br><mark>Build a Custom B2B Portal with Bluebase</mark>.
           </h2>
           <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;" class="stagger-2" data-viewport="true">
-            <a href="{{ route('book-a-demo') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
+            <a href="{{ route('contact') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
                     <span class="c-btn__txt">Schedule a Discovery Call</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">

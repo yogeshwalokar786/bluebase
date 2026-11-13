@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Dedicated Engineering Pods & Strategic Consulting | Bluebase')
 @section('meta_description', 'Augment your product team with elite cross-functional engineering pods: Tech Leads, Senior Full-Stack Engineers, AI Specialists, and DevOps Architects.')
@@ -18,7 +18,7 @@
         </p>
 
         <div class="hero-buttons stagger-3" data-viewport="true">
-          <a href="{{ route('book-a-demo') }}" class="c-btn -primary">
+          <a href="{{ route('contact') }}" class="c-btn -primary">
                     <span class="c-btn__txt">Assemble Your Pod</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -87,7 +87,7 @@
               </div>
               <h3 class="feature-card-title">Sprint-One Production Velocity</h3>
               <p class="feature-card-desc">Onboarding in under 10 business days. Our pods integrate seamlessly into your GitHub, Jira, and Slack, shipping code from sprint one.</p>
-              <a href="{{ route('book-a-demo') }}" class="c-btn -link">
+              <a href="{{ route('contact') }}" class="c-btn -link">
                     <span class="c-btn__txt">Pod Onboarding</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -137,7 +137,7 @@
             <h3 class="card-title-lg">Lead Solutions Architect</h3>
             <p class="card-text">Sets technical vision, designs data schemas, enforces security standards, and mentors the development team.</p>
           </div>
-          <a href="{{ route('book-a-demo') }}" class="c-btn -link">
+          <a href="{{ route('contact') }}" class="c-btn -link">
                     <span class="c-btn__txt">Architecture Lead</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -345,7 +345,7 @@
             Ready to Accelerate Your Engineering Roadmap?<br><mark>Deploy a Bluebase Pod Today</mark>.
           </h2>
           <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;" class="stagger-2" data-viewport="true">
-            <a href="{{ route('book-a-demo') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
+            <a href="{{ route('contact') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
                     <span class="c-btn__txt">Schedule a Discovery Call</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">

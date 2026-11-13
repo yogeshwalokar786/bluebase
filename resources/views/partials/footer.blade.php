@@ -56,7 +56,7 @@
             <li><a href="{{ route('services.api-backend-development') }}">API &amp; Backend Development</a></li>
             <li><a href="{{ route('services.website-redesign') }}">Website Redesign &amp; Speed</a></li>
             <li><a href="{{ route('services.maintenance-support') }}">Maintenance &amp; Support</a></li>
-            <li><a href="{{ route('book-a-demo') }}">Technical Discovery Call</a></li>
+            <li><a href="{{ route('contact') }}">Contact &amp; Inquiries</a></li>
           </ul>
         </div>
 

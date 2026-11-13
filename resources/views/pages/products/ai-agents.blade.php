@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Autonomous AI Agents & Enterprise Workflow Automation | Bluebase')
 @section('meta_description', 'Deploy autonomous, multi-agent AI systems that execute complex enterprise workflows with deterministic safety and enterprise governance.')
@@ -18,7 +18,7 @@
         </p>
 
         <div class="hero-buttons stagger-3" data-viewport="true">
-          <a href="{{ route('book-a-demo') }}" class="c-btn -primary">
+          <a href="{{ route('contact') }}" class="c-btn -primary">
                     <span class="c-btn__txt">Book an Agentic AI Demo</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -69,7 +69,7 @@
               </div>
               <h3 class="feature-card-title">Multi-Agent Orchestration</h3>
               <p class="feature-card-desc">Autonomous planner, executor, and verifier agents coordinating via structured protocols to solve complex multi-department business challenges.</p>
-              <a href="{{ route('book-a-demo') }}" class="c-btn -link">
+              <a href="{{ route('contact') }}" class="c-btn -link">
                     <span class="c-btn__txt">See Multi-Agent Architecture</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -197,7 +197,7 @@
             <h3 class="card-title-lg">Customer Support Automation</h3>
             <p class="card-text">Tier-1 and Tier-2 customer service agents that execute actual refunds, status updates, and account modifications.</p>
           </div>
-          <a href="{{ route('book-a-demo') }}" class="c-btn -link">
+          <a href="{{ route('contact') }}" class="c-btn -link">
                     <span class="c-btn__txt">Support Agent Pods</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -237,7 +237,7 @@
             <h3 class="card-title-lg">Financial Reconciliation</h3>
             <p class="card-text">Autonomous agents reconciling thousands of daily bank feeds, Stripe transactions, and internal ledger entries.</p>
           </div>
-          <a href="{{ route('book-a-demo') }}" class="c-btn -link">
+          <a href="{{ route('contact') }}" class="c-btn -link">
                     <span class="c-btn__txt">Financial Agents</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -345,7 +345,7 @@
             Ready to Deploy Autonomous AI Agents?<br><mark>Automate Real Work Today</mark>.
           </h2>
           <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;" class="stagger-2" data-viewport="true">
-            <a href="{{ route('book-a-demo') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
+            <a href="{{ route('contact') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
                     <span class="c-btn__txt">Schedule a Discovery Call</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">

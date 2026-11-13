@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Find a Solution Partner & System Integrator | Bluebase')
 @section('meta_description', 'Connect with certified Bluebase implementation partners, cloud architects, and regional technology specialists in North America, Europe, and APAC.')
@@ -28,7 +28,7 @@
                         <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
                       </span>
                     </span>
-                  </a> <a href="{{ route('book-a-demo') }}" class="c-btn -secondary">
+                  </a> <a href="{{ route('contact') }}" class="c-btn -secondary">
                     <span class="c-btn__txt">Request Partner Introduction</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -137,7 +137,7 @@
             <h3 class="card-title-lg">North America Platinum Partners</h3>
             <p class="card-text">Enterprise cloud modernizations, dedicated engineering pods, and multi-agent AI automation for Fortune 1000 enterprises.</p>
           </div>
-          <a href="{{ route('book-a-demo') }}" class="c-btn -link">
+          <a href="{{ route('contact') }}" class="c-btn -link">
                     <span class="c-btn__txt">Connect in NA</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -345,7 +345,7 @@
             Looking for a Certified Implementation Partner?<br><mark>Let Us Connect You Today</mark>.
           </h2>
           <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;" class="stagger-2" data-viewport="true">
-            <a href="{{ route('book-a-demo') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
+            <a href="{{ route('contact') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
                     <span class="c-btn__txt">Schedule a Discovery Call</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">

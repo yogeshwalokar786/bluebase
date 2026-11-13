@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Web Development Services | Custom Web Applications & Websites | Bluebase Technologies')
 @section('meta_description', 'Bluebase Technologies provides custom web development services for startups and growing brands. We build scalable SaaS web applications, client portals, and fast websites with Laravel, React, Next.js, and Node.js.')
@@ -64,7 +64,7 @@
           </span>
         </span>
       </a>
-      <a href="{{ route('book-a-demo') }}" class="c-btn -secondary">
+      <a href="{{ route('contact') }}" class="c-btn -secondary">
         <span class="c-btn__txt">Schedule a Call</span>
         <span class="c-btn__ico">
           <span class="c-btn__ico-base">
@@ -683,7 +683,7 @@
               </span>
             </span>
           </a>
-          <a href="{{ route('book-a-demo') }}" class="c-btn -outline-white" style="padding: 14px 32px; font-size: 1.05rem;">
+          <a href="{{ route('contact') }}" class="c-btn -outline-white" style="padding: 14px 32px; font-size: 1.05rem;">
             <span class="c-btn__txt">Schedule a Call</span>
             <span class="c-btn__ico">
               <span class="c-btn__ico-base">

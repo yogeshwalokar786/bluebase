@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Engineering Blog & Technical Insights | Bluebase')
 @section('meta_description', 'In-depth technical articles, architectural blueprints, AI system designs, and software engineering best practices from the Bluebase engineering team.')
@@ -345,7 +345,7 @@
             Want to Read More Engineering Insights?<br><mark>Subscribe to the Bluebase Tech Digest</mark>.
           </h2>
           <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;" class="stagger-2" data-viewport="true">
-            <a href="{{ route('book-a-demo') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
+            <a href="{{ route('contact') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
                     <span class="c-btn__txt">Schedule a Discovery Call</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">

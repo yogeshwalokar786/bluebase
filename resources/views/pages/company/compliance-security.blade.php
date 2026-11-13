@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Security, Compliance & Governance Standards | Bluebase Technologies')
 @section('meta_description', 'Enterprise-grade security, SOC 2 Type II controls, ISO/IEC 27001 ISMS, GDPR data residency, zero-trust infrastructure, and guaranteed 100% client IP ownership.')
@@ -65,7 +65,7 @@
           </span>
         </span>
       </a>
-      <a href="{{ route('book-a-demo') }}" class="c-btn -secondary">
+      <a href="{{ route('contact') }}" class="c-btn -secondary">
         <span class="c-btn__txt">Schedule a Call</span>
         <span class="c-btn__ico">
           <span class="c-btn__ico-base">
@@ -846,7 +846,7 @@
             </span>
           </span>
         </a>
-        <a href="{{ route('book-a-demo') }}" class="c-btn -secondary" style="border-color: rgba(255,255,255,0.2); color: #ffffff;">
+        <a href="{{ route('contact') }}" class="c-btn -secondary" style="border-color: rgba(255,255,255,0.2); color: #ffffff;">
           <span class="c-btn__txt">Schedule Audit Call</span>
           <span class="c-btn__ico">
             <span class="c-btn__ico-base">

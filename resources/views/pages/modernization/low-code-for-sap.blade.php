@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Rapid Application Engineering & Agile Delivery | Bluebase')
 @section('meta_description', 'Ship production-grade enterprise software 4x faster with Bluebase')
@@ -18,7 +18,7 @@
         </p>
 
         <div class="hero-buttons stagger-3" data-viewport="true">
-          <a href="{{ route('book-a-demo') }}" class="c-btn -primary">
+          <a href="{{ route('contact') }}" class="c-btn -primary">
                     <span class="c-btn__txt">Schedule Rapid Scoping Call</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -69,7 +69,7 @@
               </div>
               <h3 class="feature-card-title">Pre-Built Architectural Starters</h3>
               <p class="feature-card-desc">Battle-tested boilerplates for auth, multi-tenancy, background workers, event queues, and real-time WebSockets that eliminate reinventing the wheel.</p>
-              <a href="{{ route('book-a-demo') }}" class="c-btn -link">
+              <a href="{{ route('contact') }}" class="c-btn -link">
                     <span class="c-btn__txt">Starter Blueprints</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -235,7 +235,7 @@
               <img src="{{ asset('images/icons/tool.svg') }}" alt="" width="26" height="26">
             </div>
             <h3 class="card-title-lg">Direct Architect Access</h3>
-            <p class="card-text">Communicate directly in Slack with the engineers writing your codeâ€”zero account managers or middlemen.</p>
+            <p class="card-text">Communicate directly in Slack with the engineers writing your code—zero account managers or middlemen.</p>
           </div>
           <a href="{{ route('contact') }}" class="c-btn -link">
                     <span class="c-btn__txt">Get Connected</span>
@@ -345,7 +345,7 @@
             Ready to Ship Your Next Application?<br><mark>Launch 4X Faster with Bluebase</mark>.
           </h2>
           <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;" class="stagger-2" data-viewport="true">
-            <a href="{{ route('book-a-demo') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
+            <a href="{{ route('contact') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
                     <span class="c-btn__txt">Schedule a Discovery Call</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">

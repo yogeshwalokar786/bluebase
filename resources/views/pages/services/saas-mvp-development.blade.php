@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'SaaS MVP Development Services | Rapid 0 to 1 Launch | Bluebase Technologies')
 @section('meta_description', 'Turn your startup idea into a production-ready SaaS MVP in 3 to 6 weeks. Multi-tenant architecture, automated Stripe billing, role-based auth, and interactive user dashboards.')
@@ -349,7 +349,7 @@
                     </td>
                     <td>Scale Tier</td>
                     <td><strong>$249.00</strong></td>
-                    <td><span class="saas-pill-status -paid">â— Active Paid</span></td>
+                    <td><span class="saas-pill-status -paid">● Active Paid</span></td>
                     <td>Nov 28, 2026</td>
                     <td><a href="#manage" style="color: var(--color-accent); font-weight: 600;">Manage</a></td>
                   </tr>
@@ -365,7 +365,7 @@
                     </td>
                     <td>Growth Pro</td>
                     <td><strong>$79.00</strong></td>
-                    <td><span class="saas-pill-status -paid">â— Active Paid</span></td>
+                    <td><span class="saas-pill-status -paid">● Active Paid</span></td>
                     <td>Dec 02, 2026</td>
                     <td><a href="#manage" style="color: var(--color-accent); font-weight: 600;">Manage</a></td>
                   </tr>
@@ -381,7 +381,7 @@
                     </td>
                     <td>Team Pro</td>
                     <td><strong>$79.00</strong></td>
-                    <td><span class="saas-pill-status -trial">â— 14-Day Trial</span></td>
+                    <td><span class="saas-pill-status -trial">● 14-Day Trial</span></td>
                     <td>Nov 19, 2026</td>
                     <td><a href="#manage" style="color: var(--color-accent); font-weight: 600;">Manage</a></td>
                   </tr>
@@ -397,7 +397,7 @@
                     </td>
                     <td>Scale Tier</td>
                     <td><strong>$249.00</strong></td>
-                    <td><span class="saas-pill-status -paid">â— Active Paid</span></td>
+                    <td><span class="saas-pill-status -paid">● Active Paid</span></td>
                     <td>Nov 24, 2026</td>
                     <td><a href="#manage" style="color: var(--color-accent); font-weight: 600;">Manage</a></td>
                   </tr>
@@ -429,7 +429,7 @@
                     <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--color-primary); margin-bottom: 2px;">Acme Corp</h4>
                     <span class="saas-tenant-domain">acme.saasflow.io</span>
                   </div>
-                  <span class="saas-pill-status -active">â— Schema Isolated</span>
+                  <span class="saas-pill-status -active">● Schema Isolated</span>
                 </div>
                 <div class="saas-tenant-meta-list">
                   <div class="saas-tenant-meta-row"><span>Database Schema:</span><strong>tenant_acme_prod</strong></div>
@@ -444,7 +444,7 @@
                     <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--color-primary); margin-bottom: 2px;">HyperScale AI</h4>
                     <span class="saas-tenant-domain">hyperscale.saasflow.io</span>
                   </div>
-                  <span class="saas-pill-status -active">â— Schema Isolated</span>
+                  <span class="saas-pill-status -active">● Schema Isolated</span>
                 </div>
                 <div class="saas-tenant-meta-list">
                   <div class="saas-tenant-meta-row"><span>Database Schema:</span><strong>tenant_hyper_prod</strong></div>
@@ -459,7 +459,7 @@
                     <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--color-primary); margin-bottom: 2px;">Nordic Logistics</h4>
                     <span class="saas-tenant-domain">nordic.saasflow.io</span>
                   </div>
-                  <span class="saas-pill-status -active">â— Schema Isolated</span>
+                  <span class="saas-pill-status -active">● Schema Isolated</span>
                 </div>
                 <div class="saas-tenant-meta-list">
                   <div class="saas-tenant-meta-row"><span>Database Schema:</span><strong>tenant_nordic_prod</strong></div>
@@ -474,7 +474,7 @@
                     <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--color-primary); margin-bottom: 2px;">Vanguard Media</h4>
                     <span class="saas-tenant-domain">vanguard.saasflow.io</span>
                   </div>
-                  <span class="saas-pill-status -active">â— Schema Isolated</span>
+                  <span class="saas-pill-status -active">● Schema Isolated</span>
                 </div>
                 <div class="saas-tenant-meta-list">
                   <div class="saas-tenant-meta-row"><span>Database Schema:</span><strong>tenant_vanguard_prod</strong></div>
@@ -511,7 +511,7 @@
                 <p class="saas-viewport-subtitle">Automated tier switching, self-service customer portal, and idempotent webhook handlers for failed payment retries.</p>
               </div>
               <div class="saas-header-actions">
-                <span class="saas-pill-status -paid">â— Stripe API v2024-06-20 Connected</span>
+                <span class="saas-pill-status -paid">● Stripe API v2024-06-20 Connected</span>
               </div>
             </div>
 
@@ -543,7 +543,7 @@
             <div class="saas-table-wrapper">
               <div class="saas-table-header">
                 <h4 class="saas-table-title">Real-Time Stripe Webhook Events</h4>
-                <span style="font-size: 0.78rem; color: #059669; font-weight: 600;">Idempotent Handlers â€¢ 0 Drops</span>
+                <span style="font-size: 0.78rem; color: #059669; font-weight: 600;">Idempotent Handlers • 0 Drops</span>
               </div>
               <div class="saas-event-list" style="padding: 14px;">
                 <div class="saas-event-item">
@@ -624,7 +624,7 @@
             <div class="saas-api-terminal">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; color: #94a3b8; font-size: 0.76rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 8px;">
                 <span>ENDPOINT: GET /api/v1/workspaces/metrics</span>
-                <span id="apiStatusTag" style="color: #34d399; font-weight: 600;">200 OK â€¢ 32ms</span>
+                <span id="apiStatusTag" style="color: #34d399; font-weight: 600;">200 OK • 32ms</span>
               </div>
               <pre id="apiJsonConsole" style="margin: 0; font-family: var(--font-mono, monospace); color: #e2e8f0; font-size: 0.84rem;">{
   "status": "success",
@@ -652,7 +652,7 @@
                 <p class="saas-viewport-subtitle">Protect sensitive routes and database operations with role hierarchies (Superadmin, Workspace Admin, Member, Read-Only).</p>
               </div>
               <div class="saas-header-actions">
-                <span class="saas-pill-status -paid">â— Strict Middleware Enforced</span>
+                <span class="saas-pill-status -paid">● Strict Middleware Enforced</span>
               </div>
             </div>
 
@@ -1129,7 +1129,7 @@
               </span>
             </span>
           </a>
-          <a href="{{ route('book-a-demo') }}" class="c-btn -outline-white" style="padding: 14px 32px; font-size: 1.05rem;">
+          <a href="{{ route('contact') }}" class="c-btn -outline-white" style="padding: 14px 32px; font-size: 1.05rem;">
             <span class="c-btn__txt">Schedule a Call</span>
             <span class="c-btn__ico">
               <span class="c-btn__ico-base">
@@ -1357,7 +1357,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const randReqRem = Math.floor(Math.random() * 20) + 980;
 
         if (apiStatusTag) {
-          apiStatusTag.innerHTML = '200 OK â€¢ ' + randLatency + 'ms';
+          apiStatusTag.innerHTML = '200 OK • ' + randLatency + 'ms';
         }
 
         apiConsole.textContent = JSON.stringify({

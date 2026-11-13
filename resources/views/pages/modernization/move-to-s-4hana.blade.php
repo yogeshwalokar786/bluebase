@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Legacy System Modernization & Cloud Migration | Bluebase')
 @section('meta_description', 'Modernize legacy applications, decouple mission-critical databases, and migrate to cloud platforms with guaranteed business continuity and zero data loss.')
@@ -14,11 +14,11 @@
           Modernize Legacy Systems <mark>Without Business Disruption</mark>.
         </h1>
         <p class="hero-description stagger-2" data-viewport="true">
-          Legacy monoliths choke innovation and cost millions in maintenance. Bluebase executes phased modernization strategiesâ€”strangler fig patterns, API encapsulation, and cloud migrationsâ€”with zero operational interruption.
+          Legacy monoliths choke innovation and cost millions in maintenance. Bluebase executes phased modernization strategies—strangler fig patterns, API encapsulation, and cloud migrations—with zero operational interruption.
         </p>
 
         <div class="hero-buttons stagger-3" data-viewport="true">
-          <a href="{{ route('book-a-demo') }}" class="c-btn -primary">
+          <a href="{{ route('contact') }}" class="c-btn -primary">
                     <span class="c-btn__txt">Schedule Modernization Assessment</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -69,7 +69,7 @@
               </div>
               <h3 class="feature-card-title">Strangler Fig Decoupling</h3>
               <p class="feature-card-desc">Extracting monolithic services into microservices incrementally, validating each phase in production without risky 'big bang' migrations.</p>
-              <a href="{{ route('book-a-demo') }}" class="c-btn -link">
+              <a href="{{ route('contact') }}" class="c-btn -link">
                     <span class="c-btn__txt">Strangler Pattern</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -177,7 +177,7 @@
             <h3 class="card-title-lg">Database Re-Architecting</h3>
             <p class="card-text">Migrating legacy Oracle and MS SQL databases to scalable PostgreSQL, Aurora, and DynamoDB with zero data loss.</p>
           </div>
-          <a href="{{ route('book-a-demo') }}" class="c-btn -link">
+          <a href="{{ route('contact') }}" class="c-btn -link">
                     <span class="c-btn__txt">Database Migration</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -345,7 +345,7 @@
             Ready to Modernize Your Legacy Architecture?<br><mark>Migrate with Zero Downtime</mark>.
           </h2>
           <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;" class="stagger-2" data-viewport="true">
-            <a href="{{ route('book-a-demo') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
+            <a href="{{ route('contact') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
                     <span class="c-btn__txt">Schedule a Discovery Call</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">

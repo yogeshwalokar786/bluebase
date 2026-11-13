@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Smart Manufacturing & Industry 4.0 Software | Bluebase')
 @section('meta_description', 'Bridge shop-floor PLCs, SCADA systems, and cloud analytics with custom manufacturing execution software (MES) and real-time OEE dashboards.')
@@ -18,7 +18,7 @@
         </p>
 
         <div class="hero-buttons stagger-3" data-viewport="true">
-          <a href="{{ route('book-a-demo') }}" class="c-btn -primary">
+          <a href="{{ route('contact') }}" class="c-btn -primary">
                     <span class="c-btn__txt">Schedule Manufacturing Assessment</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -69,7 +69,7 @@
               </div>
               <h3 class="feature-card-title">Real-Time OEE Telemetry</h3>
               <p class="feature-card-desc">Continuous calculation of Overall Equipment Effectiveness (Availability, Performance, Quality) streamed to interactive plant dashboards.</p>
-              <a href="{{ route('book-a-demo') }}" class="c-btn -link">
+              <a href="{{ route('contact') }}" class="c-btn -link">
                     <span class="c-btn__txt">OEE Dashboards</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -157,7 +157,7 @@
             <h3 class="card-title-lg">Production Scheduling & Dispatch</h3>
             <p class="card-text">Visual drag-and-drop Gantt production planners reacting dynamically to machine breakdowns and material shortages.</p>
           </div>
-          <a href="{{ route('book-a-demo') }}" class="c-btn -link">
+          <a href="{{ route('contact') }}" class="c-btn -link">
                     <span class="c-btn__txt">Scheduling Engines</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -345,7 +345,7 @@
             Ready to Digitize Your Manufacturing Floor?<br><mark>Engineer Smart Operations with Bluebase</mark>.
           </h2>
           <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;" class="stagger-2" data-viewport="true">
-            <a href="{{ route('book-a-demo') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
+            <a href="{{ route('contact') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
                     <span class="c-btn__txt">Schedule a Discovery Call</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">

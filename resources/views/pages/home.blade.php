@@ -801,7 +801,7 @@
             <p class="feature-card-desc">
               We run cross-browser and mobile device audits, deploy directly to your production cloud hosting, and transfer full repository ownership, documentation, and credentials to your team.
             </p>
-            <a href="{{ route('book-a-demo') }}" class="c-btn -link">
+            <a href="{{ route('contact') }}" class="c-btn -link">
               <span class="c-btn__txt">Schedule Free Consultation</span>
               <span class="c-btn__ico">
                 <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
@@ -1014,7 +1014,7 @@
               <h3>Dedicated Developer Sprints</h3>
               <p>Add skilled full-stack engineering capacity directly into your team. Direct daily Slack collaboration, fast PR reviews, and zero agency middlemen.</p>
             </div>
-            <a href="{{ route('book-a-demo') }}" class="c-btn -link">
+            <a href="{{ route('contact') }}" class="c-btn -link">
               <span class="c-btn__txt">Talk to Our Team</span>
               <span class="c-btn__ico">
                 <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
@@ -1293,7 +1293,7 @@
                 <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
               </span>
             </a>
-            <a href="{{ route('book-a-demo') }}" class="c-btn -outline-white" style="padding: 14px 32px; font-size: 1.05rem;">
+            <a href="{{ route('contact') }}" class="c-btn -outline-white" style="padding: 14px 32px; font-size: 1.05rem;">
               <span class="c-btn__txt">Schedule a Call</span>
               <span class="c-btn__ico">
                 <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>

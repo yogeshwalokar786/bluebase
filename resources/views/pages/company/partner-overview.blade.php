@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Technology Alliances & Partner Ecosystem | Bluebase')
 @section('meta_description', 'Partner with Bluebase to co-innovate, co-sell, and deliver world-class digital engineering and AI solutions to enterprise clients globally.')
@@ -157,7 +157,7 @@
             <h3 class="card-title-lg">Joint Go-to-Market & Co-Selling</h3>
             <p class="card-text">Collaborate on enterprise RFPs, pitch joint solutions to C-level stakeholders, and leverage shared marketing campaigns.</p>
           </div>
-          <a href="{{ route('book-a-demo') }}" class="c-btn -link">
+          <a href="{{ route('contact') }}" class="c-btn -link">
                     <span class="c-btn__txt">Co-Sell with Us</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -345,7 +345,7 @@
             Ready to Partner with Bluebase?<br><mark>Grow Your Practice with Us</mark>.
           </h2>
           <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;" class="stagger-2" data-viewport="true">
-            <a href="{{ route('book-a-demo') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
+            <a href="{{ route('contact') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
                     <span class="c-btn__txt">Schedule a Discovery Call</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">

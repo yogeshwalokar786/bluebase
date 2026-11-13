@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Enterprise Mobile App Development & Offline Mobility | Bluebase')
 @section('meta_description', 'Build robust iOS, Android, and cross-platform mobile apps with guaranteed offline data synchronization for warehouses, field services, and frontline teams.')
@@ -18,7 +18,7 @@
         </p>
 
         <div class="hero-buttons stagger-3" data-viewport="true">
-          <a href="{{ route('book-a-demo') }}" class="c-btn -primary">
+          <a href="{{ route('contact') }}" class="c-btn -primary">
                     <span class="c-btn__txt">Schedule Mobile App Consultation</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -69,7 +69,7 @@
               </div>
               <h3 class="feature-card-title">True Offline-First Architecture</h3>
               <p class="feature-card-desc">Local SQLite database caching with multi-master sync algorithms and automated conflict resolution when connectivity returns.</p>
-              <a href="{{ route('book-a-demo') }}" class="c-btn -link">
+              <a href="{{ route('contact') }}" class="c-btn -link">
                     <span class="c-btn__txt">Offline Architecture</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -217,7 +217,7 @@
             <h3 class="card-title-lg">Mobile Device Management (MDM)</h3>
             <p class="card-text">Seamless deployment via Microsoft Intune, VMware Workspace ONE, and private enterprise app stores.</p>
           </div>
-          <a href="{{ route('book-a-demo') }}" class="c-btn -link">
+          <a href="{{ route('contact') }}" class="c-btn -link">
                     <span class="c-btn__txt">MDM Deployment</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -345,7 +345,7 @@
             Ready to Mobilize Your Frontline Operations?<br><mark>Build Offline-First with Bluebase</mark>.
           </h2>
           <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;" class="stagger-2" data-viewport="true">
-            <a href="{{ route('book-a-demo') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
+            <a href="{{ route('contact') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
                     <span class="c-btn__txt">Schedule a Discovery Call</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">

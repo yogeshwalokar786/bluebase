@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Request a Project Proposal & Architecture Audit | Bluebase')
 @section('meta_description', 'Get a comprehensive, zero-cost architecture review and customized engineering proposal for your web app, mobile app, or AI project.')
@@ -28,8 +28,8 @@
                         <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
                       </span>
                     </span>
-                  </a> <a href="{{ route('book-a-demo') }}" class="c-btn -secondary">
-                    <span class="c-btn__txt">Schedule a Call Instead</span>
+                  </a> <a href="{{ route('contact') }}" class="c-btn -secondary">
+                    <span class="c-btn__txt">Contact Our Team Instead</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
                         <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
@@ -298,8 +298,8 @@
             Ready to Receive Your Custom Engineering Proposal?<br><mark>Get Your Architecture Review in 48 Hours</mark>.
           </h2>
           <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;" class="stagger-2" data-viewport="true">
-            <a href="{{ route('book-a-demo') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
-                    <span class="c-btn__txt">Schedule a Discovery Call</span>
+            <a href="{{ route('contact') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
+                    <span class="c-btn__txt">Start Your Project</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
                         <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>

@@ -18,7 +18,7 @@
         </p>
 
         <div class="hero-buttons stagger-3" data-viewport="true">
-          <a href="{{ route('book-a-demo') }}" class="c-btn -primary">
+          <a href="{{ route('contact') }}" class="c-btn -primary">
                     <span class="c-btn__txt">Schedule Client Transformation Call</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -69,7 +69,7 @@
               </div>
               <h3 class="feature-card-title">Johnson & Johnson: Global Clinical Logistics</h3>
               <p class="feature-card-desc">Replaced fragmented spreadsheet tracking with an automated, GxP-validated inventory platform deployed across 40+ global distribution hubs.</p>
-              <a href="{{ route('book-a-demo') }}" class="c-btn -link">
+              <a href="{{ route('contact') }}" class="c-btn -link">
                     <span class="c-btn__txt">View Architecture</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -184,7 +184,7 @@
             <h3 class="card-title-lg">Compass Group: Frontline Hospitality Operations</h3>
             <p class="card-text">Custom tablet interfaces replaced manual paper audits across hundreds of kitchens, saving 15,000 manager hours annually.</p>
           </div>
-          <a href="{{ route('book-a-demo') }}" class="c-btn -link">
+          <a href="{{ route('contact') }}" class="c-btn -link">
                     <span class="c-btn__txt">Read Case Study</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -372,7 +372,7 @@
             Ready to Write Your Success Story?<br><mark>Partner with Bluebase Engineering</mark>.
           </h2>
           <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;" class="stagger-2" data-viewport="true">
-            <a href="{{ route('book-a-demo') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
+            <a href="{{ route('contact') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
                     <span class="c-btn__txt">Schedule a Discovery Call</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
