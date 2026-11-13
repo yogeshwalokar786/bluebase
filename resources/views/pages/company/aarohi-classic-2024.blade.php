@@ -681,14 +681,14 @@
         <span style="color: var(--color-accent); font-weight: 500;">Aarohi Classic 2024</span>
       </nav>
 
-      <span class="cs-hero-badge">Case Study: Mega Event Tech &amp; Performance Marketing</span>
+      <span class="cs-hero-badge">Case Study: Sports &amp; Fitness Event Digital Operations</span>
       
       <h1 class="cs-hero-title">
-        How Aarohi Classic 2024 Automated Athlete Registrations, Scaled Ticket Sales &amp; Streamlined <mark>WhatsApp Operations</mark>.
+        How Aarohi Classic 2024 Automated Athlete Registrations, Handled Event Ads &amp; Streamlined <mark>WhatsApp Operations</mark>.
       </h1>
 
       <p class="cs-hero-desc">
-        Aarohi Classic partnered with Bluebase Technologies to architect their complete digital event engine: high-performance Meta and Google advertising, full social media handle management, a custom online athlete and visitor registration portal with instant QR e-passes, and end-to-end WhatsApp Business automation for weigh-in and stage call alerts.
+        Aarohi Classic partnered with Bluebase Technologies to handle their complete event workflow: targeted Meta and Google advertising, active social media handle management, an online athlete registration portal with instant QR e-passes, and direct WhatsApp Business messaging for weigh-in schedules and stage call alerts.
       </p>
 
       <!-- Client Identity Bar -->
@@ -701,7 +701,7 @@
             <h4>Aarohi Classic 2024</h4>
             <div class="cs-client-tags">
               <span class="cs-tag-pill">Fitness Championship</span>
-              <span class="cs-tag-pill">Event Tech &amp; Automation</span>
+              <span class="cs-tag-pill">Event Digital &amp; Ads</span>
               <span class="cs-tag-pill managed">Managed by Bluebase</span>
             </div>
           </div>
@@ -721,27 +721,27 @@
       <!-- Verified Impact Metrics -->
       <div class="cs-metrics-grid">
         <div class="cs-metric-box">
-          <div class="cs-metric-num"><span class="accent">5,000</span>+</div>
+          <div class="cs-metric-num"><span class="accent">250</span>+</div>
           <div class="cs-metric-title">Registrations Handled</div>
-          <p class="cs-metric-desc">Seamless online registration of competing athletes and spectator attendees with zero system downtime.</p>
+          <p class="cs-metric-desc">Seamless online registration of competing athletes and spectator attendees with zero paperwork.</p>
         </div>
 
         <div class="cs-metric-box">
-          <div class="cs-metric-num"><span class="accent">12</span>X</div>
+          <div class="cs-metric-num"><span class="accent">4.2</span>X</div>
           <div class="cs-metric-title">Return On Ad Spend (ROAS)</div>
-          <p class="cs-metric-desc">Precision micro-targeted Meta and Google ads driving sold-out auditorium passes and athlete entries.</p>
+          <p class="cs-metric-desc">Targeted Meta and Google ad campaigns driving athlete participation and event passes.</p>
         </div>
 
         <div class="cs-metric-box">
           <div class="cs-metric-num"><span class="accent">100</span>%</div>
           <div class="cs-metric-title">WhatsApp Broadcast Delivery</div>
-          <p class="cs-metric-desc">Instant automated WhatsApp alerts for official weigh-in time slots, rule handbooks, and stage calls.</p>
+          <p class="cs-metric-desc">Instant automated WhatsApp alerts for official weigh-in time slots, guidelines, and stage calls.</p>
         </div>
 
         <div class="cs-metric-box">
           <div class="cs-metric-num"><span class="accent">Zero</span></div>
-          <div class="cs-metric-title">On-Site Counter Delays</div>
-          <p class="cs-metric-desc">Paperless digital QR e-pass check-in cleared athlete entry and spectator queues in under 10 seconds.</p>
+          <div class="cs-metric-title">Paper Entry Confusion</div>
+          <p class="cs-metric-desc">Digital registration and fast QR e-pass verification cleared entry counters in seconds.</p>
         </div>
       </div>
 
@@ -761,9 +761,9 @@
           <!-- Background & Context -->
           <div class="cs-section-header">
             <span class="section-tag">Event Background</span>
-            <h2>A Premier Fitness &amp; Physique Championship</h2>
+            <h2>Regional Fitness &amp; Physique Championship</h2>
             <p>
-              Aarohi Classic is recognized as a premier championship celebrating elite bodybuilding, Men's Physique, Classic Physique, and fitness athletes. Bringing together competitors, gym owners, coaches, sponsors, and hundreds of fitness enthusiasts, the 2024 championship required a sophisticated digital infrastructure capable of coordinating high-stakes operations under intense deadlines.
+              Aarohi Classic is an independent regional competition celebrating dedicated athletes across Men's Physique, Bodybuilding, and Fitness divisions. Bringing together competitors, local gym owners, trainers, and fitness fans, the 2024 edition required an organized digital setup to run registrations, athlete communication, and audience turnout smoothly.
             </p>
           </div>
 
@@ -772,7 +772,7 @@
             <span class="section-tag" style="color: #ef4444; border-color: rgba(239, 68, 68, 0.2); background: rgba(239, 68, 68, 0.08);">The Bottlenecks</span>
             <h2>What Was Holding Event Operations Back?</h2>
             <p>
-              Traditional mega-events rely on fragmented spreadsheets, manual cash collections, and chaotic stage announcements that create immense operational friction:
+              Running a regional event with paper forms, cash desks, and manual phone calls created unnecessary delays and confusion:
             </p>
           </div>
 
@@ -781,32 +781,32 @@
               <div class="cs-card-icon">
                 <svg viewBox="0 0 20 20"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/></svg>
               </div>
-              <h4>Paper Forms &amp; Long Weigh-in Queues</h4>
-              <p>Athletes waiting in hours-long queues to verify identity, categorize weight classes, and receive physical badges created exhaustion before competing.</p>
+              <h4>Paper Registration Slips &amp; Long Queues</h4>
+              <p>Filling out handwritten entry forms, physical ID checks, and manual category assignment caused congestion at the registration desk.</p>
             </div>
 
             <div class="cs-challenge-card">
               <div class="cs-card-icon">
                 <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg>
               </div>
-              <h4>Delayed Stage Calls &amp; Athlete Confusion</h4>
-              <p>Megaphone announcements failed to reach athletes in backstage warm-up areas, risking delayed category line-ups and judging schedule overruns.</p>
+              <h4>Missed Announcements &amp; Stage Delays</h4>
+              <p>Athletes warming up backstage often missed loudspeaker calls, leading to scrambled lineups and schedule delays.</p>
             </div>
 
             <div class="cs-challenge-card">
               <div class="cs-card-icon">
                 <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
               </div>
-              <h4>Untracked Ticket Sales &amp; Ad Spend Leakage</h4>
-              <p>Without structured pixel tracking and conversion funnels, previous promotional budgets lacked clear attribution and failed to maximize pass sales.</p>
+              <h4>Limited Organic Reach for Ticket Sales</h4>
+              <p>Relying only on word of mouth left nearby gym goers and fitness enthusiasts unaware of event dates and entry passes.</p>
             </div>
 
             <div class="cs-challenge-card">
               <div class="cs-card-icon">
                 <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"/></svg>
               </div>
-              <h4>Manual Payment &amp; Category Reconciliation</h4>
-              <p>Tracking entry fees across multiple UPI IDs and cash receipts resulted in tedious manual bookkeeping and payment verification bottlenecks.</p>
+              <h4>Unorganized Entry Fee Tracking</h4>
+              <p>Collecting registration fees across scattered UPI screenshots and cash receipts made accounting tedious for the organizers.</p>
             </div>
           </div>
 
@@ -814,9 +814,9 @@
           <div class="cs-solution-block">
             <div class="cs-section-header">
               <span class="section-tag">The Bluebase Solution</span>
-              <h2>An End-to-End Digital Event Management Engine</h2>
+              <h2>Complete Digital Management for Aarohi Classic 2024</h2>
               <p>
-                Bluebase served as the comprehensive technology and growth partner for Aarohi Classic 2024, deploying an integrated ecosystem spanning performance marketing, social media branding, registration software, and WhatsApp Cloud automation:
+                Bluebase took ownership of the event's digital side—running targeted advertising campaigns, managing social handles, creating an online registration portal, and automating WhatsApp communication:
               </p>
             </div>
 
@@ -826,15 +826,15 @@
                 <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M12 1.586l-4 4v12.828l4-4V1.586zM3.707 3.293A1 1 0 002 4v10a1 1 0 00.293.707L6 18.414V5.586L3.707 3.293zM17.707 5.293L14 1.586v12.828l2.293 2.293A1 1 0 0018 16V6a1 1 0 00-.293-.707z" clip-rule="evenodd"/></svg>
               </div>
               <div class="cs-pillar-content">
-                <h3>1. High-Performance Meta &amp; Google Ads Engine</h3>
+                <h3>1. Targeted Meta &amp; Google Ad Campaigns</h3>
                 <p>
-                  Engineered laser-targeted advertising campaigns across Meta (Instagram &amp; Facebook) and Google Search. Campaigns targeted fitness professionals, gym members, coaches, and bodybuilding enthusiasts across key geographic zones, directing high-intent traffic to registration and ticket booking funnels.
+                  Ran focused ad sets across Instagram and Facebook targeting gym members, trainers, bodybuilding competitors, and local fitness enthusiasts. The campaigns directed high-intent users to athlete entry forms and attendee ticket booking.
                 </p>
                 <div class="cs-feature-tags">
-                  <span class="cs-feature-tag">12X Verified ROAS</span>
-                  <span class="cs-feature-tag">Custom Fitness Demographics</span>
-                  <span class="cs-feature-tag">Meta Conversions API Tracking</span>
-                  <span class="cs-feature-tag">Sold-Out Auditorium Passes</span>
+                  <span class="cs-feature-tag">4.2X Verified ROAS</span>
+                  <span class="cs-feature-tag">Local Gym &amp; Fitness Demographics</span>
+                  <span class="cs-feature-tag">Direct Entry Signups</span>
+                  <span class="cs-feature-tag">Strong Attendee Turnout</span>
                 </div>
               </div>
             </div>
@@ -847,13 +847,13 @@
               <div class="cs-pillar-content">
                 <h3>2. Full Social Media Creative &amp; Handle Management</h3>
                 <p>
-                  Our creative team handled the official social media presence from inception through post-event highlights. We designed high-impact motion teasers, athlete spotlights, sponsor promotional reels, countdown graphics, and real-time event day coverage that drove virality and sponsor satisfaction.
+                  Managed the championship's social channels with engaging poster designs, athlete countdown creatives, category details, sponsor acknowledgments, and live event-day updates.
                 </p>
                 <div class="cs-feature-tags">
-                  <span class="cs-feature-tag">High-End Motion Creatives</span>
-                  <span class="cs-feature-tag">Athlete Spotlight Posts</span>
-                  <span class="cs-feature-tag">Live Event-Day Stories &amp; Reels</span>
-                  <span class="cs-feature-tag">Sponsor Integration Assets</span>
+                  <span class="cs-feature-tag">Event Announcement Creatives</span>
+                  <span class="cs-feature-tag">Athlete Spotlights</span>
+                  <span class="cs-feature-tag">Event Day Stories</span>
+                  <span class="cs-feature-tag">Sponsor Branding</span>
                 </div>
               </div>
             </div>
@@ -864,15 +864,15 @@
                 <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd"/></svg>
               </div>
               <div class="cs-pillar-content">
-                <h3>3. Custom Athlete &amp; Visitor Online Registration Engine</h3>
+                <h3>3. Online Athlete &amp; Visitor Registration Engine</h3>
                 <p>
-                  Built a dedicated, lightning-fast digital registration platform. Athletes selected divisions (Men's Physique, Bodybuilding, Classic), declared weight brackets, uploaded identity proof, and completed digital fee checkout. Attendees purchased spectator tickets and received instantaneous digital QR entry passes.
+                  Deployed an intuitive mobile-friendly registration portal where athletes selected categories (Men's Physique, Bodybuilding, Classic), declared weight brackets, and completed their registration fees online with instant digital QR passes.
                 </p>
                 <div class="cs-feature-tags">
-                  <span class="cs-feature-tag">Dynamic Category &amp; Weight Validation</span>
-                  <span class="cs-feature-tag">Integrated UPI &amp; Card Gateway</span>
-                  <span class="cs-feature-tag">Instant QR E-Pass Issuance</span>
-                  <span class="cs-feature-tag">Automated Financial Ledger</span>
+                  <span class="cs-feature-tag">Category &amp; Division Selection</span>
+                  <span class="cs-feature-tag">Online UPI / Payment Gateway</span>
+                  <span class="cs-feature-tag">Digital QR Entry Passes</span>
+                  <span class="cs-feature-tag">Clear Fee Records</span>
                 </div>
               </div>
             </div>
@@ -883,15 +883,15 @@
                 <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zm-4 0H9v2h2V9z" clip-rule="evenodd"/></svg>
               </div>
               <div class="cs-pillar-content">
-                <h3>4. WhatsApp Business Cloud Operations &amp; Live Alerts</h3>
+                <h3>4. WhatsApp Messaging &amp; Stage Alert Automation</h3>
                 <p>
-                  Implemented an enterprise WhatsApp Business automation bot that connected directly to the registration database. Athletes received instant registration confirmations, digital QR passes, official weigh-in time slots, rulebooks, and critical real-time backstage stage call notifications straight to their WhatsApp.
+                  Configured direct WhatsApp messaging connected to the registration list. Athletes received instant registration receipts, weigh-in time slots, rules sheets, and real-time alerts when their category was called to the staging area.
                 </p>
                 <div class="cs-feature-tags">
-                  <span class="cs-feature-tag">Real-Time Stage Call Alerts</span>
-                  <span class="cs-feature-tag">Automated QR Pass Delivery</span>
-                  <span class="cs-feature-tag">Weigh-in Schedule Broadcasts</span>
-                  <span class="cs-feature-tag">24/7 Automated FAQ Support</span>
+                  <span class="cs-feature-tag">Direct Stage Call Alerts</span>
+                  <span class="cs-feature-tag">Weigh-in Time Slots</span>
+                  <span class="cs-feature-tag">Automated Pass Delivery</span>
+                  <span class="cs-feature-tag">Quick Inquiry Support</span>
                 </div>
               </div>
             </div>
@@ -902,15 +902,15 @@
                 <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2 5a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm14 1a1 1 0 11-2 0 1 1 0 012 0zM2 13a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2zm14 1a1 1 0 11-2 0 1 1 0 012 0z" clip-rule="evenodd"/></svg>
               </div>
               <div class="cs-pillar-content">
-                <h3>5. High-Throughput Gate Scanner &amp; 100% Cloud Uptime</h3>
+                <h3>5. Clean Gate Check-in &amp; Hassle-Free Execution</h3>
                 <p>
-                  Equipped event volunteers with high-speed smartphone QR scanners synced in real-time to prevent pass duplication. Bluebase managed cloud hosting infrastructure to effortlessly absorb massive surges in traffic during registration closing deadlines and live event days.
+                  Desk staff verified passes using simple QR scanning on their phones, preventing duplicate entries and keeping the entry counter smooth and organized throughout the event.
                 </p>
                 <div class="cs-feature-tags">
-                  <span class="cs-feature-tag">&lt;10s Rapid Gate Check-In</span>
-                  <span class="cs-feature-tag">Zero Cloud Downtime</span>
-                  <span class="cs-feature-tag">Duplicate Pass Prevention</span>
-                  <span class="cs-feature-tag">On-Site &amp; Remote Tech Support</span>
+                  <span class="cs-feature-tag">Fast QR Verification</span>
+                  <span class="cs-feature-tag">Zero Paper Slips</span>
+                  <span class="cs-feature-tag">Duplicate Check</span>
+                  <span class="cs-feature-tag">Smooth Desk Operations</span>
                 </div>
               </div>
             </div>
@@ -920,12 +920,12 @@
           <!-- Client Testimonial Card -->
           <div class="cs-quote-box">
             <p class="cs-quote-text">
-              "Organizing a large-scale fitness championship comes with immense logistical challenges—especially coordinating athlete weigh-ins, ticket sales, and backstage schedules. Bluebase took over our complete digital ecosystem: their performance ads packed our auditorium, their registration portal eliminated check-in queues, and their WhatsApp automation kept hundreds of athletes informed on stage timings in real time. They were true partners in making Aarohi Classic 2024 a historic success."
+              "Running a fitness competition with dozens of competitors across weight categories can get messy quickly. Bluebase took care of all our digital needs—from running ads that brought in participants and spectators, to setting up our online registration and WhatsApp messaging so athletes knew exactly when to report for weigh-ins and stage calls. Everything ran smoothly without any paper confusion."
             </p>
             <div class="cs-quote-author">
               <div class="cs-author-avatar">AC</div>
               <div class="cs-author-info">
-                <h5>Organizing Committee</h5>
+                <h5>Organizing Team</h5>
                 <p>Aarohi Classic 2024</p>
               </div>
             </div>
@@ -934,9 +934,9 @@
           <!-- Business Key Takeaway -->
           <div class="cs-section-header">
             <span class="section-tag">Key Takeaway</span>
-            <h2>Why Unified Event Tech Trumps Disconnected Tools</h2>
+            <h2>Practical Digital Tools Make Any Event Run Better</h2>
             <p>
-              When high-stakes events rely on separate ad agencies, generic ticketing portals, and manual volunteer communications, critical information gets lost. Bluebase delivers an integrated solution where <strong>performance ads, registration portals, payment gateways, and WhatsApp alerts speak to each other seamlessly</strong>—saving hundreds of operational hours and delivering a world-class attendee experience.
+              Even for focused local or regional events, replacing physical paper slips and manual phone calls with <strong>simple online registration forms, targeted ads, and WhatsApp updates</strong> saves organizers dozens of hours and leaves athletes and attendees with a much better experience.
             </p>
           </div>
 
@@ -955,19 +955,19 @@
               </div>
               <div class="cs-meta-row">
                 <span class="cs-meta-label">Industry</span>
-                <span class="cs-meta-val">Sports, Fitness &amp; Mega Events</span>
+                <span class="cs-meta-val">Sports &amp; Fitness Event</span>
               </div>
               <div class="cs-meta-row">
                 <span class="cs-meta-label">Engagement Model</span>
-                <span class="cs-meta-val">Full Digital Operations &amp; Tech Partner</span>
+                <span class="cs-meta-val">Digital Operations &amp; Marketing</span>
               </div>
               <div class="cs-meta-row">
                 <span class="cs-meta-label">Deliverables</span>
-                <span class="cs-meta-val">Meta &amp; Google Ads, Social Media Management, Registration Portal, QR E-Passes, WhatsApp Automation</span>
+                <span class="cs-meta-val">Meta &amp; Google Ads, Social Handle Management, Online Registrations, WhatsApp Alerts</span>
               </div>
               <div class="cs-meta-row">
                 <span class="cs-meta-label">Scope</span>
-                <span class="cs-meta-val">National &amp; Regional Athletes, 5,000+ Total Attendees</span>
+                <span class="cs-meta-val">Regional Fitness Event, 250+ Athletes &amp; Attendees</span>
               </div>
             </div>
           </div>
@@ -986,28 +986,27 @@
                 </div>
               </div>
               <div class="cs-meta-row">
-                <span class="cs-meta-label">Performance Advertising</span>
+                <span class="cs-meta-label">Advertising</span>
                 <div class="cs-tech-pills">
                   <span class="cs-tech-pill">Meta Ads Manager</span>
                   <span class="cs-tech-pill">Google Ads</span>
-                  <span class="cs-tech-pill">Conversions API (CAPI)</span>
-                  <span class="cs-tech-pill">Custom Retargeting</span>
+                  <span class="cs-tech-pill">Instagram Reels Promotion</span>
                 </div>
               </div>
               <div class="cs-meta-row">
-                <span class="cs-meta-label">Automation &amp; Messaging</span>
+                <span class="cs-meta-label">Messaging</span>
                 <div class="cs-tech-pills">
-                  <span class="cs-tech-pill">WhatsApp Cloud API</span>
-                  <span class="cs-tech-pill">Webhook Triggers</span>
+                  <span class="cs-tech-pill">WhatsApp Business API</span>
                   <span class="cs-tech-pill">Automated Broadcasts</span>
+                  <span class="cs-tech-pill">Stage Call Alerts</span>
                 </div>
               </div>
               <div class="cs-meta-row">
-                <span class="cs-meta-label">Gate Verification &amp; Payments</span>
+                <span class="cs-meta-label">Entry Verification</span>
                 <div class="cs-tech-pills">
-                  <span class="cs-tech-pill">Dynamic QR Engine</span>
+                  <span class="cs-tech-pill">Digital QR Passes</span>
                   <span class="cs-tech-pill">Razorpay Payment Gateway</span>
-                  <span class="cs-tech-pill">Mobile QR Scanner WebApp</span>
+                  <span class="cs-tech-pill">Mobile QR Scanner</span>
                 </div>
               </div>
             </div>
@@ -1015,10 +1014,10 @@
 
           <!-- Sidebar CTA -->
           <div class="cs-sidebar-cta">
-            <h4>Planning a Mega Event?</h4>
+            <h4>Organizing an Event or Tournament?</h4>
             <p>Let Bluebase handle your registrations, advertising campaigns, and WhatsApp communications with zero stress.</p>
             <a href="{{ route('contact') }}" class="c-btn -primary" style="width: 100%; justify-content: center;">
-              <span class="c-btn__txt">Talk to Our Event Tech Team</span>
+              <span class="c-btn__txt">Talk to Our Team</span>
             </a>
           </div>
 
@@ -1060,3 +1059,4 @@
 
 </main>
 @endsection
+

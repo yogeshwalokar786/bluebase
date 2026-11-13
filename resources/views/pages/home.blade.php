@@ -1104,9 +1104,9 @@
                   <span class="story-tag">Event Tech &amp; Ops</span>
                   <span class="story-tag" style="background: #ecfdf5; color: #047857;">Fully Managed</span>
                 </div>
-                <h3 class="story-title">Online Athlete Registrations, High-ROAS Performance Ads &amp; WhatsApp Operations for Aarohi Classic 2024.</h3>
+                <h3 class="story-title">Athlete Registrations, Performance Ads &amp; WhatsApp Operations for Aarohi Classic 2024.</h3>
                 <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-text-muted); margin-bottom: 24px;">
-                  Aarohi Classic partnered with Bluebase Technologies to architect their complete digital championship ecosystem. We deployed high-performance Meta and Google advertising funnels (12X ROAS), managed official social media handles with motion graphics, engineered a custom online athlete registration portal with instant QR e-passes, and automated weigh-in and stage call notifications via WhatsApp Business API.
+                  Aarohi Classic partnered with Bluebase Technologies to handle their complete event workflow. We ran targeted Meta and Google ad campaigns, managed their official social media handles with custom creatives, set up an online athlete registration portal with instant QR passes, and automated weigh-in and stage call alerts via WhatsApp Business.
                 </p>
                 <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap;">
                   <a href="{{ route('customer-stories.aarohi-classic-2024') }}" class="c-btn -primary" style="padding: 12px 24px;">

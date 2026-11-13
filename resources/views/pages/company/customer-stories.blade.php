@@ -502,37 +502,37 @@
 
         <!-- Headline & Description -->
         <h2 class="story-headline">
-          Online Athlete Registrations, High-ROAS Performance Ads &amp; WhatsApp Operations
+          Online Athlete Registrations, Performance Ads &amp; WhatsApp Operations
         </h2>
 
         <p class="story-summary-text">
-          Aarohi Classic partnered with Bluebase Technologies to architect their complete digital championship ecosystem. We deployed high-performance Meta and Google advertising funnels, managed official social media handles with motion creatives, launched a custom online athlete and spectator registration portal with digital QR e-passes, and automated backstage stage call notifications via WhatsApp Business API.
+          Aarohi Classic partnered with Bluebase Technologies to handle their complete event workflow: targeted Meta and Google advertising funnels, official social media handle creatives, an online athlete registration portal with instant QR e-passes, and automated weigh-in and stage call notifications via WhatsApp Business API.
         </p>
 
         <!-- 4 Verified Result Metrics -->
         <div class="story-metrics-row">
           <div class="story-metric-item">
-            <div class="story-metric-val">5,000<span>+</span></div>
+            <div class="story-metric-val">250<span>+</span></div>
             <div class="story-metric-lbl">Registrations Handled</div>
-            <p class="story-metric-sub">Seamless digital registration of competing athletes and spectator attendees with zero system downtime.</p>
+            <p class="story-metric-sub">Seamless digital registration of competing athletes and attendee passes with zero paperwork.</p>
           </div>
 
           <div class="story-metric-item">
-            <div class="story-metric-val">12<span>X</span></div>
+            <div class="story-metric-val">4.2<span>X</span></div>
             <div class="story-metric-lbl">Return On Ad Spend (ROAS)</div>
-            <p class="story-metric-sub">Precision micro-targeted Meta and Google ads driving sold-out auditorium passes and athlete signups.</p>
+            <p class="story-metric-sub">Targeted Meta and Google ad campaigns driving local athlete signups and event passes.</p>
           </div>
 
           <div class="story-metric-item">
             <div class="story-metric-val">100<span>%</span></div>
             <div class="story-metric-lbl">WhatsApp Broadcast Delivery</div>
-            <p class="story-metric-sub">Instant automated alerts for official weigh-in time slots, rule handbooks, and backstage calls.</p>
+            <p class="story-metric-sub">Instant automated alerts for official weigh-in time slots, rule sheets, and backstage calls.</p>
           </div>
 
           <div class="story-metric-item">
             <div class="story-metric-val">Zero</div>
-            <div class="story-metric-lbl">Gate Check-In Delays</div>
-            <p class="story-metric-sub">Paperless digital QR e-pass scanning cleared athlete entry and spectator queues in under 10 seconds.</p>
+            <div class="story-metric-lbl">Paper Entry Confusion</div>
+            <p class="story-metric-sub">Paperless digital QR e-pass scanning cleared athlete entry and attendee queues in seconds.</p>
           </div>
         </div>
 
