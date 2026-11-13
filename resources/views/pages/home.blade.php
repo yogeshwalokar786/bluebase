@@ -1101,12 +1101,12 @@
               <div class="story-content">
                 <div class="story-tags">
                   <span class="story-tag">Sports &amp; Fitness Event</span>
-                  <span class="story-tag">Event Tech &amp; Ops</span>
-                  <span class="story-tag" style="background: #ecfdf5; color: #047857;">Fully Managed</span>
+                  <span class="story-tag">Digital Marketing &amp; Ops</span>
+                  <span class="story-tag" style="background: #eff6ff; color: #1d4ed8;">100% Remote Ops</span>
                 </div>
-                <h3 class="story-title">Athlete Registrations, Performance Ads &amp; WhatsApp Operations for Aarohi Classic 2024.</h3>
+                <h3 class="story-title">Remote Paid Ads, Social Media, Online Registrations &amp; WhatsApp for Aarohi Classic 2024.</h3>
                 <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-text-muted); margin-bottom: 24px;">
-                  Aarohi Classic partnered with Bluebase Technologies to handle their complete event workflow. We ran targeted Meta and Google ad campaigns, managed their official social media handles with custom creatives, set up an online athlete registration portal with instant QR passes, and automated weigh-in and stage call alerts via WhatsApp Business.
+                  Bluebase managed the complete digital presence for Aarohi Classic 2024 100% remotely from our office. We ran targeted Meta and Google ad campaigns, managed their official social media handles with custom creatives, set up an online athlete registration flow, and coordinated participant inquiries and schedule broadcasts over WhatsApp.
                 </p>
                 <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap;">
                   <a href="{{ route('customer-stories.aarohi-classic-2024') }}" class="c-btn -primary" style="padding: 12px 24px;">

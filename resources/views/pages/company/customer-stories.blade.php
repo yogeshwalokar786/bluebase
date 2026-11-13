@@ -487,52 +487,52 @@
               <h3>Aarohi Classic 2024</h3>
               <div class="story-pills">
                 <span class="story-pill">Sports &amp; Fitness Championship</span>
-                <span class="story-pill">Digital Event Tech &amp; Ads</span>
-                <span class="story-pill highlight">100% Managed by Bluebase</span>
+                <span class="story-pill">Remote Digital Marketing</span>
+                <span class="story-pill highlight">100% Remote Digital Ops</span>
               </div>
             </div>
           </div>
 
           <div>
             <span style="font-size: 0.85rem; color: var(--color-text-muted); font-weight: 600;">
-              Championship Event Tech
+              Remote Event Digital Operations
             </span>
           </div>
         </div>
 
         <!-- Headline & Description -->
         <h2 class="story-headline">
-          Online Athlete Registrations, Performance Ads &amp; WhatsApp Operations
+          Remote Paid Ads, Social Media Handle Management &amp; WhatsApp Operations
         </h2>
 
         <p class="story-summary-text">
-          Aarohi Classic partnered with Bluebase Technologies to handle their complete event workflow: targeted Meta and Google advertising funnels, official social media handle creatives, an online athlete registration portal with instant QR e-passes, and automated weigh-in and stage call notifications via WhatsApp Business API.
+          Aarohi Classic partnered with Bluebase to handle their complete digital presence 100% remotely from our office. We managed targeted Meta and Google ad campaigns, designed social media creatives, coordinated online athlete registrations, and handled all participant communications and schedule updates via WhatsApp.
         </p>
 
         <!-- 4 Verified Result Metrics -->
         <div class="story-metrics-row">
           <div class="story-metric-item">
             <div class="story-metric-val">250<span>+</span></div>
-            <div class="story-metric-lbl">Registrations Handled</div>
-            <p class="story-metric-sub">Seamless digital registration of competing athletes and attendee passes with zero paperwork.</p>
+            <div class="story-metric-lbl">Online Registrations</div>
+            <p class="story-metric-sub">Athlete category signups and event passes collected and organized online from our desk.</p>
           </div>
 
           <div class="story-metric-item">
             <div class="story-metric-val">4.2<span>X</span></div>
             <div class="story-metric-lbl">Return On Ad Spend (ROAS)</div>
-            <p class="story-metric-sub">Targeted Meta and Google ad campaigns driving local athlete signups and event passes.</p>
+            <p class="story-metric-sub">Targeted Meta and Google ad campaigns managed off-site, driving competitor signups and passes.</p>
           </div>
 
           <div class="story-metric-item">
             <div class="story-metric-val">100<span>%</span></div>
-            <div class="story-metric-lbl">WhatsApp Broadcast Delivery</div>
-            <p class="story-metric-sub">Instant automated alerts for official weigh-in time slots, rule sheets, and backstage calls.</p>
+            <div class="story-metric-lbl">WhatsApp Message Delivery</div>
+            <p class="story-metric-sub">Direct schedule broadcasts, rules sheets, and athlete inquiry responses delivered via WhatsApp.</p>
           </div>
 
           <div class="story-metric-item">
-            <div class="story-metric-val">Zero</div>
-            <div class="story-metric-lbl">Paper Entry Confusion</div>
-            <p class="story-metric-sub">Paperless digital QR e-pass scanning cleared athlete entry and attendee queues in seconds.</p>
+            <div class="story-metric-val">100<span>%</span></div>
+            <div class="story-metric-lbl">Remote Digital Execution</div>
+            <p class="story-metric-sub">Managed completely off-site from our desk with zero physical venue overhead for our team.</p>
           </div>
         </div>
 
