@@ -170,7 +170,7 @@
             Resources
             <svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
           </a>
-          <div class="megamenu">
+          <div class="megamenu -resources">
             <div class="megamenu-grid">
               
               <div class="megamenu-col">
@@ -190,15 +190,6 @@
                   <li><a href="{{ route('terms-of-use') }}">Terms of Service</a></li>
                   <li><a href="{{ route('compliance-security') }}">Security &amp; Data Safety</a></li>
                   <li><a href="{{ route('company') }}#faq">Frequently Asked Questions</a></li>
-                </ul>
-              </div>
-
-              <div class="megamenu-col">
-                <h4>Get in Touch</h4>
-                <ul>
-                  <li><a href="{{ route('book-a-demo') }}">Schedule a Call</a></li>
-                  <li><a href="{{ route('free-trial') }}">Request Project Quote</a></li>
-                  <li><a href="{{ route('contact') }}">Contact Our Team</a></li>
                 </ul>
               </div>
 

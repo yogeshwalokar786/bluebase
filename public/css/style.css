@@ -867,12 +867,14 @@ ol {
   gap: 24px;
 }
 
-/* Solutions Compact 3-column Megamenu */
-.megamenu.-solutions {
+/* Solutions & Resources Compact 3-column Megamenu */
+.megamenu.-solutions,
+.megamenu.-resources {
   max-width: 840px;
 }
 
-.megamenu.-solutions .megamenu-grid {
+.megamenu.-solutions .megamenu-grid,
+.megamenu.-resources .megamenu-grid {
   grid-template-columns: repeat(3, minmax(200px, 235px));
   gap: 28px;
 }
