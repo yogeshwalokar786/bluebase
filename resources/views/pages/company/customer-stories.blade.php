@@ -250,6 +250,47 @@
   margin: 0;
 }
 
+/* Hero Badges on Light Hero */
+.stories-hero .hero-badges {
+  display: flex !important;
+  justify-content: flex-start !important;
+  gap: 12px !important;
+  flex-wrap: wrap !important;
+  margin-top: 14px !important;
+}
+
+.stories-hero .hero-badge-item {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 9999px !important;
+  color: #1e293b !important;
+  font-weight: 600 !important;
+  font-size: 0.88rem !important;
+  padding: 8px 18px !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03) !important;
+  transition: all 0.2s ease !important;
+}
+
+.stories-hero .hero-badge-item::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 7px !important;
+  height: 7px !important;
+  border-radius: 50% !important;
+  background: #0050e7 !important;
+  box-shadow: 0 0 6px rgba(0, 80, 231, 0.6) !important;
+}
+
+.stories-hero .hero-badge-item:hover {
+  background: #ffffff !important;
+  border-color: rgba(0, 80, 231, 0.3) !important;
+  color: #0050e7 !important;
+  transform: translateY(-2px) !important;
+}
+
 /* Responsive */
 @media (max-width: 991px) {
   .story-spotlight-card {
@@ -331,7 +372,7 @@
         </a>
       </div>
 
-      <div class="hero-badges" data-viewport="true" style="margin-top: 10px;">
+      <div class="hero-badges" style="margin-top: 14px;">
         <div class="hero-badge-item">100% Client Code Ownership</div>
         <div class="hero-badge-item">Fully Managed Tech Infrastructure</div>
         <div class="hero-badge-item">Direct Builder Collaboration</div>
