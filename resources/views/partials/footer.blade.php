@@ -43,7 +43,7 @@
           <ul>
             <li><a href="{{ route('blog') }}">Bluebase Tech Blog</a></li>
             <li><a href="{{ route('customer-stories') }}">Client Case Studies</a></li>
-            <li><a href="{{ route('whitepapers') }}">Technical Whitepapers</a></li>
+            <li><a href="{{ route('whitepapers') }}">Founder &amp; Tech Playbooks</a></li>
             <li><a href="{{ route('blog') }}">Webinars &amp; Events</a></li>
             <li><a href="{{ route('blog') }}">Tech Talks Podcast</a></li>
           </ul>

@@ -178,7 +178,7 @@
                 <ul>
                   <li><a href="{{ route('blog') }}"><strong>Bluebase Tech Blog</strong></a></li>
                   <li><a href="{{ route('customer-stories') }}">Client Project Stories</a></li>
-                  <li><a href="{{ route('whitepapers') }}">Developer Guides</a></li>
+                  <li><a href="{{ route('whitepapers') }}">Founder &amp; Tech Playbooks</a></li>
                   <li><a href="{{ route('blog') }}">Architecture Articles</a></li>
                 </ul>
               </div>
@@ -312,7 +312,7 @@
     <div class="mobile-submenu">
       <a href="{{ route('blog') }}"><strong>Bluebase Tech Blog</strong></a>
       <a href="{{ route('customer-stories') }}">Client Project Stories</a>
-      <a href="{{ route('whitepapers') }}">Developer Guides</a>
+      <a href="{{ route('whitepapers') }}">Founder &amp; Tech Playbooks</a>
       <a href="{{ route('compliance-security') }}">Security &amp; Data Safety</a>
       <a href="{{ route('terms-of-use') }}">Terms of Service</a>
       <a href="{{ route('privacy-policy') }}">Client Privacy Policy</a>

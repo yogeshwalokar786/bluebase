@@ -91,6 +91,8 @@ Route::get('/find-a-partner', [CompanyController::class, 'findPartner'])->name('
 
 // Resources & Legal
 Route::get('/whitepapers', [ResourceController::class, 'whitepapers'])->name('whitepapers');
+Route::get('/guides', fn() => redirect()->route('whitepapers', [], 301));
+Route::get('/playbooks', fn() => redirect()->route('whitepapers', [], 301));
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 Route::get('/blog/category/{slug}', [BlogController::class, 'category'])->name('blog.category');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
