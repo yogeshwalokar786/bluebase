@@ -867,6 +867,16 @@ ol {
   gap: 24px;
 }
 
+/* Solutions Compact 3-column Megamenu */
+.megamenu.-solutions {
+  max-width: 840px;
+}
+
+.megamenu.-solutions .megamenu-grid {
+  grid-template-columns: repeat(3, minmax(200px, 235px));
+  gap: 28px;
+}
+
 .megamenu-col h4 {
   font-size: 0.78rem;
   font-weight: 700;

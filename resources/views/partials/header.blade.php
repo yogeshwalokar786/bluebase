@@ -121,7 +121,7 @@
             Solutions
             <svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
           </a>
-          <div class="megamenu">
+          <div class="megamenu -solutions">
             <div class="megamenu-grid">
               
               <div class="megamenu-col">
@@ -143,17 +143,6 @@
                   <li><a href="{{ route('services.web-development') }}">Client &amp; Customer Portals</a></li>
                   <li><a href="{{ route('services.web-development') }}">Internal Admin Dashboards</a></li>
                   <li><a href="{{ route('services.api-backend-development') }}">Payment &amp; API Integrations</a></li>
-                </ul>
-              </div>
-
-              <div class="megamenu-col">
-                <h4>Collaboration Models</h4>
-                <ul>
-                  <li><a href="{{ route('services.professional') }}">Dedicated Developer Sprints</a></li>
-                  <li><a href="{{ route('contact') }}">Monthly Code Maintenance</a></li>
-                  <li><a href="{{ route('customer-stories') }}">Client Project Stories</a></li>
-                  <li><a href="{{ route('book-a-demo') }}">Technical Discovery Call</a></li>
-                  <li><a href="{{ route('free-trial') }}">Free Project Estimate</a></li>
                 </ul>
               </div>
 

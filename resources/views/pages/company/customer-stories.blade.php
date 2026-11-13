@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('title', 'Client Transformation Stories & Case Studies | Bluebase')
 @section('meta_description', 'Explore how global leaders and ambitious startups accelerated their engineering roadmaps, cut downtime, and automated workflows with Bluebase.')
