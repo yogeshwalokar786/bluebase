@@ -67,6 +67,7 @@
             <li><a href="{{ route('careers') }}">Careers (We're Hiring!)</a></li>
             <li><a href="{{ route('partner-overview') }}">Partner Overview</a></li>
             <li><a href="{{ route('contact') }}">Contact Us</a></li>
+            <li><a href="mailto:info@bluebasetechnologies.com" style="color: #60a5fa; font-weight: 600;">info@bluebasetechnologies.com</a></li>
             <li><a href="{{ route('compliance-security') }}">Compliance &amp; Security</a></li>
             <li><a href="{{ route('terms-of-use') }}">Master Services Agreement</a></li>
           </ul>
@@ -78,6 +79,9 @@
         <img src="{{ asset('images/footer-logo.svg') }}" alt="Bluebase Logo" class="footer-logo-img">
         <p class="footer-tagline">
           Bluebase is an elite digital engineering and autonomous AI services startup. We partner with ambitious enterprises and fast-growing startups to architect, build, and scale world-class software.
+        </p>
+        <p style="margin: 8px 0 0; font-size: 0.9rem; color: #94a3b8;">
+          Official: <a href="mailto:info@bluebasetechnologies.com" style="color: #60a5fa; font-weight: 600; text-decoration: underline;">info@bluebasetechnologies.com</a>
         </p>
 
         <!-- Live Newsletter Form connected to MySQL DB -->

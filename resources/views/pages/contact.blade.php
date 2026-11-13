@@ -120,15 +120,15 @@
                 <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.95rem;">
                   <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding-bottom: 6px;">
                     <span style="color: var(--color-gray-600);">General Inquiries:</span>
-                    <a href="mailto:contact@bluebase.com" style="color: var(--color-accent); font-weight: 600;">contact@bluebase.com</a>
+                    <a href="mailto:info@bluebasetechnologies.com" style="color: var(--color-accent); font-weight: 600;">info@bluebasetechnologies.com</a>
                   </div>
                   <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding-bottom: 6px;">
-                    <span style="color: var(--color-gray-600);">Project / Pod Proposals:</span>
-                    <a href="mailto:sales@bluebase.com" style="color: var(--color-accent); font-weight: 600;">sales@bluebase.com</a>
+                    <span style="color: var(--color-gray-600);">Project Proposals:</span>
+                    <a href="mailto:info@bluebasetechnologies.com" style="color: var(--color-accent); font-weight: 600;">info@bluebasetechnologies.com</a>
                   </div>
                   <div style="display: flex; justify-content: space-between;">
-                    <span style="color: var(--color-gray-600);">24/7 Client Support:</span>
-                    <a href="mailto:support@bluebase.com" style="color: var(--color-accent); font-weight: 600;">support@bluebase.com</a>
+                    <span style="color: var(--color-gray-600);">Client Support:</span>
+                    <a href="mailto:info@bluebasetechnologies.com" style="color: var(--color-accent); font-weight: 600;">info@bluebasetechnologies.com</a>
                   </div>
                 </div>
               </div>

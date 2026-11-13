@@ -85,13 +85,13 @@
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
         <div class="form-group">
           <label class="form-label">Sales &amp; Inquiries Email</label>
-          <input type="email" name="contact_email" value="{{ $settings['contact_email'] ?? 'contact@bluebase.com' }}"
+          <input type="email" name="contact_email" value="{{ $settings['contact_email'] ?? 'info@bluebasetechnologies.com' }}"
             class="form-control">
         </div>
 
         <div class="form-group">
           <label class="form-label">Technical Support Email</label>
-          <input type="email" name="support_email" value="{{ $settings['support_email'] ?? 'support@bluebase.com' }}"
+          <input type="email" name="support_email" value="{{ $settings['support_email'] ?? 'info@bluebasetechnologies.com' }}"
             class="form-control">
         </div>
 

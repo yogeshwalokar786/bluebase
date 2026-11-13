@@ -103,9 +103,9 @@ class DatabaseSeeder extends Seeder
         $settings = [
             'site_name' => 'Bluebase Technologies',
             'site_tagline' => 'Digital Engineering & Autonomous AI Services',
-            'contact_email' => 'contact@bluebase.com',
+            'contact_email' => 'info@bluebasetechnologies.com',
             'contact_phone' => '+1 (800) 555-BLUE',
-            'support_email' => 'support@bluebase.com',
+            'support_email' => 'info@bluebasetechnologies.com',
             'office_address' => '742 Innovation Way, Suite 400, San Francisco, CA 94107',
             'business_hours' => 'Monday - Friday: 8:00 AM - 6:00 PM PST',
             'linkedin_url' => 'https://linkedin.com/company/bluebase',

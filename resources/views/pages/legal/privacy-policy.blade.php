@@ -81,13 +81,13 @@
           <p>All source code, proprietary algorithms, data models, and documentation created during our client engineering engagements are maintained in isolated client-owned repositories. Our engineers adhere to strict multi-factor authentication, air-gapped secret management, and non-disclosure agreements.</p>
 
           <h2 style="font-size: 1.5rem; font-weight: 700; color: #38112a; margin-top: 32px; margin-bottom: 12px;">5. International Data Transfers &amp; GDPR / CCPA Rights</h2>
-          <p>Bluebase complies with the General Data Protection Regulation (GDPR) and California Consumer Privacy Act (CCPA). European and California residents retain the right to access, rectify, port, or erase their personal data from our operational systems at any time by contacting privacy@bluebase.tech.</p>
+          <p>Bluebase complies with the General Data Protection Regulation (GDPR) and California Consumer Privacy Act (CCPA). European and California residents retain the right to access, rectify, port, or erase their personal data from our operational systems at any time by contacting info@bluebasetechnologies.com.</p>
 
           <h2 style="font-size: 1.5rem; font-weight: 700; color: #38112a; margin-top: 32px; margin-bottom: 12px;">6. Data Retention &amp; Security</h2>
           <p>We maintain enterprise-grade physical, technical, and administrative controls (SOC 2 Type II certified) to prevent unauthorized access or disclosure. Information is retained only as long as necessary to fulfill the purposes of engagement or comply with legal audit requirements.</p>
 
           <h2 style="font-size: 1.5rem; font-weight: 700; color: #38112a; margin-top: 32px; margin-bottom: 12px;">7. Contact Our Data Protection Officer</h2>
-          <p>If you have questions, inquiries, or requests regarding this Privacy Policy or your data rights, please reach out to our Data Protection Office at <strong>privacy@bluebase.tech</strong> or write to: Bluebase Technologies Inc., Attn: Privacy Office, 535 Mission Street, 14th Floor, San Francisco, CA 94105.</p>
+          <p>If you have questions, inquiries, or requests regarding this Privacy Policy or your data rights, please reach out to our Data Protection Office at <strong>info@bluebasetechnologies.com</strong> or write to: Bluebase Technologies, Attn: Privacy Office.</p>
         </div>
 
       </div>

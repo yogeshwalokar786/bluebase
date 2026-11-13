@@ -559,13 +559,13 @@
       "contactPoint": [
         {
           "@@type": "ContactPoint",
-          "email": "contact@bluebase.com",
+          "email": "info@bluebasetechnologies.com",
           "contactType": "customer service",
           "availableLanguage": ["English", "Hindi"]
         },
         {
           "@@type": "ContactPoint",
-          "email": "sales@bluebase.com",
+          "email": "info@bluebasetechnologies.com",
           "contactType": "sales",
           "availableLanguage": ["English", "Hindi"]
         }
