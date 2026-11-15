@@ -1032,7 +1032,7 @@
         <div style="font-weight: 700; font-size: 0.95rem;">Bluebase</div>
         <div style="font-size: 0.7rem; color: var(--text-muted);">Enterprise Portal</div>
       </div>
-      <span class="sidebar-badge">CMS &amp; LEADS</span>
+      <span class="sidebar-badge">ADMIN CONSOLE</span>
     </div>
 
     <div class="sidebar-menu">
@@ -1044,44 +1044,7 @@
         </span>
       </a>
 
-      <div class="menu-group-title">Lead Management</div>
-      <a href="{{ route('admin.leads.inquiries') }}" class="nav-item {{ request()->routeIs('admin.leads.inquiries*') ? 'active' : '' }}">
-        <span class="nav-item-content">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          <span>Contact Inquiries</span>
-        </span>
-        <span class="nav-count">{{ \App\Models\ContactInquiry::count() }}</span>
-      </a>
-      <a href="{{ route('admin.leads.demos') }}" class="nav-item {{ request()->routeIs('admin.leads.demos*') ? 'active' : '' }}">
-        <span class="nav-item-content">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          <span>Demo Bookings</span>
-        </span>
-        <span class="nav-count">{{ \App\Models\DemoBooking::count() }}</span>
-      </a>
-      <a href="{{ route('admin.leads.trials') }}" class="nav-item {{ request()->routeIs('admin.leads.trials*') ? 'active' : '' }}">
-        <span class="nav-item-content">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-          <span>Free Trial Requests</span>
-        </span>
-        <span class="nav-count">{{ \App\Models\TrialRequest::count() }}</span>
-      </a>
-      <a href="{{ route('admin.leads.partners') }}" class="nav-item {{ request()->routeIs('admin.leads.partners*') ? 'active' : '' }}">
-        <span class="nav-item-content">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          <span>Partner Applications</span>
-        </span>
-        <span class="nav-count">{{ \App\Models\PartnerApplication::count() }}</span>
-      </a>
-      <a href="{{ route('admin.leads.subscribers') }}" class="nav-item {{ request()->routeIs('admin.leads.subscribers*') ? 'active' : '' }}">
-        <span class="nav-item-content">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><line x1="22" y1="6" x2="12" y2="13"/><line x1="2" y1="6" x2="12" y2="13"/></svg>
-          <span>Newsletter Subscribers</span>
-        </span>
-        <span class="nav-count">{{ \App\Models\NewsletterSubscriber::count() }}</span>
-      </a>
-
-      <div class="menu-group-title">Content Management (CMS)</div>
+      <div class="menu-group-title">Management</div>
       <a href="{{ route('admin.cms.clients.index') }}" class="nav-item {{ request()->routeIs('admin.cms.clients*') ? 'active' : '' }}">
         <span class="nav-item-content">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
@@ -1089,49 +1052,13 @@
         </span>
         <span class="nav-count">{{ \App\Models\ClientLogo::count() }}</span>
       </a>
-      <a href="{{ route('admin.cms.blogs.index') }}" class="nav-item {{ request()->routeIs('admin.cms.blogs*') ? 'active' : '' }}">
-        <span class="nav-item-content">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-          <span>Case Studies &amp; Blog</span>
-        </span>
-        <span class="nav-count">{{ \App\Models\Blog::count() }}</span>
-      </a>
-      <a href="{{ route('admin.cms.testimonials.index') }}" class="nav-item {{ request()->routeIs('admin.cms.testimonials*') ? 'active' : '' }}">
-        <span class="nav-item-content">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          <span>Testimonials CMS</span>
-        </span>
-        <span class="nav-count">{{ \App\Models\Testimonial::count() }}</span>
-      </a>
+
       <a href="{{ route('admin.filemanager.index') }}" class="nav-item {{ request()->routeIs('admin.filemanager*') ? 'active' : '' }}">
         <span class="nav-item-content">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          <span>Media &amp; Files</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+          <span>Media Manager</span>
         </span>
         <span class="nav-count">{{ count(\Illuminate\Support\Facades\File::exists(public_path('uploads')) ? \Illuminate\Support\Facades\File::allFiles(public_path('uploads')) : []) }}</span>
-      </a>
-
-
-      
-      <div class="menu-group-title">SEO &amp; Traffic Growth</div>
-      <a href="{{ route('admin.seo.global') }}" class="nav-item {{ request()->routeIs('admin.seo.global*') ? 'active' : '' }}">
-        <span class="nav-item-content">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
-          <span>Global SEO &amp; Meta</span>
-        </span>
-      </a>
-      <a href="{{ route('admin.seo.pages.index') }}" class="nav-item {{ request()->routeIs('admin.seo.pages*') ? 'active' : '' }}">
-        <span class="nav-item-content">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-          <span>Page SEO Manager</span>
-        </span>
-        <span class="nav-count">{{ \App\Models\PageSeo::count() }}</span>
-      </a>
-      <a href="{{ route('admin.seo.sitemap.index') }}" class="nav-item {{ request()->routeIs('admin.seo.sitemap*') ? 'active' : '' }}">
-        <span class="nav-item-content">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><path d="M6.5 10v7h7.5"/></svg>
-          <span>XML Sitemap</span>
-        </span>
       </a>
 
       <div class="menu-group-title">Configuration</div>

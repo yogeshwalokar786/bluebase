@@ -128,63 +128,13 @@ Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.
 Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 
 // ==========================================
-// 3. SECURE ADMIN PORTAL & CMS
+// 3. SECURE ADMIN PORTAL (MEDIA, SETTINGS, CLIENT LOGOS)
 // ==========================================
 Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
 
-    // ------------------------------------------
-    // A. LEAD MANAGEMENT PORTAL
-    // ------------------------------------------
-    Route::prefix('leads')->name('leads.')->group(function () {
-        // Inquiries
-        Route::get('/inquiries', [LeadController::class, 'inquiries'])->name('inquiries');
-        Route::get('/inquiries/export', [LeadController::class, 'exportInquiries'])->name('inquiries.export');
-        Route::get('/inquiries/{id}', [LeadController::class, 'showInquiry'])->name('inquiries.show');
-        Route::post('/inquiries/{id}', [LeadController::class, 'updateInquiry'])->name('inquiries.update');
-        Route::delete('/inquiries/{id}', [LeadController::class, 'destroyInquiry'])->name('inquiries.destroy');
-
-        // Demo Bookings
-        Route::get('/demos', [LeadController::class, 'demos'])->name('demos');
-        Route::get('/demos/export', [LeadController::class, 'exportDemos'])->name('demos.export');
-        Route::get('/demos/{id}', [LeadController::class, 'showDemo'])->name('demos.show');
-        Route::post('/demos/{id}', [LeadController::class, 'updateDemo'])->name('demos.update');
-        Route::delete('/demos/{id}', [LeadController::class, 'destroyDemo'])->name('demos.destroy');
-
-        // Free Trial Requests
-        Route::get('/trials', [LeadController::class, 'trials'])->name('trials');
-        Route::get('/trials/export', [LeadController::class, 'exportTrials'])->name('trials.export');
-        Route::get('/trials/{id}', [LeadController::class, 'showTrial'])->name('trials.show');
-        Route::post('/trials/{id}', [LeadController::class, 'updateTrial'])->name('trials.update');
-        Route::delete('/trials/{id}', [LeadController::class, 'destroyTrial'])->name('trials.destroy');
-
-        // Partner Applications
-        Route::get('/partners', [LeadController::class, 'partners'])->name('partners');
-        Route::get('/partners/export', [LeadController::class, 'exportPartners'])->name('partners.export');
-        Route::get('/partners/{id}', [LeadController::class, 'showPartner'])->name('partners.show');
-        Route::post('/partners/{id}', [LeadController::class, 'updatePartner'])->name('partners.update');
-        Route::delete('/partners/{id}', [LeadController::class, 'destroyPartner'])->name('partners.destroy');
-
-        // Newsletter Subscribers
-        Route::get('/subscribers', [LeadController::class, 'subscribers'])->name('subscribers');
-        Route::get('/subscribers/export', [LeadController::class, 'exportSubscribers'])->name('subscribers.export');
-        Route::post('/subscribers/{id}/toggle', [LeadController::class, 'toggleSubscriber'])->name('subscribers.toggle');
-        Route::delete('/subscribers/{id}', [LeadController::class, 'destroySubscriber'])->name('subscribers.destroy');
-    });
-
-    // Backward-compatible Lead aliases
-    Route::get('/inquiries', fn() => redirect()->route('admin.leads.inquiries'))->name('inquiries');
-    Route::post('/inquiries/{id}/status', [LeadController::class, 'updateInquiry'])->name('inquiries.status');
-    Route::get('/demos', fn() => redirect()->route('admin.leads.demos'))->name('demos');
-    Route::get('/trials', fn() => redirect()->route('admin.leads.trials'))->name('trials');
-    Route::get('/partners', fn() => redirect()->route('admin.leads.partners'))->name('partners');
-    Route::get('/subscribers', fn() => redirect()->route('admin.leads.subscribers'))->name('subscribers');
-
-    // ------------------------------------------
-    // B. FULL CMS (CONTENT MANAGEMENT SYSTEM)
-    // ------------------------------------------
+    // 1. Client Logos CMS
     Route::prefix('cms')->name('cms.')->group(function () {
-        // Client Logos CMS
         Route::get('/clients', [ClientLogoCmsController::class, 'index'])->name('clients.index');
         Route::get('/clients/create', [ClientLogoCmsController::class, 'create'])->name('clients.create');
         Route::post('/clients', [ClientLogoCmsController::class, 'store'])->name('clients.store');
@@ -193,32 +143,10 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
         Route::delete('/clients/{id}', [ClientLogoCmsController::class, 'destroy'])->name('clients.destroy');
         Route::post('/clients/{id}/toggle', [ClientLogoCmsController::class, 'toggleActive'])->name('clients.toggle');
         Route::post('/clients/reorder', [ClientLogoCmsController::class, 'reorder'])->name('clients.reorder');
-
-        // Blogs / Case Studies CMS
-        Route::get('/blogs', [BlogCmsController::class, 'index'])->name('blogs.index');
-        Route::get('/blogs/create', [BlogCmsController::class, 'create'])->name('blogs.create');
-        Route::post('/blogs', [BlogCmsController::class, 'store'])->name('blogs.store');
-        Route::get('/blogs/{id}/edit', [BlogCmsController::class, 'edit'])->name('blogs.edit');
-        Route::post('/blogs/{id}', [BlogCmsController::class, 'update'])->name('blogs.update');
-        Route::delete('/blogs/{id}', [BlogCmsController::class, 'destroy'])->name('blogs.destroy');
-        Route::post('/blogs/{id}/toggle', [BlogCmsController::class, 'togglePublish'])->name('blogs.toggle');
-        Route::post('/blogs/categories/ajax-store', [BlogCmsController::class, 'ajaxStoreCategory'])->name('blogs.categories.ajax');
-
-        // Testimonials CMS
-        Route::get('/testimonials', [TestimonialCmsController::class, 'index'])->name('testimonials.index');
-        Route::get('/testimonials/create', [TestimonialCmsController::class, 'create'])->name('testimonials.create');
-        Route::post('/testimonials', [TestimonialCmsController::class, 'store'])->name('testimonials.store');
-        Route::get('/testimonials/{id}/edit', [TestimonialCmsController::class, 'edit'])->name('testimonials.edit');
-        Route::post('/testimonials/{id}', [TestimonialCmsController::class, 'update'])->name('testimonials.update');
-        Route::delete('/testimonials/{id}', [TestimonialCmsController::class, 'destroy'])->name('testimonials.destroy');
     });
-
-    // Backward-compatible CMS aliases
     Route::get('/clients', fn() => redirect()->route('admin.cms.clients.index'))->name('clients');
 
-    // ------------------------------------------
-    // C. FILE MANAGER & MEDIA LIBRARY
-    // ------------------------------------------
+    // 2. Media Manager & File Library
     Route::prefix('filemanager')->name('filemanager.')->group(function () {
         Route::get('/', [FileManagerController::class, 'index'])->name('index');
         Route::get('/api/files', [FileManagerController::class, 'apiFiles'])->name('api.files');
@@ -226,27 +154,13 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
         Route::post('/delete', [FileManagerController::class, 'delete'])->name('delete');
     });
 
-    // ------------------------------------------
-    // D. ADVANCED SEO & SITEMAP GENERATOR
-    // ------------------------------------------
-    Route::prefix('seo')->name('seo.')->group(function () {
-        Route::get('/global', [SeoController::class, 'globalSeo'])->name('global');
-        Route::post('/global', [SeoController::class, 'updateGlobalSeo'])->name('global.update');
-
-        Route::get('/pages', [SeoController::class, 'pageSeoIndex'])->name('pages.index');
-        Route::get('/pages/create', [SeoController::class, 'pageSeoCreate'])->name('pages.create');
-        Route::post('/pages', [SeoController::class, 'pageSeoStore'])->name('pages.store');
-        Route::get('/pages/{id}/edit', [SeoController::class, 'pageSeoEdit'])->name('pages.edit');
-        Route::post('/pages/{id}', [SeoController::class, 'pageSeoUpdate'])->name('pages.update');
-        Route::delete('/pages/{id}', [SeoController::class, 'pageSeoDestroy'])->name('pages.destroy');
-
-        Route::get('/sitemap', [SeoController::class, 'sitemapIndex'])->name('sitemap.index');
-        Route::post('/sitemap/generate', [SeoController::class, 'generateSitemap'])->name('sitemap.generate');
-    });
-
-    // ------------------------------------------
-    // E. SITE SETTINGS CMS
-    // ------------------------------------------
+    // 3. Site Settings
     Route::get('/settings', [SettingsCmsController::class, 'index'])->name('settings');
     Route::post('/settings', [SettingsCmsController::class, 'update'])->name('settings.update');
+
+    // Safe fallbacks for retired admin routes
+    Route::get('/leads/{any?}', fn() => redirect()->route('admin.dashboard'))->where('any', '.*');
+    Route::get('/seo/{any?}', fn() => redirect()->route('admin.dashboard'))->where('any', '.*');
+    Route::get('/cms/blogs/{any?}', fn() => redirect()->route('admin.dashboard'))->where('any', '.*');
+    Route::get('/cms/testimonials/{any?}', fn() => redirect()->route('admin.dashboard'))->where('any', '.*');
 });

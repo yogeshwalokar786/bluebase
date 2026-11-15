@@ -3,39 +3,30 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\ContactInquiry;
-use App\Models\DemoBooking;
-use App\Models\TrialRequest;
-use App\Models\PartnerApplication;
-use App\Models\NewsletterSubscriber;
 use App\Models\ClientLogo;
-use App\Models\Blog;
-use App\Models\Testimonial;
+use App\Models\SiteSetting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class AdminDashboardController extends Controller
 {
     public function index()
     {
+        $uploadsDir = public_path('uploads');
+        $totalFiles = File::exists($uploadsDir) ? count(File::allFiles($uploadsDir)) : 0;
+
         $stats = [
-            'total_leads' => ContactInquiry::count() + DemoBooking::count() + TrialRequest::count() + PartnerApplication::count(),
-            'inquiries_count' => ContactInquiry::count(),
-            'inquiries_new' => ContactInquiry::where('status', 'new')->count(),
-            'demos_count' => DemoBooking::count(),
-            'demos_pending' => DemoBooking::where('status', 'pending')->count(),
-            'trials_count' => TrialRequest::count(),
-            'partners_count' => PartnerApplication::count(),
-            'subscribers_count' => NewsletterSubscriber::count(),
             'clients_count' => ClientLogo::count(),
-            'blogs_count' => Blog::count(),
-            'testimonials_count' => Testimonial::count(),
+            'clients_active' => ClientLogo::where('is_active', true)->count(),
+            'files_count' => $totalFiles,
+            'settings_count' => SiteSetting::count(),
+            'official_email' => SiteSetting::get('contact_email', 'info@bluebasetechnologies.com'),
+            'company_name' => SiteSetting::get('site_name', 'Bluebase Technologies'),
+            'contact_phone' => SiteSetting::get('contact_phone', '+91 79727 65119'),
         ];
 
-        $recent_inquiries = ContactInquiry::latest()->take(5)->get();
-        $recent_demos = DemoBooking::latest()->take(5)->get();
-        $recent_trials = TrialRequest::latest()->take(5)->get();
-        $recent_partners = PartnerApplication::latest()->take(5)->get();
+        $recent_clients = ClientLogo::orderBy('sort_order', 'asc')->latest()->take(8)->get();
 
-        return view('admin.dashboard', compact('stats', 'recent_inquiries', 'recent_demos', 'recent_trials', 'recent_partners'));
+        return view('admin.dashboard', compact('stats', 'recent_clients'));
     }
 }
