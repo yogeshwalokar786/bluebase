@@ -31,6 +31,8 @@
   /* Marquee Preview Strip */
   .marquee-strip-card {
     margin-bottom: 24px;
+    max-width: 100%;
+    overflow: hidden;
   }
   .marquee-strip-header {
     display: flex;
@@ -44,12 +46,15 @@
     display: flex;
     gap: 14px;
     overflow-x: auto;
+    width: 100%;
+    max-width: 100%;
     padding: 14px;
     background: rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     border: 1px solid var(--border-color);
     align-items: center;
     -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
   }
   .marquee-strip-scroll::-webkit-scrollbar {
     height: 5px;
@@ -83,6 +88,15 @@
   /* Desktop Table vs Mobile Cards */
   .clients-desktop-table {
     display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+  }
+  .clients-desktop-table .data-table {
+    width: 100%;
+    min-width: 700px;
   }
   .clients-mobile-cards {
     display: none;
@@ -269,13 +283,13 @@
                 <img src="{{ asset($c->logo_path) }}" alt="{{ $c->name }}" style="max-height: 34px; max-width: 82px; object-fit: contain;">
               </div>
             </td>
-            <td style="font-weight: 600;">
-              <div style="color: var(--text);">{{ $c->name }}</div>
-              <div style="font-size: 0.72rem; color: var(--text-muted); font-family: monospace; margin-top: 2px;">{{ $c->logo_path }}</div>
+            <td style="font-weight: 600; min-width: 160px; max-width: 240px;">
+              <div style="color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="{{ $c->name }}">{{ $c->name }}</div>
+              <div style="font-size: 0.72rem; color: var(--text-muted); font-family: monospace; margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="{{ $c->logo_path }}">{{ $c->logo_path }}</div>
             </td>
-            <td>
+            <td style="min-width: 160px; max-width: 220px;">
               @if($c->website_url)
-                <a href="{{ $c->website_url }}" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-size: 0.82rem; text-decoration: underline; word-break: break-all;">
+                <a href="{{ $c->website_url }}" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-size: 0.82rem; text-decoration: underline; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block;" title="{{ $c->website_url }}">
                   {{ Str::limit($c->website_url, 30) }}
                 </a>
               @else

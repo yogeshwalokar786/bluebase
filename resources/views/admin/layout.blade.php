@@ -38,6 +38,10 @@
       --purple: #8B5CF6;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
     body {
       background: var(--bg-dark);
       color: var(--text);
@@ -166,11 +170,16 @@
     /* Main Content */
     .admin-main {
       margin-left: 270px;
-      flex: 1;
+      width: calc(100% - 270px);
+      max-width: calc(100% - 270px);
+      min-width: 0;
+      flex: 1 1 calc(100% - 270px);
       display: flex;
       flex-direction: column;
       min-height: 100vh;
       background: var(--bg-dark);
+      box-sizing: border-box;
+      overflow-x: hidden;
     }
     .admin-topbar {
       height: 64px;
@@ -184,6 +193,9 @@
       position: sticky;
       top: 0;
       z-index: 90;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
     }
     .topbar-title {
       font-size: 1.15rem;
@@ -223,6 +235,10 @@
     .admin-body {
       padding: 32px;
       flex: 1;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
     }
     /* Buttons */
     .btn {
@@ -264,6 +280,10 @@
       padding: 24px;
       backdrop-filter: blur(10px);
       margin-bottom: 24px;
+      max-width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+      overflow: hidden;
     }
     .card-header {
       display: flex;
@@ -281,7 +301,10 @@
     /* Tables */
     .table-responsive {
       width: 100%;
+      max-width: 100%;
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      box-sizing: border-box;
     }
     .data-table {
       width: 100%;
@@ -558,6 +581,8 @@
       .admin-main {
         margin-left: 0 !important;
         width: 100% !important;
+        max-width: 100% !important;
+        flex-basis: 100% !important;
         min-width: 0 !important;
       }
       .admin-topbar {
