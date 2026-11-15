@@ -63,15 +63,15 @@
     </a>
   </div>
 
-  <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
-    <form method="GET" action="{{ route('admin.filemanager.index') }}" style="display: flex; gap: 8px;">
+  <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap; width: 100%; max-width: 520px;">
+    <form method="GET" action="{{ route('admin.filemanager.index') }}" style="display: flex; gap: 8px; flex-wrap: wrap; width: 100%;">
       <input type="hidden" name="folder" value="{{ $folder }}">
-      <select name="type" class="form-select" style="width: 130px; padding: 6px 10px; font-size: 0.82rem;" onchange="this.form.submit()">
+      <select name="type" class="form-select" style="min-width: 120px; padding: 6px 10px; font-size: 0.82rem;" onchange="this.form.submit()">
         <option value="all" {{ $type === 'all' ? 'selected' : '' }}>All Formats</option>
         <option value="image" {{ $type === 'image' ? 'selected' : '' }}>Images</option>
         <option value="document" {{ $type === 'document' ? 'selected' : '' }}>Documents</option>
       </select>
-      <input type="text" name="search" value="{{ $search }}" placeholder="Search files..." class="form-control" style="width: 200px; padding: 6px 12px; font-size: 0.82rem;">
+      <input type="text" name="search" value="{{ $search }}" placeholder="Search files..." class="form-control" style="flex: 1; min-width: 140px; padding: 6px 12px; font-size: 0.82rem;">
       <button type="submit" class="btn btn-secondary btn-sm">Filter</button>
       @if($search || $folder !== 'all' || $type !== 'all')
         <a href="{{ route('admin.filemanager.index') }}" class="btn btn-secondary btn-sm" title="Clear filter">Reset</a>

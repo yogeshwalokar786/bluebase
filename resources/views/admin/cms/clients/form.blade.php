@@ -75,7 +75,7 @@
     </div>
 
     <!-- Form Footer Actions -->
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--border-color);">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--border-color); flex-wrap: wrap; gap: 12px;">
       <a href="{{ route('admin.cms.clients.index') }}" class="btn btn-secondary">
         Cancel
       </a>

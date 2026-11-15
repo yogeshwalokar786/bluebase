@@ -16,7 +16,7 @@
 
 <!-- Visual Grid Preview -->
 <div class="card" style="margin-bottom: 24px;">
-  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
     <div>
       <h3 style="font-size: 0.95rem; font-weight: 700; margin: 0 0 4px;">Live Marquee Visual Strip</h3>
       <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0;">This is how client logos appear to website visitors across your marketing pages.</p>

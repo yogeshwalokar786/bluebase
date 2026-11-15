@@ -474,6 +474,208 @@
       background: rgba(9, 14, 35, 0.5);
       border-style: dashed;
     }
+
+    /* Mobile Drawer & Minimal Responsive Styling */
+    .btn-sidebar-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+    .btn-sidebar-toggle:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--accent);
+    }
+    .btn-sidebar-close {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+      margin-left: auto;
+    }
+    .btn-sidebar-close:hover {
+      background: rgba(239, 68, 68, 0.15);
+      border-color: rgba(239, 68, 68, 0.4);
+      color: var(--danger);
+    }
+    .admin-sidebar-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 7, 18, 0.72);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 990;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .admin-sidebar-overlay.active {
+      display: block;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Responsive Grids & Auto-stacking */
+    .admin-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .admin-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 992px) {
+      .admin-sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease;
+        z-index: 1000;
+        box-shadow: none;
+      }
+      .admin-sidebar.open {
+        transform: translateX(0);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.65);
+      }
+      .admin-main {
+        margin-left: 0 !important;
+        width: 100% !important;
+        min-width: 0 !important;
+      }
+      .admin-topbar {
+        padding: 0 16px;
+      }
+      .admin-body {
+        padding: 20px 16px;
+      }
+      .btn-sidebar-toggle {
+        display: inline-flex;
+      }
+      .btn-sidebar-close {
+        display: inline-flex;
+      }
+      .admin-grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .admin-grid-2,
+      .admin-grid-3,
+      [style*="grid-template-columns: 1fr 1fr"],
+      [style*="grid-template-columns: 1fr 1fr 1fr"],
+      [style*="grid-template-columns: 2fr 1fr"] {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+      }
+      .filter-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+      }
+      .filter-tabs {
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+      .fm-modal-backdrop {
+        padding: 8px;
+      }
+      .fm-modal-window {
+        width: 100vw;
+        height: 94vh;
+        border-radius: 10px;
+      }
+      .fm-modal-body {
+        flex-direction: column;
+      }
+      .fm-main-area {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        max-height: 55%;
+      }
+      .fm-details-sidebar {
+        width: 100%;
+        padding: 14px;
+        flex: 1;
+      }
+      .fm-preview-img-box {
+        height: 100px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .admin-topbar {
+        height: 56px;
+        padding: 0 12px;
+      }
+      .topbar-title {
+        font-size: 0.95rem;
+      }
+      .topbar-actions {
+        gap: 6px;
+      }
+      .link-phpmyadmin {
+        display: none;
+      }
+      .link-live .link-label,
+      .btn-theme-toggle #themeToggleText {
+        display: none;
+      }
+      .link-live, .btn-theme-toggle {
+        padding: 7px 10px;
+      }
+      .admin-body {
+        padding: 16px 12px;
+      }
+      .card {
+        padding: 16px 14px;
+        border-radius: 10px;
+        margin-bottom: 16px;
+      }
+      .card-header {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 12px;
+      }
+      .card-header > div:last-child {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .card-header > div:last-child .btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .table-responsive {
+        margin-left: -14px;
+        margin-right: -14px;
+        width: calc(100% + 28px);
+        border-radius: 0;
+        -webkit-overflow-scrolling: touch;
+      }
+      .data-table th, .data-table td {
+        padding: 10px 12px;
+      }
+    }
   
   </style>
   @stack('styles')
@@ -1018,21 +1220,49 @@
       background: #E2E8F0;
       color: #0F172A;
     }
+    html.light-mode .btn-sidebar-toggle {
+      background: #F1F5F9;
+      border-color: #CBD5E1;
+      color: #1E293B;
+    }
+    html.light-mode .btn-sidebar-toggle:hover {
+      background: #E2E8F0;
+      color: #0F172A;
+    }
+    html.light-mode .btn-sidebar-close {
+      background: #F1F5F9;
+      border-color: #CBD5E1;
+      color: #64748B;
+    }
+    html.light-mode .btn-sidebar-close:hover {
+      background: #FEE2E2;
+      border-color: #FCA5A5;
+      color: #EF4444;
+    }
+    html.light-mode .admin-sidebar-overlay {
+      background: rgba(15, 23, 42, 0.45);
+    }
 
   </style>
 
 </head>
 <body>
 
+  <!-- Sidebar Overlay for Mobile -->
+  <div class="admin-sidebar-overlay" id="sidebarOverlay"></div>
+
   <!-- Admin Sidebar -->
-  <aside class="admin-sidebar">
+  <aside class="admin-sidebar" id="adminSidebar">
     <div class="sidebar-header">
       <img src="{{ asset('images/logo-icon.png') }}" alt="Bluebase Icon">
       <div>
         <div style="font-weight: 700; font-size: 0.95rem;">Bluebase</div>
         <div style="font-size: 0.7rem; color: var(--text-muted);">Enterprise Portal</div>
       </div>
-      <span class="sidebar-badge">ADMIN CONSOLE</span>
+      <span class="sidebar-badge">ADMIN</span>
+      <button type="button" class="btn-sidebar-close" id="sidebarCloseBtn" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 18px; height: 18px;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
     </div>
 
     <div class="sidebar-menu">
@@ -1087,8 +1317,13 @@
   <!-- Admin Main -->
   <main class="admin-main">
     <div class="admin-topbar">
-      <div class="topbar-title">
-        @yield('page_title', 'Dashboard')
+      <div style="display: flex; align-items: center; gap: 10px; min-width: 0;">
+        <button type="button" class="btn-sidebar-toggle" id="sidebarToggleBtn" aria-label="Open navigation drawer" title="Open Menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px;"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+        <div class="topbar-title">
+          @yield('page_title', 'Dashboard')
+        </div>
       </div>
       <div class="topbar-actions">
         <!-- Light / Dark Theme Switcher Button -->
@@ -1100,11 +1335,11 @@
 
         <a href="http://localhost/phpmyadmin/index.php?route=/database/structure&db=bluebase_laravel_db" target="_blank" class="link-phpmyadmin" title="Open MySQL in phpMyAdmin">
           <svg style="width: 15px; height: 15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-          phpMyAdmin DB
+          <span class="link-label">phpMyAdmin DB</span>
         </a>
-        <a href="{{ route('home') }}" target="_blank" class="link-live">
+        <a href="{{ route('home') }}" target="_blank" class="link-live" title="View Live Website">
           <svg style="width: 14px; height: 14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          Live Website
+          <span class="link-label">Live Website</span>
         </a>
       </div>
     </div>
@@ -1742,6 +1977,54 @@
       document.addEventListener('DOMContentLoaded', initThemeSwitcher);
     } else {
       initThemeSwitcher();
+    }
+  })();
+  </script>
+
+  <!-- Mobile Drawer Controller -->
+  <script>
+  (function() {
+    function initMobileNav() {
+      const sidebar = document.getElementById('adminSidebar');
+      const overlay = document.getElementById('sidebarOverlay');
+      const toggleBtn = document.getElementById('sidebarToggleBtn');
+      const closeBtn = document.getElementById('sidebarCloseBtn');
+
+      if (!sidebar) return;
+
+      function openSidebar() {
+        sidebar.classList.add('open');
+        if (overlay) overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeSidebar() {
+        sidebar.classList.remove('open');
+        if (overlay) overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      if (toggleBtn) toggleBtn.addEventListener('click', openSidebar);
+      if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+      if (overlay) overlay.addEventListener('click', closeSidebar);
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+          closeSidebar();
+        }
+      });
+
+      window.addEventListener('resize', function() {
+        if (window.innerWidth > 992 && sidebar.classList.contains('open')) {
+          closeSidebar();
+        }
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initMobileNav);
+    } else {
+      initMobileNav();
     }
   })();
   </script>
