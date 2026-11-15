@@ -110,7 +110,7 @@ Route::get('/sitemap.xml', [SeoController::class, 'publicSitemap'])->name('sitem
 // Inquiries & Interactive Public Forms
 Route::get('/contact', [InquiryController::class, 'contactForm'])->name('contact');
 Route::post('/contact', [InquiryController::class, 'storeContact'])->name('contact.store');
-Route::get('/contact/captcha-refresh', [InquiryController::class, 'refreshCaptcha'])->name('contact.captcha.refresh');
+Route::post('/contact/security-verify', [InquiryController::class, 'generateSecurityToken'])->name('contact.security.verify');
 
 Route::get('/book-a-demo', fn() => redirect()->route('contact', [], 301))->name('book-a-demo');
 Route::post('/book-a-demo', [InquiryController::class, 'storeContact'])->name('book-a-demo.store');

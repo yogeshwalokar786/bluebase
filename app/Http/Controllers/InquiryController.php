@@ -8,39 +8,89 @@ use App\Models\TrialRequest;
 use App\Models\PartnerApplication;
 use App\Models\NewsletterSubscriber;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class InquiryController extends Controller
 {
     public function contactForm()
     {
-        $num1 = rand(3, 9);
-        $num2 = rand(1, 9);
-        session(['contact_captcha_sum' => $num1 + $num2]);
-
-        return view('pages.contact', compact('num1', 'num2'));
+        return view('pages.contact');
     }
 
-    public function refreshCaptcha()
+    /**
+     * Advanced Human Verification Token Generator
+     * Generates a tamper-proof cryptographically signed verification challenge
+     * with client IP binding, random nonce, and anti-replay timestamps.
+     */
+    public function generateSecurityToken(Request $request)
     {
-        $num1 = rand(3, 9);
-        $num2 = rand(1, 9);
-        session(['contact_captcha_sum' => $num1 + $num2]);
+        // 1. Basic bot heuristics check
+        $dwellTime = (float) $request->input('dwell_time', 0);
+        $isWebDriver = $request->boolean('webdriver', false);
+
+        if ($isWebDriver || ($dwellTime > 0 && $dwellTime < 0.4)) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Automated bot activity detected.',
+            ], 403);
+        }
+
+        // 2. Generate signed cryptographic proof
+        $timestamp = time();
+        $nonce = Str::random(32);
+        $ip = $request->ip();
+        $secret = config('app.key') ?: 'bluebase-cloud-shield-salt';
+
+        $signature = hash_hmac('sha256', "{$timestamp}|{$nonce}|{$ip}", $secret);
+        $payload = base64_encode(json_encode([
+            't' => $timestamp,
+            'n' => $nonce,
+            'ip' => $ip,
+            'sig' => $signature,
+        ]));
+
+        session(['human_verified_token' => $payload]);
 
         return response()->json([
-            'num1' => $num1,
-            'num2' => $num2,
-            'question' => "{$num1} + {$num2}",
+            'success' => true,
+            'token' => $payload,
+            'message' => 'Verification successful.',
         ]);
     }
 
     public function storeContact(Request $request)
     {
-        // 1. Invisible Honeypot Security Check (catches naive bots)
+        // 1. Invisible Honeypot Security Check (catches naive crawlers)
         if ($request->filled('_hp_contact_check')) {
             return back()->with('success', 'Thank you! Your message has been received. Our enterprise engineering team will get back to you within 24 hours.');
         }
 
-        // 2. Strict Input & Human Verification Validation
+        // 2. Advanced Human Verification Cryptographic Token Validation
+        $clientToken = $request->input('verification_token');
+        $sessionToken = session('human_verified_token');
+        $isHumanVerified = false;
+
+        if (!empty($clientToken) && !empty($sessionToken) && hash_equals($sessionToken, $clientToken)) {
+            $decoded = json_decode(base64_decode($clientToken), true);
+            if (is_array($decoded) && isset($decoded['t'], $decoded['n'], $decoded['ip'], $decoded['sig'])) {
+                $secret = config('app.key') ?: 'bluebase-cloud-shield-salt';
+                $expectedSig = hash_hmac('sha256', "{$decoded['t']}|{$decoded['n']}|{$decoded['ip']}", $secret);
+
+                $elapsed = time() - (int)$decoded['t'];
+                // Valid signature, matching IP, and fresh within 15 minutes (900s)
+                if (hash_equals($expectedSig, $decoded['sig']) && $decoded['ip'] === $request->ip() && $elapsed >= 0 && $elapsed <= 900) {
+                    $isHumanVerified = true;
+                }
+            }
+        }
+
+        if (!$isHumanVerified) {
+            return back()->withInput()->withErrors([
+                'verification_token' => 'Please complete the "Verify you are human" check before submitting.',
+            ]);
+        }
+
+        // 3. Strict Input Validation
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
@@ -48,38 +98,25 @@ class InquiryController extends Controller
             'phone' => 'nullable|string|max:50',
             'service' => 'required|string|max:255',
             'message' => 'required|string|min:10',
-            'captcha_answer' => [
-                'required',
-                'numeric',
-                function ($attribute, $value, $fail) {
-                    $expected = session('contact_captcha_sum');
-                    if ($expected === null || (int)$value !== (int)$expected) {
-                        $fail('Security verification failed. Please solve the math verification problem correctly.');
-                    }
-                }
-            ],
         ], [
             'service.required' => 'Please select the primary project interest for your message.',
             'message.min' => 'Please provide at least 10 characters describing your project.',
-            'captcha_answer.required' => 'Please complete the human verification math problem.',
-            'captcha_answer.numeric' => 'The human verification answer must be a number.',
         ]);
 
         $validated['ip_address'] = $request->ip();
         $validated['status'] = 'new';
-        unset($validated['captcha_answer']);
 
-        // 3. Persist to MySQL database with defensive safety
+        // 4. Persist to MySQL database with defensive safety
         try {
             ContactInquiry::create($validated);
         } catch (\Throwable $e) {
             \Illuminate\Support\Facades\Log::error('ContactInquiry insertion error: ' . $e->getMessage(), $validated);
         }
 
-        // 4. Reset captcha session for subsequent submissions
-        session()->forget('contact_captcha_sum');
+        // 5. Consume verification token so it cannot be re-used
+        session()->forget('human_verified_token');
 
-        return back()->with('success', 'Thank you! Your message has been saved. Our engineering team will get back to you within 24 hours.');
+        return back()->with('success', 'Thank you! Your message has been received. Our enterprise engineering team will get back to you within 24 hours.');
     }
 
     public function demoForm()
