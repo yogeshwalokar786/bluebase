@@ -14,12 +14,14 @@ class ClientLogo extends Model
         'logo_path',
         'website_url',
         'display_order',
+        'sort_order',
         'is_active',
     ];
 
     protected $casts = [
         'is_active' => 'boolean',
         'display_order' => 'integer',
+        'sort_order' => 'integer',
     ];
 
     /**

@@ -162,6 +162,7 @@ CREATE TABLE `client_logos` (
   `logo_path` varchar(255) NOT NULL,
   `website_url` varchar(255) DEFAULT NULL,
   `display_order` int(11) NOT NULL DEFAULT 0,
+  `sort_order` int(11) NOT NULL DEFAULT 0,
   `is_active` tinyint(1) NOT NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -175,7 +176,7 @@ CREATE TABLE `client_logos` (
 
 LOCK TABLES `client_logos` WRITE;
 /*!40000 ALTER TABLE `client_logos` DISABLE KEYS */;
-INSERT INTO `client_logos` VALUES (1,'Aarohi Classic Championship','images/clients/aarohi-logo.webp',NULL,1,1,'2026-11-09 06:45:13','2026-11-09 06:45:13'),(2,'Aarya Waste Innovations','images/clients/aarya-logo.webp',NULL,2,1,'2026-11-09 06:45:13','2026-11-09 06:45:13'),(3,'Austin Moto Premium','images/clients/austin-logo.webp',NULL,3,1,'2026-11-09 06:45:13','2026-11-09 06:45:13'),(4,'Diets by Dietitian','images/clients/diets-logo.webp',NULL,4,1,'2026-11-09 06:45:13','2026-11-09 06:45:13'),(5,'Dreamland Vacations','images/clients/dream-logo.webp',NULL,5,1,'2026-11-09 06:45:13','2026-11-09 06:45:13'),(6,'OMG Rental Bikes','images/clients/omg-logo.webp',NULL,6,1,'2026-11-09 06:45:13','2026-11-09 06:45:13'),(7,'Rednetik','images/clients/rednetik-logo.webp',NULL,7,1,'2026-11-09 06:45:13','2026-11-09 06:45:13'),(8,'Shinne Interior','images/clients/shine-interior-logo.png',NULL,8,1,'2026-11-09 06:45:13','2026-11-09 06:45:13'),(9,'Shristiyam','images/clients/shristiyam_logo.webp',NULL,9,1,'2026-11-09 06:45:13','2026-11-09 06:45:13'),(10,'Trevanta International','images/clients/trevanta_logo.webp',NULL,10,1,'2026-11-09 06:45:13','2026-11-09 06:45:13');
+INSERT INTO `client_logos` VALUES (1,'Aarohi Classic Championship','images/clients/aarohi-logo.webp',NULL,1,1,1,'2026-11-09 06:45:13','2026-11-09 06:45:13'),(2,'Aarya Waste Innovations','images/clients/aarya-logo.webp',NULL,2,2,1,'2026-11-09 06:45:13','2026-11-09 06:45:13'),(3,'Austin Moto Premium','images/clients/austin-logo.webp',NULL,3,3,1,'2026-11-09 06:45:13','2026-11-09 06:45:13'),(4,'Diets by Dietitian','images/clients/diets-logo.webp',NULL,4,4,1,'2026-11-09 06:45:13','2026-11-09 06:45:13'),(5,'Dreamland Vacations','images/clients/dream-logo.webp',NULL,5,5,1,'2026-11-09 06:45:13','2026-11-09 06:45:13'),(6,'OMG Rental Bikes','images/clients/omg-logo.webp',NULL,6,6,1,'2026-11-09 06:45:13','2026-11-09 06:45:13'),(7,'Rednetik','images/clients/rednetik-logo.webp',NULL,7,7,1,'2026-11-09 06:45:13','2026-11-09 06:45:13'),(8,'Shinne Interior','images/clients/shine-interior-logo.png',NULL,8,8,1,'2026-11-09 06:45:13','2026-11-09 06:45:13'),(9,'Shristiyam','images/clients/shristiyam_logo.webp',NULL,9,9,1,'2026-11-09 06:45:13','2026-11-09 06:45:13'),(10,'Trevanta International','images/clients/trevanta_logo.webp',NULL,10,10,1,'2026-11-09 06:45:13','2026-11-09 06:45:13');
 /*!40000 ALTER TABLE `client_logos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -309,6 +310,50 @@ LOCK TABLES `job_batches` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `job_openings`
+--
+
+DROP TABLE IF EXISTS `job_openings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `job_openings` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `department` varchar(255) NOT NULL DEFAULT 'Engineering',
+  `category` varchar(50) NOT NULL DEFAULT 'backend',
+  `location` varchar(255) NOT NULL DEFAULT 'Remote (India / Global)',
+  `type` varchar(50) NOT NULL DEFAULT 'Full-time',
+  `experience` varchar(100) DEFAULT 'Senior (3+ yrs)',
+  `description` text DEFAULT NULL,
+  `skills_tags` text DEFAULT NULL,
+  `apply_email` varchar(255) DEFAULT 'info@bluebasetechnologies.com',
+  `display_order` int(11) NOT NULL DEFAULT 0,
+  `is_active` tinyint(1) NOT NULL DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `job_openings_slug_unique` (`slug`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `job_openings`
+--
+
+LOCK TABLES `job_openings` WRITE;
+/*!40000 ALTER TABLE `job_openings` DISABLE KEYS */;
+INSERT INTO `job_openings` VALUES 
+(1,'Staff Full-Stack Engineer (React / Go / Node)','staff-full-stack-engineer-react-go-node','Engineering','backend','Remote (India / Global)','Full-time','Lead (5+ yrs)','Lead architecture and implementation of high-throughput web applications and scalable microservices. You will work on real-time booking engines, client enterprise portals, and distributed transactional APIs.','Go, React / Next.js, PostgreSQL, Redis, Docker','info@bluebasetechnologies.com',1,1,'2026-11-15 05:00:00','2026-11-15 05:00:00'),
+(2,'Principal AI & Agent Systems Architect','principal-ai-agent-systems-architect','AI Research & Labs','ai','Remote (India / Global)','Full-time','Principal (6+ yrs)','Architect autonomous multi-agent pipelines, build hybrid vector search RAG systems, and deploy fine-tuned open-weight models for enterprise production workloads with sub-second latencies.','Python, LangChain / LlamaIndex, Vector DBs (Qdrant), FastAPI, PyTorch','info@bluebasetechnologies.com',2,1,'2026-11-15 05:00:00','2026-11-15 05:00:00'),
+(3,'Senior Cloud & DevOps Engineer','senior-cloud-devops-engineer','Infrastructure & SRE','mobile-cloud','Remote (India / Global)','Full-time','Senior (4+ yrs)','Own our multi-region Kubernetes clusters, automated GitOps CI/CD pipelines, Terraform infrastructure-as-code, and zero-trust security postures across AWS and Cloudflare.','Kubernetes, AWS / GCP, Terraform IaC, GitHub Actions, Prometheus','info@bluebasetechnologies.com',3,1,'2026-11-15 05:00:00','2026-11-15 05:00:00'),
+(4,'Senior Mobile Engineer (Flutter / React Native)','senior-mobile-engineer-flutter-react-native','Mobile Engineering','mobile-cloud','Remote (India / Global)','Full-time','Senior (4+ yrs)','Develop responsive cross-platform native experiences, offline-first sync engines, biometric auth flows, and edge computing for logistics & fleet tracking mobile platforms.','Flutter / Dart, React Native, iOS / Android, GraphQL, SQLite','info@bluebasetechnologies.com',4,1,'2026-11-15 05:00:00','2026-11-15 05:00:00'),
+(5,'Lead Product Designer & Design Systems','lead-product-designer-design-systems','Design & Experience','design','Remote (India / Global)','Full-time','Lead (5+ yrs)','Architect comprehensive Figma design token libraries, craft accessible data-dense enterprise dashboards, and establish cohesive motion guidelines for client applications.','Figma, Design Tokens, UX Research, Design Systems, Prototyping','info@bluebasetechnologies.com',5,1,'2026-11-15 05:00:00','2026-11-15 05:00:00'),
+(6,'Data & Vector Systems Engineer (Python / Distributed DBs)','data-vector-systems-engineer-python-distributed-dbs','Data Infrastructure','backend','Remote (India / Global)','Full-time','Senior (4+ yrs)','Design event-driven data streaming pipelines, schema registries, and real-time analytical cubes with sub-second OLAP queries across millions of transactional events.','Python, Apache Kafka, ClickHouse, PostgreSQL, Vector Indexing','info@bluebasetechnologies.com',6,1,'2026-11-15 05:00:00','2026-11-15 05:00:00');
+/*!40000 ALTER TABLE `job_openings` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `jobs`
 --
 
@@ -349,7 +394,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -358,7 +403,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (1,'0001_01_01_000000_create_users_table',1),(2,'0001_01_01_000001_create_cache_table',1),(3,'0001_01_01_000002_create_jobs_table',1),(4,'2026_11_01_000001_create_bluebase_tables',1),(5,'2026_11_02_000001_create_cms_and_enhancements',1),(6,'2026_11_02_000002_create_seo_tables',1),(7,'2026_11_08_000001_add_metadata_to_blogs_table',2),(8,'2026_11_09_000001_create_blog_categories_and_seo_fields',3),(9,'2026_11_09_000002_drop_services_table',4),(10,'2026_11_09_000003_drop_solutions_table',5),(11,'2026_11_09_000004_create_client_logos_table',5);
+INSERT INTO `migrations` VALUES (1,'0001_01_01_000000_create_users_table',1),(2,'0001_01_01_000001_create_cache_table',1),(3,'0001_01_01_000002_create_jobs_table',1),(4,'2026_11_01_000001_create_bluebase_tables',1),(5,'2026_11_02_000001_create_cms_and_enhancements',1),(6,'2026_11_02_000002_create_seo_tables',1),(7,'2026_11_08_000001_add_metadata_to_blogs_table',2),(8,'2026_11_09_000001_create_blog_categories_and_seo_fields',3),(9,'2026_11_09_000002_drop_services_table',4),(10,'2026_11_09_000003_drop_solutions_table',5),(11,'2026_11_09_000004_create_client_logos_table',5),(12,'2026_11_15_000001_create_job_openings_table',6);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 

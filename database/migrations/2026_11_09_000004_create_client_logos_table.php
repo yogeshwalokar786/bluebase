@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('logo_path');
             $table->string('website_url')->nullable();
             $table->integer('display_order')->default(0);
+            $table->integer('sort_order')->default(0);
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
