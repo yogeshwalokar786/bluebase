@@ -621,13 +621,7 @@
 
   // Update input placeholder based on current stage
   function updatePlaceholder(step) {
-    if (step === 'ask_name') {
-      chatInput.placeholder = 'Please enter your full name...';
-    } else if (step === 'ask_email') {
-      chatInput.placeholder = 'Please enter your email (e.g. name@domain.com)...';
-    } else {
-      chatInput.placeholder = 'Ask about web, mobile, SaaS MVP, AI...';
-    }
+    chatInput.placeholder = 'Ask about web, mobile, SaaS MVP, AI, pricing...';
   }
 
   // Render message bubble
@@ -651,7 +645,15 @@
 
     const bubble = document.createElement('div');
     bubble.className = 'bb-msg-bubble';
-    bubble.textContent = text;
+    if (isBot) {
+      const temp = document.createElement('div');
+      temp.textContent = text;
+      let safe = temp.innerHTML;
+      safe = safe.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      bubble.innerHTML = safe;
+    } else {
+      bubble.textContent = text;
+    }
 
     const timeElem = document.createElement('div');
     timeElem.className = 'bb-msg-time';
