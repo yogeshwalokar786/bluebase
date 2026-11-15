@@ -526,19 +526,19 @@ VERIFIED VISITOR PROFILE:
 
 CRITICAL CONVERSATIONAL RULES:
 1. Address the visitor warmly by their first name when appropriate.
-2. NO PREDEFINED OR CANNED RESPONSES. Directly address the user's specific statement, idea, or question in every single response with concrete architectural guidance.
-3. ENGAGE IN TRUE DIALOGUE: Always conclude your response by asking exactly ONE relevant, thoughtful follow-up question specifically based on what the user said to help clarify their technical scope, feature priorities, or business requirements.
-4. Be concise and natural (typically 2 to 3 short paragraphs). Never dump large encyclopedic feature lists unless explicitly requested.
-5. If the visitor asks questions unrelated to software development, answer briefly and politely steer back to how Bluebase can help build their software.
+2. MATCH THE VISITOR'S TECHNICAL LEVEL: If they are a local business owner, clinic doctor, or non-technical client asking for a simple or static website, speak in simple, friendly, everyday human English.
+3. NEVER overwhelm non-technical clients with developer jargon like PostgreSQL, Docker, decoupled microservices, RBAC, or third-party authentication APIs!
+4. Directly address what the user said with practical, relevant advice. For example, if they mention a clinic, discuss doctor profiles, clinic hours, location maps, and WhatsApp/appointment buttons.
+5. ALWAYS conclude your response with exactly ONE simple, thoughtful follow-up question that is easy to answer in 1 or 2 words (e.g. asking about WhatsApp vs online booking, number of pages, or launch timeline).
+6. Be concise and natural (typically 2 short paragraphs). Never dump large encyclopedic feature lists.
 
 Bluebase Core Reference (use naturally when relevant):
 • Origin & HQ: Founded and headquartered in Nagpur, Maharashtra, India (Zero Mile City). Remote-first model, senior-led engineering pods, direct developer access, daily timezone overlap with US (EST/PST) and UK/Europe (GMT/CET).
-• SaaS MVP: 3 to 6-week rapid delivery, multi-tenant databases, Stripe/Razorpay billing with webhooks, role-based access control (RBAC).
-• Mobile Apps: Cross-platform iOS & Android dual-launch with Flutter and React Native (40-50% cost savings), offline-first SQLite caching, guaranteed 100% App Store approval.
-• Web Platforms: Next.js, React, Laravel, Node.js, Tailwind CSS, high-concurrency microservices, sub-second load times.
-• AI & Autonomous Agents: Multi-agent workflows, Enterprise RAG on company databases, Qdrant/Pinecone vector search.
-• IP Ownership: 100% legal IP Assignment Deed. Clients own all Git repos, commits, Figma tokens, and cloud servers from day 1 with zero vendor lock-in.
-• Case Studies: OMG Rental Bikes (omgrentalbikes.com vehicle rental booking ERP) and Aarohi Classic 2024 (live athlete registration & scoring platform).
+• Small Business & Clinic Websites: Fast 1 to 2-week turnaround, mobile-responsive, Google Maps, WhatsApp integration, SEO ready, budget-friendly fixed price.
+• SaaS MVP: 3 to 6-week rapid delivery, multi-tenant databases, Stripe/Razorpay billing with webhooks, role-based access control.
+• Mobile Apps: Cross-platform iOS & Android dual-launch with Flutter and React Native.
+• Web Platforms: Next.js, React, Laravel, Node.js, Tailwind CSS, sub-second load times.
+• Case Studies: OMG Rental Bikes (omgrentalbikes.com vehicle rental ERP) and Aarohi Classic 2024 (live athlete registration & scoring platform).
 • Contact: info@bluebasetechnologies.com, Phone: +91 79727 65119, Online Contact Form at /contact.
 PROMPT;
     }
@@ -562,180 +562,223 @@ PROMPT;
 
     /**
      * Dynamic conversational responder used when API key is not yet set or during offline fallback.
-     * Generates tailored answers directly based on the user's prompt and asks a relevant question back!
+     * Speaks in simple, friendly, relatable human language with ZERO corporate/developer jargon.
      */
     protected function generateDynamicResponse(ChatSession $session, string $input, string $normalized, string $visitorName = '', string $visitorEmail = '', bool $newEmailFound = false, bool $newNameFound = false): array
     {
-        $salutation = $visitorName ? "{$visitorName}, " : "";
+        $salutation = $visitorName ? "{$visitorName}" : "";
+        $phone = $session->visitor_phone ?: '';
 
-        // If user just introduced their name
-        if ($newNameFound && strlen($input) < 35 && !$this->isQuestion($normalized)) {
-            return [
-                'message' => "Nice to meet you, {$visitorName}! Welcome to Bluebase Technologies. What kind of software project or digital product are you looking to build?",
-                'step' => 'conversing',
-                'suggestions' => [],
-            ];
+        // 1. Scan full conversation history to maintain accurate project context
+        $historyText = '';
+        if ($session->exists) {
+            $historyText = strtolower($session->messages()->pluck('message')->implode(' '));
         }
+        $fullContext = $historyText . ' ' . $normalized;
 
-        // If user just shared their email
-        if ($newEmailFound && strlen($input) < 55 && !$this->isQuestion($normalized)) {
-            $nameGreeting = $visitorName ? "Thank you, {$visitorName}!" : "Thank you!";
-            return [
-                'message' => "{$nameGreeting} I've noted your email ({$visitorEmail}) for our technical solutions team. What specific technical features or goals are you aiming to achieve with your application?",
-                'step' => 'conversing',
-                'suggestions' => [],
-            ];
-        }
+        $isClinic = str_contains($fullContext, 'clinic')
+            || str_contains($fullContext, 'doctor')
+            || str_contains($fullContext, 'hospital')
+            || str_contains($fullContext, 'medical')
+            || str_contains($fullContext, 'dental')
+            || str_contains($fullContext, 'dentist')
+            || str_contains($fullContext, 'patient');
 
-        // Context from previous bot message
+        $isStatic = str_contains($fullContext, 'static')
+            || str_contains($fullContext, 'simple website')
+            || str_contains($fullContext, 'basic website')
+            || str_contains($fullContext, 'brochure')
+            || str_contains($fullContext, 'profile');
+
+        $isEcommerce = str_contains($fullContext, 'ecommerce')
+            || str_contains($fullContext, 'e-commerce')
+            || str_contains($fullContext, 'online store')
+            || str_contains($fullContext, 'selling');
+
+        // Context from the most recent bot message
         $lastBotMsg = null;
         if ($session->exists) {
             $lastBotMsg = $session->messages()->where('sender', 'bot')->latest()->first();
         }
         $lastBotText = $lastBotMsg ? strtolower($lastBotMsg->message) : '';
 
-        // Affirmative response handling ("yes", "yep", "sure", "yeah", "ok", "okay", "correct", "right")
-        $isAffirmative = preg_match('/^(yes|yeah|yep|sure|ok|okay|yup|definitely|absolutely|correct|right|proceed|fine)$/i', $normalized)
+        // ----------------------------------------------------
+        // A. Pricing / Cost / Estimate Inquiry
+        // ----------------------------------------------------
+        if ($this->matches($normalized, ['estimate', 'price', 'pricing', 'cost', 'quote', 'rate', 'how much', 'fee', 'charge', 'budget', 'charges'])) {
+            if ($isClinic || $isStatic) {
+                return [
+                    'message' => "For a clean 3 to 5-page static clinic or business website (mobile-friendly, with your profile, services, contact form, Google Maps, and direct WhatsApp booking), it is usually completed in **1 to 2 weeks** at a very budget-friendly fixed price with zero hidden fees.\n\nDoes a straightforward 3 to 5-page website fit what you have in mind?",
+                    'step' => 'conversing',
+                    'suggestions' => [],
+                ];
+            }
+
+            return [
+                'message' => "For standard static websites (3 to 5 pages), turnaround is typically **1 to 2 weeks** at an affordable fixed price. For custom web applications with online payments or customer accounts, we scope the exact features first and give you a fixed milestone quote.\n\nDoes a simple 3 to 5-page website sound like what you're looking for, or do you need special custom features?",
+                'step' => 'conversing',
+                'suggestions' => [],
+            ];
+        }
+
+        // ----------------------------------------------------
+        // B. Clinic / Healthcare Specific Inquiries
+        // ----------------------------------------------------
+        if ($this->matches($normalized, ['clinic', 'doctor', 'hospital', 'medical', 'dental', 'dentist', 'patient', 'health', 'physician'])) {
+            return [
+                'message' => "A website for your clinic is simple and fast to set up! We typically include your doctor profile, list of treatments & services, clinic hours, Google Maps location, and a direct WhatsApp or appointment booking button.\n\nWould you like patients to book appointments directly on the website, or contact you via WhatsApp / phone call?",
+                'step' => 'conversing',
+                'suggestions' => [],
+            ];
+        }
+
+        // ----------------------------------------------------
+        // C. Brand New / From Scratch Inquiry
+        // ----------------------------------------------------
+        if ($this->matches($normalized, ['brand new', 'from scratch', 'new website', 'fresh', 'start from scratch', 'scratch'])) {
+            if ($isClinic) {
+                return [
+                    'message' => "Starting fresh for your clinic is great! We'll make sure the website looks clean, trustworthy, and loads fast on mobile phones, with a clear doctor profile and one-tap WhatsApp button for patients.\n\nDo you already have a clinic name and logo, or do you need help with branding as well?",
+                    'step' => 'conversing',
+                    'suggestions' => [],
+                ];
+            }
+
+            return [
+                'message' => "Starting from scratch gives us complete freedom to make your website look modern, clean, and fast on mobile phones. Do you already have a logo and content ready, or would you like our team to help with that?",
+                'step' => 'conversing',
+                'suggestions' => [],
+            ];
+        }
+
+        // ----------------------------------------------------
+        // D. Affirmative response handling ("yes", "yep", "sure", "yeah", "ok", "okay", "correct", "right")
+        // ----------------------------------------------------
+        $isAffirmative = preg_match('/^(yes|yeah|yep|sure|ok|okay|yup|definitely|absolutely|correct|right|proceed|fine|ha|haan)$/i', $normalized)
             || in_array($normalized, ['yes', 'yeah', 'yep', 'sure', 'ok', 'okay', 'yup', 'correct', 'right']);
 
         if ($isAffirmative) {
-            if (str_contains($lastBotText, 'scratch') || str_contains($lastBotText, 'modernizing')) {
+            if ($isClinic) {
                 return [
-                    'message' => "Building from scratch gives us complete architectural freedom to engineer sub-second page loads, modular API design, and tailored UX flows. Do you have wireframes, feature requirements, or design references ready, or would you like us to assist with the technical scoping and UI wireframing as well?",
+                    'message' => "Great! We can set up everything from your clinic layout to Google Maps directions so patients can easily navigate to your clinic. What is your clinic specialty (e.g. general physician, dental, homeopathy, skin clinic)?",
+                    'step' => 'conversing',
+                    'suggestions' => [],
+                ];
+            }
+
+            if (str_contains($lastBotText, 'sample') || str_contains($lastBotText, 'quote') || str_contains($lastBotText, 'fit what you')) {
+                return [
+                    'message' => "Awesome! We have noted all your details" . ($salutation ? ", {$salutation}" : "") . ". Our team will prepare a sample website layout and a simple quote, and send it to your email ({$visitorEmail})" . ($phone ? " and WhatsApp ({$phone})" : "") . " shortly.\n\nIs there any other specific service or feature you'd like included?",
                     'step' => 'conversing',
                     'suggestions' => [],
                 ];
             }
 
             return [
-                'message' => "Understood! To help guide our architectural recommendations, what core problem will your application solve, and do you have any specific integrations in mind (such as payment processing, authentication, or third-party APIs)?",
+                'message' => "Understood! Would you like us to share a couple of sample website design links so you can see how it will look?",
                 'step' => 'conversing',
                 'suggestions' => [],
             ];
         }
 
-        // Negative response handling ("no", "nope", "nah", "not really", "nothing", "none")
-        $isNegative = preg_match('/^(no|nope|nah|not really|nothing|none|not yet)$/i', $normalized)
+        // ----------------------------------------------------
+        // E. Negative response handling ("no", "nope", "nah", "not really", "nothing", "none")
+        // ----------------------------------------------------
+        $isNegative = preg_match('/^(no|nope|nah|not really|nothing|none|not yet|nahi)$/i', $normalized)
             || in_array($normalized, ['no', 'nope', 'nah']);
 
         if ($isNegative) {
-            return [
-                'message' => "Understood, no problem at all! Feel free to share any details about your product concept whenever you're ready, or ask any questions about our development process, tech stack, past work (like OMG Rental Bikes and Aarohi Classic), and 3 to 6-week MVP delivery model.",
-                'step' => 'conversing',
-                'suggestions' => [],
-            ];
-        }
-
-        // Ecommerce platform inquiry
-        if ($this->matches($normalized, ['ecommerce', 'e-commerce', 'online store', 'shopping', 'store', 'cart', 'checkout', 'selling', 'products', 'shopify', 'woocommerce', 'marketplace'])) {
-            return [
-                'message' => "For ecommerce platforms, we build high-converting headless storefronts using Next.js on the frontend with decoupled Laravel or Node.js backends. We integrate multi-currency payment gateways (Stripe/Razorpay), automated inventory tracking, and custom merchant dashboards.\n\nAre you looking to launch a direct-to-consumer (D2C) brand store, or a multi-vendor marketplace with multiple sellers?",
-                'step' => 'conversing',
-                'suggestions' => [],
-            ];
-        }
-
-        // Mobile App inquiry
-        if ($this->matches($normalized, ['mobile', 'app', 'android', 'ios', 'flutter', 'react native', 'iphone', 'play store', 'app store'])) {
-            return [
-                'message' => "For mobile applications, {$salutation}we build cross-platform apps using Flutter and React Native. This allows you to launch on both iOS and Android simultaneously from one unified codebase, which cuts development and maintenance costs by almost half while delivering 60fps native performance and offline local caching.\n\nWhat kind of mobile app are you planning to build, and do you already have screen wireframes or Figma designs ready?",
-                'step' => 'conversing',
-                'suggestions' => [],
-            ];
-        }
-
-        // SaaS MVP inquiry
-        if ($this->matches($normalized, ['saas', 'mvp', 'minimum viable', 'startup', 'launchpad', 'prototype', 'tenant', 'multi-tenant', 'mrr'])) {
-            return [
-                'message' => "For a SaaS MVP, our primary focus is getting you from architecture to live production in 3 to 6 weeks. We handle the heavy architectural lifting upfront—multi-tenant workspaces, Stripe or Razorpay subscription billing with automated webhooks, user role management (RBAC), and admin dashboards—so you can start onboarding real users immediately.\n\nWhat core problem does your SaaS solve, and what is the single most critical feature you want in your version 1.0?",
-                'step' => 'conversing',
-                'suggestions' => [],
-            ];
-        }
-
-        // Web Development inquiry (with anti-repetition check)
-        if ($this->matches($normalized, ['web', 'website', 'laravel', 'nextjs', 'next.js', 'react', 'vue', 'node', 'full stack', 'fullstack', 'portal', 'tailwind'])) {
-            if (str_contains($lastBotText, 'on the web engineering side')) {
+            if (str_contains($lastBotText, 'logo') || str_contains($lastBotText, 'designs') || str_contains($lastBotText, 'content')) {
                 return [
-                    'message' => "Got it! To ensure we architect the ideal web solution for your needs, what key functionality or user workflows should your website support (such as custom dashboards, client portals, payment gateways, or API integrations)?",
+                    'message' => "No problem at all! Most clients don't have designs ready. Our team will create a modern, professional layout for you, and we can help with basic logo design and content formatting.\n\nWould you like to see 2 or 3 sample website links to get an idea of the style?",
                     'step' => 'conversing',
                     'suggestions' => [],
                 ];
             }
 
             return [
-                'message' => "On the web engineering side, we build modern decoupled web applications using Next.js, React, Laravel, and Node.js with PostgreSQL and Redis backends. We engineer for sub-second load times, 90+ Core Web Vitals, and enterprise security with SSO and role-based permissions.\n\nAre you looking to build a brand-new web application from scratch, or are you modernizing an existing codebase?",
+                'message' => "No problem at all! Feel free to ask any question about the website, timelines, or pricing, and I'll keep it simple.",
                 'step' => 'conversing',
                 'suggestions' => [],
             ];
         }
 
-        // AI / Agents inquiry
-        if ($this->matches($normalized, ['ai', 'artificial intelligence', 'agent', 'rag', 'llm', 'vector', 'qdrant', 'pinecone', 'machine learning', 'automation'])) {
+        // ----------------------------------------------------
+        // F. Static / Business Profile Website
+        // ----------------------------------------------------
+        if ($this->matches($normalized, ['static', 'static website', 'simple website', 'basic website', 'landing page', 'portfolio', 'brochure'])) {
             return [
-                'message' => "For AI systems, we build domain-specific autonomous agent pipelines and Enterprise RAG (Retrieval-Augmented Generation). We connect vector databases like Qdrant and Pinecone to your proprietary documentation, internal PDFs, and databases so the AI can execute complex multi-step workflows with sub-second retrieval.\n\nWhat specific task or operational process are you looking to automate with AI?",
+                'message' => "A static website is fast, secure, mobile-friendly, and very budget-friendly. It loads in under a second and usually includes 3 to 5 pages (Home, About Us, Services, Photo Gallery, and Contact with WhatsApp & Google Map).\n\nDo you already have your photos and text ready, or would you like us to help organize them?",
                 'step' => 'conversing',
                 'suggestions' => [],
             ];
         }
 
-        // Pricing / Cost inquiry
-        if ($this->matches($normalized, ['price', 'pricing', 'cost', 'quote', 'estimate', 'rate', 'how much', 'fee', 'charge', 'budget'])) {
+        // ----------------------------------------------------
+        // G. Ecommerce Store Inquiry
+        // ----------------------------------------------------
+        if ($isEcommerce) {
             return [
-                'message' => "Our pricing is structured around milestone contracts and sprint billing so there are never surprise fees. For MVPs and clearly scoped projects, we provide a fixed-price contract with clear deliverable milestones and 100% IP ownership. For ongoing product iteration, we provide dedicated senior developer pods on monthly retainers.\n\nCould you share a brief overview of the key features or scope of your product so I can give you a more accurate estimate?",
+                'message' => "We build easy-to-manage online stores where customers can browse your products, add items to cart, and pay via UPI, cards, or Cash on Delivery.\n\nRoughly how many products are you planning to sell initially?",
                 'step' => 'conversing',
                 'suggestions' => [],
             ];
         }
 
-        // Timeline inquiry
-        if ($this->matches($normalized, ['timeline', 'duration', 'how long', 'weeks', 'months', 'deadline', 'turnaround', 'speed', 'fast'])) {
+        // ----------------------------------------------------
+        // H. Mobile App Inquiry
+        // ----------------------------------------------------
+        if ($this->matches($normalized, ['mobile', 'app', 'android', 'ios', 'flutter', 'react native', 'play store', 'app store'])) {
             return [
-                'message' => "Our typical turnaround is 3 to 6 weeks for a complete SaaS MVP, and 6 to 10 weeks for a full-scale mobile or web application. Every project is run on structured 2-week agile sprints with bi-weekly live staging demos so you test working software continuously.\n\nWhat is your ideal launch target or timeline for having the first working version live?",
+                'message' => "We develop mobile apps for both Android and iPhone using Flutter and React Native. This keeps your development cost down while giving users a smooth 60fps experience.\n\nWhat kind of mobile app are you planning to build, and do you already have screen sketches or wireframes ready?",
                 'step' => 'conversing',
                 'suggestions' => [],
             ];
         }
 
-        // Location / Company inquiry
-        if ($this->matches($normalized, ['where', 'location', 'headquarters', 'hq', 'office', 'nagpur', 'india', 'about', 'who are you', 'team', 'remote'])) {
+        // ----------------------------------------------------
+        // I. SaaS / Custom Web Application
+        // ----------------------------------------------------
+        if ($this->matches($normalized, ['saas', 'mvp', 'startup', 'portal', 'dashboard', 'custom software', 'multi-tenant'])) {
             return [
-                'message' => "Bluebase Technologies is founded and headquartered in Nagpur, Maharashtra, India (Zero Mile City). We operate with a remote-first engineering model, giving you direct access to senior software architects without traditional agency overhead, while maintaining daily 4 to 6-hour timezone overlap with US, UK, and European business hours.\n\nWhere is your team located, and what kind of project are you looking to collaborate on?",
+                'message' => "For a SaaS MVP or custom web platform, our goal is getting your first working version launched in 3 to 6 weeks with user logins, subscription billing, and an admin dashboard.\n\nWhat is the main problem your software will solve for its users?",
                 'step' => 'conversing',
                 'suggestions' => [],
             ];
         }
 
-        // Case studies inquiry
-        if ($this->matches($normalized, ['case study', 'case studies', 'portfolio', 'past work', 'proof of work', 'what have you built', 'examples', 'omg', 'aarohi'])) {
+        // ----------------------------------------------------
+        // J. Generic Website Inquiry (Warm, Simple, Zero Jargon)
+        // ----------------------------------------------------
+        if ($this->matches($normalized, ['web', 'website', 'page', 'site'])) {
+            if ($isClinic) {
+                return [
+                    'message' => "For your clinic website, we will keep it simple, clean, and mobile-friendly with an appointment button and Google Maps. What is your clinic's specialty (e.g. dental, general clinic, eye clinic, skin)?",
+                    'step' => 'conversing',
+                    'suggestions' => [],
+                ];
+            }
+
             return [
-                'message' => "Two recent platforms we delivered include **OMG Rental Bikes** (omgrentalbikes.com), where we built the entire online vehicle rental booking engine, fleet ERP, and instant digital KYC verification; and **Aarohi Classic 2024**, a high-volume sports championship platform handling live athlete registrations and automated WhatsApp communications with zero downtime.\n\nWhat industry or market is your product targeting?",
+                'message' => "We design and build clean, modern, and mobile-friendly websites—from simple business profile sites to online stores.\n\nWhat kind of business is the website for, and roughly how many pages do you have in mind?",
                 'step' => 'conversing',
                 'suggestions' => [],
             ];
         }
 
-        // General inquiry / greeting
-        if ($this->matches($normalized, ['hello', 'hi', 'hey', 'good morning', 'greetings', 'yo'])) {
-            return [
-                'message' => "Hello {$visitorName}! I am here to help you scope, architect, and build your software project. What kind of idea or technology are you exploring today?",
-                'step' => 'conversing',
-                'suggestions' => [],
-            ];
-        }
-
-        // Progressive consultative interview funnel for deep multi-turn conversations
+        // ----------------------------------------------------
+        // K. Progressive, Natural Multi-Turn Questions (Zero Jargon)
+        // ----------------------------------------------------
         $turnIndex = $session->exists ? $session->messages()->where('sender', 'bot')->count() : 0;
 
-        $progressiveQuestions = [
-            "Got it, {$salutation}! In terms of your core features and integrations, do you have specific preferences (such as Razorpay/Stripe payments, third-party logistics, SMS/WhatsApp notifications, or custom admin dashboards)?",
-            "Understood! Regarding your launch schedule, what is your ideal target timeline for having the first live version ready for users?",
-            "Makes total sense. Do you already have Figma designs, wireframes, or reference websites, or would you like our design team to create the full UX/UI architecture?",
-            "Excellent. To help our solutions architect prepare a tailored proposal, what approximate user volume or transaction scale are you aiming to support in version 1.0?",
-            "Thank you for sharing those details, {$salutation}! Our engineering pod will review your project requirements and follow up at {$visitorEmail} with a preliminary technical architecture and milestone estimate. Is there anything else specific you'd like included in the scope?",
+        $simpleQuestions = [
+            "Got it" . ($salutation ? ", {$salutation}" : "") . "! Do you already have a domain name or hosting, or would you like us to set that up for you as well?",
+            "Understood! What is your ideal timeline for launching the website live?",
+            "Makes total sense. Would you like us to share 2 or 3 live design examples of similar websites we've built?",
+            "Thank you for sharing those details" . ($salutation ? ", {$salutation}" : "") . "! Our team will review your requirements and reach out to you directly at {$visitorEmail}" . ($phone ? " and {$phone}" : "") . " with a clear plan and estimate. Is there anything else you'd like to ask?",
         ];
 
-        $selectedMsg = $progressiveQuestions[$turnIndex % count($progressiveQuestions)];
+        $selectedMsg = $simpleQuestions[$turnIndex % count($simpleQuestions)];
         return [
             'message' => $selectedMsg,
             'step' => 'conversing',
