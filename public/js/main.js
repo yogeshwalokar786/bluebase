@@ -554,13 +554,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // ==========================================================================
-// 11. SITE PRELOADER: GANESHA IDOL OUTLINE TRANSITION & DISMISSAL
+// 11. SITE PRELOADER: BLUEBASE BRAND TECH TRANSITION & DISMISSAL
 // ==========================================================================
 (() => {
   const preloader = document.getElementById('site-preloader');
   if (!preloader) return;
 
-  const minAnimationTime = 1400; // Time in ms to appreciate the sacred outline draw
+  const minAnimationTime = 950; // Snappy, premium brand presence
   const initTimestamp = performance.now();
   let hasDismissed = false;
 
@@ -580,7 +580,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (preloader.parentNode) {
           preloader.style.display = 'none';
         }
-      }, 850);
+      }, 700);
     }, remainingTime);
   };
 
@@ -590,16 +590,17 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     window.addEventListener('load', dismissPreloader);
     // Safety fallback timeout so page is never blocked
-    setTimeout(dismissPreloader, 3200);
+    setTimeout(dismissPreloader, 2800);
   }
 
   // Developer / Client preview trigger
-  window.replayGaneshaLoader = () => {
+  window.replayPreloader = () => {
     preloader.style.display = 'flex';
     preloader.classList.remove('loaded');
     document.body.classList.remove('preloader-done');
     setTimeout(() => {
       preloader.classList.add('loaded');
-    }, 2400);
+    }, 2000);
   };
+  window.replayGaneshaLoader = window.replayPreloader;
 })();

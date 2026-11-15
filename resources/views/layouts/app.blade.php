@@ -79,7 +79,7 @@
 
 <body class="@yield('body_class', '')">
 
-  <!-- Site Preloader: Lord Ganesha Outline Transition & Animation -->
+  <!-- Site Preloader: Bluebase Brand Tech Preloader -->
   @include('partials.preloader')
 
   <!-- Site Navigation Header -->
