@@ -1,386 +1,1470 @@
 @extends('layouts.app')
 
-@section('title', 'Careers at Bluebase | Join Our Global Engineering Pods')
-@section('meta_description', 'Join Bluebase')
+@section('title', 'Careers at Bluebase | Join Our High-Agency Engineering Teams')
+@section('meta_description', 'Explore career opportunities at Bluebase Technologies. We are hiring senior full-stack engineers, AI researchers, and systems architects for 100% remote-first engineering pods.')
+
+@push('styles')
+<style>
+/* ==========================================================================
+   CAREERS PAGE - REDESIGNED MODERN ARCHITECTURE
+   ========================================================================== */
+
+/* 1. Hero Section */
+.careers-hero {
+  padding: 130px 0 70px;
+  background: 
+    radial-gradient(circle at 85% 15%, rgba(0, 80, 231, 0.08) 0%, transparent 55%),
+    radial-gradient(circle at 15% 85%, rgba(56, 189, 248, 0.06) 0%, transparent 50%),
+    #ffffff;
+  position: relative;
+  border-bottom: 1px solid var(--color-gray-200);
+  overflow: hidden;
+}
+
+.careers-hero-grid {
+  position: absolute;
+  inset: 0;
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 80, 231, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 80, 231, 0.03) 1px, transparent 1px);
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.careers-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  background: rgba(0, 80, 231, 0.08);
+  border: 1px solid rgba(0, 80, 231, 0.22);
+  color: var(--color-accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 22px;
+}
+
+.careers-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 10px #10b981;
+  animation: pulseLiveGreen 2s infinite ease-in-out;
+}
+
+@keyframes pulseLiveGreen {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.careers-title {
+  font-size: clamp(2.3rem, 4.5vw, 3.8rem);
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  margin-bottom: 22px;
+  max-width: 940px;
+}
+
+.careers-title mark {
+  background: transparent;
+  color: var(--color-accent);
+}
+
+.careers-desc {
+  font-size: 1.15rem;
+  line-height: 1.65;
+  color: var(--color-gray-600);
+  max-width: 820px;
+  margin-bottom: 34px;
+}
+
+.careers-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.careers-stat-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  padding-top: 32px;
+  border-top: 1px solid var(--color-gray-200);
+}
+
+.careers-stat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.careers-stat-num {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  letter-spacing: -0.02em;
+}
+
+.careers-stat-label {
+  font-size: 0.85rem;
+  color: var(--color-gray-600);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* 2. Culture & Why Build Here Section */
+.careers-culture-section {
+  padding: 85px 0;
+  background: #f8fafc;
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+.careers-section-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 56px;
+}
+
+.careers-tag {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 12px;
+}
+
+.careers-section-title {
+  font-size: clamp(2rem, 3.2vw, 2.7rem);
+  font-weight: 800;
+  color: var(--color-primary);
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.careers-section-sub {
+  font-size: 1.05rem;
+  color: var(--color-gray-600);
+  line-height: 1.6;
+}
+
+.careers-culture-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.careers-culture-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 32px 28px;
+  border: 1px solid var(--color-gray-200);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.careers-culture-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 80, 231, 0.08);
+  border-color: rgba(0, 80, 231, 0.3);
+}
+
+.careers-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(0, 80, 231, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+  margin-bottom: 20px;
+}
+
+.careers-culture-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 12px;
+  letter-spacing: -0.015em;
+}
+
+.careers-culture-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-gray-600);
+  margin: 0;
+}
+
+/* 3. Modern Tech Stack Showcase */
+.careers-stack-section {
+  padding: 70px 0;
+  background: #ffffff;
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+.careers-stack-box {
+  background: linear-gradient(135deg, #0b1536 0%, #060913 100%);
+  border-radius: 20px;
+  padding: 44px 40px;
+  color: #ffffff;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+
+.careers-stack-header {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.careers-stack-pill-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.careers-stack-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #f1f5f9;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: all 0.2s ease;
+}
+
+.careers-stack-pill:hover {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: #38bdf8;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* 4. Open Positions Section */
+.careers-roles-section {
+  padding: 85px 0;
+  background: #ffffff;
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+.careers-filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.careers-filter-btn {
+  background: #f8fafc;
+  border: 1px solid var(--color-gray-200);
+  padding: 8px 20px;
+  border-radius: 9999px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.careers-filter-btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.careers-filter-btn.active {
+  background: var(--color-primary);
+  color: #ffffff;
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 14px rgba(11, 18, 38, 0.15);
+}
+
+.careers-roles-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.career-role-card {
+  background: #ffffff;
+  border: 1px solid var(--color-gray-200);
+  border-radius: 16px;
+  padding: 30px 32px;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+.career-role-card:hover {
+  border-color: rgba(0, 80, 231, 0.4);
+  box-shadow: 0 10px 28px rgba(0, 80, 231, 0.08);
+  transform: translateY(-2px);
+}
+
+.career-role-main {
+  flex: 1;
+}
+
+.career-role-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.career-badge-dept {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(0, 80, 231, 0.08);
+  color: var(--color-accent);
+}
+
+.career-badge-loc {
+  font-size: 0.82rem;
+  color: var(--color-gray-600);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 500;
+}
+
+.career-badge-type {
+  font-size: 0.82rem;
+  color: #16a34a;
+  background: rgba(22, 163, 74, 0.1);
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.career-role-title {
+  font-size: 1.35rem;
+  font-weight: 750;
+  color: var(--color-primary);
+  margin-bottom: 10px;
+  letter-spacing: -0.015em;
+}
+
+.career-role-desc {
+  font-size: 0.95rem;
+  color: var(--color-gray-600);
+  line-height: 1.55;
+  margin-bottom: 16px;
+  max-width: 820px;
+}
+
+.career-role-tags {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.career-tag-pill {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: #f1f5f9;
+  color: var(--color-gray-700);
+}
+
+.career-role-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  min-width: 170px;
+}
+
+.career-apply-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 10px;
+  background: var(--color-accent);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 1px solid var(--color-accent);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.career-apply-btn:hover {
+  background: #0043c7;
+  box-shadow: 0 4px 14px rgba(0, 80, 231, 0.35);
+  color: #ffffff;
+}
+
+/* 5. Transparent 4-Step Hiring Roadmap */
+.careers-hiring-process {
+  padding: 85px 0;
+  background: #f8fafc;
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+.hiring-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  position: relative;
+}
+
+.hiring-step-card {
+  background: #ffffff;
+  border: 1px solid var(--color-gray-200);
+  border-radius: 16px;
+  padding: 30px 24px;
+  position: relative;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+}
+
+.hiring-step-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--color-primary);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.95rem;
+  margin-bottom: 18px;
+}
+
+.hiring-step-title {
+  font-size: 1.15rem;
+  font-weight: 750;
+  color: var(--color-primary);
+  margin-bottom: 10px;
+  letter-spacing: -0.015em;
+}
+
+.hiring-step-desc {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--color-gray-600);
+  margin: 0;
+}
+
+/* 6. Candidate FAQ Section */
+.careers-faq-section {
+  padding: 85px 0;
+  background: #ffffff;
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+.careers-faq-layout {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 50px;
+}
+
+.careers-faq-left {
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+}
+
+.careers-accordion-item {
+  border-bottom: 1px solid var(--color-gray-200);
+  padding: 22px 0;
+}
+
+.careers-accordion-item:first-child {
+  padding-top: 0;
+}
+
+.careers-accordion-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.careers-accordion-trigger:hover {
+  color: var(--color-accent);
+}
+
+.careers-accordion-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.careers-accordion-item.active .careers-accordion-icon {
+  transform: rotate(45deg);
+  background: rgba(0, 80, 231, 0.1);
+  color: var(--color-accent);
+}
+
+.careers-accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.careers-accordion-inner {
+  padding-top: 14px;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--color-gray-600);
+}
+
+/* 7. Closing High-Agency Candidate CTA */
+.careers-cta-section {
+  padding: 85px 0;
+  background: #f8fafc;
+}
+
+.careers-cta-box {
+  background: radial-gradient(ellipse at center, #0b1536 0%, #060913 70%, #020408 100%);
+  border-radius: 24px;
+  padding: 60px 48px;
+  text-align: center;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+.careers-cta-title {
+  font-size: clamp(2rem, 3.5vw, 2.9rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 18px;
+  letter-spacing: -0.025em;
+}
+
+.careers-cta-title mark {
+  background: transparent;
+  color: #38bdf8;
+}
+
+.careers-cta-desc {
+  font-size: 1.1rem;
+  color: #94a3b8;
+  max-width: 680px;
+  margin: 0 auto 34px;
+  line-height: 1.6;
+}
+
+.careers-cta-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.careers-cta-pill-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.careers-cta-pill-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.careers-cta-pill-item::before {
+  content: "✓";
+  color: #38bdf8;
+  font-weight: 800;
+}
+
+/* Quick Application Modal */
+.careers-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 18, 38, 0.7);
+  backdrop-filter: blur(8px);
+  z-index: 999999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.careers-modal-backdrop.show {
+  display: flex;
+  opacity: 1;
+}
+
+.careers-modal-card {
+  background: #ffffff;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 580px;
+  padding: 36px 32px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+  position: relative;
+  transform: translateY(20px);
+  transition: transform 0.25s ease;
+}
+
+.careers-modal-backdrop.show .careers-modal-card {
+  transform: translateY(0);
+}
+
+.careers-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #f1f5f9;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gray-600);
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.2s ease;
+}
+
+.careers-modal-close:hover {
+  background: #e2e8f0;
+  color: var(--color-primary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .careers-culture-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .hiring-steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .careers-faq-layout {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .careers-faq-left {
+    position: static;
+  }
+  .careers-stat-strip {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .careers-hero {
+    padding: 100px 0 50px;
+  }
+  .careers-culture-grid {
+    grid-template-columns: 1fr;
+  }
+  .hiring-steps-grid {
+    grid-template-columns: 1fr;
+  }
+  .career-role-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .career-role-actions {
+    align-items: flex-start;
+    width: 100%;
+  }
+  .career-apply-btn {
+    width: 100%;
+  }
+  .careers-cta-box {
+    padding: 40px 20px;
+  }
+}
+</style>
+@endpush
 
 @section('content')
 <main id="main-content">
-    <!-- HERO SECTION -->
-    <section class="hero-section">
-      <img src="{{ asset('images/hero-v2-bg.svg') }}" alt="" class="hero-bg" aria-hidden="true">
-      <div class="container hero-content">
-        <p class="hero-pretitle" data-viewport="true">Join the Bluebase Team</p>
-        <h1 class="hero-title stagger-1" data-viewport="true">
-          Build Mission-Critical Software With the <mark>Top 1% of Engineers</mark>.
-        </h1>
-        <p class="hero-description stagger-2" data-viewport="true">
-          We are hiring world-class engineers, AI researchers, and systems architects who are passionate about writing clean, high-performance code and building transformative AI solutions.
-        </p>
 
-        <div class="hero-buttons stagger-3" data-viewport="true">
-          <a href="#openPositions" class="c-btn -primary">
-                    <span class="c-btn__txt">View Open Roles Below</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                    </span>
-                  </a> <a href="{{ route('company') }}" class="c-btn -secondary">
-                    <span class="c-btn__txt">Learn About Our Culture</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                    </span>
-                  </a>
+  <!-- 1. HERO SECTION -->
+  <section class="careers-hero">
+    <div class="careers-hero-grid" aria-hidden="true"></div>
+    <div class="container" style="position: relative; z-index: 2;">
+      
+      <div class="careers-badge">
+        <span class="careers-badge-dot"></span>
+        <span>We Are Hiring &bull; Remote-First Global Engineering Pods</span>
+      </div>
+
+      <h1 class="careers-title">
+        Build High-Impact Software With <mark>Builders, Not Bureaucrats</mark>.
+      </h1>
+
+      <p class="careers-desc">
+        Join Bluebase as a full-stack engineer, AI systems architect, or cloud specialist. We are a high-agency, remote-first engineering studio where top engineers write production code, experiment with autonomous agent frameworks, and solve real architectural problems.
+      </p>
+
+      <div class="careers-hero-actions">
+        <a href="#openPositions" class="c-btn -primary" style="padding: 14px 28px; font-size: 0.95rem;">
+          <span class="c-btn__txt">View Open Positions (6)</span>
+          <span class="c-btn__ico">
+            <span class="c-btn__ico-base">
+              <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
+            </span>
+          </span>
+        </a>
+        <a href="#whyBluebase" class="c-btn -secondary" style="padding: 14px 28px; font-size: 0.95rem;">
+          <span class="c-btn__txt">Why Build at Bluebase</span>
+        </a>
+      </div>
+
+      <!-- Quick Metrics Strip -->
+      <div class="careers-stat-strip">
+        <div class="careers-stat-card">
+          <div class="careers-stat-num">100%</div>
+          <div class="careers-stat-label">Remote-first with asynchronous, deep-work autonomy</div>
         </div>
-
-        <div class="hero-badges stagger-4" data-viewport="true">
-          <div class="hero-badge-item">100% Remote-First</div><div class="hero-badge-item">Competitive Equity & Comp</div><div class="hero-badge-item">Unlimited Learning Budget</div>
+        <div class="careers-stat-card">
+          <div class="careers-stat-num">Sprint 1</div>
+          <div class="careers-stat-label">Ship real code to client production in your first sprint</div>
+        </div>
+        <div class="careers-stat-card">
+          <div class="careers-stat-num">0 Meetings</div>
+          <div class="careers-stat-label">Zero pointless status updates &bull; Spec &amp; code-driven delivery</div>
+        </div>
+        <div class="careers-stat-card">
+          <div class="careers-stat-num">1&ndash;2 Weeks</div>
+          <div class="careers-stat-label">Fast, respectful interview loop with senior engineering peers</div>
         </div>
       </div>
-    </section>
+
+    </div>
+  </section>
 
   <!-- CLIENT LOGO MARQUEE -->
-  @include('partials.client-marquee', ['heading' => 'Trusted by 600+ high-growth companies and global enterprises to engineer mission-critical digital products'])
+  @include('partials.client-marquee', ['heading' => 'Our teams engineer mission-critical systems for fast-growing startups and enterprises'])
 
-    <!-- STICKY FEATURE SECTION -->
-    <section class="sticky-features-section">
-      <div class="container">
-        <div class="sticky-layout">
-          <div class="sticky-left" data-viewport="true">
-            <span class="section-tag light">Join Our Engineering Pods</span>
-            <h2 class="section-title">Build Mission-Critical Software With the <mark>Top 1% of Engineers.</mark></h2>
-            <p class="section-subtitle light">At Bluebase, you won't get bogged down in bureaucratic corporate meetings. You will build high-scale distributed systems, autonomous AI agent pipelines, and modern web applications alongside elite peers.</p>
-            <div class="sticky-image-wrap">
-              <img src="{{ asset('images/illustrations/workflow-canvas.jpg') }}" alt="Build Mission-Critical Software With the <mark>Top 1% of Engineers.</mark>">
-            </div>
-          </div>
-          <div class="sticky-right">
-            <div class="feature-scroll-card stagger-1" data-viewport="true">
-              <div class="feature-card-icon">
-                <img src="{{ asset('images/icons/tool.svg') }}" alt="" width="24" height="24">
-              </div>
-              <h3 class="feature-card-title">100% Remote-First & Asynchronous</h3>
-              <p class="feature-card-desc">Work from anywhere on Earth. We optimize for high-trust asynchronous deep work, not pointless status update meetings.</p>
-              <a href="{{ route('company') }}" class="c-btn -link">
-                    <span class="c-btn__txt">Our Culture</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                    </span>
-                  </a>
-            </div>
-            <div class="feature-scroll-card stagger-2" data-viewport="true">
-              <div class="feature-card-icon">
-                <img src="{{ asset('images/icons/diagram.svg') }}" alt="" width="24" height="24">
-              </div>
-              <h3 class="feature-card-title">Top-Tier Compensation & Equity</h3>
-              <p class="feature-card-desc">Competitive global salaries, meaningful equity packages, comprehensive health benefits, and home office stipends.</p>
-              <a href="{{ route('contact') }}" class="c-btn -link">
-                    <span class="c-btn__txt">Compensation Model</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                    </span>
-                  </a>
-            </div>
-            <div class="feature-scroll-card stagger-3" data-viewport="true">
-              <div class="feature-card-icon">
-                <img src="{{ asset('images/icons/code-bar.svg') }}" alt="" width="24" height="24">
-              </div>
-              <h3 class="feature-card-title">$5,000 Annual Learning Budget</h3>
-              <p class="feature-card-desc">Every engineer receives an annual stipend for books, conferences, specialized hardware, and AI model credits.</p>
-              <a href="{{ route('suits-blog') }}" class="c-btn -link">
-                    <span class="c-btn__txt">Engineering R&D</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                    </span>
-                  </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>    <!-- FEATURE GRID SECTION -->
-    <section class="usecases-section">
-      <div class="container">
-        <div class="text-center" style="max-width: 820px; margin: 0 auto 56px;" data-viewport="true">
-          <span class="section-tag">Open Positions</span>
-          <h2 class="section-title">Current Openings Across Our Global Engineering Squads</h2>
-          <p class="section-subtitle" style="margin: 0 auto;">We are actively hiring senior engineers and AI researchers worldwide.</p>
-        </div>
-        <div class="features-grid-3">
-        <div class="feature-card-clean stagger-1" data-viewport="true">
-          <div>
-            <div class="card-icon-box">
-              <img src="{{ asset('images/icons/tool.svg') }}" alt="" width="26" height="26">
-            </div>
-            <h3 class="card-title-lg">Staff Full-Stack Engineer (React / Go)</h3>
-            <p class="card-text">Lead architecture for high-throughput SPAs and distributed Go microservices. 7+ years production experience required.</p>
-          </div>
-          <a href="{{ route('contact') }}" class="c-btn -link">
-                    <span class="c-btn__txt">Apply Now</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                    </span>
-                  </a>
-        </div>
-        <div class="feature-card-clean stagger-2" data-viewport="true">
-          <div>
-            <div class="card-icon-box">
-              <img src="{{ asset('images/icons/ai-agent.svg') }}" alt="" width="26" height="26">
-            </div>
-            <h3 class="card-title-lg">Principal AI Systems Architect</h3>
-            <p class="card-text">Design multi-agent orchestration frameworks, fine-tune open-source LLMs, and optimize hybrid vector RAG pipelines.</p>
-          </div>
-          <a href="{{ route('contact') }}" class="c-btn -link">
-                    <span class="c-btn__txt">Apply Now</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                    </span>
-                  </a>
-        </div>
-        <div class="feature-card-clean stagger-3" data-viewport="true">
-          <div>
-            <div class="card-icon-box">
-              <img src="{{ asset('images/icons/diagram.svg') }}" alt="" width="26" height="26">
-            </div>
-            <h3 class="card-title-lg">Senior Cloud & DevOps Engineer</h3>
-            <p class="card-text">Manage multi-region Kubernetes clusters, Terraform IaC, ArgoCD pipelines, and zero-trust security postures.</p>
-          </div>
-          <a href="{{ route('contact') }}" class="c-btn -link">
-                    <span class="c-btn__txt">Apply Now</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                    </span>
-                  </a>
-        </div>
-        <div class="feature-card-clean stagger-1" data-viewport="true">
-          <div>
-            <div class="card-icon-box">
-              <img src="{{ asset('images/icons/cube.svg') }}" alt="" width="26" height="26">
-            </div>
-            <h3 class="card-title-lg">Senior Mobile Engineer (Offline / React Native)</h3>
-            <p class="card-text">Build industrial-grade iOS/Android applications with SQLite delta sync, hardware barcode scanning, and fluid native UI.</p>
-          </div>
-          <a href="{{ route('contact') }}" class="c-btn -link">
-                    <span class="c-btn__txt">Apply Now</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                    </span>
-                  </a>
-        </div>
-        <div class="feature-card-clean stagger-2" data-viewport="true">
-          <div>
-            <div class="card-icon-box">
-              <img src="{{ asset('images/icons/code-bar.svg') }}" alt="" width="26" height="26">
-            </div>
-            <h3 class="card-title-lg">Staff Product Designer (UI/UX & Systems)</h3>
-            <p class="card-text">Create scalable Figma design systems, complex data visualization canvases, and high-density enterprise UX.</p>
-          </div>
-          <a href="{{ route('contact') }}" class="c-btn -link">
-                    <span class="c-btn__txt">Apply Now</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                    </span>
-                  </a>
-        </div>
-        <div class="feature-card-clean stagger-3" data-viewport="true">
-          <div>
-            <div class="card-icon-box">
-              <img src="{{ asset('images/icons/tool.svg') }}" alt="" width="26" height="26">
-            </div>
-            <h3 class="card-title-lg">Lead Solutions Architect (Enterprise ERP)</h3>
-            <p class="card-text">Bridge modern cloud microservices with SAP, Oracle, and enterprise transactional backends. Client-facing.</p>
-          </div>
-          <a href="{{ route('contact') }}" class="c-btn -link">
-                    <span class="c-btn__txt">Apply Now</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                    </span>
-                  </a>
-        </div>
-        </div>
-      </div>
-    </section>
-
-  <!-- FAQ ACCORDION -->
-  <section class="faq-section">
+  <!-- 2. WHY BUILD AT BLUEBASE (CULTURE & VALUES) -->
+  <section class="careers-culture-section" id="whyBluebase">
     <div class="container">
-      <div class="faq-layout">
-        <div class="faq-left" data-viewport="true">
-          <span class="section-tag">FAQ</span>
-          <h2 class="section-title">Frequently Asked <mark>Questions</mark></h2>
-          <p class="section-subtitle">Everything you need to know about our engineering services, pod structure, and delivery model.</p>
-        </div>
-        <div class="faq-right">
-          <div class="accordion-list">
-              <div class="accordion-item open stagger-1" data-viewport="true">
-                <button class="accordion-trigger" aria-expanded="true">
-                  <span>What services does Bluebase provide?</span>
-                  <div class="accordion-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
-                  </div>
-                </button>
-                <div class="accordion-content">
-                  <div class="accordion-inner">
-                    <p>Bluebase is a modern digital engineering and AI consultancy startup. We provide end-to-end custom software development, autonomous AI agent workflows, generative AI fine-tuning, cloud-native modernization, offline-first mobile applications, and dedicated cross-functional engineering pods.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="accordion-item stagger-2" data-viewport="true">
-                <button class="accordion-trigger" aria-expanded="false">
-                  <span>How does Bluebase engage with clients?</span>
-                  <div class="accordion-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
-                  </div>
-                </button>
-                <div class="accordion-content">
-                  <div class="accordion-inner">
-                    <p>We offer three flexible engagement models tailored to your project stage: Dedicated Engineering Pods (senior cross-functional teams that integrate into your roadmap), Fixed-Outcome Product Builds (turnkey MVP or feature engineering with guaranteed delivery milestones), and Fractional Architecture & AI Advisory.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="accordion-item stagger-3" data-viewport="true">
-                <button class="accordion-trigger" aria-expanded="false">
-                  <span>Who owns the intellectual property and code?</span>
-                  <div class="accordion-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
-                  </div>
-                </button>
-                <div class="accordion-content">
-                  <div class="accordion-inner">
-                    <p>You own 100% of all intellectual property, source code, data pipelines, and design assets created during our engagement. Everything is developed directly in your repositories with zero vendor lock-in.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="accordion-item stagger-4" data-viewport="true">
-                <button class="accordion-trigger" aria-expanded="false">
-                  <span>How fast can an engineering pod ramp up and start shipping?</span>
-                  <div class="accordion-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
-                  </div>
-                </button>
-                <div class="accordion-content">
-                  <div class="accordion-inner">
-                    <p>Our senior engineering pods can be assembled and onboarded in as little as 1 to 2 weeks. Every pod includes a Lead Solutions Architect, Senior Full-Stack Engineers, and QA specialists who hit the ground running with production-ready code in sprint one.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="accordion-item stagger-5" data-viewport="true">
-                <button class="accordion-trigger" aria-expanded="false">
-                  <span>How does Bluebase handle enterprise security, compliance, and confidentiality?</span>
-                  <div class="accordion-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
-                  </div>
-                </button>
-                <div class="accordion-content">
-                  <div class="accordion-inner">
-                    <p>We operate under strict enterprise security protocols. Bluebase is SOC 2 Type II compliant, adheres to ISO 27001 standards, and follows GDPR and HIPAA guidelines. We sign comprehensive NDAs before any technical architecture discussions.</p>
-                  </div>
-                </div>
-              </div>
+      
+      <div class="careers-section-header">
+        <span class="careers-tag">Life &amp; Engineering at Bluebase</span>
+        <h2 class="careers-section-title">Designed for Engineers Who Love Shipping.</h2>
+        <p class="careers-section-sub">
+          We strip away corporate theater, politics, and layers of middle management so you can focus on mastering your craft and solving complex distributed systems and AI challenges.
+        </p>
+      </div>
+
+      <div class="careers-culture-grid">
+        
+        <!-- Card 1 -->
+        <div class="careers-culture-card">
+          <div class="careers-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
           </div>
+          <h3 class="careers-culture-title">Asynchronous Deep Work</h3>
+          <p class="careers-culture-text">
+            We prioritize written documentation, detailed RFCs, and asynchronous communication over endless calendar invites. Enjoy 4+ hours of uninterrupted flow state every single day.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="careers-culture-card">
+          <div class="careers-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+          </div>
+          <h3 class="careers-culture-title">High Agency &amp; Code Ownership</h3>
+          <p class="careers-culture-text">
+            Engineers own features from architecture design to production monitoring. If you identify a cleaner pattern, better database index, or faster API abstraction, you have full license to execute it.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="careers-culture-card">
+          <div class="careers-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          </div>
+          <h3 class="careers-culture-title">Top-Tier Compensation &amp; Stipend</h3>
+          <p class="careers-culture-text">
+            We pay competitive salaries aligned with top global talent benchmarks. You also receive comprehensive health coverage, performance incentives, and home office workstation setup allowances.
+          </p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="careers-culture-card">
+          <div class="careers-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          </div>
+          <h3 class="careers-culture-title">Annual Learning &amp; AI Budget</h3>
+          <p class="careers-culture-text">
+            Every engineer receives an annual stipend for engineering books, specialized technical courses, cloud lab credits, and cutting-edge LLM API access (OpenAI, Claude, Cursor Pro).
+          </p>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="careers-culture-card">
+          <div class="careers-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          </div>
+          <h3 class="careers-culture-title">Modern Hardware &amp; Tooling</h3>
+          <p class="careers-culture-text">
+            Work with top-of-the-line Apple Silicon (M3 Pro/Max) or high-spec Linux hardware. We use modern tools like Linear, GitHub Enterprise, Figma, and automated Docker staging preview environments.
+          </p>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="careers-culture-card">
+          <div class="careers-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+          <h3 class="careers-culture-title">Direct Builder Collaboration</h3>
+          <p class="careers-culture-text">
+            Collaborate directly with our founders and technical directors who still review code and architect systems daily. No non-technical layers passing down detached requirements.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 3. OUR TECH STACK CANVAS -->
+  <section class="careers-stack-section">
+    <div class="container">
+      <div class="careers-stack-box">
+        <div class="careers-stack-header">
+          <div>
+            <span style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em; color: #38bdf8; font-weight: 700;">Our Production Toolchain</span>
+            <h3 style="font-size: 1.8rem; font-weight: 800; margin: 6px 0 0; color: #ffffff;">The Technologies We Love Shipping With</h3>
+          </div>
+          <p style="color: #94a3b8; font-size: 0.95rem; max-width: 440px; margin: 0; line-height: 1.5;">
+            We don't chase every fleeting trend, but we aggressively adopt tools that make engineers 10x faster and systems 10x more resilient.
+          </p>
+        </div>
+
+        <div class="careers-stack-pill-cloud">
+          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> Go (Golang)</div>
+          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> React 19 &amp; Next.js</div>
+          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> TypeScript</div>
+          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> Python &amp; FastAPI</div>
+          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> PyTorch &amp; HuggingFace</div>
+          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> Multi-Agent LLMs</div>
+          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> Qdrant &amp; pgvector</div>
+          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> PostgreSQL</div>
+          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> Redis &amp; Kafka</div>
+          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> Docker &amp; Kubernetes</div>
+          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> AWS &amp; Cloudflare</div>
+          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> Terraform IaC</div>
+          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> React Native &amp; SQLite</div>
+          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> Laravel 11 / PHP 8.3</div>
+          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> Cursor AI &amp; Linear</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CLOSING CALL TO ACTION BANNER -->
-  <section class="cta-banner-section">
+  <!-- 4. OPEN POSITIONS BOARD -->
+  <section class="careers-roles-section" id="openPositions">
     <div class="container">
-      <div class="cta-banner-box" data-viewport="true" data-animation="fade-scale">
-        <img src="{{ asset('images/hero-v2-bg.svg') }}" alt="" class="cta-banner-bg" aria-hidden="true">
-        <div class="cta-banner-content">
-          <h2 class="cta-banner-title stagger-1" data-viewport="true">
-            Don't See Your Exact Role?<br><mark>Send Us a General Application</mark>.
-          </h2>
-          <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;" class="stagger-2" data-viewport="true">
-            <a href="{{ route('contact') }}" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
-                    <span class="c-btn__txt">Schedule a Discovery Call</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                    </span>
-                  </a>
-            <a href="{{ route('free-trial') }}" class="c-btn -outline-white" style="padding: 14px 32px; font-size: 1.05rem;">
-                    <span class="c-btn__txt">Request a Project Proposal</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                    </span>
-                  </a>
-          </div>
+      
+      <div class="careers-section-header">
+        <span class="careers-tag">Current Openings</span>
+        <h2 class="careers-section-title">Explore Open Roles in Our Engineering Squads</h2>
+        <p class="careers-section-sub">
+          We are actively looking for exceptional engineers and designers to join our pods. All positions are 100% remote-first.
+        </p>
+      </div>
 
-          <div class="cta-pills-row stagger-3" data-viewport="true">
-            <div class="cta-pill-item">Dedicated senior engineering pods</div>
-            <div class="cta-pill-item">Autonomous AI &amp; custom LLMs</div>
-            <div class="cta-pill-item">100% client-owned code &amp; IP</div>
-            <div class="cta-pill-item">Enterprise SOC 2 &amp; ISO 27001</div>
-            <div class="cta-pill-item">Sprint-one velocity guarantee</div>
+      <!-- Category Filter Tabs -->
+      <div class="careers-filter-bar">
+        <button class="careers-filter-btn active" data-filter="all">All Roles (6)</button>
+        <button class="careers-filter-btn" data-filter="backend">Backend &amp; Full-Stack</button>
+        <button class="careers-filter-btn" data-filter="ai">AI &amp; Machine Learning</button>
+        <button class="careers-filter-btn" data-filter="mobile-cloud">Mobile &amp; DevOps</button>
+        <button class="careers-filter-btn" data-filter="design">Design &amp; Architecture</button>
+      </div>
+
+      <!-- Job Roles Grid -->
+      <div class="careers-roles-grid">
+        
+        <!-- Role 1: Full-Stack Engineer -->
+        <div class="career-role-card" data-category="backend">
+          <div class="career-role-main">
+            <div class="career-role-meta-row">
+              <span class="career-badge-dept">Engineering</span>
+              <span class="career-badge-loc">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                Remote (India / Global)
+              </span>
+              <span class="career-badge-type">Full-time</span>
+            </div>
+            <h3 class="career-role-title">Staff Full-Stack Engineer (React / Go / Node)</h3>
+            <p class="career-role-desc">
+              Lead architecture and implementation of high-throughput web applications and scalable microservices. You will work on real-time booking engines, client enterprise portals, and distributed transactional APIs.
+            </p>
+            <div class="career-role-tags">
+              <span class="career-tag-pill">Go</span>
+              <span class="career-tag-pill">React / Next.js</span>
+              <span class="career-tag-pill">PostgreSQL</span>
+              <span class="career-tag-pill">Redis</span>
+              <span class="career-tag-pill">Docker</span>
+            </div>
+          </div>
+          <div class="career-role-actions">
+            <button class="career-apply-btn open-apply-modal-btn" data-role="Staff Full-Stack Engineer (React / Go / Node)">
+              Apply For Role &rarr;
+            </button>
+            <span style="font-size: 0.8rem; color: var(--color-gray-600);">Fast 24h Review</span>
           </div>
         </div>
+
+        <!-- Role 2: Principal AI Systems Architect -->
+        <div class="career-role-card" data-category="ai">
+          <div class="career-role-main">
+            <div class="career-role-meta-row">
+              <span class="career-badge-dept">AI Research &amp; Labs</span>
+              <span class="career-badge-loc">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                Remote (India / Global)
+              </span>
+              <span class="career-badge-type">Full-time</span>
+            </div>
+            <h3 class="career-role-title">Principal AI &amp; Agent Systems Architect</h3>
+            <p class="career-role-desc">
+              Architect autonomous multi-agent pipelines, build hybrid vector search RAG systems, and deploy fine-tuned open-weight models for enterprise production workloads with sub-second latencies.
+            </p>
+            <div class="career-role-tags">
+              <span class="career-tag-pill">Python</span>
+              <span class="career-tag-pill">LangChain / LlamaIndex</span>
+              <span class="career-tag-pill">Vector DBs (Qdrant)</span>
+              <span class="career-tag-pill">FastAPI</span>
+              <span class="career-tag-pill">PyTorch</span>
+            </div>
+          </div>
+          <div class="career-role-actions">
+            <button class="career-apply-btn open-apply-modal-btn" data-role="Principal AI & Agent Systems Architect">
+              Apply For Role &rarr;
+            </button>
+            <span style="font-size: 0.8rem; color: var(--color-gray-600);">Fast 24h Review</span>
+          </div>
+        </div>
+
+        <!-- Role 3: Senior Cloud & DevOps Engineer -->
+        <div class="career-role-card" data-category="mobile-cloud">
+          <div class="career-role-main">
+            <div class="career-role-meta-row">
+              <span class="career-badge-dept">Infrastructure &amp; SRE</span>
+              <span class="career-badge-loc">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                Remote (India / Global)
+              </span>
+              <span class="career-badge-type">Full-time</span>
+            </div>
+            <h3 class="career-role-title">Senior Cloud &amp; DevOps Engineer</h3>
+            <p class="career-role-desc">
+              Own our multi-region Kubernetes clusters, automated GitOps CI/CD pipelines, Terraform infrastructure-as-code, and zero-trust security postures across AWS and Cloudflare.
+            </p>
+            <div class="career-role-tags">
+              <span class="career-tag-pill">Kubernetes</span>
+              <span class="career-tag-pill">AWS / GCP</span>
+              <span class="career-tag-pill">Terraform IaC</span>
+              <span class="career-tag-pill">GitHub Actions</span>
+              <span class="career-tag-pill">Prometheus</span>
+            </div>
+          </div>
+          <div class="career-role-actions">
+            <button class="career-apply-btn open-apply-modal-btn" data-role="Senior Cloud & DevOps Engineer">
+              Apply For Role &rarr;
+            </button>
+            <span style="font-size: 0.8rem; color: var(--color-gray-600);">Fast 24h Review</span>
+          </div>
+        </div>
+
+        <!-- Role 4: Senior Mobile Engineer -->
+        <div class="career-role-card" data-category="mobile-cloud">
+          <div class="career-role-main">
+            <div class="career-role-meta-row">
+              <span class="career-badge-dept">Mobile Engineering</span>
+              <span class="career-badge-loc">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                Remote (India / Global)
+              </span>
+              <span class="career-badge-type">Full-time</span>
+            </div>
+            <h3 class="career-role-title">Senior Mobile Engineer (Offline-First / React Native)</h3>
+            <p class="career-role-desc">
+              Build robust cross-platform iOS and Android mobile solutions with local SQLite sync, biometric authentication, and offline transactional capabilities for logistics, fleet, and field operations.
+            </p>
+            <div class="career-role-tags">
+              <span class="career-tag-pill">React Native</span>
+              <span class="career-tag-pill">TypeScript</span>
+              <span class="career-tag-pill">SQLite Sync</span>
+              <span class="career-tag-pill">iOS / Android</span>
+              <span class="career-tag-pill">Tailwind</span>
+            </div>
+          </div>
+          <div class="career-role-actions">
+            <button class="career-apply-btn open-apply-modal-btn" data-role="Senior Mobile Engineer (Offline-First / React Native)">
+              Apply For Role &rarr;
+            </button>
+            <span style="font-size: 0.8rem; color: var(--color-gray-600);">Fast 24h Review</span>
+          </div>
+        </div>
+
+        <!-- Role 5: Staff Product Designer -->
+        <div class="career-role-card" data-category="design">
+          <div class="career-role-main">
+            <div class="career-role-meta-row">
+              <span class="career-badge-dept">Product Design</span>
+              <span class="career-badge-loc">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                Remote (India / Global)
+              </span>
+              <span class="career-badge-type">Full-time</span>
+            </div>
+            <h3 class="career-role-title">Staff Product Designer (UI/UX Systems &amp; Canvases)</h3>
+            <p class="career-role-desc">
+              Design cohesive design systems in Figma, interactive dashboard analytics, and clean user interfaces for enterprise platforms. Partner directly with engineers to ensure pixel-perfect production fidelity.
+            </p>
+            <div class="career-role-tags">
+              <span class="career-tag-pill">Figma Systems</span>
+              <span class="career-tag-pill">Interactive UX</span>
+              <span class="career-tag-pill">Data Visualizations</span>
+              <span class="career-tag-pill">Prototyping</span>
+              <span class="career-tag-pill">Design Tokens</span>
+            </div>
+          </div>
+          <div class="career-role-actions">
+            <button class="career-apply-btn open-apply-modal-btn" data-role="Staff Product Designer (UI/UX Systems & Canvases)">
+              Apply For Role &rarr;
+            </button>
+            <span style="font-size: 0.8rem; color: var(--color-gray-600);">Fast 24h Review</span>
+          </div>
+        </div>
+
+        <!-- Role 6: Lead Solutions Architect -->
+        <div class="career-role-card" data-category="design">
+          <div class="career-role-main">
+            <div class="career-role-meta-row">
+              <span class="career-badge-dept">Architecture &amp; Strategy</span>
+              <span class="career-badge-loc">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                Remote (India / Global)
+              </span>
+              <span class="career-badge-type">Full-time</span>
+            </div>
+            <h3 class="career-role-title">Lead Solutions Architect (Enterprise SaaS &amp; ERP)</h3>
+            <p class="career-role-desc">
+              Bridge modern microservices with complex transactional business systems. Guide client leadership through technical trade-offs, scalability bottlenecks, and data migration strategies.
+            </p>
+            <div class="career-role-tags">
+              <span class="career-tag-pill">Distributed Architecture</span>
+              <span class="career-tag-pill">Cloud Patterns</span>
+              <span class="career-tag-pill">High Availability</span>
+              <span class="career-tag-pill">API Gateway</span>
+              <span class="career-tag-pill">Technical Leadership</span>
+            </div>
+          </div>
+          <div class="career-role-actions">
+            <button class="career-apply-btn open-apply-modal-btn" data-role="Lead Solutions Architect (Enterprise SaaS & ERP)">
+              Apply For Role &rarr;
+            </button>
+            <span style="font-size: 0.8rem; color: var(--color-gray-600);">Fast 24h Review</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 5. TRANSPARENT 4-STEP HIRING ROADMAP -->
+  <section class="careers-hiring-process">
+    <div class="container">
+      
+      <div class="careers-section-header">
+        <span class="careers-tag">Transparent Hiring</span>
+        <h2 class="careers-section-title">Our 4-Step Engineering Interview Loop</h2>
+        <p class="careers-section-sub">
+          We respect your time. Our interview process takes 1 to 2 weeks total, with real engineering discussions rather than academic puzzles or leetcode trivia.
+        </p>
+      </div>
+
+      <div class="hiring-steps-grid">
+        
+        <div class="hiring-step-card">
+          <div class="hiring-step-badge">01</div>
+          <h3 class="hiring-step-title">Async Review</h3>
+          <p class="hiring-step-desc">
+            We review your GitHub, recent code samples, or portfolio within 24 to 48 hours. Real engineers inspect your work, not an automated keyword filter.
+          </p>
+        </div>
+
+        <div class="hiring-step-card">
+          <div class="hiring-step-badge">02</div>
+          <h3 class="hiring-step-title">Technical Deep-Dive</h3>
+          <p class="hiring-step-desc">
+            A 45-minute architectural conversation with a Lead Architect. We talk through real systems you've built, trade-offs you made, and how you solve edge cases.
+          </p>
+        </div>
+
+        <div class="hiring-step-card">
+          <div class="hiring-step-badge">03</div>
+          <h3 class="hiring-step-title">Practical Pair Session</h3>
+          <p class="hiring-step-desc">
+            A collaborative 60-minute session reviewing a practical PR or troubleshooting an architecture together. We want to see how we communicate and build as peers.
+          </p>
+        </div>
+
+        <div class="hiring-step-card">
+          <div class="hiring-step-badge">04</div>
+          <h3 class="hiring-step-title">Direct Offer &amp; Pod Intro</h3>
+          <p class="hiring-step-desc">
+            Transparent salary offer with clear expectations. Once accepted, we ship your equipment and integrate you into your dedicated engineering squad.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 6. CANDIDATE FAQ ACCORDION -->
+  <section class="careers-faq-section">
+    <div class="container">
+      <div class="careers-faq-layout">
+        
+        <div class="careers-faq-left">
+          <span class="careers-tag">Candidate FAQ</span>
+          <h2 class="careers-section-title">Frequently Asked Questions</h2>
+          <p class="careers-section-sub">
+            Everything you need to know about remote pod operations, working hours, equipment, and our hiring standards.
+          </p>
+          <div style="margin-top: 24px;">
+            <a href="mailto:info@bluebasetechnologies.com?subject=Question%20About%20Careers%20at%20Bluebase" class="c-btn -secondary" style="font-size: 0.9rem;">
+              <span class="c-btn__txt">Have a Specific Question? Email Us</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="careers-faq-right">
+          
+          <div class="careers-accordion-item active">
+            <button class="careers-accordion-trigger" aria-expanded="true">
+              <span>What are the working hours and timezone expectations?</span>
+              <div class="careers-accordion-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </div>
+            </button>
+            <div class="careers-accordion-body" style="max-height: 250px;">
+              <div class="careers-accordion-inner">
+                Bluebase is 100% remote-first. We operate on Indian Standard Time (IST, UTC+05:30) with flexible asynchronous hours. We typically ask for a consistent 3 to 4-hour live overlap during team collaborative windows (usually afternoons), while the remainder of your day is entirely uninterrupted deep work.
+              </div>
+            </div>
+          </div>
+
+          <div class="careers-accordion-item">
+            <button class="careers-accordion-trigger" aria-expanded="false">
+              <span>What hardware and home office setup do you provide?</span>
+              <div class="careers-accordion-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </div>
+            </button>
+            <div class="careers-accordion-body">
+              <div class="careers-accordion-inner">
+                We equip our full-time engineers with the latest hardware, including Apple Silicon MacBooks (M3 Pro/Max) or equivalent high-spec Linux developer workstations. We also provide a home office equipment allowance for ergonomics, external monitors, and high-speed internet expenses.
+              </div>
+            </div>
+          </div>
+
+          <div class="careers-accordion-item">
+            <button class="careers-accordion-trigger" aria-expanded="false">
+              <span>What is your stance on AI coding tools like Cursor and GitHub Copilot?</span>
+              <div class="careers-accordion-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </div>
+            </button>
+            <div class="careers-accordion-body">
+              <div class="careers-accordion-inner">
+                We actively encourage and subsidize modern AI developer tools. Every engineer receives company accounts for Cursor Pro, GitHub Copilot, and access to state-of-the-art LLMs. We believe AI empowers great engineers to focus on high-leverage architectural thinking and clean system design rather than boilerplate code.
+              </div>
+            </div>
+          </div>
+
+          <div class="careers-accordion-item">
+            <button class="careers-accordion-trigger" aria-expanded="false">
+              <span>How are performance, compensation reviews, and promotions handled?</span>
+              <div class="careers-accordion-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </div>
+            </button>
+            <div class="careers-accordion-body">
+              <div class="careers-accordion-inner">
+                Performance is evaluated on engineering output, code quality, velocity, and architectural ownership—never on vanity metrics like hours logged or messages sent. We conduct transparent bi-annual compensation reviews with market rate adjustments and milestone-based bonuses.
+              </div>
+            </div>
+          </div>
+
+          <div class="careers-accordion-item">
+            <button class="careers-accordion-trigger" aria-expanded="false">
+              <span>Can I apply if I don't see my exact tech stack or title listed?</span>
+              <div class="careers-accordion-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </div>
+            </button>
+            <div class="careers-accordion-body">
+              <div class="careers-accordion-inner">
+                Yes! We are always eager to hire exceptional engineers, regardless of whether your exact specialty is posted right now. If you have a strong track record of shipping production software, send your resume and GitHub to <strong>info@bluebasetechnologies.com</strong> with a short note on what you love building.
+              </div>
+            </div>
+          </div>
+
+        </div>
+
       </div>
     </div>
   </section>
-  </main>
 
-      <!-- SITE FOOTER -->
+  <!-- 7. CLOSING CANDIDATE CTA BANNER -->
+  <section class="careers-cta-section">
+    <div class="container">
+      <div class="careers-cta-box">
+        
+        <h2 class="careers-cta-title">
+          Don't See Your Exact Role?<br><mark>Send Us a General Application</mark>.
+        </h2>
+        
+        <p class="careers-cta-desc">
+          We hire exceptional talent on a rolling basis. If you are passionate about writing clean code, building resilient distributed systems, and exploring AI frameworks, we'd love to connect with you.
+        </p>
+
+        <div class="careers-cta-actions">
+          <a href="mailto:info@bluebasetechnologies.com?subject=General%20Engineering%20Application%20-%20[Your%20Name]" class="c-btn -primary" style="padding: 14px 32px; font-size: 1rem;">
+            <span class="c-btn__txt">Email Your Resume &amp; GitHub</span>
+            <span class="c-btn__ico">
+              <span class="c-btn__ico-base">
+                <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
+              </span>
+            </span>
+          </a>
+          <a href="{{ route('contact') }}" class="c-btn -secondary" style="padding: 14px 28px; font-size: 1rem; color: #ffffff; border-color: rgba(255,255,255,0.25);">
+            <span class="c-btn__txt">Submit via Contact Form</span>
+          </a>
+        </div>
+
+        <div class="careers-cta-pill-row">
+          <div class="careers-cta-pill-item">100% Remote-First Work</div>
+          <div class="careers-cta-pill-item">Direct Founder &amp; Architect Review</div>
+          <div class="careers-cta-pill-item">24-48h Response SLA</div>
+          <div class="careers-cta-pill-item">Top-Tier Market Compensation</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK APPLICATION MODAL -->
+  <div class="careers-modal-backdrop" id="careersApplyModal" role="dialog" aria-modal="true" aria-labelledby="modalRoleTitle">
+    <div class="careers-modal-card">
+      <button class="careers-modal-close" id="closeApplyModalBtn" aria-label="Close dialog">&times;</button>
+      
+      <span class="careers-tag">Application Instructions</span>
+      <h3 id="modalRoleTitle" style="font-size: 1.45rem; font-weight: 800; color: var(--color-primary); margin: 6px 0 14px; letter-spacing: -0.015em;">
+        Apply for Role
+      </h3>
+
+      <p style="font-size: 0.95rem; color: var(--color-gray-600); line-height: 1.55; margin-bottom: 22px;">
+        To ensure your application is reviewed immediately by an engineering director, please send your email with the following details:
+      </p>
+
+      <div style="background: #f8fafc; border: 1px solid var(--color-gray-200); border-radius: 12px; padding: 18px 20px; font-size: 0.9rem; margin-bottom: 24px;">
+        <div style="margin-bottom: 8px;"><strong>To:</strong> <a href="mailto:info@bluebasetechnologies.com" style="color: var(--color-accent); font-weight: 600;">info@bluebasetechnologies.com</a></div>
+        <div style="margin-bottom: 8px;"><strong>Subject:</strong> <span id="modalSubjectPreview" style="color: var(--color-primary); font-family: monospace; font-size: 0.85rem;">Career Application: [Role] - [Your Name]</span></div>
+        <div style="color: var(--color-gray-700); font-size: 0.85rem; line-height: 1.5;">
+          &bull; <strong>Resume / CV:</strong> PDF attachment or Notion link<br>
+          &bull; <strong>Code / Profiles:</strong> GitHub, GitLab, portfolio, or live project links<br>
+          &bull; <strong>Brief intro:</strong> 2-3 sentences about the hardest engineering problem you've solved
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <a href="#" id="modalDirectMailtoBtn" class="c-btn -primary" style="flex: 1; text-align: center; justify-content: center; padding: 12px 20px;">
+          <span class="c-btn__txt">Open Email App &amp; Apply</span>
+        </a>
+        <a href="{{ route('contact') }}" class="c-btn -secondary" style="padding: 12px 20px;">
+          <span class="c-btn__txt">Use Web Form</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</main>
 @endsection
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // 1. Category Filter Logic for Open Roles
+  const filterBtns = document.querySelectorAll('.careers-filter-btn');
+  const roleCards = document.querySelectorAll('.career-role-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filterValue = btn.getAttribute('data-filter');
+
+      roleCards.forEach(card => {
+        if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+          card.style.display = 'flex';
+          card.style.opacity = '1';
+        } else {
+          card.style.display = 'none';
+          card.style.opacity = '0';
+        }
+      });
+    });
+  });
+
+  // 2. Candidate FAQ Accordion
+  const accordionItems = document.querySelectorAll('.careers-accordion-item');
+  accordionItems.forEach(item => {
+    const trigger = item.querySelector('.careers-accordion-trigger');
+    const body = item.querySelector('.careers-accordion-body');
+
+    trigger.addEventListener('click', () => {
+      const isOpen = item.classList.contains('active');
+
+      // Close all other accordion items
+      accordionItems.forEach(otherItem => {
+        if (otherItem !== item) {
+          otherItem.classList.remove('active');
+          const otherTrigger = otherItem.querySelector('.careers-accordion-trigger');
+          const otherBody = otherItem.querySelector('.careers-accordion-body');
+          if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
+          if (otherBody) otherBody.style.maxHeight = null;
+        }
+      });
+
+      // Toggle current
+      if (isOpen) {
+        item.classList.remove('active');
+        trigger.setAttribute('aria-expanded', 'false');
+        body.style.maxHeight = null;
+      } else {
+        item.classList.add('active');
+        trigger.setAttribute('aria-expanded', 'true');
+        body.style.maxHeight = body.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // 3. Application Modal Handler
+  const modalBackdrop = document.getElementById('careersApplyModal');
+  const modalRoleTitle = document.getElementById('modalRoleTitle');
+  const modalSubjectPreview = document.getElementById('modalSubjectPreview');
+  const modalDirectMailtoBtn = document.getElementById('modalDirectMailtoBtn');
+  const closeModalBtn = document.getElementById('closeApplyModalBtn');
+  const openModalBtns = document.querySelectorAll('.open-apply-modal-btn');
+
+  openModalBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const role = btn.getAttribute('data-role') || 'Software Engineer';
+      modalRoleTitle.textContent = 'Apply for ' + role;
+      
+      const subjectText = 'Career Application: ' + role + ' - [Your Name]';
+      modalSubjectPreview.textContent = subjectText;
+      
+      const mailtoUrl = 'mailto:info@bluebasetechnologies.com?subject=' + encodeURIComponent(subjectText) + '&body=' + encodeURIComponent('Hi Bluebase Team,\n\nI am applying for the role of ' + role + '.\n\nLinkedIn: \nGitHub / Portfolio: \n\nBrief Summary of Recent Experience:\n\nLooking forward to hearing from you,\n[Your Name]');
+      modalDirectMailtoBtn.setAttribute('href', mailtoUrl);
+
+      modalBackdrop.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  const closeModal = () => {
+    modalBackdrop.classList.remove('show');
+    document.body.style.overflow = '';
+  };
+
+  if (closeModalBtn) {
+    closeModalBtn.addEventListener('click', closeModal);
+  }
+
+  modalBackdrop.addEventListener('click', (e) => {
+    if (e.target === modalBackdrop) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modalBackdrop.classList.contains('show')) {
+      closeModal();
+    }
+  });
+});
+</script>
+@endpush
