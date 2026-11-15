@@ -67,7 +67,6 @@
             <li><a href="{{ route('careers') }}">Careers (We're Hiring!)</a></li>
             <li><a href="{{ route('partner-overview') }}">Partner Overview</a></li>
             <li><a href="{{ route('contact') }}">Contact Us</a></li>
-            <li><a href="mailto:info@bluebasetechnologies.com" style="color: #60a5fa; font-weight: 600;">info@bluebasetechnologies.com</a></li>
             <li><a href="{{ route('compliance-security') }}">Compliance &amp; Security</a></li>
             <li><a href="{{ route('terms-of-use') }}">Master Services Agreement</a></li>
           </ul>
