@@ -28,7 +28,7 @@ class ChatbotController extends Controller
             $sessionUuid = (string) Str::uuid();
             $session = ChatSession::create([
                 'session_uuid' => $sessionUuid,
-                'step' => 'ask_name',
+                'step' => 'conversing',
                 'status' => 'active',
                 'ip_address' => $request->ip(),
                 'user_agent' => substr((string) $request->userAgent(), 0, 500),
@@ -50,7 +50,7 @@ class ChatbotController extends Controller
 
         return response()->json([
             'session_uuid' => $session->session_uuid,
-            'step' => $session->step ?: 'ask_name',
+            'step' => $session->step ?: 'conversing',
             'visitor_name' => $session->visitor_name,
             'visitor_email' => $session->visitor_email,
             'visitor_phone' => $session->visitor_phone,
@@ -75,7 +75,7 @@ class ChatbotController extends Controller
         if (!$session) {
             $session = ChatSession::create([
                 'session_uuid' => $validated['session_uuid'],
-                'step' => 'ask_name',
+                'step' => 'conversing',
                 'status' => 'active',
                 'ip_address' => $request->ip(),
                 'user_agent' => substr((string) $request->userAgent(), 0, 500),
