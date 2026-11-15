@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\LeadController;
 use App\Http\Controllers\Admin\ClientLogoCmsController;
 use App\Http\Controllers\Admin\BlogCmsController;
+use App\Http\Controllers\Admin\JobOpeningCmsController;
 use App\Http\Controllers\Admin\TestimonialCmsController;
 use App\Http\Controllers\Admin\SettingsCmsController;
 use App\Http\Controllers\Admin\FileManagerController;
@@ -133,8 +134,9 @@ Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admi
 Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
 
-    // 1. Client Logos CMS
+    // 1. CMS Management (Client Logos, Blogs, Careers)
     Route::prefix('cms')->name('cms.')->group(function () {
+        // Client Logos
         Route::get('/clients', [ClientLogoCmsController::class, 'index'])->name('clients.index');
         Route::get('/clients/create', [ClientLogoCmsController::class, 'create'])->name('clients.create');
         Route::post('/clients', [ClientLogoCmsController::class, 'store'])->name('clients.store');
@@ -143,8 +145,29 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
         Route::delete('/clients/{id}', [ClientLogoCmsController::class, 'destroy'])->name('clients.destroy');
         Route::post('/clients/{id}/toggle', [ClientLogoCmsController::class, 'toggleActive'])->name('clients.toggle');
         Route::post('/clients/reorder', [ClientLogoCmsController::class, 'reorder'])->name('clients.reorder');
+
+        // Blog Management CMS
+        Route::get('/blogs', [BlogCmsController::class, 'index'])->name('blogs.index');
+        Route::get('/blogs/create', [BlogCmsController::class, 'create'])->name('blogs.create');
+        Route::post('/blogs', [BlogCmsController::class, 'store'])->name('blogs.store');
+        Route::get('/blogs/{id}/edit', [BlogCmsController::class, 'edit'])->name('blogs.edit');
+        Route::post('/blogs/{id}', [BlogCmsController::class, 'update'])->name('blogs.update');
+        Route::delete('/blogs/{id}', [BlogCmsController::class, 'destroy'])->name('blogs.destroy');
+        Route::post('/blogs/{id}/toggle', [BlogCmsController::class, 'togglePublish'])->name('blogs.toggle');
+        Route::post('/blogs/category/ajax', [BlogCmsController::class, 'ajaxStoreCategory'])->name('blogs.category.ajax');
+
+        // Careers & Job Openings CMS
+        Route::get('/careers', [JobOpeningCmsController::class, 'index'])->name('careers.index');
+        Route::get('/careers/create', [JobOpeningCmsController::class, 'create'])->name('careers.create');
+        Route::post('/careers', [JobOpeningCmsController::class, 'store'])->name('careers.store');
+        Route::get('/careers/{id}/edit', [JobOpeningCmsController::class, 'edit'])->name('careers.edit');
+        Route::post('/careers/{id}', [JobOpeningCmsController::class, 'update'])->name('careers.update');
+        Route::delete('/careers/{id}', [JobOpeningCmsController::class, 'destroy'])->name('careers.destroy');
+        Route::post('/careers/{id}/toggle', [JobOpeningCmsController::class, 'toggle'])->name('careers.toggle');
     });
     Route::get('/clients', fn() => redirect()->route('admin.cms.clients.index'))->name('clients');
+    Route::get('/blogs', fn() => redirect()->route('admin.cms.blogs.index'))->name('blogs');
+    Route::get('/careers', fn() => redirect()->route('admin.cms.careers.index'))->name('careers');
 
     // 2. Media Manager & File Library
     Route::prefix('filemanager')->name('filemanager.')->group(function () {
@@ -161,6 +184,5 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     // Safe fallbacks for retired admin routes
     Route::get('/leads/{any?}', fn() => redirect()->route('admin.dashboard'))->where('any', '.*');
     Route::get('/seo/{any?}', fn() => redirect()->route('admin.dashboard'))->where('any', '.*');
-    Route::get('/cms/blogs/{any?}', fn() => redirect()->route('admin.dashboard'))->where('any', '.*');
     Route::get('/cms/testimonials/{any?}', fn() => redirect()->route('admin.dashboard'))->where('any', '.*');
 });

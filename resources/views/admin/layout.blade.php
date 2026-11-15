@@ -1300,12 +1300,28 @@
       </a>
 
       <div class="menu-group-title">Management</div>
+      <a href="{{ route('admin.cms.blogs.index') }}" class="nav-item {{ request()->routeIs('admin.cms.blogs*') ? 'active' : '' }}">
+        <span class="nav-item-content">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <span>Blog Articles</span>
+        </span>
+        <span class="nav-count">{{ rescue(fn() => \App\Models\Blog::count(), 0) }}</span>
+      </a>
+
+      <a href="{{ route('admin.cms.careers.index') }}" class="nav-item {{ request()->routeIs('admin.cms.careers*') ? 'active' : '' }}">
+        <span class="nav-item-content">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          <span>Job Openings</span>
+        </span>
+        <span class="nav-count">{{ rescue(fn() => \App\Models\JobOpening::count(), 0) }}</span>
+      </a>
+
       <a href="{{ route('admin.cms.clients.index') }}" class="nav-item {{ request()->routeIs('admin.cms.clients*') ? 'active' : '' }}">
         <span class="nav-item-content">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
           <span>Client Logos</span>
         </span>
-        <span class="nav-count">{{ \App\Models\ClientLogo::count() }}</span>
+        <span class="nav-count">{{ rescue(fn() => \App\Models\ClientLogo::count(), 0) }}</span>
       </a>
 
       <a href="{{ route('admin.filemanager.index') }}" class="nav-item {{ request()->routeIs('admin.filemanager*') ? 'active' : '' }}">

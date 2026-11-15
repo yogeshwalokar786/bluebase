@@ -937,202 +937,58 @@
 
       <!-- Category Filter Tabs -->
       <div class="careers-filter-bar">
-        <button class="careers-filter-btn active" data-filter="all">All Roles (6)</button>
-        <button class="careers-filter-btn" data-filter="backend">Backend &amp; Full-Stack</button>
-        <button class="careers-filter-btn" data-filter="ai">AI &amp; Machine Learning</button>
-        <button class="careers-filter-btn" data-filter="mobile-cloud">Mobile &amp; DevOps</button>
-        <button class="careers-filter-btn" data-filter="design">Design &amp; Architecture</button>
+        @foreach($categories as $catKey => $cat)
+          <button class="careers-filter-btn {{ $loop->first ? 'active' : '' }}" data-filter="{{ $catKey }}">
+            {{ $cat['label'] }}
+          </button>
+        @endforeach
       </div>
 
       <!-- Job Roles Grid -->
       <div class="careers-roles-grid">
-        
-        <!-- Role 1: Full-Stack Engineer -->
-        <div class="career-role-card" data-category="backend">
-          <div class="career-role-main">
-            <div class="career-role-meta-row">
-              <span class="career-badge-dept">Engineering</span>
-              <span class="career-badge-loc">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                Remote (India / Global)
-              </span>
-              <span class="career-badge-type">Full-time</span>
+        @forelse($jobs as $job)
+          <div class="career-role-card" data-category="{{ $job->category }}">
+            <div class="career-role-main">
+              <div class="career-role-meta-row">
+                @if(!empty($job->department))
+                  <span class="career-badge-dept">{{ $job->department }}</span>
+                @endif
+                <span class="career-badge-loc">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                  {{ $job->location ?? 'Remote (India / Global)' }}
+                </span>
+                <span class="career-badge-type">{{ $job->type ?? 'Full-time' }}</span>
+                @if(!empty($job->experience))
+                  <span class="career-badge-dept" style="background: rgba(30, 41, 59, 0.6); color: #cbd5e1; border-color: rgba(255, 255, 255, 0.08);">{{ $job->experience }}</span>
+                @endif
+              </div>
+              <h3 class="career-role-title">{{ $job->title }}</h3>
+              <p class="career-role-desc">
+                {{ $job->description }}
+              </p>
+              @if(!empty($job->skills_list))
+                <div class="career-role-tags">
+                  @foreach($job->skills_list as $skill)
+                    <span class="career-tag-pill">{{ trim($skill) }}</span>
+                  @endforeach
+                </div>
+              @endif
             </div>
-            <h3 class="career-role-title">Staff Full-Stack Engineer (React / Go / Node)</h3>
-            <p class="career-role-desc">
-              Lead architecture and implementation of high-throughput web applications and scalable microservices. You will work on real-time booking engines, client enterprise portals, and distributed transactional APIs.
-            </p>
-            <div class="career-role-tags">
-              <span class="career-tag-pill">Go</span>
-              <span class="career-tag-pill">React / Next.js</span>
-              <span class="career-tag-pill">PostgreSQL</span>
-              <span class="career-tag-pill">Redis</span>
-              <span class="career-tag-pill">Docker</span>
-            </div>
-          </div>
-          <div class="career-role-actions">
-            <button class="career-apply-btn open-apply-modal-btn" data-role="Staff Full-Stack Engineer (React / Go / Node)">
-              Apply For Role &rarr;
-            </button>
-            <span style="font-size: 0.8rem; color: var(--color-gray-600);">Fast 24h Review</span>
-          </div>
-        </div>
-
-        <!-- Role 2: Principal AI Systems Architect -->
-        <div class="career-role-card" data-category="ai">
-          <div class="career-role-main">
-            <div class="career-role-meta-row">
-              <span class="career-badge-dept">AI Research &amp; Labs</span>
-              <span class="career-badge-loc">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                Remote (India / Global)
-              </span>
-              <span class="career-badge-type">Full-time</span>
-            </div>
-            <h3 class="career-role-title">Principal AI &amp; Agent Systems Architect</h3>
-            <p class="career-role-desc">
-              Architect autonomous multi-agent pipelines, build hybrid vector search RAG systems, and deploy fine-tuned open-weight models for enterprise production workloads with sub-second latencies.
-            </p>
-            <div class="career-role-tags">
-              <span class="career-tag-pill">Python</span>
-              <span class="career-tag-pill">LangChain / LlamaIndex</span>
-              <span class="career-tag-pill">Vector DBs (Qdrant)</span>
-              <span class="career-tag-pill">FastAPI</span>
-              <span class="career-tag-pill">PyTorch</span>
+            <div class="career-role-actions">
+              <button class="career-apply-btn open-apply-modal-btn" data-role="{{ $job->title }}">
+                Apply For Role &rarr;
+              </button>
+              <span style="font-size: 0.8rem; color: var(--color-gray-600);">Fast 24h Review</span>
             </div>
           </div>
-          <div class="career-role-actions">
-            <button class="career-apply-btn open-apply-modal-btn" data-role="Principal AI & Agent Systems Architect">
-              Apply For Role &rarr;
-            </button>
-            <span style="font-size: 0.8rem; color: var(--color-gray-600);">Fast 24h Review</span>
+        @empty
+          <div style="grid-column: 1 / -1; padding: 3rem 1.5rem; text-align: center; background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(255, 255, 255, 0.12); border-radius: 14px;">
+            <p style="color: #94a3b8; font-size: 1.05rem; margin-bottom: 1rem;">No positions currently open in this category. We are always happy to connect with standout engineers and designers.</p>
+            <a href="mailto:careers@bluebasetechnologies.com?subject=Spontaneous%20Application%20-%20Engineering" class="career-apply-btn" style="display: inline-block;">
+              Send Open Application &rarr;
+            </a>
           </div>
-        </div>
-
-        <!-- Role 3: Senior Cloud & DevOps Engineer -->
-        <div class="career-role-card" data-category="mobile-cloud">
-          <div class="career-role-main">
-            <div class="career-role-meta-row">
-              <span class="career-badge-dept">Infrastructure &amp; SRE</span>
-              <span class="career-badge-loc">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                Remote (India / Global)
-              </span>
-              <span class="career-badge-type">Full-time</span>
-            </div>
-            <h3 class="career-role-title">Senior Cloud &amp; DevOps Engineer</h3>
-            <p class="career-role-desc">
-              Own our multi-region Kubernetes clusters, automated GitOps CI/CD pipelines, Terraform infrastructure-as-code, and zero-trust security postures across AWS and Cloudflare.
-            </p>
-            <div class="career-role-tags">
-              <span class="career-tag-pill">Kubernetes</span>
-              <span class="career-tag-pill">AWS / GCP</span>
-              <span class="career-tag-pill">Terraform IaC</span>
-              <span class="career-tag-pill">GitHub Actions</span>
-              <span class="career-tag-pill">Prometheus</span>
-            </div>
-          </div>
-          <div class="career-role-actions">
-            <button class="career-apply-btn open-apply-modal-btn" data-role="Senior Cloud & DevOps Engineer">
-              Apply For Role &rarr;
-            </button>
-            <span style="font-size: 0.8rem; color: var(--color-gray-600);">Fast 24h Review</span>
-          </div>
-        </div>
-
-        <!-- Role 4: Senior Mobile Engineer -->
-        <div class="career-role-card" data-category="mobile-cloud">
-          <div class="career-role-main">
-            <div class="career-role-meta-row">
-              <span class="career-badge-dept">Mobile Engineering</span>
-              <span class="career-badge-loc">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                Remote (India / Global)
-              </span>
-              <span class="career-badge-type">Full-time</span>
-            </div>
-            <h3 class="career-role-title">Senior Mobile Engineer (Offline-First / React Native)</h3>
-            <p class="career-role-desc">
-              Build robust cross-platform iOS and Android mobile solutions with local SQLite sync, biometric authentication, and offline transactional capabilities for logistics, fleet, and field operations.
-            </p>
-            <div class="career-role-tags">
-              <span class="career-tag-pill">React Native</span>
-              <span class="career-tag-pill">TypeScript</span>
-              <span class="career-tag-pill">SQLite Sync</span>
-              <span class="career-tag-pill">iOS / Android</span>
-              <span class="career-tag-pill">Tailwind</span>
-            </div>
-          </div>
-          <div class="career-role-actions">
-            <button class="career-apply-btn open-apply-modal-btn" data-role="Senior Mobile Engineer (Offline-First / React Native)">
-              Apply For Role &rarr;
-            </button>
-            <span style="font-size: 0.8rem; color: var(--color-gray-600);">Fast 24h Review</span>
-          </div>
-        </div>
-
-        <!-- Role 5: Staff Product Designer -->
-        <div class="career-role-card" data-category="design">
-          <div class="career-role-main">
-            <div class="career-role-meta-row">
-              <span class="career-badge-dept">Product Design</span>
-              <span class="career-badge-loc">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                Remote (India / Global)
-              </span>
-              <span class="career-badge-type">Full-time</span>
-            </div>
-            <h3 class="career-role-title">Staff Product Designer (UI/UX Systems &amp; Canvases)</h3>
-            <p class="career-role-desc">
-              Design cohesive design systems in Figma, interactive dashboard analytics, and clean user interfaces for enterprise platforms. Partner directly with engineers to ensure pixel-perfect production fidelity.
-            </p>
-            <div class="career-role-tags">
-              <span class="career-tag-pill">Figma Systems</span>
-              <span class="career-tag-pill">Interactive UX</span>
-              <span class="career-tag-pill">Data Visualizations</span>
-              <span class="career-tag-pill">Prototyping</span>
-              <span class="career-tag-pill">Design Tokens</span>
-            </div>
-          </div>
-          <div class="career-role-actions">
-            <button class="career-apply-btn open-apply-modal-btn" data-role="Staff Product Designer (UI/UX Systems & Canvases)">
-              Apply For Role &rarr;
-            </button>
-            <span style="font-size: 0.8rem; color: var(--color-gray-600);">Fast 24h Review</span>
-          </div>
-        </div>
-
-        <!-- Role 6: Lead Solutions Architect -->
-        <div class="career-role-card" data-category="design">
-          <div class="career-role-main">
-            <div class="career-role-meta-row">
-              <span class="career-badge-dept">Architecture &amp; Strategy</span>
-              <span class="career-badge-loc">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                Remote (India / Global)
-              </span>
-              <span class="career-badge-type">Full-time</span>
-            </div>
-            <h3 class="career-role-title">Lead Solutions Architect (Enterprise SaaS &amp; ERP)</h3>
-            <p class="career-role-desc">
-              Bridge modern microservices with complex transactional business systems. Guide client leadership through technical trade-offs, scalability bottlenecks, and data migration strategies.
-            </p>
-            <div class="career-role-tags">
-              <span class="career-tag-pill">Distributed Architecture</span>
-              <span class="career-tag-pill">Cloud Patterns</span>
-              <span class="career-tag-pill">High Availability</span>
-              <span class="career-tag-pill">API Gateway</span>
-              <span class="career-tag-pill">Technical Leadership</span>
-            </div>
-          </div>
-          <div class="career-role-actions">
-            <button class="career-apply-btn open-apply-modal-btn" data-role="Lead Solutions Architect (Enterprise SaaS & ERP)">
-              Apply For Role &rarr;
-            </button>
-            <span style="font-size: 0.8rem; color: var(--color-gray-600);">Fast 24h Review</span>
-          </div>
-        </div>
-
+        @endforelse
       </div>
 
     </div>

@@ -4,67 +4,85 @@
 @section('page_title', 'Admin Console & Site Management')
 
 @section('content')
-<!-- Three Core Management Hub Cards -->
+<!-- Core Management Hub Cards -->
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-bottom: 24px;">
 
-  <!-- 1. Client Logos -->
+  <!-- 1. Blog Articles CMS -->
   <div class="card card-featured" style="margin-bottom: 0; padding: 22px; display: flex; flex-direction: column; justify-content: space-between;">
     <div>
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
-        <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--accent); letter-spacing: 0.06em;">Client Logos CMS</span>
+        <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--accent); letter-spacing: 0.06em;">Blog Articles CMS</span>
         <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(0, 80, 231, 0.12); display: flex; align-items: center; justify-content: center; color: var(--accent);">
+          <svg style="width: 19px; height: 19px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+      </div>
+      <div class="metric-value" style="font-size: 2.2rem; font-weight: 800; color: var(--text);">{{ $stats['blogs_count'] }}</div>
+      <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 6px;">
+        <span class="badge badge-confirmed" style="font-size: 0.72rem;">{{ $stats['blogs_published'] }} Published Live</span>
+      </div>
+    </div>
+    <div style="display: flex; gap: 8px; margin-top: 22px; flex-wrap: wrap;">
+      <a href="{{ route('admin.cms.blogs.index') }}" class="btn btn-primary btn-sm" style="flex: 1; text-align: center; justify-content: center; min-width: 120px;">Manage Articles</a>
+      <a href="{{ route('admin.cms.blogs.create') }}" class="btn btn-secondary btn-sm">+ New Post</a>
+    </div>
+  </div>
+
+  <!-- 2. Careers CMS -->
+  <div class="card" style="margin-bottom: 0; padding: 22px; display: flex; flex-direction: column; justify-content: space-between;">
+    <div>
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+        <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #a855f7; letter-spacing: 0.06em;">Careers &amp; Openings</span>
+        <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(168, 85, 247, 0.12); display: flex; align-items: center; justify-content: center; color: #a855f7;">
+          <svg style="width: 19px; height: 19px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+      </div>
+      <div class="metric-value" style="font-size: 2.2rem; font-weight: 800; color: var(--text);">{{ $stats['jobs_count'] }}</div>
+      <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 6px;">
+        <span class="badge badge-confirmed" style="font-size: 0.72rem;">{{ $stats['jobs_active'] }} Active Hiring Roles</span>
+      </div>
+    </div>
+    <div style="display: flex; gap: 8px; margin-top: 22px; flex-wrap: wrap;">
+      <a href="{{ route('admin.cms.careers.index') }}" class="btn btn-primary btn-sm" style="flex: 1; text-align: center; justify-content: center; min-width: 120px;">Manage Roles</a>
+      <a href="{{ route('admin.cms.careers.create') }}" class="btn btn-secondary btn-sm">+ Add Role</a>
+    </div>
+  </div>
+
+  <!-- 3. Client Logos -->
+  <div class="card" style="margin-bottom: 0; padding: 22px; display: flex; flex-direction: column; justify-content: space-between;">
+    <div>
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+        <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-dim); letter-spacing: 0.06em;">Client Logos</span>
+        <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(56, 189, 248, 0.12); display: flex; align-items: center; justify-content: center; color: #38bdf8;">
           <svg style="width: 19px; height: 19px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
         </div>
       </div>
       <div class="metric-value" style="font-size: 2.2rem; font-weight: 800; color: var(--text);">{{ $stats['clients_count'] }}</div>
       <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 6px;">
-        <span class="badge badge-confirmed" style="font-size: 0.72rem;">{{ $stats['clients_active'] }} Active on Marquee Banners</span>
+        <span class="badge badge-confirmed" style="font-size: 0.72rem;">{{ $stats['clients_active'] }} Active on Banners</span>
       </div>
     </div>
     <div style="display: flex; gap: 8px; margin-top: 22px; flex-wrap: wrap;">
-      <a href="{{ route('admin.cms.clients.index') }}" class="btn btn-primary btn-sm" style="flex: 1; text-align: center; justify-content: center; min-width: 120px;">Manage Logos</a>
-      <a href="{{ route('admin.cms.clients.create') }}" class="btn btn-secondary btn-sm">+ Add New</a>
+      <a href="{{ route('admin.cms.clients.index') }}" class="btn btn-secondary btn-sm" style="flex: 1; text-align: center; justify-content: center; min-width: 120px;">Manage Logos</a>
+      <a href="{{ route('admin.cms.clients.create') }}" class="btn btn-secondary btn-sm">+ New Logo</a>
     </div>
   </div>
 
-  <!-- 2. Media Manager -->
+  <!-- 4. Media Library -->
   <div class="card" style="margin-bottom: 0; padding: 22px; display: flex; flex-direction: column; justify-content: space-between;">
     <div>
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
-        <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-dim); letter-spacing: 0.06em;">Media Manager</span>
+        <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-dim); letter-spacing: 0.06em;">Media Library</span>
         <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(56, 189, 248, 0.1); display: flex; align-items: center; justify-content: center; color: #0284c7;">
           <svg style="width: 19px; height: 19px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
         </div>
       </div>
       <div class="metric-value" style="font-size: 2.2rem; font-weight: 800; color: var(--text);">{{ $stats['files_count'] }}</div>
       <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 6px;">
-        Uploaded media, vectors, images &amp; documents
+        Uploaded media, vectors &amp; documents
       </div>
     </div>
     <div style="margin-top: 22px;">
       <a href="{{ route('admin.filemanager.index') }}" class="btn btn-secondary btn-sm" style="width: 100%; text-align: center; justify-content: center;">Open Media Library &rarr;</a>
-    </div>
-  </div>
-
-  <!-- 3. Site Settings -->
-  <div class="card" style="margin-bottom: 0; padding: 22px; display: flex; flex-direction: column; justify-content: space-between;">
-    <div>
-      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
-        <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-dim); letter-spacing: 0.06em;">Site Settings</span>
-        <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(16, 185, 129, 0.1); display: flex; align-items: center; justify-content: center; color: #10b981;">
-          <svg style="width: 19px; height: 19px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-        </div>
-      </div>
-      <div style="font-weight: 700; font-size: 1.05rem; color: var(--text);">{{ $stats['company_name'] }}</div>
-      <div style="font-size: 0.85rem; color: var(--accent); margin-top: 6px; font-weight: 600;">
-        {{ $stats['official_email'] }}
-      </div>
-      <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">
-        Phone: {{ $stats['contact_phone'] }}
-      </div>
-    </div>
-    <div style="margin-top: 22px;">
-      <a href="{{ route('admin.settings') }}" class="btn btn-secondary btn-sm" style="width: 100%; text-align: center; justify-content: center;">Edit Configuration &rarr;</a>
     </div>
   </div>
 

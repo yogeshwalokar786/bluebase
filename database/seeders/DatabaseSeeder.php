@@ -28,10 +28,12 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // 2. Client Logos & Blog Categories
+        // 2. Client Logos, Blog Categories, Blogs, & Job Openings
         $this->call([
             ClientLogoSeeder::class,
             BlogCategorySeeder::class,
+            BlogSeeder::class,
+            JobOpeningSeeder::class,
         ]);
 
         // 4. Sample Leads
