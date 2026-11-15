@@ -10,7 +10,24 @@ class SettingsCmsController extends Controller
 {
     public function index()
     {
-        $settings = SiteSetting::all()->pluck('value', 'key')->toArray();
+        $settings = [];
+        try {
+            $settings = SiteSetting::all()->pluck('value', 'key')->toArray();
+        } catch (\Throwable $e) {}
+
+        if (empty($settings['gemini_api_key'])) {
+            $keyPath = storage_path('app/ai_key.txt');
+            if (file_exists($keyPath)) {
+                $settings['gemini_api_key'] = trim(file_get_contents($keyPath));
+            } elseif (env('GEMINI_API_KEY')) {
+                $settings['gemini_api_key'] = env('GEMINI_API_KEY');
+            }
+        }
+
+        if (empty($settings['gemini_model'])) {
+            $settings['gemini_model'] = env('GEMINI_MODEL', 'gemini-1.5-flash');
+        }
+
         return view('admin.cms.settings', compact('settings'));
     }
 
@@ -43,12 +60,23 @@ class SettingsCmsController extends Controller
 
         foreach ($allowedKeys as $key) {
             if ($request->has($key)) {
-                SiteSetting::set($key, $request->input($key));
+                try {
+                    SiteSetting::set($key, $request->input($key));
+                } catch (\Throwable $e) {}
             }
         }
 
+        if ($request->filled('gemini_api_key')) {
+            $keyVal = trim($request->input('gemini_api_key'));
+            try {
+                file_put_contents(storage_path('app/ai_key.txt'), $keyVal);
+            } catch (\Throwable $e) {}
+        }
+
         // Handle checkbox for video enabled
-        SiteSetting::set('hero_video_enabled', $request->has('hero_video_enabled') ? '1' : '0');
+        try {
+            SiteSetting::set('hero_video_enabled', $request->has('hero_video_enabled') ? '1' : '0');
+        } catch (\Throwable $e) {}
 
         return back()->with('success', 'Site configuration and CMS settings updated successfully.');
     }

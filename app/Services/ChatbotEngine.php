@@ -82,22 +82,40 @@ class ChatbotEngine
      */
     public function getAiApiKey(): ?string
     {
+        // 1. Database SiteSetting
         try {
             $dbKey = SiteSetting::get('gemini_api_key') ?: SiteSetting::get('ai_api_key');
-            if (!empty($dbKey)) {
+            if (!empty($dbKey) && strlen(trim($dbKey)) > 5) {
                 return trim($dbKey);
             }
         } catch (\Throwable $e) {}
 
+        // 2. Storage file backup (storage/app/ai_key.txt)
+        try {
+            $filePath = storage_path('app/ai_key.txt');
+            if (file_exists($filePath)) {
+                $savedKey = trim(file_get_contents($filePath));
+                if (!empty($savedKey) && strlen($savedKey) > 5) {
+                    return $savedKey;
+                }
+            }
+        } catch (\Throwable $e) {}
+
+        // 3. Config services
         try {
             $configKey = config('services.gemini.api_key');
-            if (!empty($configKey)) {
+            if (!empty($configKey) && strlen(trim($configKey)) > 5) {
                 return trim($configKey);
             }
         } catch (\Throwable $e) {}
 
+        // 4. Environment Variables
         $envKey = env('GEMINI_API_KEY') ?: env('AI_API_KEY') ?: env('OPENAI_API_KEY');
-        return !empty($envKey) ? trim($envKey) : null;
+        if (!empty($envKey) && strlen(trim($envKey)) > 5) {
+            return trim($envKey);
+        }
+
+        return null;
     }
 
     /**
@@ -120,47 +138,96 @@ class ChatbotEngine
     }
 
     /**
-     * Call Google Gemini API.
+     * Call Google Gemini API with fallback retries and robust parsing.
      */
     protected function callGeminiApi(string $apiKey, ChatSession $session, string $input, string $visitorName, string $visitorEmail): ?array
     {
-        $model = env('GEMINI_MODEL', 'gemini-1.5-flash');
+        $cleanApiKey = trim($apiKey, " \t\n\r\0\x0B\"'");
+        $model = 'gemini-1.5-flash';
         try {
             $dbModel = SiteSetting::get('gemini_model');
             if (!empty($dbModel)) {
                 $model = trim($dbModel);
+            } else {
+                $model = env('GEMINI_MODEL', 'gemini-1.5-flash');
             }
-        } catch (\Throwable $e) {}
+        } catch (\Throwable $e) {
+            $model = env('GEMINI_MODEL', 'gemini-1.5-flash');
+        }
 
-        $url = "https://generativelanguage.googleapis.com/v1beta/models/{$model}:generateContent?key={$apiKey}";
+        $url = "https://generativelanguage.googleapis.com/v1beta/models/{$model}:generateContent?key={$cleanApiKey}";
         $systemPrompt = $this->buildSystemInstruction($visitorName, $visitorEmail);
         $contents = $this->buildGeminiContents($session, $input);
 
         try {
-            $response = Http::timeout(12)->post($url, [
-                'systemInstruction' => [
-                    'parts' => [
-                        ['text' => $systemPrompt],
+            $response = Http::withoutVerifying()
+                ->timeout(15)
+                ->withHeaders([
+                    'Content-Type' => 'application/json',
+                    'x-goog-api-key' => $cleanApiKey,
+                ])
+                ->post($url, [
+                    'systemInstruction' => [
+                        'parts' => [
+                            ['text' => $systemPrompt],
+                        ],
                     ],
-                ],
-                'contents' => $contents,
-                'generationConfig' => [
-                    'temperature' => 0.7,
-                    'maxOutputTokens' => 800,
-                ],
-            ]);
+                    'contents' => $contents,
+                    'generationConfig' => [
+                        'temperature' => 0.7,
+                        'maxOutputTokens' => 800,
+                    ],
+                ]);
 
             if ($response->successful()) {
-                $reply = $response->json('candidates.0.content.parts.0.text');
-                if (!empty($reply)) {
+                $reply = $this->extractGeminiResponseText($response->json());
+                if ($reply !== null) {
                     return [
-                        'message' => trim($reply),
+                        'message' => $reply,
                         'step' => 'conversing',
                         'suggestions' => [],
                     ];
                 }
             } else {
-                Log::warning('Gemini API Error: ' . $response->body());
+                Log::warning('Gemini API Error [' . $response->status() . ']: ' . $response->body());
+
+                // If 404 (model not found) and model was not gemini-1.5-flash, fallback to gemini-1.5-flash
+                if ($response->status() === 404 && $model !== 'gemini-1.5-flash') {
+                    $fallbackUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={$cleanApiKey}";
+                    $retry = Http::withoutVerifying()->timeout(15)
+                        ->withHeaders(['Content-Type' => 'application/json', 'x-goog-api-key' => $cleanApiKey])
+                        ->post($fallbackUrl, [
+                            'systemInstruction' => ['parts' => [['text' => $systemPrompt]]],
+                            'contents' => $contents,
+                            'generationConfig' => ['temperature' => 0.7, 'maxOutputTokens' => 800],
+                        ]);
+                    if ($retry->successful()) {
+                        $reply = $this->extractGeminiResponseText($retry->json());
+                        if ($reply !== null) {
+                            return ['message' => $reply, 'step' => 'conversing', 'suggestions' => []];
+                        }
+                    }
+                }
+
+                // If 400 Bad Request, retry with system prompt prepended into the first user turn
+                if ($response->status() === 400) {
+                    $contentsWithSystem = $contents;
+                    if (!empty($contentsWithSystem) && $contentsWithSystem[0]['role'] === 'user') {
+                        $contentsWithSystem[0]['parts'][0]['text'] = "Context & Instructions:\n" . $systemPrompt . "\n\nUser Question:\n" . $contentsWithSystem[0]['parts'][0]['text'];
+                    }
+                    $retry2 = Http::withoutVerifying()->timeout(15)
+                        ->withHeaders(['Content-Type' => 'application/json', 'x-goog-api-key' => $cleanApiKey])
+                        ->post($url, [
+                            'contents' => $contentsWithSystem,
+                            'generationConfig' => ['temperature' => 0.7, 'maxOutputTokens' => 800],
+                        ]);
+                    if ($retry2->successful()) {
+                        $reply = $this->extractGeminiResponseText($retry2->json());
+                        if ($reply !== null) {
+                            return ['message' => $reply, 'step' => 'conversing', 'suggestions' => []];
+                        }
+                    }
+                }
             }
         } catch (\Throwable $e) {
             Log::warning('Gemini API Exception: ' . $e->getMessage());
@@ -170,70 +237,118 @@ class ChatbotEngine
     }
 
     /**
+     * Extract clean text response from Gemini API payload parts.
+     */
+    protected function extractGeminiResponseText(array $data): ?string
+    {
+        $parts = $data['candidates'][0]['content']['parts'] ?? [];
+        $text = '';
+        foreach ($parts as $part) {
+            if (!empty($part['text'])) {
+                $text .= $part['text'];
+            }
+        }
+        $text = trim($text);
+        return $text !== '' ? $text : null;
+    }
+
+    /**
      * Build strictly alternating contents array compliant with Google Gemini API requirements:
      * 1. Must start with role 'user'.
      * 2. Roles must strictly alternate between 'user' and 'model'.
-     * 3. Must end with role 'user'.
+     * 3. Must end with role 'user' containing the latest user message.
      */
     protected function buildGeminiContents(ChatSession $session, string $input): array
     {
+        $rawMessages = [];
+        if ($session->exists) {
+            // Get the recent messages in chronological order
+            $rawMessages = $session->messages()
+                ->orderBy('created_at', 'desc')
+                ->take(10)
+                ->get()
+                ->reverse();
+        }
+
         $contents = [];
         $trimmedInput = trim($input);
 
-        if ($session->exists) {
-            $pastMessages = $session->messages()->orderBy('created_at', 'asc')->take(12)->get();
-            foreach ($pastMessages as $msg) {
-                $text = trim($msg->message);
-                if ($text === '') continue;
+        foreach ($rawMessages as $msg) {
+            $text = trim($msg->message);
+            if ($text === '') continue;
 
-                $role = ($msg->sender === 'bot') ? 'model' : 'user';
+            $role = ($msg->sender === 'bot') ? 'model' : 'user';
 
-                // First message in Gemini contents MUST be 'user'
-                if (empty($contents) && $role !== 'user') {
-                    continue;
-                }
-
-                $lastIdx = count($contents) - 1;
-                if ($lastIdx >= 0 && $contents[$lastIdx]['role'] === $role) {
-                    // Combine consecutive messages from the same role
-                    if ($contents[$lastIdx]['parts'][0]['text'] !== $text) {
-                        $contents[$lastIdx]['parts'][0]['text'] .= "\n" . $text;
-                    }
-                } else {
+            // First turn in Gemini payload MUST be 'user'
+            if (empty($contents)) {
+                if ($role === 'user') {
                     $contents[] = [
-                        'role' => $role,
+                        'role' => 'user',
                         'parts' => [['text' => $text]],
                     ];
                 }
+                continue;
+            }
+
+            $lastIdx = count($contents) - 1;
+            if ($contents[$lastIdx]['role'] === $role) {
+                // Merge consecutive messages from same role to satisfy Gemini alternating requirement
+                if ($contents[$lastIdx]['parts'][0]['text'] !== $text) {
+                    $contents[$lastIdx]['parts'][0]['text'] .= "\n" . $text;
+                }
+            } else {
+                $contents[] = [
+                    'role' => $role,
+                    'parts' => [['text' => $text]],
+                ];
             }
         }
 
-        // Ensure the current user input is the final 'user' turn
-        $lastIdx = count($contents) - 1;
-        if ($lastIdx >= 0 && $contents[$lastIdx]['role'] === 'user') {
-            if ($contents[$lastIdx]['parts'][0]['text'] !== $trimmedInput) {
-                $contents[$lastIdx]['parts'][0]['text'] .= "\n" . $trimmedInput;
-            }
-        } else {
-            $contents[] = [
-                'role' => 'user',
-                'parts' => [['text' => $trimmedInput]],
-            ];
-        }
-
-        // Final sanity check: remove any leading 'model' turns
-        while (!empty($contents) && $contents[0]['role'] !== 'user') {
-            array_shift($contents);
-        }
-
+        // Ensure the current user message is the final 'user' turn
         if (empty($contents)) {
             $contents[] = [
                 'role' => 'user',
                 'parts' => [['text' => $trimmedInput]],
             ];
+        } else {
+            $lastIdx = count($contents) - 1;
+            if ($contents[$lastIdx]['role'] === 'user') {
+                if ($contents[$lastIdx]['parts'][0]['text'] !== $trimmedInput) {
+                    $contents[$lastIdx]['parts'][0]['text'] = $trimmedInput;
+                }
+            } else {
+                $contents[] = [
+                    'role' => 'user',
+                    'parts' => [['text' => $trimmedInput]],
+                ];
+            }
         }
 
-        return $contents;
+        // Final sanity check: remove any leading 'model' turns and ensure strict alternation
+        $sanitized = [];
+        foreach ($contents as $turn) {
+            if (empty($sanitized)) {
+                if ($turn['role'] === 'user') {
+                    $sanitized[] = $turn;
+                }
+                continue;
+            }
+            $lastIdx = count($sanitized) - 1;
+            if ($sanitized[$lastIdx]['role'] === $turn['role']) {
+                $sanitized[$lastIdx]['parts'][0]['text'] .= "\n" . $turn['parts'][0]['text'];
+            } else {
+                $sanitized[] = $turn;
+            }
+        }
+
+        if (empty($sanitized)) {
+            $sanitized[] = [
+                'role' => 'user',
+                'parts' => [['text' => $trimmedInput]],
+            ];
+        }
+
+        return $sanitized;
     }
 
     /**
@@ -366,6 +481,54 @@ PROMPT;
             ];
         }
 
+        // Context from previous bot message
+        $lastBotMsg = null;
+        if ($session->exists) {
+            $lastBotMsg = $session->messages()->where('sender', 'bot')->latest()->first();
+        }
+        $lastBotText = $lastBotMsg ? strtolower($lastBotMsg->message) : '';
+
+        // Affirmative response handling ("yes", "yep", "sure", "yeah", "ok", "okay", "correct", "right")
+        $isAffirmative = preg_match('/^(yes|yeah|yep|sure|ok|okay|yup|definitely|absolutely|correct|right|proceed|fine)$/i', $normalized)
+            || in_array($normalized, ['yes', 'yeah', 'yep', 'sure', 'ok', 'okay', 'yup', 'correct', 'right']);
+
+        if ($isAffirmative) {
+            if (str_contains($lastBotText, 'scratch') || str_contains($lastBotText, 'modernizing')) {
+                return [
+                    'message' => "Building from scratch gives us complete architectural freedom to engineer sub-second page loads, modular API design, and tailored UX flows. Do you have wireframes, feature requirements, or design references ready, or would you like us to assist with the technical scoping and UI wireframing as well?",
+                    'step' => 'conversing',
+                    'suggestions' => [],
+                ];
+            }
+
+            return [
+                'message' => "Understood! To help guide our architectural recommendations, what core problem will your application solve, and do you have any specific integrations in mind (such as payment processing, authentication, or third-party APIs)?",
+                'step' => 'conversing',
+                'suggestions' => [],
+            ];
+        }
+
+        // Negative response handling ("no", "nope", "nah", "not really", "nothing", "none")
+        $isNegative = preg_match('/^(no|nope|nah|not really|nothing|none|not yet)$/i', $normalized)
+            || in_array($normalized, ['no', 'nope', 'nah']);
+
+        if ($isNegative) {
+            return [
+                'message' => "Understood, no problem at all! Feel free to share any details about your product concept whenever you're ready, or ask any questions about our development process, tech stack, past work (like OMG Rental Bikes and Aarohi Classic), and 3 to 6-week MVP delivery model.",
+                'step' => 'conversing',
+                'suggestions' => [],
+            ];
+        }
+
+        // Ecommerce platform inquiry
+        if ($this->matches($normalized, ['ecommerce', 'e-commerce', 'online store', 'shopping', 'store', 'cart', 'checkout', 'selling', 'products', 'shopify', 'woocommerce', 'marketplace'])) {
+            return [
+                'message' => "For ecommerce platforms, we build high-converting headless storefronts using Next.js on the frontend with decoupled Laravel or Node.js backends. We integrate multi-currency payment gateways (Stripe/Razorpay), automated inventory tracking, and custom merchant dashboards.\n\nAre you looking to launch a direct-to-consumer (D2C) brand store, or a multi-vendor marketplace with multiple sellers?",
+                'step' => 'conversing',
+                'suggestions' => [],
+            ];
+        }
+
         // Mobile App inquiry
         if ($this->matches($normalized, ['mobile', 'app', 'android', 'ios', 'flutter', 'react native', 'iphone', 'play store', 'app store'])) {
             return [
@@ -384,8 +547,16 @@ PROMPT;
             ];
         }
 
-        // Web Development inquiry
+        // Web Development inquiry (with anti-repetition check)
         if ($this->matches($normalized, ['web', 'website', 'laravel', 'nextjs', 'next.js', 'react', 'vue', 'node', 'full stack', 'fullstack', 'portal', 'tailwind'])) {
+            if (str_contains($lastBotText, 'on the web engineering side')) {
+                return [
+                    'message' => "Got it! To ensure we architect the ideal web solution for your needs, what key functionality or user workflows should your website support (such as custom dashboards, client portals, payment gateways, or API integrations)?",
+                    'step' => 'conversing',
+                    'suggestions' => [],
+                ];
+            }
+
             return [
                 'message' => "On the web engineering side, we build modern decoupled web applications using Next.js, React, Laravel, and Node.js with PostgreSQL and Redis backends. We engineer for sub-second load times, 90+ Core Web Vitals, and enterprise security with SSO and role-based permissions.\n\nAre you looking to build a brand-new web application from scratch, or are you modernizing an existing codebase?",
                 'step' => 'conversing',
@@ -447,10 +618,9 @@ PROMPT;
             ];
         }
 
-        // Natural fallback tailored to whatever the user said
-        $cleanPrompt = substr($input, 0, 100);
+        // Clean conversational fallback - zero robotic repetition
         return [
-            'message' => "That sounds interesting regarding \"{$cleanPrompt}\". At Bluebase, we engineer custom SaaS MVPs, web applications, cross-platform mobile apps, and autonomous AI systems.\n\nCould you tell me a bit more about the specific features or workflow you'd like your application to have?",
+            'message' => "Understood. At Bluebase Technologies, our senior engineering pods architect custom web platforms, mobile apps, SaaS MVPs, and enterprise AI integrations. Could you tell me a little more about your target audience or the specific workflows you'd like to build?",
             'step' => 'conversing',
             'suggestions' => [],
         ];
