@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Log;
 class ChatbotEngine
 {
     /**
+     * Last recorded AI error for real-time diagnostics.
+     */
+    protected ?string $lastAiError = null;
+
+    /**
      * Initial greeting when chat window is first opened.
      * Pure AI greeting inviting the visitor to discuss their project.
      */
@@ -126,19 +131,23 @@ class ChatbotEngine
     {
         // 1. Database SiteSetting (from Admin CMS)
         try {
-            $dbKey = SiteSetting::get('gemini_api_key') ?: SiteSetting::get('ai_api_key');
+            $dbKey = SiteSetting::get('gemini_api_key')
+                ?: SiteSetting::get('ai_api_key')
+                ?: SiteSetting::get('google_api_key');
             if (!empty($dbKey) && strlen(trim($dbKey)) > 5) {
                 return trim($dbKey);
             }
         } catch (\Throwable $e) {}
 
-        // 2. Storage file backup (storage/app/ai_key.txt)
+        // 2. Storage file backup (storage/app/ai_key.txt or base/ai_key.txt)
         try {
-            $filePath = storage_path('app/ai_key.txt');
-            if (file_exists($filePath)) {
-                $savedKey = trim(file_get_contents($filePath));
-                if (!empty($savedKey) && strlen($savedKey) > 5) {
-                    return $savedKey;
+            $paths = [storage_path('app/ai_key.txt'), base_path('ai_key.txt')];
+            foreach ($paths as $path) {
+                if (file_exists($path)) {
+                    $savedKey = trim(file_get_contents($path));
+                    if (!empty($savedKey) && strlen($savedKey) > 5) {
+                        return $savedKey;
+                    }
                 }
             }
         } catch (\Throwable $e) {}
@@ -152,7 +161,11 @@ class ChatbotEngine
         } catch (\Throwable $e) {}
 
         // 4. Environment Variables
-        $envKey = env('GEMINI_API_KEY') ?: env('AI_API_KEY') ?: env('OPENAI_API_KEY');
+        $envKey = env('GEMINI_API_KEY')
+            ?: env('GOOGLE_API_KEY')
+            ?: env('GOOGLE_GEMINI_API_KEY')
+            ?: env('AI_API_KEY')
+            ?: env('OPENAI_API_KEY');
         if (!empty($envKey) && strlen(trim($envKey)) > 5) {
             return trim($envKey);
         }
@@ -239,6 +252,9 @@ class ChatbotEngine
             }
 
             Log::warning('Gemini API Non-200 Response [' . $response->status() . ']: ' . $response->body());
+            $errorJson = $response->json();
+            $errMsg = $errorJson['error']['message'] ?? ('HTTP ' . $response->status());
+            $this->lastAiError = "Gemini [{$response->status()}]: {$errMsg}";
 
             // Fallback 1: If 404 (model not found), retry with gemini-1.5-flash
             if ($response->status() === 404 && $model !== 'gemini-1.5-flash') {
@@ -278,7 +294,8 @@ class ChatbotEngine
                 }
             }
         } catch (\Throwable $e) {
-            Log::warning('Gemini API Exception: ' . $e->getMessage());
+            $this->lastAiError = "Gemini Connection Exception: " . $e->getMessage();
+            Log::warning($this->lastAiError);
         }
 
         return null;
@@ -485,8 +502,17 @@ PROMPT;
     {
         $salutation = $visitorName ? " {$visitorName}" : "";
 
+        if ($this->hasAiApiKey()) {
+            $errorInfo = $this->lastAiError ? "\n\n*(AI Notice: {$this->lastAiError})*" : "";
+            return [
+                'message' => "Thank you for reaching out to Bluebase{$salutation}! We design and engineer custom corporate websites, clinic portals, SaaS MVPs, and mobile apps with fast 1 to 2-week delivery.{$errorInfo}\n\nOur engineering pod is ready to assist you—what are the key features or pages you have in mind?",
+                'step' => 'conversing',
+                'suggestions' => [],
+            ];
+        }
+
         return [
-            'message' => "Thank you for reaching out to Bluebase{$salutation}! We design and engineer custom corporate websites, clinic portals, SaaS MVPs, and mobile apps with fast 1 to 2-week delivery.\n\nTo activate live conversational AI, please ensure your Gemini API Key is entered in the Admin Settings. Meanwhile, our engineering pod is ready to assist you—what are the key features or pages you have in mind?",
+            'message' => "Thank you for reaching out to Bluebase{$salutation}! We design and engineer custom corporate websites, clinic portals, SaaS MVPs, and mobile apps with fast 1 to 2-week delivery.\n\nTo activate live conversational AI, please enter your Gemini API Key in the Admin CMS Settings (or set GEMINI_API_KEY in your .env file). Meanwhile, what are the key features or pages you have in mind for your project?",
             'step' => 'conversing',
             'suggestions' => [],
         ];
