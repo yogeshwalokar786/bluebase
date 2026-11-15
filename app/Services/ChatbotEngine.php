@@ -724,9 +724,20 @@ PROMPT;
             ];
         }
 
-        // Clean conversational fallback - zero robotic repetition
+        // Progressive consultative interview funnel for deep multi-turn conversations
+        $turnIndex = $session->exists ? $session->messages()->where('sender', 'bot')->count() : 0;
+
+        $progressiveQuestions = [
+            "Got it, {$salutation}! In terms of your core features and integrations, do you have specific preferences (such as Razorpay/Stripe payments, third-party logistics, SMS/WhatsApp notifications, or custom admin dashboards)?",
+            "Understood! Regarding your launch schedule, what is your ideal target timeline for having the first live version ready for users?",
+            "Makes total sense. Do you already have Figma designs, wireframes, or reference websites, or would you like our design team to create the full UX/UI architecture?",
+            "Excellent. To help our solutions architect prepare a tailored proposal, what approximate user volume or transaction scale are you aiming to support in version 1.0?",
+            "Thank you for sharing those details, {$salutation}! Our engineering pod will review your project requirements and follow up at {$visitorEmail} with a preliminary technical architecture and milestone estimate. Is there anything else specific you'd like included in the scope?",
+        ];
+
+        $selectedMsg = $progressiveQuestions[$turnIndex % count($progressiveQuestions)];
         return [
-            'message' => "Understood. At Bluebase Technologies, our senior engineering pods architect custom web platforms, mobile apps, SaaS MVPs, and enterprise AI integrations. Could you tell me a little more about your target audience or the specific workflows you'd like to build?",
+            'message' => $selectedMsg,
             'step' => 'conversing',
             'suggestions' => [],
         ];
