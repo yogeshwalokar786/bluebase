@@ -216,7 +216,14 @@ class SeoController extends Controller
                 'xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">' . "\n";
 
         // 1. Pages from page_seos
-        $pages = PageSeo::where('is_in_sitemap', true)->orderBy('priority', 'desc')->get();
+        $pages = collect([]);
+        try {
+            if (\Illuminate\Support\Facades\Schema::hasTable('page_seos')) {
+                $pages = PageSeo::where('is_in_sitemap', true)->orderBy('priority', 'desc')->get();
+            }
+        } catch (\Throwable $e) {
+            $pages = collect([]);
+        }
         foreach ($pages as $p) {
             $loc = $baseUrl . '/' . ltrim($p->url_path, '/');
             $lastmod = $p->updated_at ? $p->updated_at->format('Y-m-d') : date('Y-m-d');

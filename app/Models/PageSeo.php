@@ -30,9 +30,15 @@ class PageSeo extends Model
 
     public static function forRoute(string $routeName, ?string $defaultTitle = null, ?string $defaultDesc = null)
     {
-        $seo = static::where('route_name', $routeName)->first();
-        if ($seo) {
-            return $seo;
+        try {
+            if (\Illuminate\Support\Facades\Schema::hasTable('page_seos')) {
+                $seo = static::where('route_name', $routeName)->first();
+                if ($seo) {
+                    return $seo;
+                }
+            }
+        } catch (\Throwable $e) {
+            // Table does not exist or not migrated
         }
 
         return (object)[
