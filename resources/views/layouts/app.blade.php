@@ -79,9 +79,6 @@
 
 <body class="@yield('body_class', '')">
 
-  <!-- Site Preloader: Bluebase Brand Tech Preloader -->
-  @include('partials.preloader')
-
   <!-- Site Navigation Header -->
   @include('partials.header')
 
