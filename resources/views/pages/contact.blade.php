@@ -197,6 +197,41 @@
                 <textarea name="message" class="form-control" rows="4" required placeholder="Tell us about your project, idea, or requirements..." style="width: 100%; padding: 12px 14px; border: 1px solid var(--color-gray-300); border-radius: 8px; font-size: 0.95rem;">{{ old('message') }}</textarea>
               </div>
 
+              <!-- Invisible Security Honeypot -->
+              <input type="text" name="_hp_contact_check" style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;" tabindex="-1" autocomplete="off">
+
+              <!-- Human Verification Security Challenge -->
+              <div class="form-group" style="margin-bottom: 24px; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 16px 18px;">
+                <label for="captcha_input" class="form-label" style="font-weight: 600; font-size: 0.9rem; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+                  <span style="display: inline-flex; align-items: center; gap: 8px; color: var(--color-primary);">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                      <path d="M9 12l2 2 4-4"/>
+                    </svg>
+                    Human Verification <span style="color: #EF4444;">*</span>
+                  </span>
+                  <button type="button" id="refreshCaptchaBtn" title="Get a different math question" style="background: none; border: none; cursor: pointer; color: var(--color-accent); font-size: 0.82rem; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; padding: 0; font-family: inherit;">
+                    <svg id="captchaRefreshIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition: transform 0.3s ease;"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                    New Problem
+                  </button>
+                </label>
+
+                <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+                  <div style="background: #ffffff; border: 1.5px dashed #2563EB; border-radius: 8px; padding: 10px 16px; font-weight: 700; font-size: 1.15rem; color: #1E3A8A; letter-spacing: 0.05em; display: inline-flex; align-items: center; min-width: 130px; justify-content: center; box-shadow: 0 2px 6px rgba(37, 99, 235, 0.08);">
+                    <span id="captchaQuestion">{{ $num1 ?? 4 }} + {{ $num2 ?? 5 }} = ?</span>
+                  </div>
+                  <div style="flex: 1; min-width: 140px;">
+                    <input type="number" name="captcha_answer" id="captcha_input" class="form-control" required placeholder="Enter answer..." style="width: 100%; padding: 12px 14px; border: 1px solid var(--color-gray-300); border-radius: 8px; font-size: 0.95rem; background: #ffffff;">
+                  </div>
+                </div>
+                <div style="font-size: 0.78rem; color: var(--color-gray-600); margin-top: 8px;">
+                  Quick arithmetic verification ensures message validity and protects our engineers from automated spam.
+                </div>
+                @error('captcha_answer')
+                  <div style="color: #EF4444; font-size: 0.82rem; margin-top: 6px; font-weight: 500;">{{ $message }}</div>
+                @enderror
+              </div>
+
               <button type="submit" class="c-btn -primary" style="width: 100%; justify-content: center; padding: 14px; font-size: 1rem; border-radius: 9999px;">
                 <span class="c-btn__txt">Send Message</span>
                 <span class="c-btn__ico">
@@ -427,3 +462,40 @@
 
       <!-- SITE FOOTER -->
 @endsection
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const refreshCaptchaBtn = document.getElementById('refreshCaptchaBtn');
+  const captchaQuestion = document.getElementById('captchaQuestion');
+  const captchaRefreshIcon = document.getElementById('captchaRefreshIcon');
+  const captchaInput = document.getElementById('captcha_input');
+
+  if (refreshCaptchaBtn && captchaQuestion) {
+    refreshCaptchaBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      if (captchaRefreshIcon) captchaRefreshIcon.style.transform = 'rotate(180deg)';
+
+      fetch('{{ route('contact.captcha.refresh') }}')
+        .then(function(res) {
+          if (!res.ok) throw new Error('Network error');
+          return res.json();
+        })
+        .then(function(data) {
+          captchaQuestion.textContent = data.question + ' = ?';
+          if (captchaInput) {
+            captchaInput.value = '';
+            captchaInput.focus();
+          }
+          if (captchaRefreshIcon) {
+            setTimeout(function() { captchaRefreshIcon.style.transform = 'rotate(0deg)'; }, 300);
+          }
+        })
+        .catch(function() {
+          if (captchaRefreshIcon) captchaRefreshIcon.style.transform = 'rotate(0deg)';
+        });
+    });
+  }
+});
+</script>
+@endpush

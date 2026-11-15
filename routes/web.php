@@ -110,6 +110,7 @@ Route::get('/sitemap.xml', [SeoController::class, 'publicSitemap'])->name('sitem
 // Inquiries & Interactive Public Forms
 Route::get('/contact', [InquiryController::class, 'contactForm'])->name('contact');
 Route::post('/contact', [InquiryController::class, 'storeContact'])->name('contact.store');
+Route::get('/contact/captcha-refresh', [InquiryController::class, 'refreshCaptcha'])->name('contact.captcha.refresh');
 
 Route::get('/book-a-demo', fn() => redirect()->route('contact', [], 301))->name('book-a-demo');
 Route::post('/book-a-demo', [InquiryController::class, 'storeContact'])->name('book-a-demo.store');
@@ -169,7 +170,17 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::get('/blogs', fn() => redirect()->route('admin.cms.blogs.index'))->name('blogs');
     Route::get('/careers', fn() => redirect()->route('admin.cms.careers.index'))->name('careers');
 
-    // 2. Media Manager & File Library
+    // 2. Contact Inquiries Management
+    Route::prefix('leads')->name('leads.')->group(function () {
+        Route::get('/inquiries', [LeadController::class, 'inquiries'])->name('inquiries');
+        Route::get('/inquiries-export', [LeadController::class, 'exportInquiries'])->name('inquiries.export');
+        Route::get('/inquiries/{id}', [LeadController::class, 'showInquiry'])->name('inquiries.show');
+        Route::post('/inquiries/{id}', [LeadController::class, 'updateInquiry'])->name('inquiries.update');
+        Route::delete('/inquiries/{id}', [LeadController::class, 'destroyInquiry'])->name('inquiries.destroy');
+    });
+    Route::get('/inquiries', fn() => redirect()->route('admin.leads.inquiries'))->name('inquiries');
+
+    // 3. Media Manager & File Library
     Route::prefix('filemanager')->name('filemanager.')->group(function () {
         Route::get('/', [FileManagerController::class, 'index'])->name('index');
         Route::get('/api/files', [FileManagerController::class, 'apiFiles'])->name('api.files');
@@ -182,7 +193,6 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::post('/settings', [SettingsCmsController::class, 'update'])->name('settings.update');
 
     // Safe fallbacks for retired admin routes
-    Route::get('/leads/{any?}', fn() => redirect()->route('admin.dashboard'))->where('any', '.*');
     Route::get('/seo/{any?}', fn() => redirect()->route('admin.dashboard'))->where('any', '.*');
     Route::get('/cms/testimonials/{any?}', fn() => redirect()->route('admin.dashboard'))->where('any', '.*');
 });

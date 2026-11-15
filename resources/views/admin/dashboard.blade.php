@@ -7,8 +7,27 @@
 <!-- Core Management Hub Cards -->
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-bottom: 24px;">
 
-  <!-- 1. Blog Articles CMS -->
+  <!-- 1. Contact Inquiries -->
   <div class="card card-featured" style="margin-bottom: 0; padding: 22px; display: flex; flex-direction: column; justify-content: space-between;">
+    <div>
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+        <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--accent); letter-spacing: 0.06em;">Contact Messages</span>
+        <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(0, 80, 231, 0.12); display: flex; align-items: center; justify-content: center; color: var(--accent);">
+          <svg style="width: 19px; height: 19px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+      </div>
+      <div class="metric-value" style="font-size: 2.2rem; font-weight: 800; color: var(--text);">{{ $stats['inquiries_count'] }}</div>
+      <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 6px;">
+        <span class="badge {{ $stats['inquiries_new'] > 0 ? 'badge-new' : 'badge-confirmed' }}" style="font-size: 0.72rem;">{{ $stats['inquiries_new'] }} New Unread Leads</span>
+      </div>
+    </div>
+    <div style="display: flex; gap: 8px; margin-top: 22px; flex-wrap: wrap;">
+      <a href="{{ route('admin.leads.inquiries') }}" class="btn btn-primary btn-sm" style="flex: 1; text-align: center; justify-content: center; min-width: 120px;">View Inquiries &rarr;</a>
+    </div>
+  </div>
+
+  <!-- 2. Blog Articles CMS -->
+  <div class="card" style="margin-bottom: 0; padding: 22px; display: flex; flex-direction: column; justify-content: space-between;">
     <div>
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
         <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--accent); letter-spacing: 0.06em;">Blog Articles CMS</span>

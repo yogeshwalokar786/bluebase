@@ -181,6 +181,39 @@ INSERT INTO `client_logos` VALUES (1,'Aarohi Classic Championship','images/clien
 UNLOCK TABLES;
 
 --
+-- Table structure for table `contact_inquiries`
+--
+
+DROP TABLE IF EXISTS `contact_inquiries`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `contact_inquiries` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `company` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `service` varchar(255) DEFAULT NULL,
+  `message` text NOT NULL,
+  `status` varchar(50) NOT NULL DEFAULT 'new',
+  `admin_notes` text DEFAULT NULL,
+  `ip_address` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `contact_inquiries`
+--
+
+LOCK TABLES `contact_inquiries` WRITE;
+/*!40000 ALTER TABLE `contact_inquiries` DISABLE KEYS */;
+/*!40000 ALTER TABLE `contact_inquiries` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `failed_jobs`
 --
 

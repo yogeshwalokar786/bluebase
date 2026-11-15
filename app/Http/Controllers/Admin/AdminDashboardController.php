@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\ClientLogo;
 use App\Models\Blog;
 use App\Models\JobOpening;
+use App\Models\ContactInquiry;
 use App\Models\SiteSetting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -18,6 +19,8 @@ class AdminDashboardController extends Controller
         $totalFiles = File::exists($uploadsDir) ? count(File::allFiles($uploadsDir)) : 0;
 
         $stats = [
+            'inquiries_count' => rescue(fn() => ContactInquiry::count(), 0),
+            'inquiries_new' => rescue(fn() => ContactInquiry::where('status', 'new')->count(), 0),
             'clients_count' => rescue(fn() => ClientLogo::count(), 0),
             'clients_active' => rescue(fn() => ClientLogo::where('is_active', true)->count(), 0),
             'blogs_count' => rescue(fn() => Blog::count(), 0),

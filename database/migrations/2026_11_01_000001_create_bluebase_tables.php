@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('service')->nullable();
             $table->text('message');
             $table->string('status')->default('new');
+            $table->text('admin_notes')->nullable();
             $table->string('ip_address')->nullable();
             $table->timestamps();
         });
