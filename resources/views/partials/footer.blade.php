@@ -5,6 +5,7 @@
     <div class="footer-top">
       <div class="footer-nav-grid" data-viewport="true">
         
+        <!-- 1. Services -->
         <div class="footer-col">
           <h4>Services</h4>
           <ul>
@@ -16,59 +17,37 @@
           </ul>
         </div>
 
-        <div class="footer-col">
-          <h4>Client Success</h4>
-          <ul>
-            <li><a href="{{ route('customer-stories.omg-rental-bikes') }}">OMG Rental Bikes</a></li>
-            <li><a href="{{ route('customer-stories.aarohi-classic-2024') }}">Aarohi Classic 2024</a></li>
-            <li><a href="{{ route('customer-stories') }}">Client Success Hub</a></li>
-            <li><a href="{{ route('contact') }}">Start Your Project</a></li>
-          </ul>
-        </div>
-
+        <!-- 2. Solutions & Capabilities -->
         <div class="footer-col">
           <h4>Solutions</h4>
           <ul>
-            <li><a href="{{ route('services.saas-mvp-development') }}">Early-Stage MVP Launch</a></li>
-            <li><a href="{{ route('services.web-development') }}">SaaS Product Engineering</a></li>
-            <li><a href="{{ route('services.website-design') }}">Corporate Websites</a></li>
-            <li><a href="{{ route('services.ecommerce-development') }}">Online Stores &amp; E-Commerce</a></li>
-            <li><a href="{{ route('services.web-development') }}">Client &amp; Customer Portals</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Resources</h4>
-          <ul>
-            <li><a href="{{ route('blog') }}">Bluebase Tech Blog</a></li>
-            <li><a href="{{ route('customer-stories') }}">Client Case Studies</a></li>
-            <li><a href="{{ route('whitepapers') }}">Founder &amp; Tech Playbooks</a></li>
-            <li><a href="{{ route('blog') }}">Webinars &amp; Events</a></li>
-            <li><a href="{{ route('blog') }}">Tech Talks Podcast</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Engineering</h4>
-          <ul>
             <li><a href="{{ route('services.ui-ux-design') }}">UI/UX Design &amp; Prototyping</a></li>
-            <li><a href="{{ route('services.api-backend-development') }}">API &amp; Backend Development</a></li>
+            <li><a href="{{ route('services.api-backend-development') }}">API &amp; Backend Systems</a></li>
             <li><a href="{{ route('services.website-redesign') }}">Website Redesign &amp; Speed</a></li>
             <li><a href="{{ route('services.maintenance-support') }}">Maintenance &amp; Support</a></li>
-            <li><a href="{{ route('contact') }}">Contact &amp; Inquiries</a></li>
+            <li><a href="{{ route('how-we-work') }}">How We Work (Our Process)</a></li>
           </ul>
         </div>
 
+        <!-- 3. Client Stories & Insights -->
+        <div class="footer-col">
+          <h4>Client Stories</h4>
+          <ul>
+            <li><a href="{{ route('customer-stories') }}">Client Success Hub</a></li>
+            <li><a href="{{ route('customer-stories.omg-rental-bikes') }}">OMG Rental Bikes</a></li>
+            <li><a href="{{ route('customer-stories.aarohi-classic-2024') }}">Aarohi Classic 2024</a></li>
+            <li><a href="{{ route('blog') }}">Bluebase Tech Blog</a></li>
+          </ul>
+        </div>
+
+        <!-- 4. Company -->
         <div class="footer-col">
           <h4>Company</h4>
           <ul>
             <li><a href="{{ route('company') }}">About Bluebase</a></li>
-            <li><a href="{{ route('how-we-work') }}">How We Work</a></li>
             <li><a href="{{ route('careers') }}">Careers (We're Hiring!)</a></li>
-            <li><a href="{{ route('partner-overview') }}">Partner Overview</a></li>
+            <li><a href="{{ route('compliance-security') }}">Security &amp; Compliance</a></li>
             <li><a href="{{ route('contact') }}">Contact Us</a></li>
-            <li><a href="{{ route('compliance-security') }}">Compliance &amp; Security</a></li>
-            <li><a href="{{ route('terms-of-use') }}">Master Services Agreement</a></li>
           </ul>
         </div>
 
@@ -96,7 +75,6 @@
       <div>&copy; {{ date('Y') }} Bluebase Technologies Inc. All rights reserved.</div>
       <div class="footer-bottom-links">
         <a href="{{ route('privacy-policy') }}">Privacy Policy</a>
-        <a href="{{ route('privacy-policy') }}">Cookie Preferences</a>
         <a href="{{ route('terms-of-use') }}">Terms of Service</a>
         <a href="{{ route('compliance-security') }}">Security Statement</a>
       </div>

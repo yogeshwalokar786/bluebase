@@ -87,14 +87,14 @@ Route::get('/company/how-we-work', fn() => redirect()->route('how-we-work', [], 
 Route::get('/company/customer-stories', fn() => redirect()->route('customer-stories', [], 301))->name('company.customer-stories');
 Route::get('/company/careers', fn() => redirect()->route('careers', [], 301))->name('company.careers');
 Route::get('/company/compliance-security', fn() => redirect()->route('compliance-security', [], 301))->name('company.compliance-security');
-Route::get('/partner-overview', [CompanyController::class, 'partnerOverview'])->name('partner-overview');
-Route::get('/become-a-partner', [CompanyController::class, 'becomePartner'])->name('become-a-partner');
-Route::get('/find-a-partner', [CompanyController::class, 'findPartner'])->name('find-a-partner');
+Route::get('/partner-overview', fn() => redirect()->route('company', [], 301))->name('partner-overview');
+Route::get('/become-a-partner', fn() => redirect()->route('contact', [], 301))->name('become-a-partner');
+Route::get('/find-a-partner', fn() => redirect()->route('company', [], 301))->name('find-a-partner');
 
 // Resources & Legal
-Route::get('/whitepapers', [ResourceController::class, 'whitepapers'])->name('whitepapers');
-Route::get('/guides', fn() => redirect()->route('whitepapers', [], 301));
-Route::get('/playbooks', fn() => redirect()->route('whitepapers', [], 301));
+Route::get('/whitepapers', fn() => redirect()->route('blog', [], 301))->name('whitepapers');
+Route::get('/guides', fn() => redirect()->route('blog', [], 301));
+Route::get('/playbooks', fn() => redirect()->route('blog', [], 301));
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 Route::get('/blog/category/{slug}', [BlogController::class, 'category'])->name('blog.category');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
