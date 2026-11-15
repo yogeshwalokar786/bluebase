@@ -693,26 +693,10 @@
     if (elem) elem.remove();
   }
 
-  // Render quick chips
+  // Predefined suggestion chips disabled for 100% organic, user-driven AI conversation
   function renderSuggestions(suggestions) {
     suggestionsBox.innerHTML = '';
-    if (!suggestions || suggestions.length === 0) {
-      suggestionsBox.style.display = 'none';
-      return;
-    }
-    suggestionsBox.style.display = 'flex';
-    suggestions.forEach(text => {
-      const chip = document.createElement('button');
-      chip.type = 'button';
-      chip.className = 'bb-chip';
-      chip.textContent = text;
-      chip.addEventListener('click', () => {
-        chatInput.value = text;
-        submitUserMessage();
-      });
-      suggestionsBox.appendChild(chip);
-    });
-    scrollBottom();
+    suggestionsBox.style.display = 'none';
   }
 
   // Send message handler
