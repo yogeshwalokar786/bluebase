@@ -569,31 +569,33 @@ PROMPT;
         $salutation = $visitorName ? "{$visitorName}" : "";
         $phone = $session->visitor_phone ?: '';
 
-        // 1. Scan full conversation history to maintain accurate project context
-        $historyText = '';
+        // 1. Scan ONLY USER messages — NEVER bot messages — to prevent self-poisoning
+        $pastUserHistoryText = '';
         if ($session->exists) {
-            $historyText = strtolower($session->messages()->pluck('message')->implode(' '));
+            $userHistoryMessages = $session->messages()->where('sender', 'user')->orderBy('id', 'asc')->get();
+            if ($userHistoryMessages->count() > 1 && trim($userHistoryMessages->last()->message) === trim($input)) {
+                $pastUserHistoryText = strtolower($userHistoryMessages->slice(0, -1)->pluck('message')->implode(' '));
+            } elseif ($userHistoryMessages->count() === 1 && trim($userHistoryMessages->first()->message) === trim($input)) {
+                $pastUserHistoryText = '';
+            } else {
+                $pastUserHistoryText = strtolower($userHistoryMessages->pluck('message')->implode(' '));
+            }
         }
-        $fullContext = $historyText . ' ' . $normalized;
+        $userContext = trim($pastUserHistoryText . ' ' . $normalized);
 
-        $isClinic = str_contains($fullContext, 'clinic')
-            || str_contains($fullContext, 'doctor')
-            || str_contains($fullContext, 'hospital')
-            || str_contains($fullContext, 'medical')
-            || str_contains($fullContext, 'dental')
-            || str_contains($fullContext, 'dentist')
-            || str_contains($fullContext, 'patient');
+        $isCorporate = $this->matches($normalized, ['corporate', 'corporate website', 'corporate static website', 'company website', 'b2b', 'firm', 'agency', 'enterprise'])
+            || str_contains($userContext, 'corporate');
 
-        $isStatic = str_contains($fullContext, 'static')
-            || str_contains($fullContext, 'simple website')
-            || str_contains($fullContext, 'basic website')
-            || str_contains($fullContext, 'brochure')
-            || str_contains($fullContext, 'profile');
+        $isClinic = ($this->matches($normalized, ['clinic', 'doctor', 'hospital', 'medical', 'dental', 'dentist', 'patient', 'health', 'physician'])
+            || str_contains($userContext, 'clinic')
+            || str_contains($userContext, 'doctor')) && !$isCorporate;
 
-        $isEcommerce = str_contains($fullContext, 'ecommerce')
-            || str_contains($fullContext, 'e-commerce')
-            || str_contains($fullContext, 'online store')
-            || str_contains($fullContext, 'selling');
+        $isStatic = $this->matches($normalized, ['static', 'only static', 'just static', 'static website', 'simple website', 'basic website', 'brochure', 'profile'])
+            || str_contains($userContext, 'static');
+
+        $isEcommerce = ($this->matches($normalized, ['ecommerce', 'e-commerce', 'online store', 'shopping store', 'sell products', 'selling online'])
+            || str_contains($userContext, 'ecommerce')
+            || str_contains($userContext, 'online store')) && !$isCorporate && !$isClinic;
 
         // Context from the most recent bot message
         $lastBotMsg = null;
@@ -603,26 +605,37 @@ PROMPT;
         $lastBotText = $lastBotMsg ? strtolower($lastBotMsg->message) : '';
 
         // ----------------------------------------------------
-        // A. Pricing / Cost / Estimate Inquiry
+        // 1. Content / Photos Already Ready
         // ----------------------------------------------------
-        if ($this->matches($normalized, ['estimate', 'price', 'pricing', 'cost', 'quote', 'rate', 'how much', 'fee', 'charge', 'budget', 'charges'])) {
-            if ($isClinic || $isStatic) {
-                return [
-                    'message' => "For a clean 3 to 5-page static clinic or business website (mobile-friendly, with your profile, services, contact form, Google Maps, and direct WhatsApp booking), it is usually completed in **1 to 2 weeks** at a very budget-friendly fixed price with zero hidden fees.\n\nDoes a straightforward 3 to 5-page website fit what you have in mind?",
-                    'step' => 'conversing',
-                    'suggestions' => [],
-                ];
-            }
-
+        if ($this->matches($normalized, ['already ready', 'ready', 'we have it', 'have it ready', 'content is ready', 'all ready', 'yes ready', 'already have', 'text is ready', 'photos are ready'])) {
             return [
-                'message' => "For standard static websites (3 to 5 pages), turnaround is typically **1 to 2 weeks** at an affordable fixed price. For custom web applications with online payments or customer accounts, we scope the exact features first and give you a fixed milestone quote.\n\nDoes a simple 3 to 5-page website sound like what you're looking for, or do you need special custom features?",
+                'message' => "That's fantastic! Having your content and photos ready speeds up delivery significantly. With your text and assets in hand, we can have your custom website designed, built, and launched in under **1 to 2 weeks**.\n\nDo you already have a domain name (like yourcompany.com) and web hosting set up, or would you like our team to configure that for you as well?",
                 'step' => 'conversing',
                 'suggestions' => [],
             ];
         }
 
         // ----------------------------------------------------
-        // B. Clinic / Healthcare Specific Inquiries
+        // 2. Corporate Website Specific Inquiries
+        // ----------------------------------------------------
+        if ($this->matches($normalized, ['corporate', 'corporate website', 'corporate static website', 'company website', 'b2b', 'agency', 'consultancy', 'firm'])) {
+            if (str_contains($lastBotText, 'executive, high-trust design') || str_contains($lastBotText, 'about company section') || str_contains($pastUserHistoryText, 'corporate')) {
+                return [
+                    'message' => "Got it! For your corporate static website, our team will deliver a polished, executive design with fast mobile load times in under **1 to 2 weeks**.\n\nWould you like us to prepare a formal project proposal and share it to your email ({$visitorEmail})?",
+                    'step' => 'conversing',
+                    'suggestions' => [],
+                ];
+            }
+
+            return [
+                'message' => "For a corporate website, we focus on an executive, high-trust design that reflects your brand authority to clients and partners. It typically includes an executive About Company section, Core Services, Leadership Team, Case Studies or Client Logos, and a direct Inquiry Form.\n\nRoughly how many pages do you envision for your corporate site (e.g. 5 to 7 pages), and do you already have your logo and content ready?",
+                'step' => 'conversing',
+                'suggestions' => [],
+            ];
+        }
+
+        // ----------------------------------------------------
+        // 3. Clinic / Healthcare Specific Inquiries
         // ----------------------------------------------------
         if ($this->matches($normalized, ['clinic', 'doctor', 'hospital', 'medical', 'dental', 'dentist', 'patient', 'health', 'physician'])) {
             return [
@@ -633,9 +646,63 @@ PROMPT;
         }
 
         // ----------------------------------------------------
-        // C. Brand New / From Scratch Inquiry
+        // 4. Static Website Specific Inquiries
+        // ----------------------------------------------------
+        if ($this->matches($normalized, ['static', 'only static', 'just static', 'static website', 'simple static', 'basic website', 'brochure'])) {
+            if ($isCorporate) {
+                return [
+                    'message' => "A corporate static website is fast, secure, mobile-friendly, and very budget-friendly. It loads in under a second and usually includes 5 to 7 executive pages (Home, About Company, Services, Clients/Partners, and Contact with inquiry forms).\n\nDo you already have your company logo and text ready, or would you like our team to help organize them?",
+                    'step' => 'conversing',
+                    'suggestions' => [],
+                ];
+            }
+
+            return [
+                'message' => "A static website is the fastest, most secure, and most cost-effective option. It loads in under a second on mobile phones, with zero server lag, and includes mobile-responsive layouts, contact forms, and WhatsApp integration.\n\nDo you already have your photos and text ready, or would you like our team to help organize them?",
+                'step' => 'conversing',
+                'suggestions' => [],
+            ];
+        }
+
+        // ----------------------------------------------------
+        // 5. Pricing / Cost / Estimate Inquiry
+        // ----------------------------------------------------
+        if ($this->matches($normalized, ['estimate', 'price', 'pricing', 'cost', 'quote', 'rate', 'how much', 'fee', 'charge', 'budget', 'charges'])) {
+            if ($isCorporate) {
+                return [
+                    'message' => "For a custom 5 to 7-page corporate static website (including executive design, company profile, service pages, mobile responsiveness, and inquiry forms), turnaround is typically **1 to 2 weeks** at an affordable fixed price with zero hidden fees.\n\nDoes a 5 to 7-page corporate website fit what you have in mind?",
+                    'step' => 'conversing',
+                    'suggestions' => [],
+                ];
+            }
+
+            if ($isClinic) {
+                return [
+                    'message' => "For a clean 3 to 5-page static clinic website (mobile-friendly, with doctor profile, services, contact form, Google Maps, and direct WhatsApp booking), it is usually completed in **1 to 2 weeks** at a very budget-friendly fixed price.\n\nDoes a straightforward 3 to 5-page website fit what you have in mind?",
+                    'step' => 'conversing',
+                    'suggestions' => [],
+                ];
+            }
+
+            return [
+                'message' => "For a standard static business website (3 to 5 pages), turnaround is typically **1 to 2 weeks** at an affordable fixed price. For custom web applications with online payments or customer accounts, we scope the exact features first and give you a fixed milestone quote.\n\nDoes a simple 3 to 5-page website sound like what you're looking for, or do you need special custom features?",
+                'step' => 'conversing',
+                'suggestions' => [],
+            ];
+        }
+
+        // ----------------------------------------------------
+        // 6. Brand New / From Scratch Inquiry
         // ----------------------------------------------------
         if ($this->matches($normalized, ['brand new', 'from scratch', 'new website', 'fresh', 'start from scratch', 'scratch'])) {
+            if ($isCorporate) {
+                return [
+                    'message' => "Starting fresh for your corporate website is great! We'll make sure the design looks executive, trustworthy, and loads instantly on mobile phones and desktops.\n\nDo you already have your company logo and brand colors, or do you need help with branding as well?",
+                    'step' => 'conversing',
+                    'suggestions' => [],
+                ];
+            }
+
             if ($isClinic) {
                 return [
                     'message' => "Starting fresh for your clinic is great! We'll make sure the website looks clean, trustworthy, and loads fast on mobile phones, with a clear doctor profile and one-tap WhatsApp button for patients.\n\nDo you already have a clinic name and logo, or do you need help with branding as well?",
@@ -652,12 +719,20 @@ PROMPT;
         }
 
         // ----------------------------------------------------
-        // D. Affirmative response handling ("yes", "yep", "sure", "yeah", "ok", "okay", "correct", "right")
+        // 7. Affirmative response handling ("yes", "yep", "sure", "yeah", "ok", "okay", "correct", "right")
         // ----------------------------------------------------
         $isAffirmative = preg_match('/^(yes|yeah|yep|sure|ok|okay|yup|definitely|absolutely|correct|right|proceed|fine|ha|haan)$/i', $normalized)
             || in_array($normalized, ['yes', 'yeah', 'yep', 'sure', 'ok', 'okay', 'yup', 'correct', 'right']);
 
         if ($isAffirmative) {
+            if ($isCorporate) {
+                return [
+                    'message' => "Awesome! We have noted all your project requirements" . ($salutation ? ", {$salutation}" : "") . ". Our solutions team will review everything and share a clear corporate proposal, design samples, and timeline to your email ({$visitorEmail})" . ($phone ? " and WhatsApp ({$phone})" : "") . " shortly.\n\nIs there any other specific page or feature you'd like included in the scope?",
+                    'step' => 'conversing',
+                    'suggestions' => [],
+                ];
+            }
+
             if ($isClinic) {
                 return [
                     'message' => "Great! We can set up everything from your clinic layout to Google Maps directions so patients can easily navigate to your clinic. What is your clinic specialty (e.g. general physician, dental, homeopathy, skin clinic)?",
@@ -666,7 +741,7 @@ PROMPT;
                 ];
             }
 
-            if (str_contains($lastBotText, 'sample') || str_contains($lastBotText, 'quote') || str_contains($lastBotText, 'fit what you')) {
+            if (str_contains($lastBotText, 'sample') || str_contains($lastBotText, 'quote') || str_contains($lastBotText, 'fit what you') || str_contains($lastBotText, 'fit what')) {
                 return [
                     'message' => "Awesome! We have noted all your details" . ($salutation ? ", {$salutation}" : "") . ". Our team will prepare a sample website layout and a simple quote, and send it to your email ({$visitorEmail})" . ($phone ? " and WhatsApp ({$phone})" : "") . " shortly.\n\nIs there any other specific service or feature you'd like included?",
                     'step' => 'conversing',
@@ -682,13 +757,21 @@ PROMPT;
         }
 
         // ----------------------------------------------------
-        // E. Negative response handling ("no", "nope", "nah", "not really", "nothing", "none")
+        // 8. Negative response handling ("no", "nope", "nah", "not really", "nothing", "none")
         // ----------------------------------------------------
         $isNegative = preg_match('/^(no|nope|nah|not really|nothing|none|not yet|nahi)$/i', $normalized)
             || in_array($normalized, ['no', 'nope', 'nah']);
 
         if ($isNegative) {
-            if (str_contains($lastBotText, 'logo') || str_contains($lastBotText, 'designs') || str_contains($lastBotText, 'content')) {
+            if (str_contains($lastBotText, 'domain') || str_contains($lastBotText, 'hosting')) {
+                return [
+                    'message' => "No problem at all! We can include high-speed hosting and domain registration in the package so everything is completely handled for you.\n\nWould you like us to send a formal project proposal and quote to your email ({$visitorEmail})?",
+                    'step' => 'conversing',
+                    'suggestions' => [],
+                ];
+            }
+
+            if (str_contains($lastBotText, 'logo') || str_contains($lastBotText, 'designs') || str_contains($lastBotText, 'content') || str_contains($lastBotText, 'photos')) {
                 return [
                     'message' => "No problem at all! Most clients don't have designs ready. Our team will create a modern, professional layout for you, and we can help with basic logo design and content formatting.\n\nWould you like to see 2 or 3 sample website links to get an idea of the style?",
                     'step' => 'conversing',
@@ -704,18 +787,34 @@ PROMPT;
         }
 
         // ----------------------------------------------------
-        // F. Static / Business Profile Website
+        // 9. Generic Website Inquiry (Warm, Simple, Zero Jargon)
         // ----------------------------------------------------
-        if ($this->matches($normalized, ['static', 'static website', 'simple website', 'basic website', 'landing page', 'portfolio', 'brochure'])) {
+        if ($this->matches($normalized, ['website', 'web site', 'webpage', 'site', 'web'])) {
+            if ($isCorporate) {
+                return [
+                    'message' => "For your corporate website, we will keep it polished, professional, and mobile-friendly with your company profile, services, and inquiry form. Do you already have your logo and text ready, or would you like our team to help with that?",
+                    'step' => 'conversing',
+                    'suggestions' => [],
+                ];
+            }
+
+            if ($isClinic) {
+                return [
+                    'message' => "For your clinic website, we will keep it simple, clean, and mobile-friendly with an appointment button and Google Maps. What is your clinic's specialty (e.g. dental, general clinic, eye clinic, skin)?",
+                    'step' => 'conversing',
+                    'suggestions' => [],
+                ];
+            }
+
             return [
-                'message' => "A static website is fast, secure, mobile-friendly, and very budget-friendly. It loads in under a second and usually includes 3 to 5 pages (Home, About Us, Services, Photo Gallery, and Contact with WhatsApp & Google Map).\n\nDo you already have your photos and text ready, or would you like us to help organize them?",
+                'message' => "We design and build clean, modern, and mobile-friendly websites tailored to your exact business needs.\n\nWhat kind of business or organization is the website for, and roughly how many pages do you have in mind?",
                 'step' => 'conversing',
                 'suggestions' => [],
             ];
         }
 
         // ----------------------------------------------------
-        // G. Ecommerce Store Inquiry
+        // 10. Ecommerce Store Inquiry (Only when user explicitly asked)
         // ----------------------------------------------------
         if ($isEcommerce) {
             return [
@@ -726,48 +825,7 @@ PROMPT;
         }
 
         // ----------------------------------------------------
-        // H. Mobile App Inquiry
-        // ----------------------------------------------------
-        if ($this->matches($normalized, ['mobile', 'app', 'android', 'ios', 'flutter', 'react native', 'play store', 'app store'])) {
-            return [
-                'message' => "We develop mobile apps for both Android and iPhone using Flutter and React Native. This keeps your development cost down while giving users a smooth 60fps experience.\n\nWhat kind of mobile app are you planning to build, and do you already have screen sketches or wireframes ready?",
-                'step' => 'conversing',
-                'suggestions' => [],
-            ];
-        }
-
-        // ----------------------------------------------------
-        // I. SaaS / Custom Web Application
-        // ----------------------------------------------------
-        if ($this->matches($normalized, ['saas', 'mvp', 'startup', 'portal', 'dashboard', 'custom software', 'multi-tenant'])) {
-            return [
-                'message' => "For a SaaS MVP or custom web platform, our goal is getting your first working version launched in 3 to 6 weeks with user logins, subscription billing, and an admin dashboard.\n\nWhat is the main problem your software will solve for its users?",
-                'step' => 'conversing',
-                'suggestions' => [],
-            ];
-        }
-
-        // ----------------------------------------------------
-        // J. Generic Website Inquiry (Warm, Simple, Zero Jargon)
-        // ----------------------------------------------------
-        if ($this->matches($normalized, ['web', 'website', 'page', 'site'])) {
-            if ($isClinic) {
-                return [
-                    'message' => "For your clinic website, we will keep it simple, clean, and mobile-friendly with an appointment button and Google Maps. What is your clinic's specialty (e.g. dental, general clinic, eye clinic, skin)?",
-                    'step' => 'conversing',
-                    'suggestions' => [],
-                ];
-            }
-
-            return [
-                'message' => "We design and build clean, modern, and mobile-friendly websites—from simple business profile sites to online stores.\n\nWhat kind of business is the website for, and roughly how many pages do you have in mind?",
-                'step' => 'conversing',
-                'suggestions' => [],
-            ];
-        }
-
-        // ----------------------------------------------------
-        // K. Progressive, Natural Multi-Turn Questions (Zero Jargon)
+        // 11. Progressive, Natural Multi-Turn Questions (Zero Jargon)
         // ----------------------------------------------------
         $turnIndex = $session->exists ? $session->messages()->where('sender', 'bot')->count() : 0;
 
