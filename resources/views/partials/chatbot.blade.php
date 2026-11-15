@@ -619,7 +619,17 @@
 
   // Update input placeholder based on current stage
   function updatePlaceholder(step) {
-    chatInput.placeholder = 'Ask about web, mobile, SaaS MVP, AI, pricing...';
+    if (step === 'ask_name') {
+      chatInput.placeholder = 'Type your name...';
+    } else if (step === 'ask_email') {
+      chatInput.placeholder = 'Type your email (e.g. name@company.com)...';
+    } else if (step === 'ask_phone') {
+      chatInput.placeholder = 'Type your phone number (or "skip")...';
+    } else if (step === 'ask_project') {
+      chatInput.placeholder = 'What type of project are you looking to build?';
+    } else {
+      chatInput.placeholder = 'Ask anything about services, architecture, pricing...';
+    }
   }
 
   // Render message bubble

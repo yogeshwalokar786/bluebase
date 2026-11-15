@@ -21,6 +21,7 @@ class ChatCmsController extends Controller
             $query->where(function ($q) use ($search) {
                 $q->where('visitor_name', 'like', "%{$search}%")
                   ->orWhere('visitor_email', 'like', "%{$search}%")
+                  ->orWhere('visitor_phone', 'like', "%{$search}%")
                   ->orWhere('session_uuid', 'like', "%{$search}%")
                   ->orWhere('ip_address', 'like', "%{$search}%");
             });

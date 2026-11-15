@@ -62,11 +62,30 @@
       </div>
 
       <div>
+        <div style="color: var(--text-dim); font-size: 0.72rem; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Phone / WhatsApp</div>
+        @if($session->visitor_phone)
+          <a href="tel:{{ $session->visitor_phone }}" style="color: var(--text); font-weight: 600; text-decoration: none;">
+            {{ $session->visitor_phone }}
+          </a>
+        @else
+          <span style="color: var(--text-muted); font-style: italic;">Not Provided / Skipped</span>
+        @endif
+      </div>
+
+      <div>
         <div style="color: var(--text-dim); font-size: 0.72rem; text-transform: uppercase; font-weight: 600; margin-bottom: 4px;">Current Stage</div>
         <div>
           @if($session->step === 'conversing')
             <span class="badge badge-confirmed" style="background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3);">
               Conversing (Leads Captured)
+            </span>
+          @elseif($session->step === 'ask_project')
+            <span class="badge" style="background: rgba(99, 102, 241, 0.15); color: #818CF8; border: 1px solid rgba(99, 102, 241, 0.3);">
+              Awaiting Project Scope
+            </span>
+          @elseif($session->step === 'ask_phone')
+            <span class="badge" style="background: rgba(14, 165, 233, 0.15); color: #38BDF8; border: 1px solid rgba(14, 165, 233, 0.3);">
+              Awaiting Phone Number
             </span>
           @elseif($session->step === 'ask_email')
             <span class="badge" style="background: rgba(245, 158, 11, 0.15); color: #F59E0B; border: 1px solid rgba(245, 158, 11, 0.3);">

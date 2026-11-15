@@ -91,10 +91,16 @@
               </td>
               <td>
                 @if($session->visitor_email)
-                  <a href="mailto:{{ $session->visitor_email }}" style="color: var(--accent); text-decoration: none; font-size: 0.85rem;">
+                  <a href="mailto:{{ $session->visitor_email }}" style="color: var(--accent); text-decoration: none; font-size: 0.85rem; display: block;">
                     {{ $session->visitor_email }}
                   </a>
-                @else
+                @endif
+                @if($session->visitor_phone)
+                  <a href="tel:{{ $session->visitor_phone }}" style="color: var(--text-dim); text-decoration: none; font-size: 0.78rem; display: block; margin-top: 2px;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 11px; height: 11px; vertical-align: middle; margin-right: 2px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>{{ $session->visitor_phone }}
+                  </a>
+                @endif
+                @if(!$session->visitor_email && !$session->visitor_phone)
                   <span style="color: var(--text-dim); font-size: 0.8rem; font-style: italic;">Not provided</span>
                 @endif
               </td>
@@ -102,6 +108,14 @@
                 @if($session->step === 'conversing')
                   <span class="badge badge-confirmed" style="background: rgba(16, 185, 129, 0.15); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3);">
                     Conversing
+                  </span>
+                @elseif($session->step === 'ask_project')
+                  <span class="badge" style="background: rgba(99, 102, 241, 0.15); color: #818CF8; border: 1px solid rgba(99, 102, 241, 0.3);">
+                    Waiting Project
+                  </span>
+                @elseif($session->step === 'ask_phone')
+                  <span class="badge" style="background: rgba(14, 165, 233, 0.15); color: #38BDF8; border: 1px solid rgba(14, 165, 233, 0.3);">
+                    Waiting Phone
                   </span>
                 @elseif($session->step === 'ask_email')
                   <span class="badge" style="background: rgba(245, 158, 11, 0.15); color: #F59E0B; border: 1px solid rgba(245, 158, 11, 0.3);">

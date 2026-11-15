@@ -15,39 +15,127 @@ class ChatbotEngine
     public function getInitialGreeting(): array
     {
         return [
-            'message' => "Hello! I am your Bluebase AI engineering advisor. Tell me about your software idea, project requirements, or questions, and let's discuss how we can build it.",
-            'step' => 'conversing',
+            'message' => "Hello! Welcome to Bluebase Technologies. To get started, what is your **name**?",
+            'step' => 'ask_name',
             'suggestions' => [],
         ];
     }
 
     /**
-     * Dynamic conversational processor tailored directly to the user.
+     * Step-by-step lead qualification and dynamic conversational processor.
+     * Flow: ask_name -> ask_email -> ask_phone -> ask_project -> conversing (Gemini AI).
      */
     public function process(ChatSession $session, string $rawMessage): array
     {
         $input = trim($rawMessage);
         $normalized = strtolower($input);
+        $currentStep = $session->step ?: 'ask_name';
 
-        // 1. Extract Email if present anywhere in the message
-        $newEmailFound = false;
-        if (preg_match('/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/', $input, $emailMatches)) {
-            $extractedEmail = strtolower($emailMatches[0]);
-            if ($session->visitor_email !== $extractedEmail) {
-                $session->visitor_email = substr($extractedEmail, 0, 120);
-                $newEmailFound = true;
+        // ----------------------------------------------------
+        // Step 1: Collect Visitor Name
+        // ----------------------------------------------------
+        if ($currentStep === 'ask_name') {
+            $extractedName = $this->extractCleanName($input);
+            if (empty($extractedName) || strlen($extractedName) < 2) {
+                return [
+                    'message' => "Could you please tell me your **name** so I know who I'm chatting with?",
+                    'step' => 'ask_name',
+                    'suggestions' => [],
+                ];
             }
-        }
 
-        // 2. Extract Name if explicitly stated or introducing self
-        $newNameFound = false;
-        $extractedName = $this->extractName($input, $normalized, $session);
-        if ($extractedName && $session->visitor_name !== $extractedName) {
             $session->visitor_name = $extractedName;
-            $newNameFound = true;
+            $session->step = 'ask_email';
+            if ($session->exists) {
+                $session->save();
+            }
+
+            return [
+                'message' => "Nice to meet you, **{$extractedName}**! What is your **email address** so our engineering team can share project proposals and follow-up notes?",
+                'step' => 'ask_email',
+                'suggestions' => [],
+            ];
         }
 
-        // 3. Mark step as conversing
+        // ----------------------------------------------------
+        // Step 2: Collect Visitor Email
+        // ----------------------------------------------------
+        if ($currentStep === 'ask_email') {
+            if (preg_match('/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/', $input, $emailMatches)) {
+                $extractedEmail = strtolower($emailMatches[0]);
+                $session->visitor_email = substr($extractedEmail, 0, 120);
+                $session->step = 'ask_phone';
+                if ($session->exists) {
+                    $session->save();
+                }
+
+                $name = $session->visitor_name ?: 'there';
+                return [
+                    'message' => "Thank you, **{$name}**! What is the best **phone number** (or WhatsApp) to reach you? *(You can also type \"skip\" if you prefer email only)*",
+                    'step' => 'ask_phone',
+                    'suggestions' => [],
+                ];
+            }
+
+            return [
+                'message' => "Please provide a valid **email address** (e.g. name@company.com) so we can stay connected.",
+                'step' => 'ask_email',
+                'suggestions' => [],
+            ];
+        }
+
+        // ----------------------------------------------------
+        // Step 3: Collect Visitor Phone Number (or Skip)
+        // ----------------------------------------------------
+        if ($currentStep === 'ask_phone') {
+            $isSkip = preg_match('/^(skip|no|later|none|na|n\/a|pass|email only|dont want)$/i', $normalized);
+            if (!$isSkip) {
+                if (preg_match('/[+]?[0-9\s\-()]{7,20}/', $input, $phoneMatches)) {
+                    $cleanedDigits = preg_replace('/[^0-9]/', '', $phoneMatches[0]);
+                    if (strlen($cleanedDigits) >= 7) {
+                        $session->visitor_phone = substr(trim($phoneMatches[0]), 0, 40);
+                    }
+                }
+            }
+
+            $session->step = 'ask_project';
+            if ($session->exists) {
+                $session->save();
+            }
+
+            return [
+                'message' => "Great! What type of project are you looking to build today? (e.g. **Web Application**, **Mobile App**, **SaaS MVP**, **AI Integration**, or **Ecommerce**)",
+                'step' => 'ask_project',
+                'suggestions' => [],
+            ];
+        }
+
+        // ----------------------------------------------------
+        // Step 4: Collect Project Type & Launch Google Gemini AI
+        // ----------------------------------------------------
+        if ($currentStep === 'ask_project') {
+            $session->step = 'conversing';
+            if ($session->exists) {
+                $session->save();
+            }
+
+            $visitorName = $session->visitor_name ?: '';
+            $visitorEmail = $session->visitor_email ?: '';
+            $visitorPhone = $session->visitor_phone ?: '';
+
+            if ($this->hasAiApiKey()) {
+                $aiResult = $this->callAiApi($session, $input, $visitorName, $visitorEmail, $visitorPhone);
+                if ($aiResult !== null) {
+                    return $aiResult;
+                }
+            }
+
+            return $this->generateDynamicResponse($session, $input, $normalized, $visitorName, $visitorEmail);
+        }
+
+        // ----------------------------------------------------
+        // Step 5: Full Conversing with Google Gemini AI
+        // ----------------------------------------------------
         $session->step = 'conversing';
         if ($session->exists) {
             $session->save();
@@ -55,17 +143,16 @@ class ChatbotEngine
 
         $visitorName = $session->visitor_name ?: '';
         $visitorEmail = $session->visitor_email ?: '';
+        $visitorPhone = $session->visitor_phone ?: '';
 
-        // 4. Live AI Generation (Google Gemini / OpenAI)
         if ($this->hasAiApiKey()) {
-            $aiResult = $this->callAiApi($session, $input, $visitorName, $visitorEmail);
+            $aiResult = $this->callAiApi($session, $input, $visitorName, $visitorEmail, $visitorPhone);
             if ($aiResult !== null) {
                 return $aiResult;
             }
         }
 
-        // 5. Dynamic Contextual Responder (Zero predefined static scripts)
-        return $this->generateDynamicResponse($session, $input, $normalized, $visitorName, $visitorEmail, $newEmailFound, $newNameFound);
+        return $this->generateDynamicResponse($session, $input, $normalized, $visitorName, $visitorEmail);
     }
 
     /**
@@ -121,7 +208,7 @@ class ChatbotEngine
     /**
      * Call Live AI API (Gemini or OpenAI) based on key prefix.
      */
-    protected function callAiApi(ChatSession $session, string $input, string $visitorName, string $visitorEmail): ?array
+    protected function callAiApi(ChatSession $session, string $input, string $visitorName, string $visitorEmail, string $visitorPhone = ''): ?array
     {
         $apiKey = $this->getAiApiKey();
         if (empty($apiKey)) {
@@ -130,17 +217,17 @@ class ChatbotEngine
 
         // If key begins with "sk-", call OpenAI API
         if (str_starts_with($apiKey, 'sk-')) {
-            return $this->callOpenAiApi($apiKey, $session, $input, $visitorName, $visitorEmail);
+            return $this->callOpenAiApi($apiKey, $session, $input, $visitorName, $visitorEmail, $visitorPhone);
         }
 
         // Default to Google Gemini API
-        return $this->callGeminiApi($apiKey, $session, $input, $visitorName, $visitorEmail);
+        return $this->callGeminiApi($apiKey, $session, $input, $visitorName, $visitorEmail, $visitorPhone);
     }
 
     /**
      * Call Google Gemini API with fallback retries and robust parsing.
      */
-    protected function callGeminiApi(string $apiKey, ChatSession $session, string $input, string $visitorName, string $visitorEmail): ?array
+    protected function callGeminiApi(string $apiKey, ChatSession $session, string $input, string $visitorName, string $visitorEmail, string $visitorPhone = ''): ?array
     {
         $cleanApiKey = trim($apiKey, " \t\n\r\0\x0B\"'");
         $model = 'gemini-1.5-flash';
@@ -156,7 +243,7 @@ class ChatbotEngine
         }
 
         $url = "https://generativelanguage.googleapis.com/v1beta/models/{$model}:generateContent?key={$cleanApiKey}";
-        $systemPrompt = $this->buildSystemInstruction($visitorName, $visitorEmail);
+        $systemPrompt = $this->buildSystemInstruction($visitorName, $visitorEmail, $visitorPhone);
         $contents = $this->buildGeminiContents($session, $input);
 
         try {
@@ -354,9 +441,9 @@ class ChatbotEngine
     /**
      * Call OpenAI API as alternate provider.
      */
-    protected function callOpenAiApi(string $apiKey, ChatSession $session, string $input, string $visitorName, string $visitorEmail): ?array
+    protected function callOpenAiApi(string $apiKey, ChatSession $session, string $input, string $visitorName, string $visitorEmail, string $visitorPhone = ''): ?array
     {
-        $systemPrompt = $this->buildSystemInstruction($visitorName, $visitorEmail);
+        $systemPrompt = $this->buildSystemInstruction($visitorName, $visitorEmail, $visitorPhone);
         $messages = $this->buildOpenAiMessages($session, $input, $systemPrompt);
 
         try {
@@ -422,24 +509,26 @@ class ChatbotEngine
     /**
      * System instruction that trains the AI on Bluebase and directs it to have natural, question-and-answer dialogue based on the user.
      */
-    protected function buildSystemInstruction(string $visitorName, string $visitorEmail): string
+    protected function buildSystemInstruction(string $visitorName, string $visitorEmail, string $visitorPhone = ''): string
     {
-        $nameInfo = $visitorName ? "The visitor's name is {$visitorName}." : "The visitor has not provided their name yet.";
-        $emailInfo = $visitorEmail ? "The visitor's email is {$visitorEmail}." : "The visitor has not provided their email yet.";
+        $nameInfo = $visitorName ? "The visitor's verified name is {$visitorName}." : "The visitor has not provided their name yet.";
+        $emailInfo = $visitorEmail ? "The visitor's verified email is {$visitorEmail}." : "The visitor has not provided their email yet.";
+        $phoneInfo = $visitorPhone ? "The visitor's verified phone/WhatsApp is {$visitorPhone}." : "The visitor's phone is not provided.";
 
         return <<<PROMPT
-You are the Bluebase AI Software Engineering Advisor for Bluebase Technologies.
-Bluebase is an agile software engineering and digital transformation agency.
+You are the senior Technical Solutions Consultant & Software Architect at Bluebase Technologies.
+Bluebase is an agile software engineering and digital transformation agency headquartered in Nagpur, Maharashtra, India.
 
-Context About Visitor:
-{$nameInfo}
-{$emailInfo}
+VERIFIED VISITOR PROFILE:
+- Name: {$nameInfo}
+- Email: {$emailInfo}
+- Contact / WhatsApp: {$phoneInfo}
 
-CRITICAL RULES:
-1. NO PREDEFINED OR CANNED RESPONSES. Directly address the user's specific statement, idea, or question in every single response.
-2. ENGAGE IN TRUE DIALOGUE: Always conclude your response by asking 1 relevant, thoughtful follow-up question specifically based on what the user said to help clarify their technical or business requirements.
-3. Be concise and natural (typically 2 to 3 short paragraphs). Never dump large encyclopedic feature lists unless explicitly requested.
-4. If the visitor shares their name or email, acknowledge it warmly and remember it.
+CRITICAL CONVERSATIONAL RULES:
+1. Address the visitor warmly by their first name when appropriate.
+2. NO PREDEFINED OR CANNED RESPONSES. Directly address the user's specific statement, idea, or question in every single response with concrete architectural guidance.
+3. ENGAGE IN TRUE DIALOGUE: Always conclude your response by asking exactly ONE relevant, thoughtful follow-up question specifically based on what the user said to help clarify their technical scope, feature priorities, or business requirements.
+4. Be concise and natural (typically 2 to 3 short paragraphs). Never dump large encyclopedic feature lists unless explicitly requested.
 5. If the visitor asks questions unrelated to software development, answer briefly and politely steer back to how Bluebase can help build their software.
 
 Bluebase Core Reference (use naturally when relevant):
@@ -455,10 +544,27 @@ PROMPT;
     }
 
     /**
+     * Clean and format visitor name.
+     */
+    protected function extractCleanName(string $input): string
+    {
+        $cleaned = trim($input);
+        $cleaned = preg_replace('/^(my name is|i am called|i am|i\'m|call me|this is|myself)\s+/i', '', $cleaned);
+        $cleaned = rtrim($cleaned, " .!?,;:-");
+        $cleaned = preg_replace('/[^a-zA-Z\s\.\'-]/', '', $cleaned);
+        $words = array_values(array_filter(explode(' ', trim($cleaned))));
+        if (empty($words)) {
+            return '';
+        }
+        $nameWords = array_slice($words, 0, 4);
+        return ucwords(strtolower(implode(' ', $nameWords)));
+    }
+
+    /**
      * Dynamic conversational responder used when API key is not yet set or during offline fallback.
      * Generates tailored answers directly based on the user's prompt and asks a relevant question back!
      */
-    protected function generateDynamicResponse(ChatSession $session, string $input, string $normalized, string $visitorName, string $visitorEmail, bool $newEmailFound, bool $newNameFound): array
+    protected function generateDynamicResponse(ChatSession $session, string $input, string $normalized, string $visitorName = '', string $visitorEmail = '', bool $newEmailFound = false, bool $newNameFound = false): array
     {
         $salutation = $visitorName ? "{$visitorName}, " : "";
 
