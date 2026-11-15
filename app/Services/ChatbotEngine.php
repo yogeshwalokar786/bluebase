@@ -3,6 +3,9 @@
 namespace App\Services;
 
 use App\Models\ChatSession;
+use App\Models\SiteSetting;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class ChatbotEngine
 {
@@ -26,7 +29,7 @@ class ChatbotEngine
     }
 
     /**
-     * Human-like conversational processor with deep domain knowledge.
+     * Human-like conversational processor with AI API integration & local fallback.
      */
     public function process(ChatSession $session, string $rawMessage): array
     {
@@ -63,10 +66,18 @@ class ChatbotEngine
         $visitorName = $session->visitor_name ?: '';
         $visitorEmail = $session->visitor_email ?: '';
 
-        // 5. Detect Intent from Knowledge Base
+        // 5. If Google Gemini API is enabled & configured, attempt AI inference
+        if ($this->hasGeminiKey()) {
+            $aiResult = $this->callGeminiApi($session, $input, $visitorName, $visitorEmail);
+            if ($aiResult !== null) {
+                return $aiResult;
+            }
+        }
+
+        // 6. Local Rule-based Knowledge Engine (Fallback & offline mode)
         $intentResult = $this->matchKnowledgeIntent($normalized, $session);
 
-        // 6. Handle edge case: User ONLY gave their name
+        // Handle edge case: User ONLY gave their name
         if ($newNameFound && empty($intentResult['matched_intent']) && strlen($input) < 40 && !$this->isQuestion($normalized)) {
             return [
                 'message' => "Nice to meet you, {$visitorName}! Welcome to Bluebase Technologies.\n\nHow can our software engineering team help you today? Feel free to ask about our web development, mobile apps, SaaS MVP creation, AI systems, or project pricing.",
@@ -81,7 +92,7 @@ class ChatbotEngine
             ];
         }
 
-        // 7. Handle edge case: User ONLY gave their email
+        // Handle edge case: User ONLY gave their email
         if ($newEmailFound && empty($intentResult['matched_intent']) && strlen($input) < 60 && !$this->isQuestion($normalized)) {
             $salutation = $visitorName ? "Thank you, {$visitorName}!" : "Thank you!";
             return [
@@ -97,7 +108,7 @@ class ChatbotEngine
             ];
         }
 
-        // 8. Handle edge case: User opted out
+        // Handle edge case: User opted out
         if ($isOptOut && empty($intentResult['matched_intent'])) {
             return [
                 'message' => "No problem at all! We are completely open and transparent. What questions do you have about our engineering capabilities, tech stacks, or delivery models?",
@@ -111,11 +122,10 @@ class ChatbotEngine
             ];
         }
 
-        // 9. Formulate Response with Conversational Flow
+        // Formulate Response with Conversational Flow
         $replyBody = $intentResult['message'];
         $suggestions = $intentResult['suggestions'];
 
-        // Human conversational follow-up for lead capture (non-intrusive)
         $followUp = '';
         if ($newEmailFound) {
             $followUp = "\n\n(I've noted your email {$visitorEmail} so our technical leads can follow up with any specifications you need!)";
@@ -129,6 +139,225 @@ class ChatbotEngine
             'message' => trim($replyBody . $followUp),
             'step' => 'conversing',
             'suggestions' => $suggestions,
+        ];
+    }
+
+    /**
+     * Check if Gemini API key is configured.
+     */
+    public function hasGeminiKey(): bool
+    {
+        $key = $this->getGeminiKey();
+        return !empty($key);
+    }
+
+    /**
+     * Retrieve Gemini API Key from settings or environment.
+     */
+    protected function getGeminiKey(): ?string
+    {
+        try {
+            $dbKey = SiteSetting::get('gemini_api_key');
+            if (!empty($dbKey)) {
+                return trim($dbKey);
+            }
+        } catch (\Throwable $e) {
+            // Database not reachable
+        }
+
+        try {
+            $configKey = config('services.gemini.api_key');
+            if (!empty($configKey)) {
+                return trim($configKey);
+            }
+        } catch (\Throwable $e) {
+            // Config helper not initialized
+        }
+
+        $envKey = env('GEMINI_API_KEY');
+        return !empty($envKey) ? trim($envKey) : null;
+    }
+
+    /**
+     * Retrieve preferred Gemini model.
+     */
+    protected function getGeminiModel(): string
+    {
+        try {
+            $dbModel = SiteSetting::get('gemini_model');
+            if (!empty($dbModel)) {
+                return trim($dbModel);
+            }
+        } catch (\Throwable $e) {
+            // Database not reachable
+        }
+
+        try {
+            $configModel = config('services.gemini.model');
+            if (!empty($configModel)) {
+                return trim($configModel);
+            }
+        } catch (\Throwable $e) {
+            // Config helper not initialized
+        }
+
+        return env('GEMINI_MODEL', 'gemini-1.5-flash');
+    }
+
+    /**
+     * Call Google Gemini API with system instructions and chat memory.
+     */
+    protected function callGeminiApi(ChatSession $session, string $input, string $visitorName, string $visitorEmail): ?array
+    {
+        $apiKey = $this->getGeminiKey();
+        if (empty($apiKey)) {
+            return null;
+        }
+
+        $model = $this->getGeminiModel();
+        $url = "https://generativelanguage.googleapis.com/v1beta/models/{$model}:generateContent?key={$apiKey}";
+
+        // Build System Prompt with comprehensive Bluebase training
+        $systemInstruction = $this->buildSystemInstruction($visitorName, $visitorEmail);
+
+        // Fetch past conversation messages for conversational memory
+        $contents = [];
+        if ($session->exists) {
+            $pastMessages = $session->messages()->orderBy('created_at', 'asc')->take(8)->get();
+            foreach ($pastMessages as $msg) {
+                // Skip the immediate current message if already recorded
+                if ($msg->message === $input && $msg->sender === 'user' && $msg->id === $pastMessages->last()->id) {
+                    continue;
+                }
+                $contents[] = [
+                    'role' => ($msg->sender === 'bot') ? 'model' : 'user',
+                    'parts' => [['text' => $msg->message]],
+                ];
+            }
+        }
+
+        // Add current user input
+        $contents[] = [
+            'role' => 'user',
+            'parts' => [['text' => $input]],
+        ];
+
+        try {
+            $response = Http::timeout(12)->post($url, [
+                'systemInstruction' => [
+                    'parts' => [
+                        ['text' => $systemInstruction],
+                    ],
+                ],
+                'contents' => $contents,
+                'generationConfig' => [
+                    'temperature' => 0.7,
+                    'maxOutputTokens' => 850,
+                ],
+            ]);
+
+            if ($response->successful()) {
+                $reply = $response->json('candidates.0.content.parts.0.text');
+                if (!empty($reply)) {
+                    return [
+                        'message' => trim($reply),
+                        'step' => 'conversing',
+                        'suggestions' => $this->deriveSuggestions($input . ' ' . $reply),
+                    ];
+                }
+            } else {
+                Log::warning('Gemini API returned error: ' . $response->body());
+            }
+        } catch (\Throwable $e) {
+            Log::warning('Gemini API call exception: ' . $e->getMessage());
+        }
+
+        return null;
+    }
+
+    /**
+     * System instruction that trains the AI model on real Bluebase data.
+     */
+    protected function buildSystemInstruction(string $visitorName, string $visitorEmail): string
+    {
+        $nameInfo = $visitorName ? "The visitor's name is {$visitorName}." : "The visitor has not provided their name yet.";
+        $emailInfo = $visitorEmail ? "The visitor's email is {$visitorEmail}." : "The visitor has not provided their email yet.";
+
+        return <<<PROMPT
+You are the Bluebase AI Engineering Consultant representing Bluebase Technologies.
+Bluebase is a modern software engineering and digital transformation agency.
+
+Context About Visitor:
+{$nameInfo}
+{$emailInfo}
+
+Bluebase Real Facts & Company Knowledge:
+1. Location & Origins:
+   - Headquartered and founded in Nagpur, Maharashtra, India (Zero Mile City).
+   - Operates with a lean, remote-first model with senior developers across India and global delivery reach.
+   - 4-6 hours daily timezone overlap with US (EST/PST), UK/Europe (GMT/CET), and Gulf (GST) business hours.
+   - Direct Senior Engineer Pods: Clients communicate directly with architects and developers (no account managers or junior pass-offs).
+   - Contact: info@bluebasetechnologies.com, Phone: +91 79727 65119, Online Contact Form at /contact.
+
+2. Intellectual Property & Client Guarantees:
+   - 100% legal IP Assignment Deed: Clients own all Git repositories, commit history, Figma design systems, database schemas, and cloud accounts from day 1 with zero vendor lock-in.
+
+3. Core Services:
+   - SaaS MVP Launchpad: Rapid 3-to-6 week delivery from concept to live production. Multi-tenant workspace isolation, subscription billing (Stripe, Razorpay, Paddle) with automated webhooks, granular RBAC, and developer API sandbox.
+   - Mobile App Development: Cross-platform dual launch on iOS & Android using Flutter and React Native (saving 40-50% in development costs). Native Swift/Kotlin modules, offline-first SQLite/Hive caching (<15ms query speed), 99.8% crash-free sessions, and guaranteed 100% App Store and Google Play approval.
+   - Custom Full-Stack Web: Decoupled and modern architectures using Next.js, React, Laravel, Node.js, Tailwind CSS, PostgreSQL, and Redis. Sub-second page loads engineered for 90+ Core Web Vitals.
+   - AI & Autonomous Agents: Multi-agent orchestration frameworks for complex workflows, Enterprise RAG on private documents and SQL databases, high-speed vector retrieval with Qdrant, Pinecone, or pgvector.
+   - UI/UX & Design Studio: Clickable interactive Figma prototypes before writing code, comprehensive design token libraries, responsive layouts, usability heuristic audits.
+   - 24/7 SLA & Maintenance: 99.99% uptime guarantee, monthly vulnerability audits, proactive patching, automated backups, and 30-day post-launch warranty.
+
+4. Flagship Case Studies:
+   - OMG Rental Bikes (omgrentalbikes.com): Full vehicle rental booking engine, custom fleet management ERP, instant paperless digital KYC verification, Google Business Profile growth, and 100% managed cloud infrastructure.
+   - Aarohi Classic 2024: Regional fitness championship digital platform handling high-volume online athlete registrations, automated WhatsApp communication, live score updates, and Meta/Google ad execution with zero downtime.
+
+5. Pricing & Timelines:
+   - Fixed-Scope Milestone Contracts (guaranteed deliverables, zero surprise bills).
+   - Dedicated Senior Pods (monthly retainers for full-stack developers and designers).
+   - Agile Sprint Retainers (2-week sprints).
+   - Average timelines: MVP in 3-6 weeks, mobile apps in 6-10 weeks, enterprise web platforms in 6-12 weeks.
+
+Conversational Tone & Guidelines:
+- Act like an articulate, senior technical consultant. Be direct, professional, warm, and concise.
+- Format responses cleanly using bullet points (•) and bold titles (**Title**) where appropriate.
+- If the visitor shares their name or email, acknowledge it naturally.
+- If you do not have their name or email yet, occasionally and politely invite them to connect or receive a scoping proposal, but never block the conversation or sound repetitive.
+- Keep responses focused, typically between 2 to 4 concise paragraphs.
+PROMPT;
+    }
+
+    /**
+     * Derive relevant quick reply suggestions based on conversational text.
+     */
+    protected function deriveSuggestions(string $text): array
+    {
+        $text = strtolower($text);
+
+        if (str_contains($text, 'saas') || str_contains($text, 'mvp')) {
+            return ['What is the MVP timeline?', 'Estimated MVP cost', '4-Phase Delivery Process', 'Schedule Discovery Call'];
+        }
+
+        if (str_contains($text, 'mobile') || str_contains($text, 'flutter') || str_contains($text, 'app')) {
+            return ['Mobile app pricing', 'Cross-platform vs Native', 'Need Figma UI/UX Design', 'Schedule Discovery Call'];
+        }
+
+        if (str_contains($text, 'price') || str_contains($text, 'cost') || str_contains($text, 'rate')) {
+            return ['Book Discovery Session', 'SaaS MVP Cost Estimate', 'Mobile App Estimate', 'How We Work'];
+        }
+
+        if (str_contains($text, 'case study') || str_contains($text, 'omg') || str_contains($text, 'aarohi')) {
+            return ['OMG Rental Bikes Details', 'Aarohi Classic Details', 'Schedule Discovery Call', 'Explore All Services'];
+        }
+
+        return [
+            'SaaS MVP in 3-6 Weeks',
+            'Mobile App Development',
+            'Custom Web Platforms',
+            'AI & Autonomous Agents',
+            'Pricing & Timeline',
         ];
     }
 
@@ -209,7 +438,7 @@ class ChatbotEngine
     }
 
     /**
-     * Match against Trained Bluebase Knowledge Base.
+     * Local Fallback Knowledge Intent Matcher.
      */
     protected function matchKnowledgeIntent(string $input, ChatSession $session): array
     {

@@ -295,6 +295,37 @@
         });
       </script>
 
+      <!-- 4. Google Gemini AI Chatbot Configuration -->
+      <h3
+        style="font-size: 1.05rem; font-weight: 700; margin-top: 28px; margin-bottom: 16px; color: #10B981; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+        <svg style="width: 18px; height: 18px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        4. AI Chatbot Integration (Google Gemini)
+      </h3>
+
+      <div style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 10px; padding: 16px; margin-bottom: 20px;">
+        <div style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
+          Power your website's live chat assistant with Google Gemini AI. The bot uses real Bluebase knowledge (Nagpur HQ, SaaS MVP, Mobile apps, Web dev, Case studies, Pricing). If no API key is provided or if network limits are reached, it automatically falls back to our local rule-based engine seamlessly.
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;">
+        <div class="form-group">
+          <label class="form-label">Gemini API Key</label>
+          <input type="password" name="gemini_api_key" value="{{ $settings['gemini_api_key'] ?? config('services.gemini.api_key', '') }}"
+            placeholder="AIzaSy..." class="form-control" autocomplete="off">
+          <span style="font-size: 0.72rem; color: var(--text-dim); margin-top: 4px; display: block;">Get a free API key at <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color: var(--accent);">Google AI Studio</a>.</span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Gemini Model</label>
+          <select name="gemini_model" class="form-select">
+            <option value="gemini-1.5-flash" {{ ($settings['gemini_model'] ?? config('services.gemini.model', 'gemini-1.5-flash')) == 'gemini-1.5-flash' ? 'selected' : '' }}>gemini-1.5-flash (Fast &amp; Free Tier)</option>
+            <option value="gemini-2.0-flash" {{ ($settings['gemini_model'] ?? '') == 'gemini-2.0-flash' ? 'selected' : '' }}>gemini-2.0-flash (Latest Speed)</option>
+            <option value="gemini-1.5-pro" {{ ($settings['gemini_model'] ?? '') == 'gemini-1.5-pro' ? 'selected' : '' }}>gemini-1.5-pro (Advanced Reasoning)</option>
+          </select>
+        </div>
+      </div>
+
       <div style="margin-top: 28px;">
         <button type="submit" class="btn btn-primary" style="padding: 10px 24px; font-size: 0.95rem;">Save Site
           Settings</button>

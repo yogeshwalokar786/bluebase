@@ -36,6 +36,9 @@ class SettingsCmsController extends Controller
             'hero_video_url',
             'hero_video_overlay_opacity',
             'hero_video_poster',
+            'gemini_api_key',
+            'gemini_model',
+            'gemini_enabled',
         ];
 
         foreach ($allowedKeys as $key) {
