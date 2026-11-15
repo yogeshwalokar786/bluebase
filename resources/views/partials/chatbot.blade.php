@@ -604,10 +604,8 @@
         data.messages.forEach(msg => {
           appendMessage(msg.sender, msg.message, msg.time);
         });
-        const lastMsg = data.messages[data.messages.length - 1];
-        if (lastMsg && lastMsg.suggestions && lastMsg.suggestions.length > 0) {
-          renderSuggestions(lastMsg.suggestions);
-        }
+      } else if (data.greeting) {
+        appendMessage('bot', data.greeting);
       }
 
       updatePlaceholder(data.step);

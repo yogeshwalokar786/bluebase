@@ -134,26 +134,7 @@ class ChatbotEngine
 
         $url = "https://generativelanguage.googleapis.com/v1beta/models/{$model}:generateContent?key={$apiKey}";
         $systemPrompt = $this->buildSystemInstruction($visitorName, $visitorEmail);
-
-        // Fetch past conversation messages
-        $contents = [];
-        if ($session->exists) {
-            $pastMessages = $session->messages()->orderBy('created_at', 'asc')->take(10)->get();
-            foreach ($pastMessages as $msg) {
-                if ($msg->message === $input && $msg->sender === 'user' && $msg->id === $pastMessages->last()->id) {
-                    continue;
-                }
-                $contents[] = [
-                    'role' => ($msg->sender === 'bot') ? 'model' : 'user',
-                    'parts' => [['text' => $msg->message]],
-                ];
-            }
-        }
-
-        $contents[] = [
-            'role' => 'user',
-            'parts' => [['text' => $input]],
-        ];
+        $contents = $this->buildGeminiContents($session, $input);
 
         try {
             $response = Http::timeout(12)->post($url, [
@@ -189,29 +170,79 @@ class ChatbotEngine
     }
 
     /**
+     * Build strictly alternating contents array compliant with Google Gemini API requirements:
+     * 1. Must start with role 'user'.
+     * 2. Roles must strictly alternate between 'user' and 'model'.
+     * 3. Must end with role 'user'.
+     */
+    protected function buildGeminiContents(ChatSession $session, string $input): array
+    {
+        $contents = [];
+        $trimmedInput = trim($input);
+
+        if ($session->exists) {
+            $pastMessages = $session->messages()->orderBy('created_at', 'asc')->take(12)->get();
+            foreach ($pastMessages as $msg) {
+                $text = trim($msg->message);
+                if ($text === '') continue;
+
+                $role = ($msg->sender === 'bot') ? 'model' : 'user';
+
+                // First message in Gemini contents MUST be 'user'
+                if (empty($contents) && $role !== 'user') {
+                    continue;
+                }
+
+                $lastIdx = count($contents) - 1;
+                if ($lastIdx >= 0 && $contents[$lastIdx]['role'] === $role) {
+                    // Combine consecutive messages from the same role
+                    if ($contents[$lastIdx]['parts'][0]['text'] !== $text) {
+                        $contents[$lastIdx]['parts'][0]['text'] .= "\n" . $text;
+                    }
+                } else {
+                    $contents[] = [
+                        'role' => $role,
+                        'parts' => [['text' => $text]],
+                    ];
+                }
+            }
+        }
+
+        // Ensure the current user input is the final 'user' turn
+        $lastIdx = count($contents) - 1;
+        if ($lastIdx >= 0 && $contents[$lastIdx]['role'] === 'user') {
+            if ($contents[$lastIdx]['parts'][0]['text'] !== $trimmedInput) {
+                $contents[$lastIdx]['parts'][0]['text'] .= "\n" . $trimmedInput;
+            }
+        } else {
+            $contents[] = [
+                'role' => 'user',
+                'parts' => [['text' => $trimmedInput]],
+            ];
+        }
+
+        // Final sanity check: remove any leading 'model' turns
+        while (!empty($contents) && $contents[0]['role'] !== 'user') {
+            array_shift($contents);
+        }
+
+        if (empty($contents)) {
+            $contents[] = [
+                'role' => 'user',
+                'parts' => [['text' => $trimmedInput]],
+            ];
+        }
+
+        return $contents;
+    }
+
+    /**
      * Call OpenAI API as alternate provider.
      */
     protected function callOpenAiApi(string $apiKey, ChatSession $session, string $input, string $visitorName, string $visitorEmail): ?array
     {
         $systemPrompt = $this->buildSystemInstruction($visitorName, $visitorEmail);
-        $messages = [
-            ['role' => 'system', 'content' => $systemPrompt],
-        ];
-
-        if ($session->exists) {
-            $pastMessages = $session->messages()->orderBy('created_at', 'asc')->take(10)->get();
-            foreach ($pastMessages as $msg) {
-                if ($msg->message === $input && $msg->sender === 'user' && $msg->id === $pastMessages->last()->id) {
-                    continue;
-                }
-                $messages[] = [
-                    'role' => ($msg->sender === 'bot') ? 'assistant' : 'user',
-                    'content' => $msg->message,
-                ];
-            }
-        }
-
-        $messages[] = ['role' => 'user', 'content' => $input];
+        $messages = $this->buildOpenAiMessages($session, $input, $systemPrompt);
 
         try {
             $response = Http::withHeaders([
@@ -239,6 +270,38 @@ class ChatbotEngine
         }
 
         return null;
+    }
+
+    /**
+     * Build clean OpenAI messages array.
+     */
+    protected function buildOpenAiMessages(ChatSession $session, string $input, string $systemPrompt): array
+    {
+        $messages = [
+            ['role' => 'system', 'content' => $systemPrompt],
+        ];
+
+        $trimmedInput = trim($input);
+        if ($session->exists) {
+            $pastMessages = $session->messages()->orderBy('created_at', 'asc')->take(12)->get();
+            foreach ($pastMessages as $msg) {
+                $text = trim($msg->message);
+                if ($text === '') continue;
+
+                $role = ($msg->sender === 'bot') ? 'assistant' : 'user';
+                $messages[] = [
+                    'role' => $role,
+                    'content' => $text,
+                ];
+            }
+        }
+
+        $last = end($messages);
+        if ($last['role'] !== 'user' || $last['content'] !== $trimmedInput) {
+            $messages[] = ['role' => 'user', 'content' => $trimmedInput];
+        }
+
+        return $messages;
     }
 
     /**

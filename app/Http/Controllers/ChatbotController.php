@@ -13,6 +13,7 @@ class ChatbotController extends Controller
 {
     /**
      * Initialize or resume chat session.
+     * Note: Does NOT store default greeting or questions in the database.
      */
     public function init(Request $request, ChatbotEngine $engine): JsonResponse
     {
@@ -27,31 +28,22 @@ class ChatbotController extends Controller
             $sessionUuid = (string) Str::uuid();
             $session = ChatSession::create([
                 'session_uuid' => $sessionUuid,
-                'step' => 'ask_name',
+                'step' => 'conversing',
                 'status' => 'active',
                 'ip_address' => $request->ip(),
                 'user_agent' => substr((string) $request->userAgent(), 0, 500),
                 'last_message_at' => now(),
             ]);
-
-            $greeting = $engine->getInitialGreeting();
-
-            ChatMessage::create([
-                'chat_session_id' => $session->id,
-                'sender' => 'bot',
-                'message' => $greeting['message'],
-                'metadata' => [
-                    'suggestions' => $greeting['suggestions'] ?? [],
-                ],
-            ]);
+            // Do NOT insert any default message or questions into the database
         }
+
+        $greeting = $engine->getInitialGreeting();
 
         $messages = $session->messages()->get()->map(function ($msg) {
             return [
                 'id' => $msg->id,
                 'sender' => $msg->sender,
                 'message' => $msg->message,
-                'suggestions' => $msg->metadata['suggestions'] ?? [],
                 'time' => $msg->created_at ? $msg->created_at->format('h:i A') : '',
             ];
         });
@@ -61,12 +53,14 @@ class ChatbotController extends Controller
             'step' => $session->step,
             'visitor_name' => $session->visitor_name,
             'visitor_email' => $session->visitor_email,
+            'greeting' => $greeting['message'],
             'messages' => $messages,
         ]);
     }
 
     /**
      * Send message from visitor and get bot reply.
+     * Stores only actual user messages and AI generated replies.
      */
     public function sendMessage(Request $request, ChatbotEngine $engine): JsonResponse
     {
@@ -80,7 +74,7 @@ class ChatbotController extends Controller
         if (!$session) {
             $session = ChatSession::create([
                 'session_uuid' => $validated['session_uuid'],
-                'step' => 'ask_name',
+                'step' => 'conversing',
                 'status' => 'active',
                 'ip_address' => $request->ip(),
                 'user_agent' => substr((string) $request->userAgent(), 0, 500),
@@ -97,17 +91,14 @@ class ChatbotController extends Controller
             'message' => $userText,
         ]);
 
-        // 2. Process via Local Rule-based AI Engine
+        // 2. Process via AI Engine
         $result = $engine->process($session, $userText);
 
-        // 3. Record Bot Reply
+        // 3. Record Bot Reply (no default questions/suggestions stored)
         $botMsg = ChatMessage::create([
             'chat_session_id' => $session->id,
             'sender' => 'bot',
             'message' => $result['message'],
-            'metadata' => [
-                'suggestions' => $result['suggestions'] ?? [],
-            ],
         ]);
 
         // 4. Update session timestamp
@@ -118,10 +109,9 @@ class ChatbotController extends Controller
             'success' => true,
             'reply' => $result['message'],
             'step' => $result['step'],
-            'suggestions' => $result['suggestions'] ?? [],
             'visitor_name' => $session->visitor_name,
             'visitor_email' => $session->visitor_email,
-            'time' => $botMsg->created_at->format('h:i A'),
+            'time' => $botMsg->created_at ? $botMsg->created_at->format('h:i A') : '',
         ]);
     }
 }
