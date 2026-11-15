@@ -99,7 +99,7 @@
           <tr>
             <td>
               <div style="width: 60px; height: 38px; background: #ffffff; border: 1px solid var(--border); border-radius: 6px; padding: 4px; display: flex; align-items: center; justify-content: center;">
-                <img src="{{ $client->logo_url }}" alt="{{ $client->name }}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                <img src="{{ asset($client->logo_path) }}" alt="{{ $client->name }}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
               </div>
             </td>
             <td>
@@ -116,7 +116,7 @@
               @endif
             </td>
             <td>
-              <span style="font-family: monospace; font-size: 0.85rem; color: var(--text-dim);">#{{ $client->sort_order }}</span>
+              <span style="font-family: monospace; font-size: 0.85rem; color: var(--text-dim);">#{{ $client->display_order }}</span>
             </td>
             <td style="text-align: right;">
               <a href="{{ route('admin.cms.clients.edit', $client->id) }}" class="btn btn-secondary btn-sm">Edit</a>

@@ -25,7 +25,7 @@ class AdminDashboardController extends Controller
             'contact_phone' => SiteSetting::get('contact_phone', '+91 79727 65119'),
         ];
 
-        $recent_clients = ClientLogo::orderBy('sort_order', 'asc')->latest()->take(8)->get();
+        $recent_clients = ClientLogo::orderBy('display_order', 'asc')->orderBy('id', 'asc')->take(8)->get();
 
         return view('admin.dashboard', compact('stats', 'recent_clients'));
     }
