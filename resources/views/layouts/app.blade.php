@@ -93,6 +93,9 @@
   <!-- Site Footer -->
   @include('partials.footer')
 
+  <!-- Interactive AI Live Chatbot -->
+  @include('partials.chatbot')
+
   <!-- Floating Back to Top Button -->
   <button class="back-to-top" id="backToTop" aria-label="Back to Top">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"

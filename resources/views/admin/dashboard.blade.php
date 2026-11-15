@@ -26,6 +26,25 @@
     </div>
   </div>
 
+  <!-- Live AI Chats -->
+  <div class="card card-featured" style="margin-bottom: 0; padding: 22px; display: flex; flex-direction: column; justify-content: space-between;">
+    <div>
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+        <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: #10b981; letter-spacing: 0.06em;">AI Live Chats</span>
+        <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(16, 185, 129, 0.12); display: flex; align-items: center; justify-content: center; color: #10b981;">
+          <svg style="width: 19px; height: 19px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+      </div>
+      <div class="metric-value" style="font-size: 2.2rem; font-weight: 800; color: var(--text);">{{ $stats['chats_count'] }}</div>
+      <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 6px;">
+        <span class="badge badge-confirmed" style="font-size: 0.72rem;">{{ $stats['chats_leads'] }} Leads Captured</span>
+      </div>
+    </div>
+    <div style="display: flex; gap: 8px; margin-top: 22px; flex-wrap: wrap;">
+      <a href="{{ route('admin.chats.index') }}" class="btn btn-primary btn-sm" style="flex: 1; text-align: center; justify-content: center; min-width: 120px; background: #10b981; border-color: #10b981;">View Conversations &rarr;</a>
+    </div>
+  </div>
+
   <!-- 2. Blog Articles CMS -->
   <div class="card" style="margin-bottom: 0; padding: 22px; display: flex; flex-direction: column; justify-content: space-between;">
     <div>

@@ -150,6 +150,52 @@ LOCK TABLES `cache_locks` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `chat_sessions`
+--
+
+DROP TABLE IF EXISTS `chat_sessions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `chat_sessions` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `session_uuid` varchar(64) NOT NULL,
+  `visitor_name` varchar(150) DEFAULT NULL,
+  `visitor_email` varchar(150) DEFAULT NULL,
+  `visitor_phone` varchar(50) DEFAULT NULL,
+  `step` varchar(50) NOT NULL DEFAULT 'ask_name',
+  `status` varchar(30) NOT NULL DEFAULT 'active',
+  `ip_address` varchar(60) DEFAULT NULL,
+  `user_agent` text DEFAULT NULL,
+  `last_message_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `chat_sessions_session_uuid_unique` (`session_uuid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `chat_messages`
+--
+
+DROP TABLE IF EXISTS `chat_messages`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `chat_messages` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `chat_session_id` bigint(20) unsigned NOT NULL,
+  `sender` enum('user','bot') NOT NULL DEFAULT 'user',
+  `message` text NOT NULL,
+  `metadata` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`metadata`)),
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `chat_messages_chat_session_id_foreign` (`chat_session_id`),
+  CONSTRAINT `chat_messages_chat_session_id_foreign` FOREIGN KEY (`chat_session_id`) REFERENCES `chat_sessions` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `client_logos`
 --
 
@@ -367,7 +413,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (1,'0001_01_01_000000_create_users_table',1),(2,'0001_01_01_000001_create_cache_table',1),(3,'0001_01_01_000002_create_jobs_table',1),(4,'2026_11_01_000001_create_bluebase_tables',1),(5,'2026_11_02_000001_create_cms_and_enhancements',1),(6,'2026_11_02_000002_create_seo_tables',1),(7,'2026_11_08_000001_add_metadata_to_blogs_table',2),(8,'2026_11_09_000001_create_blog_categories_and_seo_fields',3),(9,'2026_11_09_000002_drop_services_table',4),(10,'2026_11_09_000003_drop_solutions_table',5),(11,'2026_11_09_000004_create_client_logos_table',5),(12,'2026_11_15_000001_create_job_openings_table',6);
+INSERT INTO `migrations` VALUES (1,'0001_01_01_000000_create_users_table',1),(2,'0001_01_01_000001_create_cache_table',1),(3,'0001_01_01_000002_create_jobs_table',1),(4,'2026_11_01_000001_create_bluebase_tables',1),(5,'2026_11_02_000001_create_cms_and_enhancements',1),(6,'2026_11_02_000002_create_seo_tables',1),(7,'2026_11_08_000001_add_metadata_to_blogs_table',2),(8,'2026_11_09_000001_create_blog_categories_and_seo_fields',3),(9,'2026_11_09_000002_drop_services_table',4),(10,'2026_11_09_000003_drop_solutions_table',5),(11,'2026_11_09_000004_create_client_logos_table',5),(12,'2026_11_15_000001_create_job_openings_table',6),(13,'2026_11_15_000002_create_chat_conversations_tables',7);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 

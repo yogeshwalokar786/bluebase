@@ -21,6 +21,8 @@ class AdminDashboardController extends Controller
         $stats = [
             'inquiries_count' => rescue(fn() => ContactInquiry::count(), 0),
             'inquiries_new' => rescue(fn() => ContactInquiry::where('status', 'new')->count(), 0),
+            'chats_count' => rescue(fn() => \App\Models\ChatSession::count(), 0),
+            'chats_leads' => rescue(fn() => \App\Models\ChatSession::whereNotNull('visitor_email')->count(), 0),
             'clients_count' => rescue(fn() => ClientLogo::count(), 0),
             'clients_active' => rescue(fn() => ClientLogo::where('is_active', true)->count(), 0),
             'blogs_count' => rescue(fn() => Blog::count(), 0),

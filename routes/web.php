@@ -11,9 +11,11 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\InquiryController;
+use App\Http\Controllers\ChatbotController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\LeadController;
+use App\Http\Controllers\Admin\ChatCmsController;
 use App\Http\Controllers\Admin\ClientLogoCmsController;
 use App\Http\Controllers\Admin\BlogCmsController;
 use App\Http\Controllers\Admin\JobOpeningCmsController;
@@ -121,6 +123,10 @@ Route::post('/free-trial', [InquiryController::class, 'storeTrial'])->name('free
 Route::post('/partner/apply', [InquiryController::class, 'storePartner'])->name('partner.apply');
 Route::post('/newsletter/subscribe', [InquiryController::class, 'storeNewsletter'])->name('newsletter.subscribe');
 
+// Interactive AI Live Chat
+Route::post('/chat/init', [ChatbotController::class, 'init'])->name('chat.init');
+Route::post('/chat/message', [ChatbotController::class, 'sendMessage'])->name('chat.message');
+
 // ==========================================
 // 2. ADMIN AUTHENTICATION
 // ==========================================
@@ -179,6 +185,14 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
         Route::delete('/inquiries/{id}', [LeadController::class, 'destroyInquiry'])->name('inquiries.destroy');
     });
     Route::get('/inquiries', fn() => redirect()->route('admin.leads.inquiries'))->name('inquiries');
+
+    // 3. Live AI Chats Management
+    Route::prefix('chats')->name('chats.')->group(function () {
+        Route::get('/', [ChatCmsController::class, 'index'])->name('index');
+        Route::get('/{id}', [ChatCmsController::class, 'show'])->name('show');
+        Route::post('/{id}/toggle', [ChatCmsController::class, 'toggle'])->name('toggle');
+        Route::delete('/{id}', [ChatCmsController::class, 'destroy'])->name('destroy');
+    });
 
     // 3. Media Manager & File Library
     Route::prefix('filemanager')->name('filemanager.')->group(function () {
