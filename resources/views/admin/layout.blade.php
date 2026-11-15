@@ -209,7 +209,7 @@
       align-items: center;
       gap: 12px;
     }
-    .link-live, .link-phpmyadmin {
+    .link-live {
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -219,19 +219,11 @@
       text-decoration: none;
       transition: all 0.2s;
       font-weight: 500;
-    }
-    .link-live {
       color: var(--accent);
       border: 1px solid rgba(96, 165, 250, 0.3);
       background: rgba(96, 165, 250, 0.05);
     }
     .link-live:hover { background: rgba(96, 165, 250, 0.15); }
-    .link-phpmyadmin {
-      color: #F59E0B;
-      border: 1px solid rgba(245, 158, 11, 0.3);
-      background: rgba(245, 158, 11, 0.05);
-    }
-    .link-phpmyadmin:hover { background: rgba(245, 158, 11, 0.15); }
     .admin-body {
       padding: 32px;
       flex: 1;
@@ -656,9 +648,6 @@
       }
       .topbar-actions {
         gap: 6px;
-      }
-      .link-phpmyadmin {
-        display: none;
       }
       .link-live .link-label,
       .btn-theme-toggle #themeToggleText {
@@ -1374,10 +1363,6 @@
           <span id="themeToggleText">Light Mode</span>
         </button>
 
-        <a href="http://localhost/phpmyadmin/index.php?route=/database/structure&db=bluebase_laravel_db" target="_blank" class="link-phpmyadmin" title="Open MySQL in phpMyAdmin">
-          <svg style="width: 15px; height: 15px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-          <span class="link-label">phpMyAdmin DB</span>
-        </a>
         <a href="{{ route('home') }}" target="_blank" class="link-live" title="View Live Website">
           <svg style="width: 14px; height: 14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
           <span class="link-label">Live Website</span>

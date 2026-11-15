@@ -126,17 +126,6 @@
       transform: translateY(-1px);
       box-shadow: 0 6px 20px rgba(0, 80, 231, 0.5);
     }
-    .demo-creds {
-      margin-top: 24px;
-      padding: 14px 16px;
-      background: rgba(0, 80, 231, 0.1);
-      border: 1px dashed rgba(0, 80, 231, 0.35);
-      border-radius: 10px;
-      font-size: 0.82rem;
-      color: rgba(255, 255, 255, 0.85);
-      line-height: 1.6;
-    }
-    .demo-creds strong { color: #60A5FA; }
     .alert-box {
       padding: 12px 16px;
       background: rgba(239, 68, 68, 0.15);
@@ -157,7 +146,7 @@
     </div>
 
     <h1 class="login-title">Administrator Portal</h1>
-    <p class="login-subtitle">Sign in to manage inquiries, leads &amp; dynamic content</p>
+    <p class="login-subtitle">Sign in to access Bluebase administration console</p>
 
     @if ($errors->any())
       <div class="alert-box">
@@ -170,12 +159,12 @@
       
       <div class="form-group">
         <label class="form-label" for="email">Work Email</label>
-        <input type="email" id="email" name="email" class="form-input" value="{{ old('email', 'admin@bluebase.com') }}" required autofocus placeholder="admin@bluebase.com">
+        <input type="email" id="email" name="email" class="form-input" value="{{ old('email') }}" required autofocus placeholder="admin@bluebasetechnologies.com">
       </div>
 
       <div class="form-group">
         <label class="form-label" for="password">Password</label>
-        <input type="password" id="password" name="password" class="form-input" value="password123" required placeholder="Enter password">
+        <input type="password" id="password" name="password" class="form-input" required placeholder="Enter your password">
       </div>
 
       <div class="form-meta">
@@ -188,12 +177,6 @@
 
       <button type="submit" class="btn-submit">Sign In to Dashboard &rarr;</button>
     </form>
-
-    <div class="demo-creds">
-      <div><strong>Pre-Configured Admin Credentials:</strong></div>
-      <div>Email: <code>admin@bluebase.com</code></div>
-      <div>Password: <code>password123</code></div>
-    </div>
   </div>
 </body>
 </html>
