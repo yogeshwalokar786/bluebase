@@ -157,13 +157,13 @@
 
               <div class="form-group" style="margin-bottom: 18px;">
                 <label class="form-label" style="font-weight: 600; font-size: 0.9rem; margin-bottom: 6px; display: block;">Your Full Name *</label>
-                <input type="text" name="name" class="form-control" required value="{{ old('name') }}" placeholder="e.g. Alex Morgan" style="width: 100%; padding: 12px 14px; border: 1px solid var(--color-gray-300); border-radius: 8px; font-size: 0.95rem;">
+                <input type="text" name="name" class="form-control" required value="{{ old('name') }}" placeholder="e.g. Your Name" style="width: 100%; padding: 12px 14px; border: 1px solid var(--color-gray-300); border-radius: 8px; font-size: 0.95rem;">
               </div>
 
               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 18px;">
                 <div class="form-group">
                   <label class="form-label" style="font-weight: 600; font-size: 0.9rem; margin-bottom: 6px; display: block;">Work Email *</label>
-                  <input type="email" name="email" class="form-control" required value="{{ old('email') }}" placeholder="alex@company.com" style="width: 100%; padding: 12px 14px; border: 1px solid var(--color-gray-300); border-radius: 8px; font-size: 0.95rem;">
+                  <input type="email" name="email" class="form-control" required value="{{ old('email') }}" placeholder="you@company.com" style="width: 100%; padding: 12px 14px; border: 1px solid var(--color-gray-300); border-radius: 8px; font-size: 0.95rem;">
                 </div>
 
                 <div class="form-group">

@@ -884,17 +884,17 @@
             </div>
 
             <h3 class="cs-card-title">
-              Automated IndiaMART Lead Scraping, Real-Time Intent Filtering &amp; WhatsApp Quotation Extension
+              Automated IndiaMART Lead Capture, Commercial Intent Filtering &amp; Real-Time CRM Synchronization
             </h3>
 
             <p class="cs-card-desc">
-              Engineered a bespoke Chrome browser extension that continuously monitors IndiaMART buyer inquiries, automatically filters commercial quantities, extracts verified numbers, and sends personalized WhatsApp quotes within 20 seconds.
+              Engineered a bespoke Chrome browser extension that continuously monitors IndiaMART buyer inquiries, automatically filters commercial quantities, extracts verified numbers, and syncs qualified leads directly to CRM in real time.
             </p>
 
             <div class="cs-card-stats-row">
-              <div class="cs-card-stat-pill"><strong>20s</strong> Lead Response</div>
+              <div class="cs-card-stat-pill"><strong>&lt;10s</strong> Lead Alert</div>
               <div class="cs-card-stat-pill"><strong>4.5 hrs</strong> Saved / Day</div>
-              <div class="cs-card-stat-pill"><strong>3.4X</strong> Deal Conversion</div>
+              <div class="cs-card-stat-pill"><strong>3.2X</strong> Qualification</div>
             </div>
 
             <div class="cs-card-footer">

@@ -121,27 +121,27 @@ HTML
 HTML
             ],
             [
-                'title' => 'Automating IndiaMART Lead Capture: How a Custom Browser Extension Slashed Response Times from 3 Hours to 20 Seconds',
+                'title' => 'Automating IndiaMART Lead Capture: How a Custom Browser Extension Slashed Lead Tracking Delays & Boosted Qualification',
                 'slug' => 'automating-indiamart-lead-capture-custom-browser-extension-automation',
                 'category' => 'Case Studies',
                 'category_slug' => 'case-studies',
-                'tags' => 'IndiaMART Automation, Chrome Extension, B2B Lead Generation, WhatsApp Automation, CRM Integration, Workflow Automation',
+                'tags' => 'IndiaMART Automation, Chrome Extension, B2B Lead Generation, Lead Qualification, CRM Integration, Workflow Automation',
                 'author' => 'Bluebase Automation Pod',
                 'author_role' => 'Lead Automation Architect • Bluebase Technologies',
                 'author_avatar' => 'IM',
                 'read_time' => '7 min read',
                 'is_featured' => false,
                 'image' => 'images/stories/screens-clicks.jpg',
-                'excerpt' => 'How Bluebase engineered a custom Chrome browser extension and lead capture automation pipeline for a high-volume B2B supplier struggling with manual IndiaMART lead tracking, slashing lead response time from 3 hours to 20 seconds.',
+                'excerpt' => 'How Bluebase engineered a custom Chrome browser extension and lead capture automation pipeline for a high-volume B2B supplier struggling with manual IndiaMART lead tracking, saving 4.5 hours daily per sales rep.',
                 'is_published' => true,
                 'published_at' => now()->subDays(6),
                 'meta_title' => 'IndiaMART Lead Automation Case Study: Custom Browser Extension — Bluebase',
-                'meta_description' => 'How Bluebase built a custom Chrome extension for automated IndiaMART lead scraping, real-time qualification, and instant WhatsApp quotation dispatch.',
+                'meta_description' => 'How Bluebase built a custom Chrome extension for automated IndiaMART buy-lead discovery, real-time qualification, and instant CRM synchronization.',
                 'content' => <<<'HTML'
 <h2>The B2B Lead Struggle on IndiaMART</h2>
 <p>IndiaMART is India's largest B2B e-commerce marketplace, connecting hundreds of thousands of manufacturers, distributors, and bulk wholesalers with commercial buyers daily. However, the commercial reality of competitive categories is brutal: when an industrial buyer posts a high-value purchase inquiry, the lead is broadcast simultaneously to multiple verified sellers.</p>
 
-<p>Studies show that B2B sellers who contact an IndiaMART buyer within <strong>60 seconds</strong> convert over <strong>65%</strong> of closed deals. Sellers who take two hours to respond frequently find the buyer has already finalized payment terms with an agile competitor.</p>
+<p>Studies show that B2B sellers who contact an IndiaMART buyer within <strong>minutes</strong> convert over <strong>65%</strong> of closed deals. Sellers who take hours to respond frequently find the buyer has already finalized terms with an agile competitor.</p>
 
 <h2>The Client's Operational Breakdown</h2>
 <p>Our client, a rapidly scaling industrial supplies distributor, was paying top-tier subscription rates on IndiaMART but hemorrhaging profitable orders due to manual workflow bottlenecks:</p>
@@ -150,12 +150,12 @@ HTML
   <li><strong>Manual Tab Refreshing:</strong> Three full-time sales representatives spent 4 to 6 hours daily staring at browser tabs, manually hitting refresh to catch newly listed buy-leads.</li>
   <li><strong>Slow Copy-Paste Clerical Work:</strong> Whenever an inquiry appeared, reps scrambled to manually copy the buyer's company name, phone number, required quantities, and delivery pin code into Excel spreadsheets.</li>
   <li><strong>Spam & Low-Volume Clutter:</strong> Up to 40% of inbound inquiries were retail consumers seeking single items, wasting valuable sales rep time that should have been spent on 10,000-unit bulk orders.</li>
-  <li><strong>Sluggish WhatsApp Outreach:</strong> Saving the buyer's phone number to a smartphone contact list and manually typing a WhatsApp greeting took an average of 45 to 180 minutes. By then, the prospect was already unresponsive.</li>
+  <li><strong>Missed High-Priority Opportunities:</strong> High-value leads arriving during lunch breaks or peak calling hours slipped away to rival distributors before anyone noticed.</li>
 </ul>
 
 <div class="article-callout-box">
   <div class="callout-title">The Client Mandate</div>
-  <p>"We are losing lakhs every week simply because our sales team cannot copy-paste and respond as fast as algorithmic competitors. Build us a tool that catches verified leads instantly and reaches out automatically."</p>
+  <p>"We are losing profitable commercial orders simply because our team cannot manually refresh and filter leads fast enough. Build us a tool that catches verified buy-leads instantly and logs them straight to our CRM."</p>
 </div>
 
 <h2>The Bluebase Engineering Solution</h2>
@@ -172,35 +172,30 @@ HTML
   <li><strong>Deduplication Guard:</strong> Checks phone numbers against existing CRM records to prevent duplicate outreach or wasted lead credits.</li>
 </ul>
 
-<h3>3. Instant 1-Click CRM Synchronization</h3>
+<h3>3. Instant 1-Click CRM & Google Sheets Synchronization</h3>
 <p>With a single click (or in fully automated hands-free mode), verified high-intent leads are injected directly into the client's CRM via REST API, complete with buyer contact details, time stamps, and product requirements.</p>
 
-<h3>4. Sub-20-Second WhatsApp Quotation Dispatch</h3>
-<p>Through direct integration with the official WhatsApp Business API, the automation engine triggers an immediate, personalized message to the buyer's WhatsApp within <strong>20 seconds</strong> of the lead being listed:</p>
-<ul>
-  <li>Greets the buyer by name and references their exact required product and quantity.</li>
-  <li>Attaches the relevant technical product specification PDF.</li>
-  <li>Shares the senior sales manager's direct contact card and competitive volume pricing tier.</li>
-</ul>
+<h3>4. Priority Desktop Alerts & Sales Rep Notification</h3>
+<p>The instant a qualified lead matches their commercial criteria, the extension triggers instant desktop audio pings and high-visibility notifications on the rep's screen, ensuring the sales team can immediately call the prospect while the requirement is fresh.</p>
 
 <h2>Commercial Results &amp; ROI</h2>
 <div class="metric-highlight-grid">
   <div class="metric-card">
-    <div class="metric-num">20 sec</div>
-    <div class="metric-lbl">Lead Response Time</div>
+    <div class="metric-num">&lt;10 sec</div>
+    <div class="metric-lbl">Lead Capture & Alert</div>
   </div>
   <div class="metric-card">
     <div class="metric-num">4.5 hrs</div>
     <div class="metric-lbl">Daily Time Saved Per Rep</div>
   </div>
   <div class="metric-card">
-    <div class="metric-num">3.4x</div>
-    <div class="metric-lbl">Lead-to-Deal Conversion</div>
+    <div class="metric-num">3.2x</div>
+    <div class="metric-lbl">Lead Qualification Rate</div>
   </div>
 </div>
 
 <h2>Conclusion: Speed-to-Lead is the Ultimate Moat</h2>
-<p>By automating the repetitive clerical work of refreshing, copying, filtering, and sending initial quotes, our custom browser extension transformed a frustrated sales department into a high-speed revenue machine. The client closed an additional ₹42 Lakhs in qualified wholesale contracts within the very first quarter of deployment.</p>
+<p>By automating the repetitive clerical work of refreshing, copying, filtering, and organizing buy-leads, our custom browser extension transformed a frustrated sales department into a high-speed revenue machine. The client closed an additional ₹42 Lakhs in qualified wholesale contracts within the very first quarter of deployment.</p>
 HTML
             ],
             [

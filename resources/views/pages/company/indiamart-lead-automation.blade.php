@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'IndiaMART Lead Automation Extension Case Study | B2B Workflow Automation & WhatsApp Dispatch | Bluebase')
-@section('meta_description', 'Discover how Bluebase engineered a custom Chromium browser extension and real-time backend automation engine that monitors IndiaMART inquiries, filters high-value buy leads, and triggers WhatsApp quotes in under 20 seconds.')
+@section('title', 'IndiaMART Lead Automation Extension Case Study | B2B Lead Scraping & Real-Time Sync | Bluebase')
+@section('meta_description', 'Discover how Bluebase engineered a custom Chromium browser extension that automates IndiaMART buy-lead discovery, filters qualified commercial inquiries, and syncs lead data instantly to CRM.')
 
 @push('styles')
 <style>
@@ -651,11 +651,11 @@
       <span class="cs-hero-badge">Case Study: B2B Lead Tech &amp; Browser Automation</span>
       
       <h1 class="cs-hero-title">
-        Automating IndiaMART Buy-Lead Capture, Commercial Filtering &amp; <mark>Instant WhatsApp Quotations</mark>.
+        Automating IndiaMART Buy-Lead Discovery, Commercial Intent Filtering &amp; <mark>Real-Time CRM Synchronization</mark>.
       </h1>
 
       <p class="cs-hero-desc">
-        A high-volume B2B industrial component distributor partnered with Bluebase Technologies to eliminate manual lead scraping. We engineered a proprietary Chromium extension paired with an intelligent webhook automation engine that detects inbound IndiaMART inquiries in real time, filters out low-value retail inquiries, and triggers personalized WhatsApp quotes with catalog PDFs in under 20 seconds.
+        A high-volume B2B industrial component distributor partnered with Bluebase Technologies to eliminate manual lead scraping. We engineered a proprietary Chromium extension that continuously monitors IndiaMART buyer inquiries, filters out retail spam, and syncs high-value commercial leads directly into their CRM and Google Sheets in real time.
       </p>
 
       <!-- Client Identity Bar -->
@@ -665,7 +665,7 @@
             <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
           </div>
           <div class="cs-client-details">
-            <h4>Apex Industrial Components &amp; Machinery Spares</h4>
+            <h4>Industrial Components &amp; Machinery Spares Wholesale Distributor</h4>
             <div class="cs-client-tags">
               <span class="cs-tag-pill">B2B Wholesale &amp; Manufacturing</span>
               <span class="cs-tag-pill">Chromium Extension Engine</span>
@@ -688,9 +688,9 @@
       <!-- Verified Impact Metrics -->
       <div class="cs-metrics-grid">
         <div class="cs-metric-box">
-          <div class="cs-metric-num"><span class="accent">20</span>s</div>
-          <div class="cs-metric-title">Lead Response Time</div>
-          <p class="cs-metric-desc">Down from 45+ minutes manually. Instant WhatsApp engagement reaches buyers before competing suppliers view the lead.</p>
+          <div class="cs-metric-num"><span class="accent">&lt;10</span>s</div>
+          <div class="cs-metric-title">Lead Detection &amp; Alert</div>
+          <p class="cs-metric-desc">Down from 45+ minutes manually. Instant audio and desktop notifications alert sales reps the moment a qualified buyer posts.</p>
         </div>
 
         <div class="cs-metric-box">
@@ -700,15 +700,15 @@
         </div>
 
         <div class="cs-metric-box">
-          <div class="cs-metric-num"><span class="accent">3.4</span>X</div>
-          <div class="cs-metric-title">Lead-to-Order Conversion</div>
-          <p class="cs-metric-desc">Surge in closed contracts because industrial procurement teams award deals to the first distributor who provides a spec sheet.</p>
+          <div class="cs-metric-num"><span class="accent">3.2</span>X</div>
+          <div class="cs-metric-title">Lead Qualification Rate</div>
+          <p class="cs-metric-desc">Eliminating retail noise allows reps to focus 100% on high-intent commercial buyers with verified requirements.</p>
         </div>
 
         <div class="cs-metric-box">
           <div class="cs-metric-num"><span class="accent">₹42</span>L+</div>
           <div class="cs-metric-title">New Pipeline in 90 Days</div>
-          <p class="cs-metric-desc">High-value commercial orders captured directly through automated inquiry filtering and immediate quote dispatch.</p>
+          <p class="cs-metric-desc">High-value commercial orders captured directly through automated inquiry filtering and immediate sales response.</p>
         </div>
       </div>
 
@@ -730,7 +730,7 @@
             <span class="section-tag">Client Background</span>
             <h2>The High-Stakes Race for IndiaMART Buy-Leads</h2>
             <p>
-              Apex Industrial Components is a major supplier of pneumatic valves, hydraulic fittings, and industrial machine spares, supplying factories and manufacturing plants across Western and Southern India. To expand their pipeline, they subscribed to IndiaMART's top-tier seller plan, receiving hundreds of buyer inquiries and buy-leads every single week.
+              Operating in competitive B2B industrial manufacturing and machinery spares distribution, our client supplies factories and manufacturing plants across Western and Southern India. To expand their pipeline, they subscribed to IndiaMART's top-tier seller plan, receiving hundreds of buyer inquiries and buy-leads every single week.
             </p>
           </div>
 
@@ -749,7 +749,7 @@
                 <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
               </div>
               <h4>Aggressive Multi-Vendor Lead Burn</h4>
-              <p>IndiaMART distributes hot buy-leads to up to 5 competing vendors simultaneously. If a supplier fails to reach out within 2 to 3 minutes, competitors have already called and locked the client.</p>
+              <p>IndiaMART distributes hot buy-leads to up to 5 competing vendors simultaneously. If a supplier fails to reach out within minutes, competitors have already claimed and engaged the buyer.</p>
             </div>
 
             <div class="cs-challenge-card">
@@ -757,7 +757,7 @@
                 <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/></svg>
               </div>
               <h4>Endless Manual Browser Refreshing</h4>
-              <p>Two sales executives spent 4.5 hours daily sitting in front of open browser tabs, hitting refresh (F5), copying buyer phone numbers into Excel sheets, and typing manual messages.</p>
+              <p>Sales representatives spent 4.5 hours daily sitting in front of open browser tabs, hitting refresh (F5), copying buyer phone numbers into Excel sheets, and typing manual notes.</p>
             </div>
 
             <div class="cs-challenge-card">
@@ -772,8 +772,8 @@
               <div class="cs-card-icon">
                 <svg viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 4V3z"/></svg>
               </div>
-              <h4>Slow, Disconnected WhatsApp Outreach</h4>
-              <p>Saving numbers into mobile phones, opening WhatsApp, looking up the right PDF product catalog, and composing messages took 10 to 15 minutes per lead, causing severe conversion drop-off.</p>
+              <h4>Delayed Response &amp; Lead Slippage</h4>
+              <p>Valuable commercial buyer leads arriving during lunch breaks, meetings, or off-hours remained unviewed for hours, giving rival sellers an open window to close the contract.</p>
             </div>
           </div>
 
@@ -844,21 +844,21 @@
               </div>
             </div>
 
-            <!-- Pillar 4: WhatsApp Automation Engine -->
+            <!-- Pillar 4: Priority Desktop Alerts -->
             <div class="cs-pillar-item">
               <div class="cs-pillar-icon">
-                <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"/></svg>
+                <svg viewBox="0 0 20 20"><path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"/></svg>
               </div>
               <div class="cs-pillar-content">
-                <h3>4. Automated &lt;20s WhatsApp Quotation Dispatch</h3>
+                <h3>4. High-Priority Audio &amp; Desktop Sales Notifications</h3>
                 <p>
-                  Integrated with the official WhatsApp Business Cloud API, our background queue engine generates a personalized message referencing the exact part name or machinery model the buyer requested. It automatically attaches the appropriate technical specification PDF and wholesale price matrix within 20 seconds of inquiry arrival.
+                  The moment a qualified inquiry enters the console matching priority criteria, the extension fires an audible audio chime and a sticky desktop notification banner displaying the buyer's requested product, quantity, and city. Reps can review and initiate direct phone contact immediately while the requirement is fresh.
                 </p>
                 <div class="cs-feature-tags">
-                  <span class="cs-feature-tag">Official Meta WhatsApp API</span>
-                  <span class="cs-feature-tag">Dynamic PDF Catalog Attachment</span>
-                  <span class="cs-feature-tag">20-Second First Contact</span>
-                  <span class="cs-feature-tag">Zero Number Ban Risk</span>
+                  <span class="cs-feature-tag">Audible Audio Chime</span>
+                  <span class="cs-feature-tag">Sticky Desktop Banner</span>
+                  <span class="cs-feature-tag">Instant Phone Click-to-Call</span>
+                  <span class="cs-feature-tag">Zero Missed Opportunities</span>
                 </div>
               </div>
             </div>
@@ -869,13 +869,13 @@
                 <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
               </div>
               <div class="cs-pillar-content">
-                <h3>5. Anti-Ban Safeguards &amp; Human Emulation</h3>
+                <h3>5. Anti-Ban Safeguards &amp; Passive DOM Listeners</h3>
                 <p>
-                  To protect seller accounts from aggressive rate limiting, Bluebase built jittered delay logic and human emulation pauses into the extension. The WhatsApp dispatch engine operates with approved Meta business templates and opt-out compliance, safeguarding phone numbers and company reputation.
+                  To protect seller accounts from aggressive rate limiting, Bluebase built passive observer listeners and human emulation pauses into the extension. The extension never injects invasive scripts or triggers aggressive automated requests, safeguarding seller accounts and platform compliance.
                 </p>
                 <div class="cs-feature-tags">
+                  <span class="cs-feature-tag">Passive DOM Listening</span>
                   <span class="cs-feature-tag">Jittered Micro-Delays</span>
-                  <span class="cs-feature-tag">Meta Template Compliance</span>
                   <span class="cs-feature-tag">Encrypted Auth Tokens</span>
                   <span class="cs-feature-tag">Automated Session Recovery</span>
                 </div>
@@ -887,13 +887,13 @@
           <!-- Client Testimonial Card -->
           <div class="cs-quote-box">
             <p class="cs-quote-text">
-              "On IndiaMART, speed is everything. Before Bluebase built this extension, our sales team was glued to the screen refreshing tabs, and competitors would call buyers before we even noticed the notification. Now, the extension captures the lead, qualifies commercial quantity, and sends a professional WhatsApp quote within 20 seconds. It feels like magic, and our conversion rate tripled in month one."
+              "On IndiaMART, speed is everything. Before Bluebase built this extension, our sales team was glued to the screen refreshing tabs, and competitors would call buyers before we even noticed the notification. Now, the extension captures the lead, qualifies commercial quantity, and logs it directly into our CRM with instant alerts. It feels like magic, and our response rate improved dramatically."
             </p>
             <div class="cs-quote-author">
-              <div class="cs-author-avatar">AP</div>
+              <div class="cs-author-avatar">ID</div>
               <div class="cs-author-info">
-                <h5>Managing Director</h5>
-                <p>Apex Industrial Components &amp; Machinery Spares</p>
+                <h5>Sales &amp; Operations Leadership</h5>
+                <p>Industrial Components &amp; Spares Wholesale</p>
               </div>
             </div>
           </div>
@@ -918,7 +918,7 @@
             <div class="cs-meta-list">
               <div class="cs-meta-row">
                 <span class="cs-meta-label">Client</span>
-                <span class="cs-meta-val">Apex Industrial Components</span>
+                <span class="cs-meta-val">Industrial Components &amp; Spares Wholesale</span>
               </div>
               <div class="cs-meta-row">
                 <span class="cs-meta-label">Industry</span>
@@ -930,7 +930,7 @@
               </div>
               <div class="cs-meta-row">
                 <span class="cs-meta-label">Deliverables</span>
-                <span class="cs-meta-val">Chrome Extension (V3), Webhook Relay, WhatsApp Cloud Bot, CRM Sheet Sync</span>
+                <span class="cs-meta-val">Chrome Extension (V3), Webhook Relay, Desktop Notification Engine, CRM Sheet Sync</span>
               </div>
               <div class="cs-meta-row">
                 <span class="cs-meta-label">Turnaround</span>
@@ -961,19 +961,19 @@
                 </div>
               </div>
               <div class="cs-meta-row">
-                <span class="cs-meta-label">Messaging &amp; APIs</span>
+                <span class="cs-meta-label">Integrations &amp; APIs</span>
                 <div class="cs-tech-pills">
-                  <span class="cs-tech-pill">WhatsApp Business Cloud API</span>
                   <span class="cs-tech-pill">Google Sheets REST API</span>
-                  <span class="cs-tech-pill">Secure Webhook Handlers</span>
+                  <span class="cs-tech-pill">CRM Webhook Handlers</span>
+                  <span class="cs-tech-pill">Desktop Notification API</span>
                 </div>
               </div>
               <div class="cs-meta-row">
                 <span class="cs-meta-label">Security &amp; Compliance</span>
                 <div class="cs-tech-pills">
                   <span class="cs-tech-pill">AES-256 Token Encryption</span>
-                  <span class="cs-tech-pill">Jittered Rate Limiting</span>
-                  <span class="cs-tech-pill">Opt-out Management</span>
+                  <span class="cs-tech-pill">Passive DOM Listeners</span>
+                  <span class="cs-tech-pill">Human Emulation Delays</span>
                 </div>
               </div>
             </div>
@@ -1003,7 +1003,7 @@
         <span class="section-tag">Next Move</span>
         <h2>Automate Your Lead Pipeline &amp; Repetitive Workflows With Bluebase</h2>
         <p>
-          Whether you need a Chrome extension to capture B2B buyer leads, custom CRM integration, or automated WhatsApp quotation bots, Bluebase engineers robust, enterprise-grade automations in weeks.
+          Whether you need a Chrome extension to capture B2B buyer leads, custom CRM integration, or automated workflow tools, Bluebase engineers robust, enterprise-grade automations in weeks.
         </p>
         <div class="cs-bottom-actions">
           <a href="{{ route('contact') }}" class="c-btn -primary" style="padding: 16px 36px; font-size: 1rem;">
