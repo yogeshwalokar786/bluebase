@@ -898,7 +898,7 @@
             </div>
 
             <div class="cs-card-footer">
-              <a href="{{ route('blog.show', 'automating-indiamart-lead-capture-custom-browser-extension-automation') }}" class="cs-read-link">
+              <a href="{{ route('customer-stories.indiamart-lead-automation') }}" class="cs-read-link">
                 <span>Read Full Case Study</span>
                 <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
               </a>

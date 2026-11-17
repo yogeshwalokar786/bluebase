@@ -82,6 +82,8 @@ Route::get('/customer-stories/omg-rental-bikes', [CompanyController::class, 'omg
 Route::get('/case-studies/omg-rental-bikes', fn() => redirect()->route('customer-stories.omg-rental-bikes', [], 301));
 Route::get('/customer-stories/aarohi-classic-2024', [CompanyController::class, 'aarohiClassicStory'])->name('customer-stories.aarohi-classic-2024');
 Route::get('/case-studies/aarohi-classic-2024', fn() => redirect()->route('customer-stories.aarohi-classic-2024', [], 301));
+Route::get('/customer-stories/indiamart-lead-automation', [CompanyController::class, 'indiamartLeadAutomationStory'])->name('customer-stories.indiamart-lead-automation');
+Route::get('/case-studies/indiamart-lead-automation', fn() => redirect()->route('customer-stories.indiamart-lead-automation', [], 301));
 Route::get('/compliance-security', [CompanyController::class, 'complianceSecurity'])->name('compliance-security');
 Route::get('/how-we-work', [CompanyController::class, 'howWeWork'])->name('how-we-work');
 Route::get('/company/how-we-work', fn() => redirect()->route('how-we-work', [], 301))->name('company.how-we-work');

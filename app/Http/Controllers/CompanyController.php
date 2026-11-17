@@ -147,6 +147,11 @@ class CompanyController extends Controller
         return view('pages.company.aarohi-classic-2024');
     }
 
+    public function indiamartLeadAutomationStory()
+    {
+        return view('pages.company.indiamart-lead-automation');
+    }
+
     public function complianceSecurity()
     {
         return view('pages.company.compliance-security');
