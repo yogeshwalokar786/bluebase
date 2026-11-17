@@ -113,7 +113,24 @@ class InquiryController extends Controller
             \Illuminate\Support\Facades\Log::error('ContactInquiry insertion error: ' . $e->getMessage(), $validated);
         }
 
-        // 5. Consume verification token so it cannot be re-used
+        // 5. Asynchronously forward lead to Bluebase CRM API
+        try {
+            $crmUrl = rtrim(config('services.crm.url') ?: env('CRM_URL', 'https://crm.bluebasetechnologies.com'), '/');
+            \Illuminate\Support\Facades\Http::timeout(3)->post($crmUrl . '/api/leads/sync', [
+                'name' => $validated['name'],
+                'email' => $validated['email'],
+                'phone' => $validated['phone'] ?? null,
+                'company' => $validated['company'] ?? null,
+                'service' => $validated['service'] ?? null,
+                'source' => 'Website Contact Form',
+                'notes' => $validated['message'] ?? null,
+                'sync_token' => env('CRM_SYNC_TOKEN', 'bluebase-sync-secret-key-2026'),
+            ]);
+        } catch (\Throwable $crmError) {
+            \Illuminate\Support\Facades\Log::warning('CRM lead sync non-fatal: ' . $crmError->getMessage());
+        }
+
+        // 6. Consume verification token so it cannot be re-used
         session()->forget('human_verified_token');
 
         return back()->with('success', 'Thank you! Your message has been received. Our enterprise engineering team will get back to you within 24 hours.');
@@ -165,6 +182,22 @@ class InquiryController extends Controller
             TrialRequest::create($validated);
         } catch (\Throwable $e) {
             \Illuminate\Support\Facades\Log::info('Trial request submitted: ' . $validated['email']);
+        }
+
+        // Asynchronously forward estimate/trial request to Bluebase CRM API
+        try {
+            $crmUrl = rtrim(config('services.crm.url') ?: env('CRM_URL', 'https://crm.bluebasetechnologies.com'), '/');
+            \Illuminate\Support\Facades\Http::timeout(3)->post($crmUrl . '/api/leads/sync', [
+                'name' => $validated['name'],
+                'email' => $validated['email'],
+                'company' => $validated['company'] ?? null,
+                'service' => 'Estimate / Project Trial Request',
+                'source' => 'Website Estimate Form',
+                'notes' => 'Cloud: ' . ($validated['cloud_platform'] ?? 'N/A') . ' | Architecture: ' . ($validated['sap_version'] ?? 'N/A'),
+                'sync_token' => env('CRM_SYNC_TOKEN', 'bluebase-sync-secret-key-2026'),
+            ]);
+        } catch (\Throwable $crmError) {
+            \Illuminate\Support\Facades\Log::warning('CRM lead sync non-fatal: ' . $crmError->getMessage());
         }
 
         return back()->with('success', 'Trial account provisioned! Check your inbox for your Bluebase cloud credentials and sandbox access.');

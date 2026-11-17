@@ -114,6 +114,9 @@ Route::get('/contact', [InquiryController::class, 'contactForm'])->name('contact
 Route::post('/contact', [InquiryController::class, 'storeContact'])->name('contact.store');
 Route::post('/contact/security-verify', [InquiryController::class, 'generateSecurityToken'])->name('contact.security.verify');
 
+Route::get('/client-portal', fn() => redirect(env('CRM_URL', 'https://crm.bluebasetechnologies.com/login')))->name('client-portal');
+Route::get('/crm', fn() => redirect(env('CRM_URL', 'https://crm.bluebasetechnologies.com/login')))->name('crm');
+
 Route::get('/book-a-demo', fn() => redirect()->route('contact', [], 301))->name('book-a-demo');
 Route::post('/book-a-demo', [InquiryController::class, 'storeContact'])->name('book-a-demo.store');
 
