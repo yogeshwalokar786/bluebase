@@ -57,29 +57,29 @@
           
           <!-- Remote-First Details Left -->
           <div data-viewport="true">
-            <span class="section-tag">Nagpur, India â€¢ Remote-First</span>
+            <span class="section-tag">Global Engineering &bull; Remote-First Model</span>
             <h2 style="font-size: 2.1rem; font-weight: 700; margin: 12px 0 16px; color: var(--color-primary); line-height: 1.25;">
-              Nagpur-Born Startup, <mark style="background: none; color: var(--color-accent);">Global Engineering Reach</mark>.
+              Distributed Software Engineering, <mark style="background: none; color: var(--color-accent);">Global Production Impact</mark>.
             </h2>
             <p style="color: var(--color-gray-600); margin-bottom: 28px; font-size: 1.05rem; line-height: 1.6;">
-              Bluebase was founded and is headquartered in <strong>Nagpur, Maharashtra, India</strong>. We operate with a modern remote-first modelâ€”giving you direct access to top-tier senior software architects and AI engineers across India without traditional agency overhead.
+              Bluebase Technologies is a specialized software engineering studio operating on a modern <strong>remote-first delivery model</strong>. We give high-growth startups and established enterprises direct access to senior full-stack developers, cloud architects, and AI engineers across India without traditional agency overhead or vendor markup.
             </p>
             
             <div style="display: flex; flex-direction: column; gap: 18px;">
               
-              <!-- Location & Headquarters Card -->
+              <!-- Location & Operating Model Card -->
               <div style="background: #ffffff; padding: 24px; border-radius: 14px; border: 1px solid var(--color-gray-200); box-shadow: 0 4px 16px rgba(0,0,0,0.03);">
                 <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
                   <div style="width: 40px; height: 40px; border-radius: 10px; background: rgba(0, 80, 231, 0.08); display: flex; align-items: center; justify-content: center; color: var(--color-accent);">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                   </div>
                   <div>
-                    <h4 style="font-size: 1.15rem; font-weight: 700; color: var(--color-primary); margin: 0;">Nagpur, Maharashtra, India</h4>
-                    <span style="font-size: 0.82rem; color: var(--color-accent); font-weight: 600;">Startup Origin &amp; Registered Hub</span>
+                    <h4 style="font-size: 1.15rem; font-weight: 700; color: var(--color-primary); margin: 0;">Distributed Engineering Hub</h4>
+                    <span style="font-size: 0.82rem; color: var(--color-accent); font-weight: 600;">Pan-India Senior Tech Pods</span>
                   </div>
                 </div>
                 <p style="color: var(--color-gray-600); font-size: 0.95rem; line-height: 1.55; margin: 0;">
-                  Headquartered in Nagpur (Zero Mile City, India). Operating as a fully digital, remote-first team delivering mission-critical web platforms, mobile solutions, and AI agents for clients nationwide and globally.
+                  Operating as a fully digital, remote-first technology studio delivering mission-critical web applications, high-performance mobile systems, custom workflow automations, and enterprise AI integrations for businesses nationwide and internationally.
                 </p>
               </div>
 
