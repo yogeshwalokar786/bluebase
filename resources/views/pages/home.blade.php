@@ -1168,7 +1168,7 @@
     </div>
   </section>
 
-  <!-- 9. LATEST ON SOFTWARE & WEB ENGINEERING (TABS) -->
+  <!-- 9. LATEST ON SOFTWARE & WEB ENGINEERING -->
   <section class="insights-section" id="resources">
     <div class="container">
       
@@ -1177,7 +1177,7 @@
           <span class="section-tag">Engineering Insights</span>
           <h2 class="section-title">Latest on <mark>Web, Mobile &amp; Architecture</mark>.</h2>
         </div>
-        <a href="{{ route('suits-blog') }}" class="c-btn -link">
+        <a href="{{ route('blog') }}" class="c-btn -link">
           <span class="c-btn__txt">View All Articles</span>
           <span class="c-btn__ico">
             <span class="c-btn__ico-base">
@@ -1190,110 +1190,99 @@
         </a>
       </div>
 
-      <div class="insights-tabs-nav" data-viewport="true">
-        <button class="tab-btn active" data-tab="tab-blog">Bluebase Tech Blog</button>
-        <button class="tab-btn" data-tab="tab-guides">Developer Guides</button>
-      </div>
-
-      <!-- Tab 1: Blog -->
-      <div class="tab-panel active" id="tab-blog">
-        <div class="articles-grid">
-          
+      <div class="articles-grid" style="margin-top: 36px;">
+        @if(isset($latestBlogs) && $latestBlogs->isNotEmpty())
+          @foreach($latestBlogs as $index => $blog)
+            <article class="article-card stagger-{{ ($index % 3) + 1 }}" data-viewport="true">
+              <div class="article-thumb-wrap">
+                <img src="{{ asset($blog->image ?: 'images/stories/screens-clicks.jpg') }}" alt="{{ $blog->title }}" class="article-thumb">
+              </div>
+              <div class="article-body">
+                <div>
+                  <div class="article-meta">
+                    <span class="article-cat">{{ $blog->category ?? 'Engineering' }}</span>
+                    <time>{{ $blog->published_at ? $blog->published_at->format('M Y') : 'Recent' }}</time>
+                  </div>
+                  <h3 class="article-title">{{ $blog->title }}</h3>
+                  <p class="article-desc">{{ Str::limit($blog->excerpt, 140) }}</p>
+                </div>
+                <a href="{{ route('blog.show', $blog->slug) }}" class="c-btn -link">
+                  <span class="c-btn__txt">Read Article</span>
+                  <span class="c-btn__ico">
+                    <span class="c-btn__ico-base">
+                      <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
+                    </span>
+                    <span class="c-btn__ico-hover">
+                      <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
+                    </span>
+                  </span>
+                </a>
+              </div>
+            </article>
+          @endforeach
+        @else
+          <!-- Fallback Proper Bluebase Articles -->
           <article class="article-card stagger-1" data-viewport="true">
-            <img src="{{ asset('images/stories/screens-clicks.jpg') }}" alt="SaaS MVP Guide" class="article-thumb">
+            <div class="article-thumb-wrap">
+              <img src="{{ asset('images/stories/omg-rental-bikes-brand.png') }}" alt="OMG Rental Bikes Fleet ERP" class="article-thumb">
+            </div>
             <div class="article-body">
               <div>
                 <div class="article-meta">
-                  <span class="article-cat">Startup Engineering</span>
-                  <time>Nov 2026</time>
+                  <span class="article-cat">Case Studies</span>
+                  <time>Recent</time>
                 </div>
-                <h3 class="article-title">Building Scalable SaaS MVPs: The Founder's Guide to Sprint-One Velocity.</h3>
-                <p class="article-desc">How to select practical tech stacks, structure relational databases, and launch working software without massive technical debt.</p>
+                <h3 class="article-title">Engineering OMG Rental Bikes: Scaling Fleet ERP &amp; Real-Time Booking Engine.</h3>
+                <p class="article-desc">How Bluebase engineered an automated vehicle rental platform with dynamic fleet inventory, digital KYC, and instant Razorpay security deposits.</p>
               </div>
-              <a href="{{ route('suits-blog') }}" class="c-btn -link">
-                <span class="c-btn__txt">Read Guide</span>
+              <a href="{{ route('blog.show', 'engineering-omg-rental-bikes-fleet-erp-booking-engine') }}" class="c-btn -link">
+                <span class="c-btn__txt">Read Case Study</span>
                 <span class="c-btn__ico">
-                  <span class="c-btn__ico-base">
-                    <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                  </span>
-                  <span class="c-btn__ico-hover">
-                    <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                  </span>
+                  <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
+                  <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
                 </span>
               </a>
             </div>
           </article>
 
           <article class="article-card stagger-2" data-viewport="true">
-            <img src="{{ asset('images/stories/asia-express-food.png') }}" alt="API Architecture" class="article-thumb">
+            <div class="article-thumb-wrap">
+              <img src="{{ asset('images/stories/screens-clicks.jpg') }}" alt="SaaS MVP Guide" class="article-thumb">
+            </div>
             <div class="article-body">
               <div>
                 <div class="article-meta">
-                  <span class="article-cat">Backend Architecture</span>
-                  <time>Nov 2026</time>
+                  <span class="article-cat">SaaS Architecture &amp; MVPs</span>
+                  <time>Recent</time>
                 </div>
-                <h3 class="article-title">Designing High-Speed REST APIs with Laravel &amp; MySQL.</h3>
-                <p class="article-desc">Best practices for query indexing, caching strategies, token authentication, and structuring clean API responses.</p>
+                <h3 class="article-title">Building Scalable SaaS MVPs: The Founder's Guide to Sprint-One Velocity.</h3>
+                <p class="article-desc">Selecting practical decoupled tech stacks, multi-tenant databases, and milestone delivery for launching production software in 3 to 6 weeks.</p>
               </div>
-              <a href="{{ route('suits-blog') }}" class="c-btn -link">
-                <span class="c-btn__txt">Read Architecture</span>
+              <a href="{{ route('blog.show', 'building-scalable-saas-mvps-founders-guide-sprint-one-velocity') }}" class="c-btn -link">
+                <span class="c-btn__txt">Read Guide</span>
                 <span class="c-btn__ico">
-                  <span class="c-btn__ico-base">
-                    <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                  </span>
-                  <span class="c-btn__ico-hover">
-                    <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                  </span>
+                  <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
+                  <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
                 </span>
               </a>
             </div>
           </article>
 
           <article class="article-card stagger-3" data-viewport="true">
-            <img src="{{ asset('images/illustrations/ui-illustration.jpg') }}" alt="Mobile Development" class="article-thumb">
-            <div class="article-body">
-              <div>
-                <div class="article-meta">
-                  <span class="article-cat">Mobile Engineering</span>
-                  <time>Nov 2026</time>
-                </div>
-                <h3 class="article-title">Cross-Platform Mobile Development: Choosing Between Flutter &amp; React Native.</h3>
-                <p class="article-desc">A practical comparison of rendering performance, developer velocity, and plugin ecosystems for early-stage products.</p>
-              </div>
-              <a href="{{ route('suits-blog') }}" class="c-btn -link">
-                <span class="c-btn__txt">Read Comparison</span>
-                <span class="c-btn__ico">
-                  <span class="c-btn__ico-base">
-                    <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                  </span>
-                  <span class="c-btn__ico-hover">
-                    <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                  </span>
-                </span>
-              </a>
+            <div class="article-thumb-wrap">
+              <img src="{{ asset('images/stories/hauni.jpg') }}" alt="Clinic & Healthcare Web Platforms" class="article-thumb">
             </div>
-          </article>
-
-        </div>
-      </div>
-
-      <!-- Tab 2: Developer Guides -->
-      <div class="tab-panel" id="tab-guides">
-        <div class="articles-grid">
-          
-          <article class="article-card stagger-1" data-viewport="true">
-            <img src="{{ asset('images/stories/sapinsider-thumb.jpg') }}" alt="UI/UX System" class="article-thumb">
             <div class="article-body">
               <div>
                 <div class="article-meta">
-                  <span class="article-cat">UI/UX Design</span>
-                  <time>Guide</time>
+                  <span class="article-cat">Healthcare &amp; Clinic Tech</span>
+                  <time>Recent</time>
                 </div>
-                <h3 class="article-title">Design Systems That Scale: From Figma Tokens to Production CSS.</h3>
-                <p class="article-desc">How to bridge the gap between design tokens and maintainable code without layout inconsistencies.</p>
+                <h3 class="article-title">Digital Transformation for Medical Clinics: Online Appointments &amp; WhatsApp Booking.</h3>
+                <p class="article-desc">How doctor practices and specialty clinics streamline patient bookings with Google Maps routing, credentials, and sub-second mobile layouts.</p>
               </div>
-              <a href="{{ route('suits-blog') }}" class="c-btn -link">
-                <span class="c-btn__txt">Read Guide</span>
+              <a href="{{ route('blog.show', 'digital-transformation-medical-clinics-online-appointments-whatsapp-booking') }}" class="c-btn -link">
+                <span class="c-btn__txt">Read Article</span>
                 <span class="c-btn__ico">
                   <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
                   <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
@@ -1301,29 +1290,7 @@
               </a>
             </div>
           </article>
-
-          <article class="article-card stagger-2" data-viewport="true">
-            <img src="{{ asset('images/illustrations/workflow-canvas.jpg') }}" alt="Performance Optimization" class="article-thumb">
-            <div class="article-body">
-              <div>
-                <div class="article-meta">
-                  <span class="article-cat">Performance</span>
-                  <time>Guide</time>
-                </div>
-                <h3 class="article-title">Achieving 95+ Core Web Vitals on Custom Websites.</h3>
-                <p class="article-desc">Proven strategies for lazy loading, image formats, asset bundling, and critical CSS in modern web applications.</p>
-              </div>
-              <a href="{{ route('suits-blog') }}" class="c-btn -link">
-                <span class="c-btn__txt">Read Guide</span>
-                <span class="c-btn__ico">
-                  <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
-                  <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
-                </span>
-              </a>
-            </div>
-          </article>
-
-        </div>
+        @endif
       </div>
 
     </div>

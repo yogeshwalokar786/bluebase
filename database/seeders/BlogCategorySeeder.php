@@ -13,65 +13,65 @@ class BlogCategorySeeder extends Seeder
     {
         $categories = [
             [
-                'name' => 'SaaS Architecture',
-                'slug' => 'saas-architecture',
-                'description' => 'Architectural blueprints, multi-tenant database designs, distributed scaling patterns, and microservices for high-velocity B2B SaaS applications.',
-                'meta_title' => 'SaaS Architecture & Multi-Tenant Engineering — Bluebase Tech Blog',
-                'meta_description' => 'Deep dive into multi-tenant database isolation, distributed cache invalidation, and resilient cloud architectures for modern B2B SaaS platforms.',
+                'name' => 'Case Studies',
+                'slug' => 'case-studies',
+                'description' => 'Real-world technical transformations, performance benchmark breakdowns, and client delivery results from Bluebase engineering engagements.',
+                'meta_title' => 'Client Case Studies & Technical Architecture — Bluebase Technologies',
+                'meta_description' => 'Explore in-depth case studies including OMG Rental Bikes fleet ERP and Aarohi Classic real-time scoring engine.',
                 'display_order' => 1,
             ],
             [
-                'name' => 'Frontend & Next.js',
-                'slug' => 'frontend-nextjs',
-                'description' => 'Modern client-side engineering, Next.js Server Components, real-time hydration, and edge-rendered user experiences.',
-                'meta_title' => 'Frontend & Next.js Performance Engineering — Bluebase Tech Blog',
-                'meta_description' => 'Master Next.js App Router, streaming SSR, deterministic state machines, and micro-interactions with zero layout shift.',
+                'name' => 'SaaS Architecture & MVPs',
+                'slug' => 'saas-engineering',
+                'description' => 'Architectural blueprints, multi-tenant databases, rapid 3 to 6-week MVP delivery, and subscription billing for B2B SaaS startups.',
+                'meta_title' => 'SaaS MVP Engineering & Multi-Tenant Architecture — Bluebase Tech Blog',
+                'meta_description' => 'How to architect, build, and launch production-grade SaaS MVPs in 3 to 6 weeks with zero technical debt.',
                 'display_order' => 2,
             ],
             [
-                'name' => 'API & Backend',
-                'slug' => 'api-backend',
-                'description' => 'High-throughput REST and GraphQL APIs, event streaming with Kafka/Redis, and PostgreSQL row-level security.',
-                'meta_title' => 'API & Distributed Backend Systems — Bluebase Tech Blog',
-                'meta_description' => 'Designing sub-10ms transactional APIs, idempotent event pipelines, and resilient distributed systems.',
+                'name' => 'Corporate & Web Engineering',
+                'slug' => 'web-engineering',
+                'description' => 'Bespoke corporate websites, high-authority brand portals, sub-second load times, and custom web applications with Next.js and Laravel.',
+                'meta_title' => 'Corporate & Modern Web Engineering — Bluebase Tech Blog',
+                'meta_description' => 'High-performance web architecture, executive corporate design, 95+ Core Web Vitals, and conversion-focused web platforms.',
                 'display_order' => 3,
             ],
             [
-                'name' => 'DevSecOps & Security',
-                'slug' => 'devsecops-security',
-                'description' => 'Zero-trust cloud infrastructure, automated SOC2 compliance pipelines, container hardening, and audit logging.',
-                'meta_title' => 'DevSecOps & Cloud Security Architecture — Bluebase Tech Blog',
-                'meta_description' => 'Enterprise cloud security, immutable audit logs, CI/CD vulnerability scanning, and compliant Kubernetes deployments.',
+                'name' => 'Healthcare & Clinic Tech',
+                'slug' => 'healthcare-tech',
+                'description' => 'Modern digital systems for medical clinics, doctor credentials, Google Maps patient navigation, and direct WhatsApp appointment booking.',
+                'meta_title' => 'Healthcare & Clinic Web Engineering — Bluebase Tech Blog',
+                'meta_description' => 'How medical clinics and healthcare practices streamline patient bookings with fast, mobile-friendly web portals.',
                 'display_order' => 4,
             ],
             [
                 'name' => 'Mobile Engineering',
                 'slug' => 'mobile-engineering',
-                'description' => 'Offline-first React Native and Flutter enterprise mobile apps, background synchronization, and native device bridge optimizations.',
-                'meta_title' => 'Enterprise Mobile App Engineering — Bluebase Tech Blog',
-                'meta_description' => 'Building offline-first enterprise mobile applications with biometric security and sub-millisecond local SQLite caches.',
+                'description' => 'High-performance cross-platform iOS and Android mobile applications built with Flutter and React Native from a single codebase.',
+                'meta_title' => 'Cross-Platform Mobile App Engineering — Bluebase Tech Blog',
+                'meta_description' => 'Architecting fast, responsive mobile apps with Flutter and React Native, offline synchronization, and native device hardware bridges.',
                 'display_order' => 5,
+            ],
+            [
+                'name' => 'Ecommerce & Retail',
+                'slug' => 'ecommerce-retail',
+                'description' => 'Modern decoupled ecommerce architectures, sub-second product catalog browsing, instant UPI/card payments, and lightweight inventory backends.',
+                'meta_title' => 'Ecommerce Engineering & UPI Payment Architecture — Bluebase Tech Blog',
+                'meta_description' => 'Engineering fast, high-converting digital storefronts with 1-click UPI checkout and automated cart recovery.',
+                'display_order' => 6,
             ],
             [
                 'name' => 'AI & Systems',
                 'slug' => 'ai-systems',
-                'description' => 'Autonomous LLM agent loops, deterministic schema constraints, retrieval-augmented generation (RAG), and agentic workflows.',
-                'meta_title' => 'Autonomous AI Agents & Cognitive Systems — Bluebase Tech Blog',
-                'meta_description' => 'Practical implementation of deterministic AI copilots, tool-calling sandboxes, and enterprise vector retrieval systems.',
-                'display_order' => 6,
-            ],
-            [
-                'name' => 'Case Study',
-                'slug' => 'case-study',
-                'description' => 'Real-world technical transformations, performance benchmark breakdowns, and ROI case studies from Bluebase engineering engagements.',
-                'meta_title' => 'Digital Engineering Case Studies & Benchmarks — Bluebase Tech Blog',
-                'meta_description' => 'In-depth case studies covering production deployments, latency reductions, and scalable architectures built by Bluebase.',
+                'description' => 'Autonomous LLM agent workflows, deterministic schema constraints, back-office document parsing, and enterprise business automation.',
+                'meta_title' => 'Autonomous AI Agents & Enterprise Systems — Bluebase Tech Blog',
+                'meta_description' => 'Practical enterprise AI implementation: moving beyond toy chatbots to reliable, audit-backed multi-agent workflows.',
                 'display_order' => 7,
             ],
         ];
 
         foreach ($categories as $cat) {
-            $created = BlogCategory::firstOrCreate(
+            $created = BlogCategory::updateOrCreate(
                 ['slug' => $cat['slug']],
                 $cat
             );
@@ -82,24 +82,5 @@ class BlogCategorySeeder extends Seeder
                   ->orWhere('category', 'like', '%' . explode(' ', $cat['name'])[0] . '%');
             })->whereNull('category_id')->update(['category_id' => $created->id]);
         }
-
-        // For any remaining blogs without category_id, map or assign
-        $defaultCat = BlogCategory::firstOrCreate(
-            ['slug' => 'engineering'],
-            [
-                'name' => 'Engineering',
-                'slug' => 'engineering',
-                'description' => 'Core software engineering methodologies, design patterns, and full-stack software practices.',
-                'meta_title' => 'Software Engineering & Clean Code — Bluebase Tech Blog',
-                'meta_description' => 'Technical blueprints, modern full-stack engineering standards, and clean code principles.',
-                'display_order' => 8,
-            ]
-        );
-
-        Blog::whereNull('category_id')->update([
-            'category_id' => $defaultCat->id,
-            'category' => $defaultCat->name,
-        ]);
     }
 }
-
