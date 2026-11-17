@@ -1146,20 +1146,20 @@
               </div>
             </div>
 
-            <!-- Slide 3: IndiaMART Lead Automation Extension -->
+            <!-- Slide 3: Pharmaceutical Medicine Export Lead Automation Extension -->
             <div class="story-slide">
               <div class="story-image-wrap">
-                <img src="{{ asset('images/stories/screens-clicks.jpg') }}" alt="IndiaMART Lead Automation Extension" loading="lazy">
+                <img src="{{ asset('images/stories/screens-clicks.jpg') }}" alt="Pharmaceutical Medicine Export Lead Automation Extension" loading="lazy">
               </div>
               <div class="story-content">
                 <div class="story-tags">
-                  <span class="story-tag">B2B Lead Tech</span>
+                  <span class="story-tag">Pharma Export Tech</span>
                   <span class="story-tag">Browser Extension</span>
                   <span class="story-tag" style="background: #ecfdf5; color: #047857;">Workflow Automation</span>
                 </div>
-                <h3 class="story-title">Automated IndiaMART Lead Capture, Commercial Intent Filtering &amp; Real-Time CRM Sync.</h3>
+                <h3 class="story-title">Automated IndiaMART Medicine Buy-Lead Capture, Export Intent Filtering &amp; Real-Time CRM Sync.</h3>
                 <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-text-muted); margin-bottom: 24px;">
-                  A high-volume B2B supplier struggled to find, qualify, and respond to IndiaMART buyer leads before competitors claimed them. Bluebase engineered a custom Chrome extension that monitors buyer inquiries in real time, automatically filters out retail spam, extracts verified buyer phone numbers, and syncs qualified leads to their CRM with instant sales alerts.
+                  A pharmaceutical manufacturer exporting medicines globally struggled to find, qualify, and respond to IndiaMART commercial buy-leads before competitors claimed them. Bluebase engineered a custom Chrome extension that monitors buyer inquiries in real time, automatically filters out domestic retail noise, extracts verified buyer details, and syncs high-value bulk medicine leads to their export CRM with instant desk alerts.
                 </p>
                 <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap;">
                   <a href="{{ route('customer-stories.indiamart-lead-automation') }}" class="c-btn -primary" style="padding: 12px 24px;">

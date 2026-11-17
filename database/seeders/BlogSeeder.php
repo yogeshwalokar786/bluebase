@@ -121,62 +121,62 @@ HTML
 HTML
             ],
             [
-                'title' => 'Automating IndiaMART Lead Capture: How a Custom Browser Extension Slashed Lead Tracking Delays & Boosted Qualification',
+                'title' => 'Automating IndiaMART Lead Capture: How a Custom Browser Extension Streamlined Pharma Export Lead Tracking & Qualification',
                 'slug' => 'automating-indiamart-lead-capture-custom-browser-extension-automation',
                 'category' => 'Case Studies',
                 'category_slug' => 'case-studies',
-                'tags' => 'IndiaMART Automation, Chrome Extension, B2B Lead Generation, Lead Qualification, CRM Integration, Workflow Automation',
+                'tags' => 'IndiaMART Automation, Chrome Extension, Pharma Export, Medicine Manufacturing, Lead Qualification, CRM Integration',
                 'author' => 'Bluebase Automation Pod',
                 'author_role' => 'Lead Automation Architect • Bluebase Technologies',
-                'author_avatar' => 'IM',
+                'author_avatar' => 'PE',
                 'read_time' => '7 min read',
                 'is_featured' => false,
                 'image' => 'images/stories/screens-clicks.jpg',
-                'excerpt' => 'How Bluebase engineered a custom Chrome browser extension and lead capture automation pipeline for a high-volume B2B supplier struggling with manual IndiaMART lead tracking, saving 4.5 hours daily per sales rep.',
+                'excerpt' => 'How Bluebase engineered a custom Chrome browser extension and lead capture pipeline for a pharmaceutical manufacturer exporting medicines globally, eliminating retail prescription clutter and saving 4.5 hours daily per export rep.',
                 'is_published' => true,
                 'published_at' => now()->subDays(6),
-                'meta_title' => 'IndiaMART Lead Automation Case Study: Custom Browser Extension — Bluebase',
-                'meta_description' => 'How Bluebase built a custom Chrome extension for automated IndiaMART buy-lead discovery, real-time qualification, and instant CRM synchronization.',
+                'meta_title' => 'Pharma Export Lead Automation Case Study: Custom Browser Extension — Bluebase',
+                'meta_description' => 'How Bluebase built a custom Chrome extension for a pharmaceutical medicine exporter, automating IndiaMART buy-lead discovery, export qualification, and CRM sync.',
                 'content' => <<<'HTML'
-<h2>The B2B Lead Struggle on IndiaMART</h2>
-<p>IndiaMART is India's largest B2B e-commerce marketplace, connecting hundreds of thousands of manufacturers, distributors, and bulk wholesalers with commercial buyers daily. However, the commercial reality of competitive categories is brutal: when an industrial buyer posts a high-value purchase inquiry, the lead is broadcast simultaneously to multiple verified sellers.</p>
+<h2>The Global Pharma Export Challenge on IndiaMART</h2>
+<p>IndiaMART connects thousands of international importers, hospital purchase desks, and overseas pharmaceutical distributors with Indian medicine manufacturers daily. However, the commercial reality of competitive healthcare categories is fierce: when an overseas procurement buyer posts a commercial medicine inquiry, the lead is broadcast simultaneously to multiple verified exporters.</p>
 
-<p>Studies show that B2B sellers who contact an IndiaMART buyer within <strong>minutes</strong> convert over <strong>65%</strong> of closed deals. Sellers who take hours to respond frequently find the buyer has already finalized terms with an agile competitor.</p>
+<p>Studies show that pharmaceutical exporters who acknowledge and review an overseas medicine buyer's inquiry within <strong>minutes</strong> convert over <strong>65%</strong> of contract tenders. Exporters who take hours to respond frequently find the buyer has already finalized terms with an agile competitor.</p>
 
 <h2>The Client's Operational Breakdown</h2>
-<p>Our client, a rapidly scaling industrial supplies distributor, was paying top-tier subscription rates on IndiaMART but hemorrhaging profitable orders due to manual workflow bottlenecks:</p>
+<p>Our client, a rapidly scaling pharmaceutical manufacturer exporting generic medicines and formulations globally, maintained top-tier seller subscriptions on IndiaMART but faced severe operational bottlenecks:</p>
 
 <ul>
-  <li><strong>Manual Tab Refreshing:</strong> Three full-time sales representatives spent 4 to 6 hours daily staring at browser tabs, manually hitting refresh to catch newly listed buy-leads.</li>
-  <li><strong>Slow Copy-Paste Clerical Work:</strong> Whenever an inquiry appeared, reps scrambled to manually copy the buyer's company name, phone number, required quantities, and delivery pin code into Excel spreadsheets.</li>
-  <li><strong>Spam & Low-Volume Clutter:</strong> Up to 40% of inbound inquiries were retail consumers seeking single items, wasting valuable sales rep time that should have been spent on 10,000-unit bulk orders.</li>
-  <li><strong>Missed High-Priority Opportunities:</strong> High-value leads arriving during lunch breaks or peak calling hours slipped away to rival distributors before anyone noticed.</li>
+  <li><strong>Manual Tab Refreshing:</strong> Three export coordinators spent 4 to 6 hours daily staring at browser screens, manually hitting refresh to catch newly posted medicine buy-leads.</li>
+  <li><strong>Slow Copy-Paste Clerical Work:</strong> Whenever an inquiry appeared, coordinators scrambled to manually copy the buyer's company name, target destination country, required formulation specs, and dosage into Excel spreadsheets.</li>
+  <li><strong>Retail Prescription Noise:</strong> Up to 70% of inbound inquiries were domestic retail patients seeking single medicine strips, wasting valuable export desk time that should have been spent on 10,000-pack commercial export contracts.</li>
+  <li><strong>Time Zone Delays:</strong> High-value overseas inquiries arriving outside domestic business hours slipped away to rival exporters before the team saw them.</li>
 </ul>
 
 <div class="article-callout-box">
   <div class="callout-title">The Client Mandate</div>
-  <p>"We are losing profitable commercial orders simply because our team cannot manually refresh and filter leads fast enough. Build us a tool that catches verified buy-leads instantly and logs them straight to our CRM."</p>
+  <p>"We are losing lucrative overseas export contracts simply because our team cannot manually refresh and filter leads fast enough. Build us a tool that catches verified bulk medicine buy-leads instantly and logs them straight to our export CRM."</p>
 </div>
 
 <h2>The Bluebase Engineering Solution</h2>
 <p>Rather than forcing the client to replace their entire workflow or deal with complex third-party tools, Bluebase designed and deployed a bespoke, lightweight <strong>Chromium Browser Extension</strong> coupled with an asynchronous backend webhook automation service.</p>
 
-<h3>1. Real-Time Lead Ingestion via Chrome Extension</h3>
-<p>Operating securely inside the rep's authorized browser session, our extension monitors the IndiaMART seller console using passive DOM mutation observers and internal websocket signals. The instant a new buy-lead appears, the extension parses and extracts buyer phone numbers, requested quantities, and delivery locations in milliseconds—with zero system lag.</p>
+<h3>1. Real-Time Medicine Lead Ingestion via Chrome Extension</h3>
+<p>Operating securely inside the coordinator's authorized browser session, our extension monitors the IndiaMART seller console using passive DOM mutation observers and internal websocket signals. The instant a new medicine buy-lead appears, the extension parses and extracts buyer phone numbers, requested formulations, and delivery locations in milliseconds—with zero system lag.</p>
 
-<h3>2. Intelligent Lead Qualification & Intent Filtering</h3>
-<p>Before bothering sales reps, an integrated filtering algorithm checks the inquiry against pre-set business parameters:</p>
+<h3>2. Intelligent Lead Qualification & Export Intent Filtering</h3>
+<p>Before notifying export coordinators, an integrated filtering algorithm checks the inquiry against pre-set business parameters:</p>
 <ul>
-  <li><strong>Commercial Quantity Threshold:</strong> Automatically skips single-unit consumer inquiries and prioritizes bulk orders (e.g. &ge; 100 units).</li>
-  <li><strong>Keyword & SKU Matching:</strong> Matches buyer specifications directly against the supplier's active inventory catalog.</li>
+  <li><strong>Commercial Batch Quantity Threshold:</strong> Automatically skips single-unit retail requests and prioritizes bulk export orders (e.g. &ge; 5,000 packs).</li>
+  <li><strong>Formulation & SKU Matching:</strong> Matches buyer specifications (tablets, capsules, syrups, injectables) directly against the exporter's product list.</li>
   <li><strong>Deduplication Guard:</strong> Checks phone numbers against existing CRM records to prevent duplicate outreach or wasted lead credits.</li>
 </ul>
 
-<h3>3. Instant 1-Click CRM & Google Sheets Synchronization</h3>
-<p>With a single click (or in fully automated hands-free mode), verified high-intent leads are injected directly into the client's CRM via REST API, complete with buyer contact details, time stamps, and product requirements.</p>
+<h3>3. Instant 1-Click Export CRM & Google Sheets Synchronization</h3>
+<p>With a single click (or in fully automated hands-free mode), verified commercial export leads are injected directly into the client's CRM via REST API, complete with buyer contact details, time stamps, dosage strengths, and destination country.</p>
 
-<h3>4. Priority Desktop Alerts & Sales Rep Notification</h3>
-<p>The instant a qualified lead matches their commercial criteria, the extension triggers instant desktop audio pings and high-visibility notifications on the rep's screen, ensuring the sales team can immediately call the prospect while the requirement is fresh.</p>
+<h3>4. Priority Desktop Alerts & Export Desk Notification</h3>
+<p>The instant a qualified lead matches their commercial export criteria, the extension triggers instant desktop audio pings and high-visibility notifications on the coordinator's screen, ensuring the export team can immediately evaluate the tender while the requirement is fresh.</p>
 
 <h2>Commercial Results &amp; ROI</h2>
 <div class="metric-highlight-grid">
@@ -190,12 +190,12 @@ HTML
   </div>
   <div class="metric-card">
     <div class="metric-num">3.2x</div>
-    <div class="metric-lbl">Lead Qualification Rate</div>
+    <div class="metric-lbl">Export Qualification Rate</div>
   </div>
 </div>
 
 <h2>Conclusion: Speed-to-Lead is the Ultimate Moat</h2>
-<p>By automating the repetitive clerical work of refreshing, copying, filtering, and organizing buy-leads, our custom browser extension transformed a frustrated sales department into a high-speed revenue machine. The client closed an additional ₹42 Lakhs in qualified wholesale contracts within the very first quarter of deployment.</p>
+<p>By automating the repetitive clerical work of refreshing, copying, filtering, and organizing medicine buy-leads, our custom browser extension transformed a frustrated export department into a high-speed revenue machine. The client closed an additional ₹42 Lakhs in qualified export and institutional contracts within the very first quarter of deployment.</p>
 HTML
             ],
             [

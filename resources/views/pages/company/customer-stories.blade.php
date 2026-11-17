@@ -870,25 +870,25 @@
         <!-- Card 3: IndiaMART Lead Automation Extension -->
         <article class="cs-story-card" data-category="automation" data-viewport="true">
           <div class="cs-card-img-wrap">
-            <img src="{{ asset('images/stories/screens-clicks.jpg') }}" alt="IndiaMART Lead Automation Extension" loading="lazy">
+            <img src="{{ asset('images/stories/screens-clicks.jpg') }}" alt="Pharmaceutical Medicine Export Lead Automation Extension" loading="lazy">
             <div class="cs-card-tag-floating">
-              <span class="cs-tag-badge">B2B Automation &amp; Lead Tech</span>
+              <span class="cs-tag-badge">Pharma Lead Tech</span>
               <span class="cs-tag-badge" style="background: rgba(16, 185, 129, 0.9);">Chrome Extension</span>
             </div>
           </div>
 
           <div class="cs-card-body">
             <div class="cs-card-client-row">
-              <span class="cs-card-client-name">B2B Industrial Suppliers</span>
-              <span style="font-size: 0.78rem; color: var(--color-text-muted);">Workflow Automation</span>
+              <span class="cs-card-client-name">Pharmaceutical Exporters</span>
+              <span style="font-size: 0.78rem; color: var(--color-text-muted);">Medicine Export Automation</span>
             </div>
 
             <h3 class="cs-card-title">
-              Automated IndiaMART Lead Capture, Commercial Intent Filtering &amp; Real-Time CRM Synchronization
+              Automated IndiaMART Medicine Buy-Lead Capture, Export Intent Filtering &amp; Real-Time CRM Synchronization
             </h3>
 
             <p class="cs-card-desc">
-              Engineered a bespoke Chrome browser extension that continuously monitors IndiaMART buyer inquiries, automatically filters commercial quantities, extracts verified numbers, and syncs qualified leads directly to CRM in real time.
+              Engineered a bespoke Chrome browser extension for a pharmaceutical manufacturer exporting generic medicines globally, automatically filtering bulk commercial orders from retail prescription noise and syncing qualified leads to CRM in real time.
             </p>
 
             <div class="cs-card-stats-row">

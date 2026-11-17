@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('title', 'IndiaMART Lead Automation Extension Case Study | B2B Lead Scraping & Real-Time Sync | Bluebase')
-@section('meta_description', 'Discover how Bluebase engineered a custom Chromium browser extension that automates IndiaMART buy-lead discovery, filters qualified commercial inquiries, and syncs lead data instantly to CRM.')
+@section('title', 'Pharmaceutical Medicine Export Lead Automation Case Study | Custom Browser Extension | Bluebase')
+@section('meta_description', 'Learn how Bluebase engineered a custom Chromium browser extension for a pharmaceutical manufacturer and medicine exporter, automating IndiaMART buy-lead discovery, filtering bulk export orders from retail spam, and syncing qualified leads to CRM in real time.')
 
 @push('styles')
 <style>
 /* ==========================================================================
-   CASE STUDY: INDIAMART LEAD AUTOMATION SPECIFIC STYLING
+   CASE STUDY: PHARMA EXPORT LEAD AUTOMATION SPECIFIC STYLING
    ========================================================================== */
 .cs-hero {
   padding: 130px 0 60px;
@@ -103,14 +103,14 @@
   width: 68px;
   height: 68px;
   border-radius: 14px;
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 10px;
   flex-shrink: 0;
-  color: var(--color-accent);
+  color: #16a34a;
 }
 
 .cs-client-logo-box svg {
@@ -407,7 +407,7 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: var(--color-accent);
+  background: #16a34a;
   color: #ffffff;
   font-weight: 700;
   display: flex;
@@ -645,29 +645,29 @@
         <span>/</span>
         <a href="{{ route('customer-stories') }}">Customer Stories</a>
         <span>/</span>
-        <span style="color: var(--color-accent); font-weight: 500;">IndiaMART Lead Automation Extension</span>
+        <span style="color: var(--color-accent); font-weight: 500;">Pharmaceutical Medicine Export Lead Automation</span>
       </nav>
 
-      <span class="cs-hero-badge">Case Study: B2B Lead Tech &amp; Browser Automation</span>
+      <span class="cs-hero-badge">Case Study: Pharma Export Lead Tech &amp; Browser Automation</span>
       
       <h1 class="cs-hero-title">
-        Automating IndiaMART Buy-Lead Discovery, Commercial Intent Filtering &amp; <mark>Real-Time CRM Synchronization</mark>.
+        Automating IndiaMART Medicine Buy-Lead Discovery, Export Intent Filtering &amp; <mark>Real-Time CRM Synchronization</mark>.
       </h1>
 
       <p class="cs-hero-desc">
-        A high-volume B2B industrial component distributor partnered with Bluebase Technologies to eliminate manual lead scraping. We engineered a proprietary Chromium extension that continuously monitors IndiaMART buyer inquiries, filters out retail spam, and syncs high-value commercial leads directly into their CRM and Google Sheets in real time.
+        A fast-scaling pharmaceutical manufacturer exporting generic medicines and formulations globally partnered with Bluebase Technologies to eliminate manual lead tracking. We engineered a proprietary Chromium extension that continuously monitors IndiaMART buyer inquiries in real time, automatically filters out single-strip retail noise, and syncs verified bulk commercial export leads directly into their CRM with instant desk alerts.
       </p>
 
       <!-- Client Identity Bar -->
       <div class="cs-client-card">
         <div class="cs-client-info">
           <div class="cs-client-logo-box">
-            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M4.5 10.5C3.67 10.5 3 11.17 3 12s.67 1.5 1.5 1.5h15c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5h-15zM10.5 4.5C10.5 3.67 11.17 3 12 3s1.5.67 1.5 1.5v15c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5v-15z"/></svg>
           </div>
           <div class="cs-client-details">
-            <h4>Industrial Components &amp; Machinery Spares Wholesale Distributor</h4>
+            <h4>Pharmaceutical Formulation Manufacturer &amp; Medicine Exporter</h4>
             <div class="cs-client-tags">
-              <span class="cs-tag-pill">B2B Wholesale &amp; Manufacturing</span>
+              <span class="cs-tag-pill">Pharmaceuticals &amp; Global Medicine Export</span>
               <span class="cs-tag-pill">Chromium Extension Engine</span>
               <span class="cs-tag-pill managed">Engineered by Bluebase</span>
             </div>
@@ -676,7 +676,7 @@
 
         <div class="cs-client-actions">
           <a href="{{ route('contact') }}" class="c-btn -primary" style="padding: 12px 24px;">
-            <span class="c-btn__txt">Automate Your B2B Sales Workflow</span>
+            <span class="c-btn__txt">Automate Your B2B Export Workflow</span>
             <span class="c-btn__ico">
               <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
               <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
@@ -690,7 +690,7 @@
         <div class="cs-metric-box">
           <div class="cs-metric-num"><span class="accent">&lt;10</span>s</div>
           <div class="cs-metric-title">Lead Detection &amp; Alert</div>
-          <p class="cs-metric-desc">Down from 45+ minutes manually. Instant audio and desktop notifications alert sales reps the moment a qualified buyer posts.</p>
+          <p class="cs-metric-desc">Down from 45+ minutes manually. Instant audio chimes and desktop alerts notify export coordinators the moment a qualified buyer posts.</p>
         </div>
 
         <div class="cs-metric-box">
@@ -701,14 +701,14 @@
 
         <div class="cs-metric-box">
           <div class="cs-metric-num"><span class="accent">3.2</span>X</div>
-          <div class="cs-metric-title">Lead Qualification Rate</div>
-          <p class="cs-metric-desc">Eliminating retail noise allows reps to focus 100% on high-intent commercial buyers with verified requirements.</p>
+          <div class="cs-metric-title">Export Qualification Rate</div>
+          <p class="cs-metric-desc">Eliminating domestic retail prescription clutter allows export reps to focus 100% on high-value bulk medicine orders.</p>
         </div>
 
         <div class="cs-metric-box">
           <div class="cs-metric-num"><span class="accent">₹42</span>L+</div>
-          <div class="cs-metric-title">New Pipeline in 90 Days</div>
-          <p class="cs-metric-desc">High-value commercial orders captured directly through automated inquiry filtering and immediate sales response.</p>
+          <div class="cs-metric-title">New Export Pipeline in 90 Days</div>
+          <p class="cs-metric-desc">Bulk commercial orders captured directly through automated inquiry filtering and immediate sales response.</p>
         </div>
       </div>
 
@@ -728,9 +728,9 @@
           <!-- Background & Context -->
           <div class="cs-section-header">
             <span class="section-tag">Client Background</span>
-            <h2>The High-Stakes Race for IndiaMART Buy-Leads</h2>
+            <h2>The High-Stakes Race for Global Pharmaceutical Buy-Leads</h2>
             <p>
-              Operating in competitive B2B industrial manufacturing and machinery spares distribution, our client supplies factories and manufacturing plants across Western and Southern India. To expand their pipeline, they subscribed to IndiaMART's top-tier seller plan, receiving hundreds of buyer inquiries and buy-leads every single week.
+              Operating in the competitive pharmaceutical manufacturing sector, our client specializes in exporting finished dosage formulations (tablets, capsules, oral liquids, and injectables) to international distributors, hospital procurement chains, and overseas government tenders across Africa, Southeast Asia, the Middle East, and Latin America. To supplement their export pipeline, they maintain top-tier seller accounts on IndiaMART, receiving hundreds of medicine purchase inquiries weekly.
             </p>
           </div>
 
@@ -739,7 +739,7 @@
             <span class="section-tag" style="color: #ef4444; border-color: rgba(239, 68, 68, 0.2); background: rgba(239, 68, 68, 0.08);">The Bottlenecks</span>
             <h2>Why Manual Lead Processing Was Failing</h2>
             <p>
-              While the lead flow was enormous, the operational friction of handling leads manually was bleeding thousands of rupees in lost deals and wasted sales payroll:
+              While the inquiry flow was enormous, the operational friction of handling pharmaceutical leads manually was causing lucrative export contracts to slip away:
             </p>
           </div>
 
@@ -748,32 +748,32 @@
               <div class="cs-card-icon">
                 <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
               </div>
-              <h4>Aggressive Multi-Vendor Lead Burn</h4>
-              <p>IndiaMART distributes hot buy-leads to up to 5 competing vendors simultaneously. If a supplier fails to reach out within minutes, competitors have already claimed and engaged the buyer.</p>
+              <h4>Aggressive Multi-Exporter Lead Burn</h4>
+              <p>IndiaMART distributes hot bulk medicine export inquiries to up to 5 verified exporters simultaneously. When an overseas procurement manager posts an inquiry, competing export houses call within minutes.</p>
             </div>
 
             <div class="cs-challenge-card">
               <div class="cs-card-icon">
                 <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/></svg>
               </div>
-              <h4>Endless Manual Browser Refreshing</h4>
-              <p>Sales representatives spent 4.5 hours daily sitting in front of open browser tabs, hitting refresh (F5), copying buyer phone numbers into Excel sheets, and typing manual notes.</p>
+              <h4>Endless Manual Tab Refreshing</h4>
+              <p>Export coordinators spent 4 to 6 hours daily sitting in front of open browser screens hitting refresh (F5), copying buyer phone numbers into Excel sheets, and typing manual notes.</p>
             </div>
 
             <div class="cs-challenge-card">
               <div class="cs-card-icon">
                 <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a8 8 0 100 16 8 8 0 000-16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg>
               </div>
-              <h4>Retail Spam &amp; MOQ Mismatches</h4>
-              <p>Over 60% of inquiries were consumers asking for 1 single retail unit. Reps wasted paid buy-lead credits and hours verifying requests that did not meet their 50-unit commercial MOQ.</p>
+              <h4>Retail Prescription Noise vs. Bulk Export</h4>
+              <p>Over 70% of inbound inquiries were domestic retail consumers asking for 1 or 2 individual medicine strips. This cluttered the console, wasted paid buy-lead credits, and drowned out high-value 10,000-pack commercial export orders.</p>
             </div>
 
             <div class="cs-challenge-card">
               <div class="cs-card-icon">
                 <svg viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 4V3z"/></svg>
               </div>
-              <h4>Delayed Response &amp; Lead Slippage</h4>
-              <p>Valuable commercial buyer leads arriving during lunch breaks, meetings, or off-hours remained unviewed for hours, giving rival sellers an open window to close the contract.</p>
+              <h4>Time Zone Delays &amp; Missed Overseas Orders</h4>
+              <p>High-value international medicine inquiries arriving outside domestic business hours or during lunch breaks remained unviewed for hours, giving rival overseas exporters an open window to close the contract.</p>
             </div>
           </div>
 
@@ -783,7 +783,7 @@
               <span class="section-tag">The Bluebase Solution</span>
               <h2>A Custom Chromium Extension &amp; Webhook Engine</h2>
               <p>
-                Bluebase engineered a bespoke, secure workflow automation suite built specifically for IndiaMART seller portals. Rather than relying on fragile manual scraping, we designed a compliant client-side extension backed by a cloud queue worker:
+                Bluebase engineered a bespoke, secure workflow automation suite built specifically for pharmaceutical export consoles. Rather than relying on fragile manual scraping, we designed a compliant client-side extension backed by a cloud queue worker:
               </p>
             </div>
 
@@ -793,9 +793,9 @@
                 <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L2.414 11l3.293 3.293a1 1 0 11-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L17.586 11l-3.293-3.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
               </div>
               <div class="cs-pillar-content">
-                <h3>1. Real-Time DOM Observer Extension (Manifest V3)</h3>
+                <h3>1. Real-Time Medicine Buy-Lead Observer (Manifest V3)</h3>
                 <p>
-                  Engineered a lightweight Chromium browser extension operating inside the IndiaMART seller dashboard. Using asynchronous `MutationObserver` listeners and background service workers, the extension detects new buy-leads the millisecond they render on-screen, completely eliminating the need for manual tab refreshing.
+                  Engineered a lightweight Chromium browser extension operating inside the IndiaMART seller dashboard. Using asynchronous `MutationObserver` listeners and background service workers, the extension detects new medicine buy-leads the millisecond they render on-screen, completely eliminating the need for manual tab refreshing.
                 </p>
                 <div class="cs-feature-tags">
                   <span class="cs-feature-tag">Chrome &amp; Edge Compatible</span>
@@ -812,15 +812,15 @@
                 <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clip-rule="evenodd"/></svg>
               </div>
               <div class="cs-pillar-content">
-                <h3>2. Commercial Intent &amp; MOQ Filtering Engine</h3>
+                <h3>2. Commercial Intent &amp; Bulk Formulation MOQ Filter</h3>
                 <p>
-                  Before claiming or processing a lead, the extension parses the inquiry details: requested quantity, estimated order value, buyer location, and commercial keywords (e.g., "bulk", "dealer", "factory", "tender"). Queries under the client's minimum quantity threshold are filtered out, saving precious paid IndiaMART lead credits.
+                  Before claiming or processing a lead, the extension parses the inquiry details: requested medicine name, dosage form (tablets, capsules, syrups, injectables), commercial batch quantities (e.g., &ge; 5,000 packs), buyer location/destination country, and commercial keywords ("export", "tender", "hospital supply", "distributor"). Retail prescription requests under the commercial threshold are filtered out, preserving paid lead credits.
                 </p>
                 <div class="cs-feature-tags">
-                  <span class="cs-feature-tag">Dynamic MOQ Thresholding</span>
-                  <span class="cs-feature-tag">Negative Keyword Filtering</span>
+                  <span class="cs-feature-tag">Export Quantity Thresholding</span>
+                  <span class="cs-feature-tag">Dosage Form Matching</span>
                   <span class="cs-feature-tag">Lead Credit Protection</span>
-                  <span class="cs-feature-tag">Verified GST Number Check</span>
+                  <span class="cs-feature-tag">Retail Prescription Blocker</span>
                 </div>
               </div>
             </div>
@@ -831,15 +831,15 @@
                 <svg viewBox="0 0 20 20"><path d="M3 12v3c0 1.657 3.134 3 7 3s7-1.343 7-3v-3c0 1.657-3.134 3-7 3s-7-1.343-7-3z"/><path d="M3 7v3c0 1.657 3.134 3 7 3s7-1.343 7-3V7c0 1.657-3.134 3-7 3S3 8.657 3 7z"/><path d="M17 5c0 1.657-3.134 3-7 3S3 6.657 3 5s3.134-3 7-3 7 1.343 7 3z"/></svg>
               </div>
               <div class="cs-pillar-content">
-                <h3>3. 1-Click Secure CRM &amp; Google Sheets Synchronization</h3>
+                <h3>3. 1-Click Secure Export CRM &amp; Google Sheets Synchronization</h3>
                 <p>
-                  Once an inquiry qualifies, the extension extracts verified buyer details (contact name, company name, phone number, city, requirement specifications) and fires an encrypted HTTPS webhook to the client's CRM and master Google Sheet in real time. Deduplication logic ensures existing clients are flagged immediately.
+                  Once an inquiry qualifies, the extension extracts verified buyer details (contact name, company name, phone number, destination country, formulation specifications, requested quantities) and fires an encrypted HTTPS webhook to the exporter's CRM and master Google Sheet in real time. Deduplication logic ensures existing overseas partners are flagged immediately.
                 </p>
                 <div class="cs-feature-tags">
                   <span class="cs-feature-tag">Instant Webhook Dispatch</span>
                   <span class="cs-feature-tag">Automatic Phone Deduplication</span>
                   <span class="cs-feature-tag">Google Sheets Sync</span>
-                  <span class="cs-feature-tag">Sales Rep Round-Robin Assignment</span>
+                  <span class="cs-feature-tag">Territory Manager Assignment</span>
                 </div>
               </div>
             </div>
@@ -850,15 +850,15 @@
                 <svg viewBox="0 0 20 20"><path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"/></svg>
               </div>
               <div class="cs-pillar-content">
-                <h3>4. High-Priority Audio &amp; Desktop Sales Notifications</h3>
+                <h3>4. High-Priority Audio &amp; Desktop Alerts for Export Desks</h3>
                 <p>
-                  The moment a qualified inquiry enters the console matching priority criteria, the extension fires an audible audio chime and a sticky desktop notification banner displaying the buyer's requested product, quantity, and city. Reps can review and initiate direct phone contact immediately while the requirement is fresh.
+                  The moment a qualified inquiry lands matching bulk export criteria, the extension fires an audible audio chime and a sticky desktop notification banner displaying the requested medicine formulation, quantity, and destination market. Export managers can review specs and initiate immediate contact while the requirement is fresh.
                 </p>
                 <div class="cs-feature-tags">
                   <span class="cs-feature-tag">Audible Audio Chime</span>
                   <span class="cs-feature-tag">Sticky Desktop Banner</span>
                   <span class="cs-feature-tag">Instant Phone Click-to-Call</span>
-                  <span class="cs-feature-tag">Zero Missed Opportunities</span>
+                  <span class="cs-feature-tag">Zero Missed Export Deals</span>
                 </div>
               </div>
             </div>
@@ -887,13 +887,13 @@
           <!-- Client Testimonial Card -->
           <div class="cs-quote-box">
             <p class="cs-quote-text">
-              "On IndiaMART, speed is everything. Before Bluebase built this extension, our sales team was glued to the screen refreshing tabs, and competitors would call buyers before we even noticed the notification. Now, the extension captures the lead, qualifies commercial quantity, and logs it directly into our CRM with instant alerts. It feels like magic, and our response rate improved dramatically."
+              "In pharmaceutical exports, timing and qualification are everything. IndiaMART receives thousands of inquiries, but 70% are individual retail consumers asking for single strips. Bluebase built us a custom extension that filters out retail clutter and immediately alerts our export desk whenever a bulk commercial medicine requirement is posted. Our response time dropped to under 10 seconds, and we closed over ₹42 Lakhs in new overseas and institutional supply orders."
             </p>
             <div class="cs-quote-author">
-              <div class="cs-author-avatar">ID</div>
+              <div class="cs-author-avatar">PE</div>
               <div class="cs-author-info">
-                <h5>Sales &amp; Operations Leadership</h5>
-                <p>Industrial Components &amp; Spares Wholesale</p>
+                <h5>Export &amp; Operations Leadership</h5>
+                <p>Pharmaceutical Manufacturing &amp; Global Medicine Export</p>
               </div>
             </div>
           </div>
@@ -903,7 +903,7 @@
             <span class="section-tag">Key Takeaway</span>
             <h2>Custom Browser Automation vs. Generic SaaS</h2>
             <p>
-              Off-the-shelf CRM tools cannot interact deeply with closed vendor portals like IndiaMART, TradeIndia, or Justdial. By engineering a <strong>custom browser extension tailored to their exact workflow</strong>, Bluebase delivered an unfair competitive advantage that paid for itself within the first 14 days of deployment.
+              Off-the-shelf CRM tools cannot interact deeply with closed vendor portals like IndiaMART, TradeIndia, or Pharmatutor. By engineering a <strong>custom browser extension tailored specifically to pharmaceutical export workflows</strong>, Bluebase delivered an unfair competitive advantage that paid for itself within the first 14 days of deployment.
             </p>
           </div>
 
@@ -918,11 +918,11 @@
             <div class="cs-meta-list">
               <div class="cs-meta-row">
                 <span class="cs-meta-label">Client</span>
-                <span class="cs-meta-val">Industrial Components &amp; Spares Wholesale</span>
+                <span class="cs-meta-val">Pharmaceutical Formulation Exporter</span>
               </div>
               <div class="cs-meta-row">
                 <span class="cs-meta-label">Industry</span>
-                <span class="cs-meta-val">B2B Machinery &amp; Industrial Spares</span>
+                <span class="cs-meta-val">Pharmaceuticals &amp; Global Medicine Export</span>
               </div>
               <div class="cs-meta-row">
                 <span class="cs-meta-label">Engagement Model</span>
@@ -930,7 +930,7 @@
               </div>
               <div class="cs-meta-row">
                 <span class="cs-meta-label">Deliverables</span>
-                <span class="cs-meta-val">Chrome Extension (V3), Webhook Relay, Desktop Notification Engine, CRM Sheet Sync</span>
+                <span class="cs-meta-val">Chrome Extension (V3), Webhook Relay, Desktop Notification Engine, Export CRM Sync</span>
               </div>
               <div class="cs-meta-row">
                 <span class="cs-meta-label">Turnaround</span>
@@ -981,8 +981,8 @@
 
           <!-- Quick Discovery Call CTA Widget -->
           <div class="cs-sidebar-cta">
-            <h4>Have a Manual Workflow?</h4>
-            <p>We build custom browser extensions, internal bots, and lead capture pipelines that save hours every day.</p>
+            <h4>Have a Pharma Export Workflow?</h4>
+            <p>We build custom browser extensions, export lead capture pipelines, and automated qualification bots that save hours every day.</p>
             <a href="{{ route('contact') }}" class="c-btn -primary" style="width: 100%; justify-content: center;">
               <span class="c-btn__txt">Talk to Our Automation Pod</span>
             </a>
@@ -1001,9 +1001,9 @@
     <div class="container">
       <div class="cs-bottom-box" data-viewport="true">
         <span class="section-tag">Next Move</span>
-        <h2>Automate Your Lead Pipeline &amp; Repetitive Workflows With Bluebase</h2>
+        <h2>Automate Your Export Lead Pipeline &amp; Repetitive Workflows With Bluebase</h2>
         <p>
-          Whether you need a Chrome extension to capture B2B buyer leads, custom CRM integration, or automated workflow tools, Bluebase engineers robust, enterprise-grade automations in weeks.
+          Whether you need a Chrome extension to capture B2B pharmaceutical buy-leads, custom export CRM integration, or automated qualification tools, Bluebase engineers robust, enterprise-grade automations in weeks.
         </p>
         <div class="cs-bottom-actions">
           <a href="{{ route('contact') }}" class="c-btn -primary" style="padding: 16px 36px; font-size: 1rem;">
