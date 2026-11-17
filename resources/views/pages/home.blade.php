@@ -1146,6 +1146,59 @@
               </div>
             </div>
 
+            <!-- Slide 3: IndiaMART Lead Automation Extension -->
+            <div class="story-slide">
+              <div class="story-image-wrap">
+                <img src="{{ asset('images/stories/screens-clicks.jpg') }}" alt="IndiaMART Lead Automation Extension" loading="lazy">
+              </div>
+              <div class="story-content">
+                <div class="story-tags">
+                  <span class="story-tag">B2B Lead Tech</span>
+                  <span class="story-tag">Browser Extension</span>
+                  <span class="story-tag" style="background: #ecfdf5; color: #047857;">Workflow Automation</span>
+                </div>
+                <h3 class="story-title">Automated IndiaMART Lead Capture, Smart Intent Filtering &amp; WhatsApp Quotations.</h3>
+                <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-text-muted); margin-bottom: 24px;">
+                  A high-volume B2B supplier struggled to find, qualify, and respond to IndiaMART buyer leads before competitors claimed them. Bluebase engineered a custom Chrome extension that monitors buyer inquiries in real time, automatically filters out retail spam, extracts verified buyer phone numbers, and dispatches instant WhatsApp quotes in under 20 seconds.
+                </p>
+                <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap;">
+                  <a href="{{ route('blog.show', 'automating-indiamart-lead-capture-custom-browser-extension-automation') }}" class="c-btn -primary" style="padding: 12px 24px;">
+                    <span class="c-btn__txt">Read Case Study</span>
+                    <span class="c-btn__ico">
+                      <span class="c-btn__ico-base">
+                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
+                      </span>
+                      <span class="c-btn__ico-hover">
+                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
+                      </span>
+                    </span>
+                  </a>
+                  <a href="{{ route('contact') }}" class="c-btn -secondary" style="padding: 12px 22px;">
+                    <span class="c-btn__txt">Automate Your Lead Workflow</span>
+                    <span class="c-btn__ico">
+                      <span class="c-btn__ico-base">
+                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
+                      </span>
+                      <span class="c-btn__ico-hover">
+                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
+                      </span>
+                    </span>
+                  </a>
+                  <a href="{{ route('customer-stories') }}" class="c-btn -link" style="color: var(--color-accent);">
+                    <span class="c-btn__txt">All Customer Stories</span>
+                    <span class="c-btn__ico">
+                      <span class="c-btn__ico-base">
+                        <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                      </span>
+                      <span class="c-btn__ico-hover">
+                        <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                      </span>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
             <!-- Future slides can be added directly here as additional .story-slide elements -->
 
           </div>

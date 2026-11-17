@@ -867,6 +867,48 @@
           </div>
         </article>
 
+        <!-- Card 3: IndiaMART Lead Automation Extension -->
+        <article class="cs-story-card" data-category="automation" data-viewport="true">
+          <div class="cs-card-img-wrap">
+            <img src="{{ asset('images/stories/screens-clicks.jpg') }}" alt="IndiaMART Lead Automation Extension" loading="lazy">
+            <div class="cs-card-tag-floating">
+              <span class="cs-tag-badge">B2B Automation &amp; Lead Tech</span>
+              <span class="cs-tag-badge" style="background: rgba(16, 185, 129, 0.9);">Chrome Extension</span>
+            </div>
+          </div>
+
+          <div class="cs-card-body">
+            <div class="cs-card-client-row">
+              <span class="cs-card-client-name">B2B Industrial Suppliers</span>
+              <span style="font-size: 0.78rem; color: var(--color-text-muted);">Workflow Automation</span>
+            </div>
+
+            <h3 class="cs-card-title">
+              Automated IndiaMART Lead Scraping, Real-Time Intent Filtering &amp; WhatsApp Quotation Extension
+            </h3>
+
+            <p class="cs-card-desc">
+              Engineered a bespoke Chrome browser extension that continuously monitors IndiaMART buyer inquiries, automatically filters commercial quantities, extracts verified numbers, and sends personalized WhatsApp quotes within 20 seconds.
+            </p>
+
+            <div class="cs-card-stats-row">
+              <div class="cs-card-stat-pill"><strong>20s</strong> Lead Response</div>
+              <div class="cs-card-stat-pill"><strong>4.5 hrs</strong> Saved / Day</div>
+              <div class="cs-card-stat-pill"><strong>3.4X</strong> Deal Conversion</div>
+            </div>
+
+            <div class="cs-card-footer">
+              <a href="{{ route('blog.show', 'automating-indiamart-lead-capture-custom-browser-extension-automation') }}" class="cs-read-link">
+                <span>Read Full Case Study</span>
+                <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
+              </a>
+              <span style="font-size: 0.82rem; color: var(--color-text-muted);">
+                Browser Automation
+              </span>
+            </div>
+          </div>
+        </article>
+
       </div>
 
     </div>
