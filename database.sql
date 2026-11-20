@@ -81,6 +81,7 @@ CREATE TABLE `blogs` (
   `schema_type` varchar(255) NOT NULL DEFAULT 'TechArticle',
   `is_published` tinyint(1) NOT NULL DEFAULT 1,
   `is_featured` tinyint(1) NOT NULL DEFAULT 0,
+  `helpful_count` int(10) unsigned NOT NULL DEFAULT 0,
   `published_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -95,7 +96,7 @@ CREATE TABLE `blogs` (
 
 LOCK TABLES `blogs` WRITE;
 /*!40000 ALTER TABLE `blogs` DISABLE KEYS */;
-INSERT INTO `blogs` VALUES (1,'Why Relying Only on Instagram or Facebook Is Risky for Your Business: The Value of an Owned Website','why-relying-only-on-instagram-facebook-is-risky-for-business','Websites & Digital Presence',1,'Business Website, Small Business Growth, Instagram vs Website, Online Credibility, Digital Office','Bluebase Growth Team','Digital Strategy & Client Success • Bluebase Technologies','BB','5 min read','images/stories/omg-rental-bikes-brand.png','Discover why building your entire business on social media leaves you vulnerable to sudden algorithm drops and account bans, and why a dedicated business website remains your most valuable 24/7 digital asset.','<h2>The Danger of Building on "Rented Land"</h2>
+INSERT INTO `blogs` (`id`, `title`, `slug`, `category`, `category_id`, `tags`, `author`, `author_role`, `author_avatar`, `read_time`, `image`, `excerpt`, `content`, `meta_title`, `meta_description`, `meta_keywords`, `focus_keyword`, `canonical_url`, `og_title`, `og_description`, `og_image`, `robots`, `schema_type`, `is_published`, `is_featured`, `published_at`, `created_at`, `updated_at`) VALUES (1,'Why Relying Only on Instagram or Facebook Is Risky for Your Business: The Value of an Owned Website','why-relying-only-on-instagram-facebook-is-risky-for-business','Websites & Digital Presence',1,'Business Website, Small Business Growth, Instagram vs Website, Online Credibility, Digital Office','Bluebase Growth Team','Digital Strategy & Client Success • Bluebase Technologies','BB','5 min read','images/stories/omg-rental-bikes-brand.png','Discover why building your entire business on social media leaves you vulnerable to sudden algorithm drops and account bans, and why a dedicated business website remains your most valuable 24/7 digital asset.','<h2>The Danger of Building on "Rented Land"</h2>
 <p>Today, almost every business owner starts by creating an Instagram page or Facebook account. It is quick, free, and easy to post photos. But as your business grows, relying entirely on social media becomes one of the biggest hidden risks to your revenue.</p>
 
 <p>Social media platforms are "rented land." You do not own your follower list, you do not control the platform, and you cannot dictate who sees your posts. Over the last three years, organic reach on social media has dropped significantly. On average, fewer than 5% to 10% of your own followers ever see what you post unless you pay to boost it.</p>

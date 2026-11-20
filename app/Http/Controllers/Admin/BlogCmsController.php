@@ -14,7 +14,8 @@ class BlogCmsController extends Controller
     {
         $blogs = Blog::with('blogCategory')->latest()->paginate(15);
         $categories = BlogCategory::withCount('blogs')->orderBy('name')->get();
-        return view('admin.cms.blogs.index', compact('blogs', 'categories'));
+        $totalHelpfulVotes = (int) Blog::sum('helpful_count');
+        return view('admin.cms.blogs.index', compact('blogs', 'categories', 'totalHelpfulVotes'));
     }
 
     public function create()

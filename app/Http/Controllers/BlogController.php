@@ -162,4 +162,32 @@ class BlogController extends Controller
 
         return view('pages.resources.blog-single', compact('blog', 'relatedBlogs'));
     }
+
+    /**
+     * Handle public feedback when readers mark an article as helpful.
+     */
+    public function voteHelpful(Request $request, int $id)
+    {
+        $blog = Blog::published()->findOrFail($id);
+
+        $sessionKey = 'voted_helpful_blog_' . $blog->id;
+        if ($request->session()->has($sessionKey)) {
+            return response()->json([
+                'success' => true,
+                'already_voted' => true,
+                'message' => 'You have already marked this article as helpful.',
+                'helpful_count' => (int) $blog->helpful_count,
+            ]);
+        }
+
+        $blog->increment('helpful_count');
+        $request->session()->put($sessionKey, true);
+
+        return response()->json([
+            'success' => true,
+            'already_voted' => false,
+            'message' => 'Thank you! Your feedback has been recorded.',
+            'helpful_count' => (int) $blog->helpful_count,
+        ]);
+    }
 }

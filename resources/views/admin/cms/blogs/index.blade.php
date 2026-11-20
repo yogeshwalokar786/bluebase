@@ -23,8 +23,13 @@
 @if(isset($categories) && $categories->count() > 0)
   <div class="card" style="margin-bottom: 20px; padding: 14px 18px; background: rgba(0, 80, 231, 0.04); border: 1px dashed var(--border-color);">
     <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
-      <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em;">
-        Active Categories ({{ $categories->count() }})
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em;">
+          Active Categories ({{ $categories->count() }})
+        </div>
+        <div style="font-size: 0.78rem; color: #10B981; font-weight: 600; background: rgba(16, 185, 129, 0.12); padding: 3px 8px; border-radius: 4px;">
+          Total Helpful Feedback: {{ $totalHelpfulVotes ?? 0 }} votes
+        </div>
       </div>
       <div style="display: flex; gap: 8px; flex-wrap: wrap;">
         @foreach($categories as $cat)
@@ -44,6 +49,7 @@
         <tr>
           <th>Article &amp; Permalink</th>
           <th>Category</th>
+          <th>Helpful Votes</th>
           <th>SEO Score</th>
           <th>Author</th>
           <th>Status</th>
@@ -69,6 +75,16 @@
               <a href="{{ route('blog.category', $blog->category_slug) }}" target="_blank" class="badge" style="background: rgba(0, 80, 231, 0.2); color: #60A5FA; text-decoration: none;">
                 {{ $blog->effective_category_name }}
               </a>
+            </td>
+            <td>
+              <div style="display: flex; align-items: center; gap: 6px;">
+                <span class="badge" style="background: {{ ($blog->helpful_count ?? 0) > 0 ? 'rgba(16, 185, 129, 0.15)' : 'rgba(255, 255, 255, 0.05)' }}; color: {{ ($blog->helpful_count ?? 0) > 0 ? '#10B981' : 'var(--text-muted)' }}; font-weight: 700; font-size: 0.78rem; padding: 3px 8px; border-radius: 4px; display: inline-flex; align-items: center;">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: -1px; margin-right: 4px;">
+                    <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/>
+                  </svg>
+                  {{ $blog->helpful_count ?? 0 }} helpful
+                </span>
+              </div>
             </td>
             <td>
               @php
@@ -114,7 +130,7 @@
           </tr>
         @empty
           <tr>
-            <td colspan="7" style="text-align: center; color: var(--text-muted); padding: 32px;">No articles or case studies published yet.</td>
+            <td colspan="8" style="text-align: center; color: var(--text-muted); padding: 32px;">No articles or case studies published yet.</td>
           </tr>
         @endforelse
       </tbody>

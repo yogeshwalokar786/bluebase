@@ -253,10 +253,10 @@
                 <circle cx="8" cy="8" r="6"/>
                 <path d="M8 5v3M8 11h.01"/>
               </svg>
-              <span>Executive Architectural Summary</span>
+              <span>Executive Summary</span>
             </div>
             <p>
-              {{ $blog->excerpt ?? 'In high-throughput enterprise environments, systems must be built for deterministic isolation, sub-millisecond data pipelines, and seamless operational scalability.' }}
+              {{ $blog->excerpt ?? 'In today’s competitive digital landscape, modern businesses need reliable web systems, clear customer communication, and automated processes to grow predictably.' }}
             </p>
           </div>
 
@@ -267,22 +267,26 @@
 
           <!-- Article Key Takeaways -->
           <div class="article-callout-box" id="key-takeaways" style="border-left-color: #0050e7; background: #f8fafc; border-color: #e2e8f0; border-left-width: 5px;">
-            <div class="callout-title" style="color: #0f172a;">Key Engineering Takeaways</div>
+            <div class="callout-title" style="color: #0f172a;">Key Strategic Takeaways</div>
             <ul style="margin: 12px 0 0; padding-left: 20px;">
-              <li>Architect isolation boundaries directly at the storage engine level rather than relying solely on application middleware.</li>
-              <li>Decouple compute and background worker pipelines with Redis cluster streams and deterministic idempotency keys.</li>
-              <li>Incorporate automated regression checks into your CI/CD runner to catch latency regressions before code reaches staging.</li>
+              <li>Align your digital investments directly with real business outcomes, customer trust, and verified conversions.</li>
+              <li>Automate manual inquiries, WhatsApp follow-ups, and customer data tracking to eliminate operational friction.</li>
+              <li>Partner with a dedicated engineering team for ongoing maintenance, proactive security, and high uptime.</li>
             </ul>
           </div>
 
           <!-- Feedback & Share Strip -->
           <div class="article-interaction-strip">
             <div class="article-feedback-text">
-              Did this technical playbook help your system design?
+              Was this guide helpful for your business?
             </div>
             <div class="article-feedback-btns">
-              <button type="button" class="feedback-pill-btn" onclick="this.innerHTML='Thanks for your feedback!'; this.disabled=true;">
-                Helpful
+              <button type="button" id="helpful-btn" class="feedback-pill-btn" onclick="submitHelpfulVote({{ $blog->id }})">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 4px;">
+                  <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/>
+                </svg>
+                <span id="helpful-label">Helpful</span>
+                <span id="helpful-counter" style="margin-left: 4px; font-weight: 700; color: #0050e7;">({{ $blog->helpful_count ?? 0 }})</span>
               </button>
               <button type="button" class="feedback-pill-btn" onclick="window.location.href='{{ route('contact') }}?topic=feedback';">
                 Suggest Improvement
@@ -463,5 +467,68 @@
     </div>
   </div>
 </section>
+
+<script>
+function submitHelpfulVote(blogId) {
+  const btn = document.getElementById('helpful-btn');
+  const label = document.getElementById('helpful-label');
+  const counter = document.getElementById('helpful-counter');
+
+  if (!btn || btn.disabled) return;
+
+  btn.disabled = true;
+  label.textContent = 'Saving...';
+
+  const csrfMeta = document.querySelector('meta[name="csrf-token"]');
+  const csrfToken = csrfMeta ? csrfMeta.getAttribute('content') : '{{ csrf_token() }}';
+
+  fetch('{{ url('/blog') }}/' + blogId + '/helpful', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRF-TOKEN': csrfToken,
+      'Accept': 'application/json'
+    }
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.helpful_count !== undefined && counter) {
+      counter.textContent = '(' + data.helpful_count + ')';
+    }
+    label.textContent = 'Marked Helpful';
+    btn.style.background = '#ecfdf5';
+    btn.style.borderColor = '#10b981';
+    btn.style.color = '#065f46';
+    if (counter) counter.style.color = '#065f46';
+    try {
+      localStorage.setItem('bluebase_helpful_' + blogId, '1');
+    } catch (e) {}
+  })
+  .catch(err => {
+    console.error('Error submitting feedback:', err);
+    label.textContent = 'Helpful';
+    btn.disabled = false;
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const blogId = {{ $blog->id }};
+  try {
+    if (localStorage.getItem('bluebase_helpful_' + blogId) === '1') {
+      const btn = document.getElementById('helpful-btn');
+      const label = document.getElementById('helpful-label');
+      const counter = document.getElementById('helpful-counter');
+      if (btn && label) {
+        btn.disabled = true;
+        label.textContent = 'Marked Helpful';
+        btn.style.background = '#ecfdf5';
+        btn.style.borderColor = '#10b981';
+        btn.style.color = '#065f46';
+        if (counter) counter.style.color = '#065f46';
+      }
+    }
+  } catch (e) {}
+});
+</script>
 
 @endsection

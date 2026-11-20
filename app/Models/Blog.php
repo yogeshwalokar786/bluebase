@@ -33,11 +33,13 @@ class Blog extends Model
         'og_image',
         'robots',
         'schema_type',
+        'helpful_count',
     ];
 
     protected $casts = [
         'is_published' => 'boolean',
         'is_featured' => 'boolean',
+        'helpful_count' => 'integer',
         'published_at' => 'datetime',
     ];
 

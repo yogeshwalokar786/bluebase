@@ -100,6 +100,7 @@ Route::get('/guides', fn() => redirect()->route('blog', [], 301));
 Route::get('/playbooks', fn() => redirect()->route('blog', [], 301));
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 Route::get('/blog/category/{slug}', [BlogController::class, 'category'])->name('blog.category');
+Route::post('/blog/{id}/helpful', [BlogController::class, 'voteHelpful'])->where('id', '[0-9]+')->name('blog.helpful');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 Route::get('/suits-blog', fn() => redirect()->route('blog', [], 301))->name('suits-blog');
 Route::get('/suits-blog/{slug}', fn($slug) => redirect()->route('blog.show', ['slug' => $slug], 301));
