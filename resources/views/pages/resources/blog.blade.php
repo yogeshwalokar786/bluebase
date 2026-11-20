@@ -139,14 +139,14 @@
             <div class="blog-author-avatar">{{ $featuredBlog->author_initials }}</div>
             <div class="blog-author-info">
               <span class="blog-author-name">{{ $featuredBlog->author }}</span>
-              <span class="blog-author-role">{{ $featuredBlog->author_role ?? 'Principal Systems Architect' }}</span>
+              <span class="blog-author-role">{{ $featuredBlog->author_role ?? 'Digital Strategy & Client Success • Bluebase Technologies' }}</span>
             </div>
           </div>
         </div>
 
         <div class="blog-featured-cta">
           <a href="{{ route('blog.show', $featuredBlog->slug) }}" class="c-btn -primary">
-            <span class="c-btn__txt">Read Deep Dive</span>
+            <span class="c-btn__txt">Read Guide</span>
             <span class="c-btn__ico">
               <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
               <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
@@ -155,27 +155,12 @@
         </div>
       </div>
 
-      <!-- Visual Right: Interactive Architecture Teaser -->
+      <!-- Visual Right: Featured Article Image -->
       <div class="blog-featured-visual">
-        <a href="{{ route('blog.show', $featuredBlog->slug) }}" class="blog-visual-link" aria-label="Read Architecture Blueprint">
-          <div class="blog-code-badge">Production Architecture &bull; PostgreSQL RLS</div>
-          <div class="blog-terminal-window">
-            <div class="terminal-dots">
-              <span></span><span></span><span></span>
-            </div>
-            <code>
-              -- Enforce strict row-level security<br>
-              ALTER TABLE organization_invoices<br>
-              ENABLE ROW LEVEL SECURITY;<br>
-              <br>
-              CREATE POLICY tenant_isolation_policy ON organization_invoices<br>
-              USING (tenant_id = current_setting('app.current_tenant_id')::uuid);<br>
-              <br>
-              -- Query planner bypasses cross-tenant scans<br>
-              EXPLAIN ANALYZE SELECT * FROM organization_invoices;<br>
-              Execution Time: 0.842 ms (Bitmap Heap Scan)
-            </code>
-          </div>
+        <a href="{{ route('blog.show', $featuredBlog->slug) }}" class="blog-visual-link" aria-label="Read {{ $featuredBlog->title }}" style="display: block; width: 100%; height: 100%; min-height: 280px; overflow: hidden; border-radius: 12px; position: relative; border: 1px solid rgba(255, 255, 255, 0.08);">
+          @if($featuredBlog->image)
+            <img src="{{ asset($featuredBlog->image) }}" alt="{{ $featuredBlog->title }}" style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 12px; transition: transform 0.4s ease;">
+          @endif
         </a>
       </div>
 
@@ -218,8 +203,13 @@
     <div class="blog-articles-grid" data-viewport="true" id="articles-grid">
       
       @forelse($blogs as $art)
-        <a href="{{ route('blog.show', $art->slug) }}" class="blog-article-card" data-category="{{ $art->category_slug }}">
-          <div class="blog-card-body">
+        <a href="{{ route('blog.show', $art->slug) }}" class="blog-article-card" data-category="{{ $art->category_slug }}" style="overflow: hidden; display: flex; flex-direction: column;">
+          @if($art->image)
+            <div class="blog-card-thumb" style="width: 100%; height: 190px; overflow: hidden; background: #0f172a; position: relative;">
+              <img src="{{ asset($art->image) }}" alt="{{ $art->title }}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease;">
+            </div>
+          @endif
+          <div class="blog-card-body" style="flex: 1;">
             <div class="blog-meta-top">
               <span class="blog-cat-badge">{{ $art->effective_category_name }}</span>
               <span class="blog-read-time">{{ $art->read_time }}</span>

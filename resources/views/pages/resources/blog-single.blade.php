@@ -246,6 +246,13 @@
       <main class="article-reading-card">
         <article class="article-main-body" id="article-content">
 
+          <!-- Article Featured Hero Banner -->
+          @if($blog->image)
+            <div class="article-hero-banner" style="margin-bottom: 28px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 1px solid #e2e8f0;">
+              <img src="{{ asset($blog->image) }}" alt="{{ $blog->title }}" style="width: 100%; height: auto; max-height: 480px; object-fit: cover; display: block;">
+            </div>
+          @endif
+
           <!-- Executive Summary Callout Box -->
           <div class="article-callout-box" id="overview">
             <div class="callout-title">
@@ -321,14 +328,19 @@
   <div class="container">
     
     <div class="related-header">
-      <p class="section-pretitle">Continuous Learning</p>
-      <h2 class="section-title">Up Next in Engineering</h2>
+      <p class="section-pretitle">Business Insights</p>
+      <h2 class="section-title">Recommended Business Guides</h2>
     </div>
 
     <div class="blog-articles-grid" data-viewport="true">
       @foreach($relatedBlogs as $rel)
-        <a href="{{ route('blog.show', $rel->slug) }}" class="blog-article-card" data-category="{{ $rel->category_slug }}">
-          <div class="blog-card-body">
+        <a href="{{ route('blog.show', $rel->slug) }}" class="blog-article-card" data-category="{{ $rel->category_slug }}" style="overflow: hidden; display: flex; flex-direction: column;">
+          @if($rel->image)
+            <div class="blog-card-thumb" style="width: 100%; height: 180px; overflow: hidden; background: #0f172a; position: relative;">
+              <img src="{{ asset($rel->image) }}" alt="{{ $rel->title }}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease;">
+            </div>
+          @endif
+          <div class="blog-card-body" style="flex: 1;">
             <div class="blog-meta-top">
               <span class="blog-cat-badge">{{ $rel->category }}</span>
               <span class="blog-read-time">{{ $rel->read_time }}</span>
