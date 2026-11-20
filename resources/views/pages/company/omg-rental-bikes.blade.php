@@ -9,7 +9,7 @@
 @push('schema')
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
+  "@@context": "https://schema.org",
   "@type": "Article",
   "headline": "OMG Rental Bikes: 100+ Vehicle Fleet Management System & Instant Online Booking Engine",
   "description": "How Bluebase engineered a custom fleet ERP and real-time online booking system for OMG Rental Bikes.",

@@ -9,7 +9,7 @@
 @push('schema')
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
+  "@@context": "https://schema.org",
   "@type": "Article",
   "headline": "Aarohi Classic 2024: Digital Event Tech, Performance Ads & WhatsApp Automation",
   "description": "How Bluebase powered a premier bodybuilding championship with custom registration tech, Meta ad funnels, and automated WhatsApp operations.",

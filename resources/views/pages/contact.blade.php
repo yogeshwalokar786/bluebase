@@ -8,7 +8,7 @@
 @push('schema')
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
+  "@@context": "https://schema.org",
   "@type": "ContactPage",
   "name": "Contact Bluebase Technologies",
   "description": "Reach out to Bluebase Technologies to discuss custom website, web app, mobile app, or software engineering projects.",

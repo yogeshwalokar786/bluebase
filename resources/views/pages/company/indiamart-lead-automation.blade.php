@@ -9,7 +9,7 @@
 @push('schema')
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
+  "@@context": "https://schema.org",
   "@type": "Article",
   "headline": "Pharma Export Lead Automation: Automating IndiaMART Medicine Buy-Lead Capture & Real-Time CRM Sync",
   "description": "How Bluebase engineered a custom Chromium extension to capture, score, and sync international medicine inquiries directly into CRM.",

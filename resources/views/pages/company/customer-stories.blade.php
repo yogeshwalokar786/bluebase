@@ -8,7 +8,7 @@
 @push('schema')
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
+  "@@context": "https://schema.org",
   "@type": "CollectionPage",
   "name": "Bluebase Client Success Stories",
   "description": "Real-world engineering case studies and proven client results from Bluebase Technologies.",

@@ -14,7 +14,7 @@
 @push('schema')
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
+  "@@context": "https://schema.org",
   "@type": "CollectionPage",
   "name": "{{ isset($currentCategory) ? $currentCategory->name . ' Articles' : 'Bluebase Technologies Blog' }}",
   "description": "Actionable guides, software development playbooks, and tech cost breakdowns for business owners and startups.",

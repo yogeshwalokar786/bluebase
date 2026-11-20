@@ -11,7 +11,7 @@
 @push('schema')
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
+  "@@context": "https://schema.org",
   "@type": "Article",
   "headline": "{{ addslashes($story->title) }}",
   "description": "{{ addslashes(strip_tags($story->excerpt ?: $story->title)) }}",
