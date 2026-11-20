@@ -1054,7 +1054,7 @@
         <!-- Card 1: OMG Rental Bikes -->
         <article class="client-story-card">
           <div class="cs-card-media">
-            <img src="{{ asset('images/stories/omg-rental-bikes-brand.png') }}" alt="OMG Rental Bikes custom fleet ERP and booking portal" loading="lazy">
+            <img src="{{ asset('images/stories/omg-rental-bikes-brand.png') }}?v=2" alt="OMG Rental Bikes custom fleet ERP and booking portal" loading="lazy">
             <div class="cs-media-badges">
               <span class="cs-badge-cat">Mobility Startup</span>
               <span class="cs-badge-status live">
@@ -1086,7 +1086,7 @@
         <!-- Card 2: Aarohi Classic 2024 -->
         <article class="client-story-card">
           <div class="cs-card-media">
-            <img src="{{ asset('images/stories/aarohi-classic-brand.png') }}" alt="Aarohi Classic 2024 athlete registration portal" loading="lazy">
+            <img src="{{ asset('images/stories/aarohi-classic-brand.png') }}?v=2" alt="Aarohi Classic 2024 athlete registration portal" loading="lazy">
             <div class="cs-media-badges">
               <span class="cs-badge-cat">Sports &amp; Fitness Event</span>
               <span class="cs-badge-status event">
@@ -1118,7 +1118,7 @@
         <!-- Card 3: Pharma Medicine Export Automation -->
         <article class="client-story-card">
           <div class="cs-card-media">
-            <img src="{{ asset('images/stories/screens-clicks.jpg') }}" alt="Pharmaceutical Medicine Export Lead Automation Extension" loading="lazy">
+            <img src="{{ asset('images/stories/screens-clicks.jpg') }}?v=2" alt="Pharmaceutical Medicine Export Lead Automation Extension" loading="lazy">
             <div class="cs-media-badges">
               <span class="cs-badge-cat">Pharma Export Tech</span>
               <span class="cs-badge-status tool">

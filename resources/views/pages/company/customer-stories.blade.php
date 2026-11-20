@@ -757,7 +757,7 @@
 
         <!-- Right: Visual Device Showcase -->
         <div class="cs-featured-visual">
-          <img src="{{ asset('images/stories/omg-rental-bikes-brand.png') }}" alt="OMG Rental Bikes Brand Showcase" loading="lazy">
+          <img src="{{ asset('images/stories/omg-rental-bikes-brand.png') }}?v=2" alt="OMG Rental Bikes Brand Showcase" loading="lazy">
         </div>
 
       </div>
@@ -786,7 +786,7 @@
         <!-- Case Study Card 1: OMG Rental Bikes -->
         <article class="cs-story-card" data-category="mobility" data-viewport="true">
           <div class="cs-card-img-wrap">
-            <img src="{{ asset('images/stories/omg-rental-bikes-brand.png') }}" alt="OMG Rental Bikes Platform" loading="lazy">
+            <img src="{{ asset('images/stories/omg-rental-bikes-brand.png') }}?v=2" alt="OMG Rental Bikes Platform" loading="lazy">
             <div class="cs-card-tag-floating">
               <span class="cs-tag-badge">Mobility Startup</span>
               <span class="cs-tag-badge" style="background: rgba(4, 120, 87, 0.9);">100% Managed</span>
@@ -828,7 +828,7 @@
         <!-- Case Study Card 2: Aarohi Classic 2024 -->
         <article class="cs-story-card" data-category="event" data-viewport="true">
           <div class="cs-card-img-wrap">
-            <img src="{{ asset('images/stories/aarohi-classic-brand.png') }}" alt="Aarohi Classic 2024 Event Digital Operations" loading="lazy">
+            <img src="{{ asset('images/stories/aarohi-classic-brand.png') }}?v=2" alt="Aarohi Classic 2024 Event Digital Operations" loading="lazy">
             <div class="cs-card-tag-floating">
               <span class="cs-tag-badge">Sports &amp; Fitness Event</span>
               <span class="cs-tag-badge" style="background: rgba(29, 78, 216, 0.9);">100% Remote Ops</span>
@@ -870,7 +870,7 @@
         <!-- Card 3: IndiaMART Lead Automation Extension -->
         <article class="cs-story-card" data-category="automation" data-viewport="true">
           <div class="cs-card-img-wrap">
-            <img src="{{ asset('images/stories/screens-clicks.jpg') }}" alt="Pharmaceutical Medicine Export Lead Automation Extension" loading="lazy">
+            <img src="{{ asset('images/stories/screens-clicks.jpg') }}?v=2" alt="Pharmaceutical Medicine Export Lead Automation Extension" loading="lazy">
             <div class="cs-card-tag-floating">
               <span class="cs-tag-badge">Pharma Lead Tech</span>
               <span class="cs-tag-badge" style="background: rgba(16, 185, 129, 0.9);">Chrome Extension</span>

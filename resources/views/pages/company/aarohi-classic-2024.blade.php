@@ -695,7 +695,7 @@
       <div class="cs-client-card">
         <div class="cs-client-info">
           <div class="cs-client-logo-box">
-            <img src="{{ asset('images/stories/aarohi-classic-brand.png') }}" alt="Aarohi Classic 2024 Banner">
+            <img src="{{ asset('images/stories/aarohi-classic-brand.png') }}?v=2" alt="Aarohi Classic 2024 Banner">
           </div>
           <div class="cs-client-details">
             <h4>Aarohi Classic 2024</h4>

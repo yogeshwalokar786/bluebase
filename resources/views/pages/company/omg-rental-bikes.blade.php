@@ -677,7 +677,7 @@
       <div class="cs-client-card">
         <div class="cs-client-info">
           <div class="cs-client-logo-box">
-            <img src="{{ asset('images/stories/omg-rental-bikes-brand.png') }}" alt="OMG Rental Bikes Logo">
+            <img src="{{ asset('images/stories/omg-rental-bikes-brand.png') }}?v=2" alt="OMG Rental Bikes Logo">
           </div>
           <div class="cs-client-details">
             <h4>OMG Rental Bikes</h4>
