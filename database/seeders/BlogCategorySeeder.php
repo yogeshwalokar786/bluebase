@@ -45,6 +45,14 @@ class BlogCategorySeeder extends Seeder
                 'display_order' => 4,
             ],
             [
+                'name' => 'Digital Marketing & Growth',
+                'slug' => 'digital-marketing-growth',
+                'description' => 'Data-driven paid advertising funnels, hyper-targeted Meta ad campaigns, conversion landing pages, and automated WhatsApp lead qualification.',
+                'meta_title' => 'Digital Marketing & Performance Lead Generation — Bluebase Tech Blog',
+                'meta_description' => 'Proven strategies for scaling client inquiries with targeted Meta advertising, high-converting landing pages, and instant WhatsApp response funnels.',
+                'display_order' => 4,
+            ],
+            [
                 'name' => 'Mobile Engineering',
                 'slug' => 'mobile-engineering',
                 'description' => 'High-performance cross-platform iOS and Android mobile applications built with Flutter and React Native from a single codebase.',
@@ -67,6 +75,14 @@ class BlogCategorySeeder extends Seeder
                 'meta_title' => 'Autonomous AI Agents & Enterprise Systems — Bluebase Tech Blog',
                 'meta_description' => 'Practical enterprise AI implementation: moving beyond toy chatbots to reliable, audit-backed multi-agent workflows.',
                 'display_order' => 7,
+            ],
+            [
+                'name' => 'Website Maintenance & Cloud SLA',
+                'slug' => 'maintenance-cloud-sla',
+                'description' => 'Proactive uptime monitoring, automated off-site cloud backups, Core Web Vitals optimization, and enterprise website security SLAs.',
+                'meta_title' => 'Website Maintenance, Cloud Hosting & Security SLAs — Bluebase Tech Blog',
+                'meta_description' => 'Why proactive website maintenance, automated cloud backups, and zero-downtime hosting SLAs protect your digital revenue.',
+                'display_order' => 8,
             ],
         ];
 
