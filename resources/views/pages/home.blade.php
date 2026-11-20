@@ -1174,17 +1174,17 @@
     </div>
   </section>
 
-  <!-- 9. LATEST ON SOFTWARE & WEB ENGINEERING -->
+  <!-- 9. LATEST BUSINESS & GROWTH GUIDES -->
   <section class="insights-section" id="resources">
     <div class="container">
       
       <div class="insights-header-row" data-viewport="true">
         <div>
-          <span class="section-tag">Engineering Insights</span>
-          <h2 class="section-title">Latest on <mark>Web, Mobile &amp; Architecture</mark>.</h2>
+          <span class="section-tag">Business &amp; Growth Insights</span>
+          <h2 class="section-title">Practical Guides to <mark>Grow Your Business Online</mark>.</h2>
         </div>
         <a href="{{ route('blog') }}" class="c-btn -link">
-          <span class="c-btn__txt">View All Articles</span>
+          <span class="c-btn__txt">View All Guides</span>
           <span class="c-btn__ico">
             <span class="c-btn__ico-base">
               <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
@@ -1227,22 +1227,22 @@
             </article>
           @endforeach
         @else
-          <!-- Fallback Proper Bluebase Articles -->
+          <!-- Fallback Proper Bluebase Customer Guides -->
           <article class="article-card stagger-1" data-viewport="true">
             <div class="article-thumb-wrap">
-              <img src="{{ asset('images/stories/omg-rental-bikes-brand.png') }}" alt="OMG Rental Bikes Fleet ERP" class="article-thumb">
+              <img src="{{ asset('images/blogs/social-media-vs-owned-website.jpg') }}" alt="Why Relying Only on Instagram or Facebook Is Risky" class="article-thumb">
             </div>
             <div class="article-body">
               <div>
                 <div class="article-meta">
-                  <span class="article-cat">Case Studies</span>
+                  <span class="article-cat">Websites &amp; Digital Presence</span>
                   <time>Recent</time>
                 </div>
-                <h3 class="article-title">Engineering OMG Rental Bikes: Scaling Fleet ERP &amp; Real-Time Booking Engine.</h3>
-                <p class="article-desc">How Bluebase engineered an automated vehicle rental platform with dynamic fleet inventory, digital KYC, and instant Razorpay security deposits.</p>
+                <h3 class="article-title">Why Relying Only on Instagram or Facebook Is Risky for Your Business: The Value of an Owned Website.</h3>
+                <p class="article-desc">Social media pages rent attention. Discover why an owned corporate website provides guaranteed credibility, Google ranking, and long-term customer assets.</p>
               </div>
-              <a href="{{ route('blog.show', 'engineering-omg-rental-bikes-fleet-erp-booking-engine') }}" class="c-btn -link">
-                <span class="c-btn__txt">Read Case Study</span>
+              <a href="{{ route('blog.show', 'why-relying-only-on-instagram-facebook-is-risky-for-business') }}" class="c-btn -link">
+                <span class="c-btn__txt">Read Guide</span>
                 <span class="c-btn__ico">
                   <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
                   <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
@@ -1253,18 +1253,18 @@
 
           <article class="article-card stagger-2" data-viewport="true">
             <div class="article-thumb-wrap">
-              <img src="{{ asset('images/stories/screens-clicks.jpg') }}" alt="SaaS MVP Guide" class="article-thumb">
+              <img src="{{ asset('images/blogs/whatsapp-meta-ads-leads.jpg') }}" alt="Stop Wasting Money on Boost Post" class="article-thumb">
             </div>
             <div class="article-body">
               <div>
                 <div class="article-meta">
-                  <span class="article-cat">SaaS Architecture &amp; MVPs</span>
+                  <span class="article-cat">Business Growth &amp; Marketing</span>
                   <time>Recent</time>
                 </div>
-                <h3 class="article-title">Building Scalable SaaS MVPs: The Founder's Guide to Sprint-One Velocity.</h3>
-                <p class="article-desc">Selecting practical decoupled tech stacks, multi-tenant databases, and milestone delivery for launching production software in 3 to 6 weeks.</p>
+                <h3 class="article-title">Stop Wasting Money on the "Boost Post" Button: How to Get Real Customer Inquiries on WhatsApp.</h3>
+                <p class="article-desc">Why boosting posts yields passive likes while targeted Meta campaigns connect direct buyers into your WhatsApp chat funnel.</p>
               </div>
-              <a href="{{ route('blog.show', 'building-scalable-saas-mvps-founders-guide-sprint-one-velocity') }}" class="c-btn -link">
+              <a href="{{ route('blog.show', 'stop-wasting-money-on-boost-post-get-real-whatsapp-inquiries') }}" class="c-btn -link">
                 <span class="c-btn__txt">Read Guide</span>
                 <span class="c-btn__ico">
                   <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
@@ -1276,19 +1276,19 @@
 
           <article class="article-card stagger-3" data-viewport="true">
             <div class="article-thumb-wrap">
-              <img src="{{ asset('images/stories/hauni.jpg') }}" alt="Clinic & Healthcare Web Platforms" class="article-thumb">
+              <img src="{{ asset('images/blogs/bike-rental-fleet-automation.jpg') }}" alt="Case Study: OMG Rental Bikes" class="article-thumb">
             </div>
             <div class="article-body">
               <div>
                 <div class="article-meta">
-                  <span class="article-cat">Healthcare &amp; Clinic Tech</span>
+                  <span class="article-cat">Client Success Stories</span>
                   <time>Recent</time>
                 </div>
-                <h3 class="article-title">Digital Transformation for Medical Clinics: Online Appointments &amp; WhatsApp Booking.</h3>
-                <p class="article-desc">How doctor practices and specialty clinics streamline patient bookings with Google Maps routing, credentials, and sub-second mobile layouts.</p>
+                <h3 class="article-title">Case Study: How OMG Rental Bikes Automated Fleet Operations and Scaled 400% with a Custom Booking Portal.</h3>
+                <p class="article-desc">How replacing manual registers with digital reservations, automated KYC, and payment verification propelled 400% operational scaling.</p>
               </div>
-              <a href="{{ route('blog.show', 'digital-transformation-medical-clinics-online-appointments-whatsapp-booking') }}" class="c-btn -link">
-                <span class="c-btn__txt">Read Article</span>
+              <a href="{{ route('blog.show', 'case-study-how-omg-rental-bikes-automated-fleet-operations-scaled-400-percent') }}" class="c-btn -link">
+                <span class="c-btn__txt">Read Case Study</span>
                 <span class="c-btn__ico">
                   <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
                   <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>

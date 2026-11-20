@@ -60,15 +60,22 @@
       <tbody>
         @forelse($blogs as $blog)
           <tr>
-            <td style="font-weight: 600; max-width: 320px;">
-              <div style="color: var(--text); font-size: 0.9rem;">{{ $blog->title }}</div>
-              <div style="display: flex; align-items: center; gap: 6px; margin-top: 4px;">
-                <a href="{{ route('blog.show', $blog->slug) }}" target="_blank" style="font-size: 0.72rem; color: #60A5FA; text-decoration: none; font-family: monospace;">
-                  /blog/{{ $blog->slug }}
-                </a>
-                @if($blog->is_featured)
-                  <span class="badge" style="background: rgba(245, 158, 11, 0.2); color: #F59E0B; font-size: 0.65rem; padding: 1px 6px;">Featured</span>
+            <td style="font-weight: 600; max-width: 340px;">
+              <div style="display: flex; gap: 12px; align-items: center;">
+                @if($blog->image)
+                  <img src="{{ asset($blog->image) }}" alt="" style="width: 58px; height: 34px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border-color); flex-shrink: 0;">
                 @endif
+                <div>
+                  <div style="color: var(--text); font-size: 0.88rem; line-height: 1.3;">{{ $blog->title }}</div>
+                  <div style="display: flex; align-items: center; gap: 6px; margin-top: 4px;">
+                    <a href="{{ route('blog.show', $blog->slug) }}" target="_blank" style="font-size: 0.72rem; color: #60A5FA; text-decoration: none; font-family: monospace;">
+                      /blog/{{ $blog->slug }}
+                    </a>
+                    @if($blog->is_featured)
+                      <span class="badge" style="background: rgba(245, 158, 11, 0.2); color: #F59E0B; font-size: 0.65rem; padding: 1px 6px;">Featured</span>
+                    @endif
+                  </div>
+                </div>
               </div>
             </td>
             <td>
