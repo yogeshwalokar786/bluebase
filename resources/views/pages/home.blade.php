@@ -1201,7 +1201,7 @@
           @foreach($latestBlogs as $index => $blog)
             <article class="article-card stagger-{{ ($index % 3) + 1 }}" data-viewport="true">
               <div class="article-thumb-wrap">
-                <img src="{{ asset($blog->image ?: 'images/stories/screens-clicks.jpg') }}" alt="{{ $blog->title }}" class="article-thumb">
+                <img src="{{ asset($blog->image ?: 'images/blogs/social-media-vs-owned-website.jpg') }}?v=2" alt="{{ $blog->title }}" class="article-thumb">
               </div>
               <div class="article-body">
                 <div>

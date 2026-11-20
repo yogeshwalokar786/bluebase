@@ -110,9 +110,33 @@ class Blog extends Model
         return $this->meta_description ?: Str::limit(strip_tags($this->excerpt ?? $this->content), 155);
     }
 
+    public function getImageAttribute($value): string
+    {
+        $defaultMap = [
+            'why-relying-only-on-instagram-facebook-is-risky-for-business' => 'images/blogs/social-media-vs-owned-website.jpg',
+            'stop-wasting-money-on-boost-post-get-real-whatsapp-inquiries' => 'images/blogs/whatsapp-meta-ads-leads.jpg',
+            'business-trapped-in-excel-whatsapp-how-custom-software-saves-hours' => 'images/blogs/excel-to-custom-software.jpg',
+            'how-local-businesses-rank-on-google-maps-get-daily-calls' => 'images/blogs/google-maps-local-seo.jpg',
+            'how-much-business-website-cost-transparent-guide' => 'images/blogs/website-cost-pricing-guide.jpg',
+            'why-websites-stop-working-guide-to-website-maintenance-for-business-owners' => 'images/blogs/website-maintenance-security.jpg',
+            'case-study-how-omg-rental-bikes-automated-fleet-operations-scaled-400-percent' => 'images/blogs/bike-rental-fleet-automation.jpg',
+        ];
+
+        if (isset($defaultMap[$this->slug])) {
+            if (empty($value) || str_contains($value, 'images/stories/')) {
+                return $defaultMap[$this->slug];
+            }
+        }
+
+        return $value ?: ($defaultMap[$this->slug] ?? 'images/blogs/social-media-vs-owned-website.jpg');
+    }
+
     public function getSeoOgImageAttribute(): string
     {
-        return $this->og_image ?: $this->image ?: 'images/stories/omg-rental-bikes-brand.png';
+        if (!empty($this->og_image) && !str_contains($this->og_image, 'images/stories/')) {
+            return $this->og_image;
+        }
+        return $this->image;
     }
 
     public function getRelatedPosts($limit = 3)

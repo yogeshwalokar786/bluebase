@@ -249,7 +249,7 @@
           <!-- Article Featured Hero Banner -->
           @if($blog->image)
             <div class="article-hero-banner" style="margin-bottom: 28px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 1px solid #e2e8f0;">
-              <img src="{{ asset($blog->image) }}" alt="{{ $blog->title }}" style="width: 100%; height: auto; max-height: 480px; object-fit: cover; display: block;">
+              <img src="{{ asset($blog->image) }}?v=2" alt="{{ $blog->title }}" style="width: 100%; height: auto; max-height: 480px; object-fit: cover; display: block;">
             </div>
           @endif
 
@@ -337,7 +337,7 @@
         <a href="{{ route('blog.show', $rel->slug) }}" class="blog-article-card" data-category="{{ $rel->category_slug }}" style="overflow: hidden; display: flex; flex-direction: column;">
           @if($rel->image)
             <div class="blog-card-thumb" style="width: 100%; height: 180px; overflow: hidden; background: #0f172a; position: relative;">
-              <img src="{{ asset($rel->image) }}" alt="{{ $rel->title }}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease;">
+              <img src="{{ asset($rel->image) }}?v=2" alt="{{ $rel->title }}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease;">
             </div>
           @endif
           <div class="blog-card-body" style="flex: 1;">

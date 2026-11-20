@@ -159,7 +159,7 @@
       <div class="blog-featured-visual">
         <a href="{{ route('blog.show', $featuredBlog->slug) }}" class="blog-visual-link" aria-label="Read {{ $featuredBlog->title }}" style="display: block; width: 100%; height: 100%; min-height: 280px; overflow: hidden; border-radius: 12px; position: relative; border: 1px solid rgba(255, 255, 255, 0.08);">
           @if($featuredBlog->image)
-            <img src="{{ asset($featuredBlog->image) }}" alt="{{ $featuredBlog->title }}" style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 12px; transition: transform 0.4s ease;">
+            <img src="{{ asset($featuredBlog->image) }}?v=2" alt="{{ $featuredBlog->title }}" style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 12px; transition: transform 0.4s ease;">
           @endif
         </a>
       </div>
@@ -206,7 +206,7 @@
         <a href="{{ route('blog.show', $art->slug) }}" class="blog-article-card" data-category="{{ $art->category_slug }}" style="overflow: hidden; display: flex; flex-direction: column;">
           @if($art->image)
             <div class="blog-card-thumb" style="width: 100%; height: 190px; overflow: hidden; background: #0f172a; position: relative;">
-              <img src="{{ asset($art->image) }}" alt="{{ $art->title }}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease;">
+              <img src="{{ asset($art->image) }}?v=2" alt="{{ $art->title }}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease;">
             </div>
           @endif
           <div class="blog-card-body" style="flex: 1;">
