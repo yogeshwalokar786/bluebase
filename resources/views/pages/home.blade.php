@@ -1026,198 +1026,151 @@
 
       </div>
     </div>
-  </section>
-
-  <!-- 8. CUSTOMER STORIES SLIDER -->
+  </section>  <!-- 8. CLIENT SUCCESS SHOWCASE -->
   <section class="stories-section" id="stories">
     <div class="container">
-      <div class="stories-header" data-viewport="true">
-        <span class="section-tag">Client Success</span>
-        <h2 class="section-title">Digital Products We Help Bring to Life.</h2>
+      
+      <div class="stories-header-row" data-viewport="true">
+        <div class="stories-header-left">
+          <span class="section-tag">
+            <span class="tag-live-dot"></span> Client Success
+          </span>
+          <h2 class="section-title">Digital Products We Help <mark>Bring to Life</mark>.</h2>
+          <p class="section-subtitle">Real software systems, automated portals, and cloud infrastructure engineered for scaling businesses.</p>
+        </div>
+        <div class="stories-header-right">
+          <a href="{{ route('customer-stories') }}" class="c-btn -secondary" style="padding: 12px 22px;">
+            <span class="c-btn__txt">All Customer Stories</span>
+            <span class="c-btn__ico">
+              <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
+              <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
+            </span>
+          </a>
+        </div>
       </div>
 
-      <div class="slider-container" data-viewport="true" data-animation="fade-scale">
-        <div class="slider-track-wrap">
-          <div class="slider-track">
-            
-            <!-- Slide 1: OMG Rental Bikes -->
-            <div class="story-slide">
-              <div class="story-image-wrap">
-                <img src="{{ asset('images/stories/omg-rental-bikes-brand.png') }}" alt="OMG Rental Bikes" loading="lazy">
-              </div>
-              <div class="story-content">
-                <div class="story-tags">
-                  <span class="story-tag">Mobility Startup</span>
-                  <span class="story-tag">Fleet ERP &amp; Software</span>
-                  <span class="story-tag" style="background: #ecfdf5; color: #047857;">Fully Managed</span>
-                </div>
-                <h3 class="story-title">Custom Fleet Management ERP, Booking Portal &amp; Growth Engine for Urban Bike Rentals.</h3>
-                <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-text-muted); margin-bottom: 24px;">
-                  OMG Rental Bikes partnered with Bluebase to build and manage their complete digital operating system. We developed their custom fleet management software (real-time vehicle inventory, paperless digital KYC, and automated rental agreements), high-converting booking portal at <a href="https://omgrentalbikes.com" target="_blank" rel="noopener noreferrer" style="color: var(--color-accent); font-weight: 600; text-decoration: underline;">omgrentalbikes.com</a>, and fully manage their top-ranking Google My Business profile and social media marketing.
-                </p>
-                <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap;">
-                  <a href="{{ route('customer-stories.omg-rental-bikes') }}" class="c-btn -primary" style="padding: 12px 24px;">
-                    <span class="c-btn__txt">Read Case Study</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                    </span>
-                  </a>
-                  <a href="https://omgrentalbikes.com" target="_blank" rel="noopener noreferrer" class="c-btn -secondary" style="padding: 12px 22px;">
-                    <span class="c-btn__txt">Visit Live Website</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                    </span>
-                  </a>
-                  <a href="{{ route('contact') }}" class="c-btn -link" style="color: var(--color-accent);">
-                    <span class="c-btn__txt">Build Your Startup Platform</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-              </div>
+      <div class="client-success-grid" data-viewport="true" data-animation="fade-up">
+
+        <!-- Card 1: OMG Rental Bikes -->
+        <article class="client-story-card">
+          <div class="cs-card-media">
+            <img src="{{ asset('images/stories/omg-rental-bikes-brand.png') }}" alt="OMG Rental Bikes custom fleet ERP and booking portal" loading="lazy">
+            <div class="cs-media-badges">
+              <span class="cs-badge-cat">Mobility Startup</span>
+              <span class="cs-badge-status live">
+                <span class="cs-dot-indicator green"></span> Live &amp; Fully Managed
+              </span>
             </div>
-
-            <!-- Slide 2: Aarohi Classic 2024 -->
-            <div class="story-slide">
-              <div class="story-image-wrap">
-                <img src="{{ asset('images/stories/aarohi-classic-brand.png') }}" alt="Aarohi Classic 2024" loading="lazy">
-              </div>
-              <div class="story-content">
-                <div class="story-tags">
-                  <span class="story-tag">Sports &amp; Fitness Event</span>
-                  <span class="story-tag">Digital Marketing &amp; Ops</span>
-                  <span class="story-tag" style="background: #eff6ff; color: #1d4ed8;">100% Remote Ops</span>
-                </div>
-                <h3 class="story-title">Remote Paid Ads, Social Media, Online Registrations &amp; WhatsApp for Aarohi Classic 2024.</h3>
-                <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-text-muted); margin-bottom: 24px;">
-                  Bluebase managed the complete digital presence for Aarohi Classic 2024 100% remotely from our office. We ran targeted Meta and Google ad campaigns, managed their official social media handles with custom creatives, set up an online athlete registration flow, and coordinated participant inquiries and schedule broadcasts over WhatsApp.
-                </p>
-                <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap;">
-                  <a href="{{ route('customer-stories.aarohi-classic-2024') }}" class="c-btn -primary" style="padding: 12px 24px;">
-                    <span class="c-btn__txt">Read Case Study</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                    </span>
-                  </a>
-                  <a href="{{ route('contact') }}" class="c-btn -secondary" style="padding: 12px 22px;">
-                    <span class="c-btn__txt">Power Your Next Event</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                    </span>
-                  </a>
-                  <a href="{{ route('customer-stories') }}" class="c-btn -link" style="color: var(--color-accent);">
-                    <span class="c-btn__txt">All Customer Stories</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Slide 3: Pharmaceutical Medicine Export Lead Automation Extension -->
-            <div class="story-slide">
-              <div class="story-image-wrap">
-                <img src="{{ asset('images/stories/screens-clicks.jpg') }}" alt="Pharmaceutical Medicine Export Lead Automation Extension" loading="lazy">
-              </div>
-              <div class="story-content">
-                <div class="story-tags">
-                  <span class="story-tag">Pharma Export Tech</span>
-                  <span class="story-tag">Browser Extension</span>
-                  <span class="story-tag" style="background: #ecfdf5; color: #047857;">Workflow Automation</span>
-                </div>
-                <h3 class="story-title">Automated IndiaMART Medicine Buy-Lead Capture, Export Intent Filtering &amp; Real-Time CRM Sync.</h3>
-                <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-text-muted); margin-bottom: 24px;">
-                  A pharmaceutical manufacturer exporting medicines globally struggled to find, qualify, and respond to IndiaMART commercial buy-leads before competitors claimed them. Bluebase engineered a custom Chrome extension that monitors buyer inquiries in real time, automatically filters out domestic retail noise, extracts verified buyer details, and syncs high-value bulk medicine leads to their export CRM with instant desk alerts.
-                </p>
-                <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap;">
-                  <a href="{{ route('customer-stories.indiamart-lead-automation') }}" class="c-btn -primary" style="padding: 12px 24px;">
-                    <span class="c-btn__txt">Read Case Study</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                    </span>
-                  </a>
-                  <a href="{{ route('contact') }}" class="c-btn -secondary" style="padding: 12px 22px;">
-                    <span class="c-btn__txt">Automate Your Lead Workflow</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-                      </span>
-                    </span>
-                  </a>
-                  <a href="{{ route('customer-stories') }}" class="c-btn -link" style="color: var(--color-accent);">
-                    <span class="c-btn__txt">All Customer Stories</span>
-                    <span class="c-btn__ico">
-                      <span class="c-btn__ico-base">
-                        <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-                      </span>
-                      <span class="c-btn__ico-hover">
-                        <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-                      </span>
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Future slides can be added directly here as additional .story-slide elements -->
-
           </div>
-        </div>
-
-        <!-- Controls -->
-        <div class="slider-controls">
-          <div class="slider-dots"></div>
-          <div class="slider-arrows">
-            <button class="slider-btn slider-btn-prev" aria-label="Previous Slide">
-              <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
-            </button>
-            <button class="slider-btn slider-btn-next" aria-label="Next Slide">
-              <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
-            </button>
+          <div class="cs-card-body">
+            <div class="cs-metric-chip">100% Paperless KYC · Real-Time Fleet ERP</div>
+            <h3 class="cs-card-title">
+              <a href="{{ route('customer-stories.omg-rental-bikes') }}" style="color:inherit;text-decoration:none;">Custom Fleet ERP, Online Booking Engine &amp; Growth System.</a>
+            </h3>
+            <p class="cs-card-desc">
+              Built their complete digital operating system: real-time vehicle inventory, paperless digital KYC, automated rental agreements, and high-converting direct booking engine.
+            </p>
+            <div class="cs-card-footer">
+              <a href="{{ route('customer-stories.omg-rental-bikes') }}" class="cs-read-btn">
+                <span>Read Case Study</span>
+                <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
+              </a>
+              <a href="https://omgrentalbikes.com" target="_blank" rel="noopener noreferrer" class="cs-live-pill">
+                <span>omgrentalbikes.com</span>
+                <svg viewBox="0 0 16 16"><path d="M6 3h7v7M13 3L7 9"/></svg>
+              </a>
+            </div>
           </div>
-        </div>
+        </article>
+
+        <!-- Card 2: Aarohi Classic 2024 -->
+        <article class="client-story-card">
+          <div class="cs-card-media">
+            <img src="{{ asset('images/stories/aarohi-classic-brand.png') }}" alt="Aarohi Classic 2024 athlete registration portal" loading="lazy">
+            <div class="cs-media-badges">
+              <span class="cs-badge-cat">Sports &amp; Fitness Event</span>
+              <span class="cs-badge-status event">
+                <span class="cs-dot-indicator blue"></span> 100% Remote Operations
+              </span>
+            </div>
+          </div>
+          <div class="cs-card-body">
+            <div class="cs-metric-chip">350+ Competitors · Zero Downtime</div>
+            <h3 class="cs-card-title">
+              <a href="{{ route('customer-stories.aarohi-classic-2024') }}" style="color:inherit;text-decoration:none;">Centralized Competitor Registration &amp; Event Operations Desk.</a>
+            </h3>
+            <p class="cs-card-desc">
+              Replaced offline paperwork with an automated athlete registration portal, category weight verification desks, and instant WhatsApp athlete receipts.
+            </p>
+            <div class="cs-card-footer">
+              <a href="{{ route('customer-stories.aarohi-classic-2024') }}" class="cs-read-btn">
+                <span>Read Case Study</span>
+                <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
+              </a>
+              <a href="{{ route('contact') }}" class="cs-live-pill">
+                <span>Event Tech</span>
+                <svg viewBox="0 0 16 16"><path d="M6 3h7v7M13 3L7 9"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3: Pharma Medicine Export Automation -->
+        <article class="client-story-card">
+          <div class="cs-card-media">
+            <img src="{{ asset('images/stories/screens-clicks.jpg') }}" alt="Pharmaceutical Medicine Export Lead Automation Extension" loading="lazy">
+            <div class="cs-media-badges">
+              <span class="cs-badge-cat">Pharma Export Tech</span>
+              <span class="cs-badge-status tool">
+                <span class="cs-dot-indicator amber"></span> Chrome Extension
+              </span>
+            </div>
+          </div>
+          <div class="cs-card-body">
+            <div class="cs-metric-chip">Instant Desk Alerts · 100% Lead Capture</div>
+            <h3 class="cs-card-title">
+              <a href="{{ route('customer-stories.indiamart-lead-automation') }}" style="color:inherit;text-decoration:none;">Automated Buy-Lead Capture &amp; Real-Time Export CRM Sync.</a>
+            </h3>
+            <p class="cs-card-desc">
+              Engineered a custom Chrome extension that monitors buyer inquiries in real time, auto-filters retail noise, and syncs high-value bulk medicine leads directly into the CRM.
+            </p>
+            <div class="cs-card-footer">
+              <a href="{{ route('customer-stories.indiamart-lead-automation') }}" class="cs-read-btn">
+                <span>Read Case Study</span>
+                <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
+              </a>
+              <a href="{{ route('contact') }}" class="cs-live-pill">
+                <span>Workflow Tool</span>
+                <svg viewBox="0 0 16 16"><path d="M6 3h7v7M13 3L7 9"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
 
       </div>
+
+      <!-- Bottom Trust / Engineering Standards Strip -->
+      <div class="cs-bottom-banner" data-viewport="true">
+        <div class="cs-features-row">
+          <div class="cs-feature-item">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            <span>100% Source Code &amp; IP Ownership</span>
+          </div>
+          <div class="cs-feature-item">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            <span>Weekly Sprints &amp; Production Demos</span>
+          </div>
+          <div class="cs-feature-item">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            <span>Direct Daily Engineer Slack Access</span>
+          </div>
+        </div>
+        <a href="{{ route('contact') }}" class="cs-banner-cta">
+          <span>Start Your Product Sprint</span>
+          <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+      </div>
+
     </div>
   </section>
 
