@@ -1,7 +1,32 @@
 @extends('layouts.app')
 
-@section('title', 'Terms of Service & MSA | Bluebase Technologies Inc.')
-@section('meta_description', 'Master Services Agreement, terms of service, engagement models, and intellectual property ownership provisions for Bluebase engineering clients.')
+@section('title', 'Terms of Service & Master Services Agreement | Bluebase Technologies')
+@section('meta_description', 'Master Services Agreement, terms of service, engagement models, warranty terms, and 100% intellectual property ownership provisions for Bluebase engineering clients.')
+@section('meta_keywords', 'terms of service, master services agreement, msa, intellectual property ownership, engineering contracts, bluebase technologies')
+@section('canonical_url', url('/terms-of-use'))
+
+@push('schema')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ url('/') }}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Terms of Use",
+      "item": "{{ url('/terms-of-use') }}"
+    }
+  ]
+}
+</script>
+@endpush
 
 @section('content')
 <main id="main-content">

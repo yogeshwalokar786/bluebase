@@ -2,6 +2,8 @@
 
 @section('title', 'Web Development Services | Custom Web Applications & Websites | Bluebase Technologies')
 @section('meta_description', 'Bluebase Technologies provides custom web development services for startups and growing brands. We build scalable SaaS web applications, client portals, and fast websites with Laravel, React, Next.js, and Node.js.')
+@section('meta_keywords', 'custom web development, web app developers, laravel web development, react nextjs apps, custom software engineering, bluebase technologies')
+@section('canonical_url', url('/web-development'))
 
 @section('content')
 <!-- HERO SECTION -->

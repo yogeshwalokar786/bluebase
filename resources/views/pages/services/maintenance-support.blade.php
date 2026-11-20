@@ -2,6 +2,8 @@
 
 @section('title', 'Dedicated Maintenance & Support for Bluebase Projects | Bluebase Technologies')
 @section('meta_description', 'High-availability maintenance, proactive security updates, 24/7 uptime monitoring, and priority engineer sprint reserves provided exclusively for projects built and delivered by Bluebase.')
+@section('meta_keywords', 'website maintenance services, app maintenance support, security updates, server monitoring, bug fixes, bluebase technologies')
+@section('canonical_url', url('/maintenance-support'))
 
 @section('content')
 <!-- HERO SECTION -->

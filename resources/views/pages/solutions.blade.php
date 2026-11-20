@@ -2,6 +2,8 @@
 
 @section('title', 'Digital Engineering Solutions | Bluebase Technologies')
 @section('meta_description', 'Purpose-built digital engineering solutions for founders, startups, and growing businesses: SaaS MVP development, custom web platforms, e-commerce stores, and code optimization.')
+@section('meta_keywords', 'digital engineering solutions, startup tech solutions, saas mvp builder, custom ecommerce systems, scalable web architecture, bluebase technologies')
+@section('canonical_url', url('/solutions'))
 
 @section('content')
 <!-- HERO SECTION -->

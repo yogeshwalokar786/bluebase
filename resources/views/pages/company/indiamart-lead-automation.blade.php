@@ -1,7 +1,39 @@
 @extends('layouts.app')
 
-@section('title', 'Pharmaceutical Medicine Export Lead Automation Case Study | Custom Browser Extension | Bluebase')
-@section('meta_description', 'Learn how Bluebase engineered a custom Chromium browser extension for a pharmaceutical manufacturer and medicine exporter, automating IndiaMART buy-lead discovery, filtering bulk export orders from retail spam, and syncing qualified leads to CRM in real time.')
+@section('title', 'Pharma Export Lead Automation Case Study | IndiaMART CRM Sync | Bluebase Technologies')
+@section('meta_description', 'Learn how Bluebase engineered a custom Chromium browser automation extension for a pharma exporter, filtering bulk export orders and syncing leads to CRM in real time.')
+@section('meta_keywords', 'indiamart lead automation, custom chrome extension, pharma export crm sync, sales automation, bluebase technologies')
+@section('canonical_url', url('/customer-stories/indiamart-lead-automation'))
+@section('og_image', 'images/stories/pharma-export-automation.jpg')
+
+@push('schema')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Pharma Export Lead Automation: Automating IndiaMART Medicine Buy-Lead Capture & Real-Time CRM Sync",
+  "description": "How Bluebase engineered a custom Chromium extension to capture, score, and sync international medicine inquiries directly into CRM.",
+  "image": "{{ asset('images/stories/pharma-export-automation.jpg') }}",
+  "author": {
+    "@type": "Organization",
+    "name": "Bluebase Technologies",
+    "url": "https://bluebasetechnologies.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Bluebase Technologies",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://bluebasetechnologies.com/images/favicon.ico"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ url('/customer-stories/indiamart-lead-automation') }}"
+  }
+}
+</script>
+@endpush
 
 @push('styles')
 <style>

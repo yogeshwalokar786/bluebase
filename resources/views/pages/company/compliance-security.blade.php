@@ -2,6 +2,8 @@
 
 @section('title', 'Security, Compliance & Governance Standards | Bluebase Technologies')
 @section('meta_description', 'Enterprise-grade security, SOC 2 Type II controls, ISO/IEC 27001 ISMS, GDPR data residency, zero-trust infrastructure, and guaranteed 100% client IP ownership.')
+@section('meta_keywords', 'security standards, soc 2 type ii, iso 27001, gdpr data protection, zero trust security, intellectual property ownership, bluebase technologies')
+@section('canonical_url', url('/compliance-security'))
 
 @section('content')
 

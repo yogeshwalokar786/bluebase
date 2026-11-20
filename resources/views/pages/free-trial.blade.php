@@ -1,7 +1,30 @@
 @extends('layouts.app')
 
-@section('title', 'Request a Project Proposal & Architecture Audit | Bluebase')
-@section('meta_description', 'Get a comprehensive, zero-cost architecture review and customized engineering proposal for your web app, mobile app, or AI project.')
+@section('title', 'Free Project Estimate & Milestone Roadmap | Bluebase Technologies')
+@section('meta_description', 'Request a free 30-minute discovery consultation, project estimate, and custom milestone roadmap for your website, web application, or mobile software.')
+@section('meta_keywords', 'free project estimate, website cost estimate, app development quote, software architecture audit, bluebase technologies')
+@section('canonical_url', url('/free-trial'))
+
+@push('schema')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Free Project Architecture Review & Milestone Estimate",
+  "provider": {
+    "@type": "Organization",
+    "name": "Bluebase Technologies",
+    "url": "https://bluebasetechnologies.com"
+  },
+  "description": "Zero-cost 30-minute discovery consultation, technical architecture audit, and customized milestone development proposal.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+@endpush
 
 @section('content')
 <main id="main-content">

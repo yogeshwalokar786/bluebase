@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Digital Engineering & Development Services | Bluebase')
-@section('meta_description', 'Bluebase is an agile digital engineering studio. We build custom web applications, mobile apps, SaaS MVPs, and modern websites for startups and brands.')
+@section('title', 'Digital Engineering & Development Services | Bluebase Technologies')
+@section('meta_description', 'Explore Bluebase Technologies services: Custom web development, mobile apps, SaaS MVPs, website design, API backends, and dedicated technical maintenance.')
+@section('meta_keywords', 'web development services, mobile app engineering, saas mvp development, website redesign, custom software engineering, bluebase technologies')
+@section('canonical_url', url('/services'))
 
 @section('content')
 <main id="main-content">

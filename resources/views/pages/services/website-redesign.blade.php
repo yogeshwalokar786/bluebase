@@ -2,6 +2,8 @@
 
 @section('title', 'Website Redesign & Speed Optimization Services | Bluebase Technologies')
 @section('meta_description', 'Transform outdated, slow websites into fast, modern platforms with 90+ Google PageSpeed scores, sub-second LCP, mobile-first UX, and zero SEO rank loss.')
+@section('meta_keywords', 'website redesign services, website speed optimization, pagespeed 90 plus, core web vitals fix, mobile website revamping, bluebase technologies')
+@section('canonical_url', url('/website-redesign'))
 
 @section('content')
 <!-- HERO SECTION -->

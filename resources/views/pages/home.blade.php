@@ -1,7 +1,31 @@
 @extends('layouts.app')
 
-@section('title', 'Bluebase Technologies | Digital Engineering, Web & Mobile App Development Startup')
-@section('meta_description', 'Bluebase Technologies is an agile, remote-first digital engineering startup based in India. We build high-performance custom websites, web applications, mobile apps, SaaS MVPs, and e-commerce platforms for growing brands and founders worldwide.')
+@section('title', 'Bluebase Technologies | Custom Web, Mobile App & Software Development')
+@section('meta_description', 'Bluebase Technologies is a remote-first digital engineering studio. We build high-performance custom websites, web applications, mobile apps, SaaS MVPs, and e-commerce platforms for growing brands worldwide.')
+@section('meta_keywords', 'web development company, custom software development, mobile app development, saas mvp development, ecommerce web development, bluebase technologies')
+@section('canonical_url', url('/'))
+
+@push('schema')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Bluebase Technologies",
+  "url": "https://bluebasetechnologies.com",
+  "logo": "https://bluebasetechnologies.com/images/favicon.ico",
+  "image": "https://bluebasetechnologies.com/images/blogs/social-media-vs-owned-website.jpg",
+  "description": "Bluebase Technologies is a remote-first digital engineering studio building custom websites, web apps, mobile apps, SaaS MVPs, and business software.",
+  "email": "info@bluebasetechnologies.com",
+  "priceRange": "$$",
+  "openingHours": "Mo-Fr 09:00-18:00",
+  "sameAs": [
+    "https://linkedin.com/company/bluebase",
+    "https://twitter.com/bluebase_tech",
+    "https://github.com/bluebase-tech"
+  ]
+}
+</script>
+@endpush
 
 @push('styles')
 <style>

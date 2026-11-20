@@ -2,6 +2,8 @@
 
 @section('title', 'Website Design & UI/UX Services | Bespoke Digital Experiences | Bluebase Technologies')
 @section('meta_description', 'We design and build bespoke, high-converting websites and digital product interfaces for modern brands, founders, and startups. Core Web Vitals 90+ guaranteed, clickable Figma prototypes, and 100% code ownership.')
+@section('meta_keywords', 'website design services, bespoke web design, ui ux design company, conversion rate optimization, figma web design, bluebase technologies')
+@section('canonical_url', url('/website-design'))
 
 @section('content')
 <!-- HERO SECTION -->

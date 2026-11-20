@@ -209,13 +209,13 @@ class SeoController extends Controller
 
     public function generateSitemap()
     {
-        $baseUrl = url('/');
+        $baseUrl = rtrim(config('app.url') && !str_contains(config('app.url'), 'localhost') ? config('app.url') : 'https://bluebasetechnologies.com', '/');
         $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
         $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" ' .
                 'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ' .
                 'xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">' . "\n";
 
-        // 1. Pages from page_seos
+        // 1. Pages from page_seos or default canonical routes
         $pages = collect([]);
         try {
             if (\Illuminate\Support\Facades\Schema::hasTable('page_seos')) {
@@ -224,29 +224,72 @@ class SeoController extends Controller
         } catch (\Throwable $e) {
             $pages = collect([]);
         }
-        foreach ($pages as $p) {
-            $loc = $baseUrl . '/' . ltrim($p->url_path, '/');
-            $lastmod = $p->updated_at ? $p->updated_at->format('Y-m-d') : date('Y-m-d');
-            $xml .= "  <url>\n";
-            $xml .= "    <loc>" . htmlspecialchars($loc, ENT_XML1) . "</loc>\n";
-            $xml .= "    <lastmod>{$lastmod}</lastmod>\n";
-            $xml .= "    <changefreq>{$p->changefreq}</changefreq>\n";
-            $xml .= "    <priority>" . number_format($p->priority, 1) . "</priority>\n";
-            $xml .= "  </url>\n";
+
+        if ($pages->isEmpty()) {
+            $defaultPages = [
+                ['url_path' => '/', 'priority' => 1.0, 'changefreq' => 'weekly'],
+                ['url_path' => '/services', 'priority' => 0.9, 'changefreq' => 'weekly'],
+                ['url_path' => '/solutions', 'priority' => 0.9, 'changefreq' => 'weekly'],
+                ['url_path' => '/customer-stories', 'priority' => 0.9, 'changefreq' => 'weekly'],
+                ['url_path' => '/contact', 'priority' => 0.9, 'changefreq' => 'monthly'],
+                ['url_path' => '/free-trial', 'priority' => 0.9, 'changefreq' => 'monthly'],
+                ['url_path' => '/web-development', 'priority' => 0.9, 'changefreq' => 'weekly'],
+                ['url_path' => '/website-design', 'priority' => 0.9, 'changefreq' => 'weekly'],
+                ['url_path' => '/mobile-app-development', 'priority' => 0.9, 'changefreq' => 'weekly'],
+                ['url_path' => '/saas-mvp-development', 'priority' => 0.9, 'changefreq' => 'weekly'],
+                ['url_path' => '/ecommerce-development', 'priority' => 0.9, 'changefreq' => 'weekly'],
+                ['url_path' => '/ui-ux-design', 'priority' => 0.9, 'changefreq' => 'weekly'],
+                ['url_path' => '/api-backend-development', 'priority' => 0.9, 'changefreq' => 'weekly'],
+                ['url_path' => '/website-redesign', 'priority' => 0.9, 'changefreq' => 'weekly'],
+                ['url_path' => '/maintenance-support', 'priority' => 0.9, 'changefreq' => 'weekly'],
+                ['url_path' => '/customer-stories/omg-rental-bikes', 'priority' => 0.8, 'changefreq' => 'monthly'],
+                ['url_path' => '/customer-stories/aarohi-classic-2024', 'priority' => 0.8, 'changefreq' => 'monthly'],
+                ['url_path' => '/customer-stories/indiamart-lead-automation', 'priority' => 0.8, 'changefreq' => 'monthly'],
+                ['url_path' => '/company', 'priority' => 0.8, 'changefreq' => 'monthly'],
+                ['url_path' => '/how-we-work', 'priority' => 0.8, 'changefreq' => 'monthly'],
+                ['url_path' => '/compliance-security', 'priority' => 0.8, 'changefreq' => 'monthly'],
+                ['url_path' => '/careers', 'priority' => 0.8, 'changefreq' => 'weekly'],
+                ['url_path' => '/blog', 'priority' => 0.8, 'changefreq' => 'daily'],
+                ['url_path' => '/privacy-policy', 'priority' => 0.5, 'changefreq' => 'yearly'],
+                ['url_path' => '/terms-of-use', 'priority' => 0.5, 'changefreq' => 'yearly'],
+            ];
+
+            foreach ($defaultPages as $p) {
+                $loc = $p['url_path'] === '/' ? $baseUrl : $baseUrl . $p['url_path'];
+                $xml .= "  <url>\n";
+                $xml .= "    <loc>" . htmlspecialchars($loc, ENT_XML1) . "</loc>\n";
+                $xml .= "    <lastmod>" . date('Y-m-d') . "</lastmod>\n";
+                $xml .= "    <changefreq>{$p['changefreq']}</changefreq>\n";
+                $xml .= "    <priority>" . number_format($p['priority'], 1) . "</priority>\n";
+                $xml .= "  </url>\n";
+            }
+        } else {
+            foreach ($pages as $p) {
+                $loc = $baseUrl . '/' . ltrim($p->url_path, '/');
+                $lastmod = $p->updated_at ? $p->updated_at->format('Y-m-d') : date('Y-m-d');
+                $xml .= "  <url>\n";
+                $xml .= "    <loc>" . htmlspecialchars($loc, ENT_XML1) . "</loc>\n";
+                $xml .= "    <lastmod>{$lastmod}</lastmod>\n";
+                $xml .= "    <changefreq>{$p->changefreq}</changefreq>\n";
+                $xml .= "    <priority>" . number_format($p->priority, 1) . "</priority>\n";
+                $xml .= "  </url>\n";
+            }
         }
 
         // 2. Published Blog Posts & Case Studies
-        $blogs = Blog::where('is_published', true)->latest()->get();
-        foreach ($blogs as $b) {
-            $loc = $baseUrl . '/blog/' . $b->slug;
-            $lastmod = $b->updated_at ? $b->updated_at->format('Y-m-d') : date('Y-m-d');
-            $xml .= "  <url>\n";
-            $xml .= "    <loc>" . htmlspecialchars($loc, ENT_XML1) . "</loc>\n";
-            $xml .= "    <lastmod>{$lastmod}</lastmod>\n";
-            $xml .= "    <changefreq>weekly</changefreq>\n";
-            $xml .= "    <priority>0.7</priority>\n";
-            $xml .= "  </url>\n";
-        }
+        try {
+            $blogs = Blog::where('is_published', true)->latest()->get();
+            foreach ($blogs as $b) {
+                $loc = $baseUrl . '/blog/' . $b->slug;
+                $lastmod = $b->updated_at ? $b->updated_at->format('Y-m-d') : date('Y-m-d');
+                $xml .= "  <url>\n";
+                $xml .= "    <loc>" . htmlspecialchars($loc, ENT_XML1) . "</loc>\n";
+                $xml .= "    <lastmod>{$lastmod}</lastmod>\n";
+                $xml .= "    <changefreq>weekly</changefreq>\n";
+                $xml .= "    <priority>0.7</priority>\n";
+                $xml .= "  </url>\n";
+            }
+        } catch (\Throwable $e) {}
 
         $xml .= '</urlset>';
 
@@ -255,7 +298,9 @@ class SeoController extends Controller
         File::put($sitemapPath, $xml);
 
         // Update SiteSetting
-        SiteSetting::set('sitemap_last_generated', now()->toDateTimeString(), 'seo');
+        try {
+            SiteSetting::set('sitemap_last_generated', now()->toDateTimeString(), 'seo');
+        } catch (\Throwable $e) {}
 
         return back()->with('success', 'Sitemap.xml regenerated successfully with all canonical URLs, blogs, and services.');
     }

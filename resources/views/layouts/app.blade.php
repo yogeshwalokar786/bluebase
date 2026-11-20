@@ -3,11 +3,11 @@
   $seo = \App\Models\PageSeo::forRoute($currentRoute);
   $globalSettings = \App\Models\SiteSetting::all()->pluck('value', 'key');
 
-  $pageTitle = $__env->yieldContent('title', $seo->meta_title ?? $globalSettings['seo_default_title'] ?? 'Bluebase Technologies | Digital Engineering & Autonomous AI Services');
-  $pageDescription = $__env->yieldContent('meta_description', $seo->meta_description ?? $globalSettings['seo_default_description'] ?? 'Bluebase is an elite digital engineering and autonomous AI services startup.');
-  $pageKeywords = $__env->yieldContent('meta_keywords', $seo->meta_keywords ?? $globalSettings['seo_default_keywords'] ?? 'digital engineering, AI agents, enterprise mobility, SAP integration');
+  $pageTitle = $__env->yieldContent('title', $seo->meta_title ?? $globalSettings['seo_default_title'] ?? 'Bluebase Technologies | Custom Web, Mobile App & Software Development');
+  $pageDescription = $__env->yieldContent('meta_description', $seo->meta_description ?? $globalSettings['seo_default_description'] ?? 'Bluebase Technologies is a remote-first digital engineering studio building custom websites, web applications, mobile apps, SaaS MVPs, and business software.');
+  $pageKeywords = $__env->yieldContent('meta_keywords', $seo->meta_keywords ?? $globalSettings['seo_default_keywords'] ?? 'web development, custom software, mobile app development, website design, saas development, ecommerce stores, bluebase technologies');
   $canonicalUrl = $__env->yieldContent('canonical_url', $seo->canonical_url ?? url()->current());
-  $ogImage = $__env->yieldContent('og_image', $seo->og_image ?? $globalSettings['seo_default_og_image'] ?? 'images/stories/omg-rental-bikes-brand.png');
+  $ogImage = $__env->yieldContent('og_image', $seo->og_image ?? $globalSettings['seo_default_og_image'] ?? 'images/blogs/social-media-vs-owned-website.jpg');
   $twitterHandle = $globalSettings['seo_twitter_handle'] ?? '@bluebase_tech';
   $robotsTag = $__env->yieldContent('robots', $seo->robots ?? $globalSettings['seo_robots'] ?? 'index, follow');
   $googleVerification = $globalSettings['seo_google_verification'] ?? null;
@@ -20,6 +20,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0a192f">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <!-- Primary Meta SEO -->
@@ -33,6 +34,7 @@
 
   <!-- OpenGraph Social Sharing (LinkedIn, Facebook, Slack) -->
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
   <meta property="og:title" content="{{ $pageTitle }}">
   <meta property="og:description" content="{{ $pageDescription }}">
   <meta property="og:url" content="{{ $canonicalUrl }}">
@@ -59,6 +61,49 @@
 
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}">
+
+  <!-- Global Structured Data (Organization & WebSite Schema) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://bluebasetechnologies.com/#organization",
+        "name": "Bluebase Technologies",
+        "url": "https://bluebasetechnologies.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://bluebasetechnologies.com/images/favicon.ico",
+          "caption": "Bluebase Technologies"
+        },
+        "description": "Bluebase Technologies is a remote-first digital engineering studio delivering custom websites, web applications, mobile apps, SaaS MVPs, and business software.",
+        "email": "info@bluebasetechnologies.com",
+        "sameAs": [
+          "https://linkedin.com/company/bluebase",
+          "https://twitter.com/bluebase_tech",
+          "https://github.com/bluebase-tech"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "Customer Support",
+          "email": "info@bluebasetechnologies.com"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://bluebasetechnologies.com/#website",
+        "url": "https://bluebasetechnologies.com",
+        "name": "Bluebase Technologies",
+        "publisher": {
+          "@id": "https://bluebasetechnologies.com/#organization"
+        },
+        "inLanguage": "en-US"
+      }
+    ]
+  }
+  </script>
+  @stack('schema')
 
   <!-- Google Fonts: Inter & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -2,6 +2,8 @@
 
 @section('title', 'About Bluebase Technologies | Digital Engineering Studio & Remote-First Team')
 @section('meta_description', 'Bluebase Technologies is an agile, remote-first digital engineering studio based in India. We architect custom websites, web applications, mobile apps, and scalable digital solutions for growing businesses worldwide.')
+@section('meta_keywords', 'about bluebase, digital engineering studio, remote software developers, custom web development team, bluebase technologies')
+@section('canonical_url', url('/company'))
 
 @section('content')
 <!-- HERO SECTION -->

@@ -1,7 +1,32 @@
 @extends('layouts.app')
 
-@section('title', 'Privacy Policy | Bluebase Technologies Inc.')
-@section('meta_description', 'Bluebase')
+@section('title', 'Privacy Policy & Data Protection | Bluebase Technologies')
+@section('meta_description', 'Learn how Bluebase Technologies collects, protects, and manages your personal and business data in compliance with GDPR, CCPA, and international data privacy laws.')
+@section('meta_keywords', 'privacy policy, data protection, gdpr compliance, ccpa, security governance, bluebase technologies')
+@section('canonical_url', url('/privacy-policy'))
+
+@push('schema')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ url('/') }}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Privacy Policy",
+      "item": "{{ url('/privacy-policy') }}"
+    }
+  ]
+}
+</script>
+@endpush
 
 @section('content')
 <main id="main-content">

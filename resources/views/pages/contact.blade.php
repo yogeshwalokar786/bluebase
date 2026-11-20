@@ -1,7 +1,33 @@
 @extends('layouts.app')
 
-@section('title', 'Contact Bluebase | Remote-First Digital Engineering & AI Consultancy')
-@section('meta_description', 'Connect with Bluebase. We operate as a remote-first digital engineering consultancy delivering custom software, autonomous AI agent architectures, and cloud modernization to clients worldwide.')
+@section('title', 'Contact Bluebase Technologies | Start Your Web, Mobile or Software Project')
+@section('meta_description', 'Reach out to Bluebase Technologies. Discuss your custom website, web app, mobile application, or software project with our digital engineering team. Fast response within 24 hours.')
+@section('meta_keywords', 'contact bluebase, hire developers, web development inquiry, mobile app quote, custom software estimate, project consultation')
+@section('canonical_url', url('/contact'))
+
+@push('schema')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact Bluebase Technologies",
+  "description": "Reach out to Bluebase Technologies to discuss custom website, web app, mobile app, or software engineering projects.",
+  "url": "{{ url('/contact') }}",
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "Bluebase Technologies",
+    "url": "https://bluebasetechnologies.com",
+    "email": "info@bluebasetechnologies.com",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Sales & Project Discovery",
+      "email": "info@bluebasetechnologies.com",
+      "availableLanguage": ["English", "Hindi"]
+    }
+  }
+}
+</script>
+@endpush
 
 @section('content')
 <main id="main-content">

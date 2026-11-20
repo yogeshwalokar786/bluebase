@@ -1,14 +1,32 @@
 @extends('layouts.app')
 
 @if(isset($currentCategory) && $currentCategory)
-  @section('title', $currentCategory->meta_title ?: ($currentCategory->name . ' Articles & Case Studies — Bluebase Tech Blog'))
-  @section('meta_description', $currentCategory->meta_description ?: ('Explore technical articles, engineering benchmarks, and system design teardowns in ' . $currentCategory->name . ' by Bluebase Technologies.'))
+  @section('title', $currentCategory->meta_title ?: ($currentCategory->name . ' — Business & Tech Articles | Bluebase'))
+  @section('meta_description', $currentCategory->meta_description ?: ('Explore articles and guides about ' . $currentCategory->name . ' by Bluebase Technologies.'))
   @section('canonical_url', route('blog.category', $currentCategory->slug))
 @else
-  @section('title', 'Bluebase Tech Blog — Software Architecture & Engineering | Bluebase Technologies')
-  @section('meta_description', 'Deep-dive engineering playbooks, system design teardowns, and production lessons learned from senior full-stack software architects and AI engineers.')
+  @section('title', 'Tech & Business Growth Blog | Web, Mobile & Software Insights | Bluebase Technologies')
+  @section('meta_description', 'Actionable guides, web and mobile development playbooks, digital marketing strategies, and software cost breakdowns for founders and business owners.')
+  @section('meta_keywords', 'business tech blog, web development guides, custom software blog, mobile app development insights, website cost 2026, bluebase technologies')
   @section('canonical_url', route('blog'))
 @endif
+
+@push('schema')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "{{ isset($currentCategory) ? $currentCategory->name . ' Articles' : 'Bluebase Technologies Blog' }}",
+  "description": "Actionable guides, software development playbooks, and tech cost breakdowns for business owners and startups.",
+  "url": "{{ isset($currentCategory) ? route('blog.category', $currentCategory->slug) : route('blog') }}",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Bluebase Technologies",
+    "url": "https://bluebasetechnologies.com"
+  }
+}
+</script>
+@endpush
 
 @section('content')
 

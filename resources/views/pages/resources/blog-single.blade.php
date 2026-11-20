@@ -10,13 +10,12 @@
   @section('og_image', $blog->seo_og_image)
 @endif
 
-@section('content')
-
+@push('schema')
 <!-- ARTICLE STRUCTURED DATA (SCHEMA.ORG) -->
 <script type="application/ld+json">
 {
   "@@context": "https://schema.org",
-  "@@type": "{{ $blog->schema_type ?: 'TechArticle' }}",
+  "@@type": "{{ $blog->schema_type ?: 'Article' }}",
   "headline": "{{ addslashes($blog->meta_title ?: $blog->title) }}",
   "description": "{{ addslashes(strip_tags($blog->meta_description ?: ($blog->excerpt ?: $blog->title))) }}",
   "image": "{{ asset($blog->seo_og_image) }}",
@@ -29,13 +28,16 @@
     "name": "Bluebase Technologies",
     "logo": {
       "@@type": "ImageObject",
-      "url": "{{ asset('images/logo.png') }}"
+      "url": "{{ asset('images/favicon.ico') }}"
     }
   },
   "datePublished": "{{ $blog->published_at ? $blog->published_at->toIso8601String() : $blog->created_at->toIso8601String() }}",
   "dateModified": "{{ $blog->updated_at->toIso8601String() }}"
 }
 </script>
+@endpush
+
+@section('content')
 
 <!-- HERO SECTION (ARTICLE HEADER WITH PREVIOUS BALANCED FONT SIZES) -->
 <section class="hero-section -article-hero">

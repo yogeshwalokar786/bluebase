@@ -1,7 +1,39 @@
 @extends('layouts.app')
 
-@section('title', 'Aarohi Classic 2024 Case Study | Digital Event Tech, Ads & WhatsApp Ops | Bluebase')
-@section('meta_description', 'Learn how Bluebase powered Aarohi Classic 2024 with performance Meta & Google ads, social media handle management, custom athlete registration portal, and WhatsApp Business automation.')
+@section('title', 'Aarohi Classic 2024 Case Study | Event Tech, Ads & WhatsApp Automation | Bluebase Technologies')
+@section('meta_description', 'Learn how Bluebase powered Aarohi Classic 2024 with performance Meta ads, athlete registration portal, and WhatsApp Business automation.')
+@section('meta_keywords', 'aarohi classic 2024 case study, event registration portal, meta ads management, whatsapp business automation, bluebase technologies')
+@section('canonical_url', url('/customer-stories/aarohi-classic-2024'))
+@section('og_image', 'images/stories/aarohi-classic-brand.png')
+
+@push('schema')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Aarohi Classic 2024: Digital Event Tech, Performance Ads & WhatsApp Automation",
+  "description": "How Bluebase powered a premier bodybuilding championship with custom registration tech, Meta ad funnels, and automated WhatsApp operations.",
+  "image": "{{ asset('images/stories/aarohi-classic-brand.png') }}",
+  "author": {
+    "@type": "Organization",
+    "name": "Bluebase Technologies",
+    "url": "https://bluebasetechnologies.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Bluebase Technologies",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://bluebasetechnologies.com/images/favicon.ico"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ url('/customer-stories/aarohi-classic-2024') }}"
+  }
+}
+</script>
+@endpush
 
 @push('styles')
 <style>

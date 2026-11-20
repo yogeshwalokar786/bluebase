@@ -1,7 +1,32 @@
 @extends('layouts.app')
 
-@section('title', 'Careers at Bluebase | Join Our High-Agency Engineering Teams')
-@section('meta_description', 'Explore career opportunities at Bluebase Technologies. We are hiring senior full-stack engineers, AI researchers, and systems architects for 100% remote-first engineering pods.')
+@section('title', 'Careers at Bluebase Technologies | Join Our Remote Engineering Team')
+@section('meta_description', 'Explore software engineering, design, and developer career opportunities at Bluebase Technologies. 100% remote-first culture, high ownership, and modern tech stacks.')
+@section('meta_keywords', 'software engineer jobs, remote developer careers, laravel developer jobs, react engineer hiring, tech jobs remote, bluebase technologies')
+@section('canonical_url', url('/careers'))
+
+@push('schema')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ url('/') }}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Careers",
+      "item": "{{ url('/careers') }}"
+    }
+  ]
+}
+</script>
+@endpush
 
 @push('styles')
 <style>

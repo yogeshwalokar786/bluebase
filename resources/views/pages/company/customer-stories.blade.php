@@ -1,7 +1,44 @@
 @extends('layouts.app')
 
-@section('title', 'Client Success Stories & Engineering Case Studies | Bluebase')
-@section('meta_description', 'Explore real-world software engineering case studies from Bluebase. See how we build custom fleet ERPs, web booking portals, digital event operations, and high-converting marketing engines.')
+@section('title', 'Client Success Stories & Software Case Studies | Bluebase Technologies')
+@section('meta_description', 'Explore real-world software engineering case studies from Bluebase Technologies. Custom bike rental fleet platforms, national championship digital operations, and B2B export automation.')
+@section('meta_keywords', 'client success stories, software case studies, web development portfolio, fleet erp case study, b2b automation case study, bluebase technologies')
+@section('canonical_url', url('/customer-stories'))
+
+@push('schema')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Bluebase Client Success Stories",
+  "description": "Real-world engineering case studies and proven client results from Bluebase Technologies.",
+  "url": "{{ url('/customer-stories') }}",
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "url": "{{ route('customer-stories.omg-rental-bikes') }}",
+        "name": "OMG Rental Bikes — 100+ Vehicle Fleet Management System & Instant Online Booking Engine"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "url": "{{ route('customer-stories.aarohi-classic-2024') }}",
+        "name": "Aarohi Classic 2024 — Digital Event Tech, Performance Ads & WhatsApp Automation"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "url": "{{ route('customer-stories.indiamart-lead-automation') }}",
+        "name": "Pharma Export Automation — Automating IndiaMART Medicine Buy-Lead Capture & Real-Time CRM Sync"
+      }
+    ]
+  }
+}
+</script>
+@endpush
 
 @push('styles')
 <style>

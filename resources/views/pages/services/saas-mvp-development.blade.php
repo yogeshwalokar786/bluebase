@@ -2,6 +2,8 @@
 
 @section('title', 'SaaS MVP Development Services | Rapid 0 to 1 Launch | Bluebase Technologies')
 @section('meta_description', 'Turn your startup idea into a production-ready SaaS MVP in 3 to 6 weeks. Multi-tenant architecture, automated Stripe billing, role-based auth, and interactive user dashboards.')
+@section('meta_keywords', 'saas mvp development, build a saas, startup mvp builder, rapid saas development, multi-tenant web app, stripe billing integration, bluebase technologies')
+@section('canonical_url', url('/saas-mvp-development'))
 
 @section('content')
 <!-- HERO SECTION -->
