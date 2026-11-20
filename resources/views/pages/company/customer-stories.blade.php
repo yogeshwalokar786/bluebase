@@ -870,7 +870,7 @@
         <!-- Card 3: IndiaMART Lead Automation Extension -->
         <article class="cs-story-card" data-category="automation" data-viewport="true">
           <div class="cs-card-img-wrap">
-            <img src="{{ asset('images/stories/screens-clicks.jpg') }}?v=2" alt="Pharmaceutical Medicine Export Lead Automation Extension" loading="lazy">
+            <img src="{{ asset('images/stories/screens-clicks.jpg') }}?v=3" alt="Pharmaceutical Medicine Export Lead Automation Extension" loading="lazy">
             <div class="cs-card-tag-floating">
               <span class="cs-tag-badge">Pharma Lead Tech</span>
               <span class="cs-tag-badge" style="background: rgba(16, 185, 129, 0.9);">Chrome Extension</span>

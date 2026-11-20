@@ -1118,7 +1118,7 @@
         <!-- Card 3: Pharma Medicine Export Automation -->
         <article class="client-story-card">
           <div class="cs-card-media">
-            <img src="{{ asset('images/stories/screens-clicks.jpg') }}?v=2" alt="Pharmaceutical Medicine Export Lead Automation Extension" loading="lazy">
+            <img src="{{ asset('images/stories/screens-clicks.jpg') }}?v=3" alt="Pharmaceutical Medicine Export Lead Automation Extension" loading="lazy">
             <div class="cs-media-badges">
               <span class="cs-badge-cat">Pharma Export Tech</span>
               <span class="cs-badge-status tool">
