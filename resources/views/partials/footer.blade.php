@@ -48,7 +48,6 @@
             <li><a href="{{ route('careers') }}">Careers (We're Hiring!)</a></li>
             <li><a href="{{ route('compliance-security') }}">Security &amp; Compliance</a></li>
             <li><a href="{{ route('contact') }}">Contact Us</a></li>
-            <li><a href="{{ route('client-portal') }}" target="_blank" rel="noopener" style="color: #60a5fa; font-weight: 600;">Client Portal &rarr;</a></li>
           </ul>
         </div>
 

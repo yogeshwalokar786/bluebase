@@ -219,9 +219,6 @@
 
     <!-- Action Buttons -->
     <div class="header-actions">
-      <a href="{{ route('client-portal') }}" class="c-btn -secondary" target="_blank" rel="noopener" style="padding: 10px 16px; border: 1px solid rgba(59, 130, 246, 0.4); color: #93c5fd; background: rgba(59, 130, 246, 0.08);">
-        <span class="c-btn__txt">Client Portal</span>
-      </a>
       <a href="{{ route('contact') }}" class="c-btn -primary">
         <span class="c-btn__txt">Start a Project</span>
         <span class="c-btn__ico">
@@ -326,9 +323,6 @@
 
   <!-- Mobile CTAs -->
   <div class="mobile-actions">
-    <a href="{{ route('client-portal') }}" class="c-btn -secondary" target="_blank" rel="noopener" style="width: 100%; border: 1px solid rgba(59, 130, 246, 0.4); color: #93c5fd; background: rgba(59, 130, 246, 0.1);">
-      <span class="c-btn__txt">Client Portal Login</span>
-    </a>
     <a href="{{ route('contact') }}" class="c-btn -primary" style="width: 100%;">
       <span class="c-btn__txt">Start a Project</span>
       <span class="c-btn__ico">
