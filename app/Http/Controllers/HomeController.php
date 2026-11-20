@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\CaseStudy;
 use App\Models\SiteSetting;
 use Illuminate\Http\Request;
 
@@ -16,6 +17,13 @@ class HomeController extends Controller
             return Blog::published()->with('blogCategory')->latest('published_at')->take(3)->get();
         }, collect());
 
-        return view('pages.home', compact('settings', 'latestBlogs'));
+        $latestCaseStudies = rescue(function () {
+            if (\Illuminate\Support\Facades\Schema::hasTable('case_studies')) {
+                return CaseStudy::published()->take(3)->get();
+            }
+            return collect();
+        }, collect());
+
+        return view('pages.home', compact('settings', 'latestBlogs', 'latestCaseStudies'));
     }
 }

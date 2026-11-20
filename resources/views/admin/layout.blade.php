@@ -1305,6 +1305,14 @@
         <span class="nav-count">{{ rescue(fn() => \App\Models\Blog::count(), 0) }}</span>
       </a>
 
+      <a href="{{ route('admin.cms.case-studies.index') }}" class="nav-item {{ request()->routeIs('admin.cms.case-studies*') ? 'active' : '' }}">
+        <span class="nav-item-content">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          <span>Case Studies</span>
+        </span>
+        <span class="nav-count">{{ rescue(fn() => \App\Models\CaseStudy::count(), 0) }}</span>
+      </a>
+
       <a href="{{ route('admin.cms.careers.index') }}" class="nav-item {{ request()->routeIs('admin.cms.careers*') ? 'active' : '' }}">
         <span class="nav-item-content">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>

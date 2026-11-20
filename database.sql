@@ -810,6 +810,66 @@ LOCK TABLES `users` WRITE;
 INSERT INTO `users` VALUES (1,'Bluebase Administrator','admin@bluebase.com','2026-11-06 06:01:20','$2y$12$GMPV8LBbYQPDzfux.vGAvuMQQmx1E.e4pejNUsf2GPRep0XlG.HF6',NULL,'2026-11-06 06:01:20','2026-11-06 06:01:20');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `case_studies`
+--
+
+DROP TABLE IF EXISTS `case_studies`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `case_studies` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `client_name` varchar(255) NOT NULL,
+  `client_logo` varchar(255) DEFAULT NULL,
+  `industry` varchar(255) DEFAULT NULL,
+  `service_tag` varchar(255) DEFAULT NULL,
+  `status_badge` varchar(255) DEFAULT NULL,
+  `status_color` varchar(50) NOT NULL DEFAULT 'green',
+  `metric_chip` varchar(255) DEFAULT NULL,
+  `hero_image` varchar(255) DEFAULT NULL,
+  `featured_stats` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`featured_stats`)),
+  `stats_pills` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`stats_pills`)),
+  `excerpt` text DEFAULT NULL,
+  `challenge` text DEFAULT NULL,
+  `solution` text DEFAULT NULL,
+  `results` text DEFAULT NULL,
+  `content` longtext DEFAULT NULL,
+  `technologies` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`technologies`)),
+  `testimonial_quote` text DEFAULT NULL,
+  `testimonial_author` varchar(255) DEFAULT NULL,
+  `testimonial_role` varchar(255) DEFAULT NULL,
+  `project_url` varchar(255) DEFAULT NULL,
+  `project_url_label` varchar(255) DEFAULT NULL,
+  `view_blade` varchar(255) DEFAULT NULL,
+  `display_order` int(11) NOT NULL DEFAULT 0,
+  `is_featured` tinyint(1) NOT NULL DEFAULT 0,
+  `is_published` tinyint(1) NOT NULL DEFAULT 1,
+  `published_at` timestamp NULL DEFAULT NULL,
+  `meta_title` varchar(255) DEFAULT NULL,
+  `meta_description` text DEFAULT NULL,
+  `meta_keywords` varchar(255) DEFAULT NULL,
+  `canonical_url` varchar(255) DEFAULT NULL,
+  `og_image` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `case_studies_slug_unique` (`slug`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `case_studies`
+--
+
+LOCK TABLES `case_studies` WRITE;
+/*!40000 ALTER TABLE `case_studies` DISABLE KEYS */;
+INSERT INTO `case_studies` VALUES (1,'Custom Fleet Management ERP, Online Booking Engine & Local SEO Domination','omg-rental-bikes','OMG Rental Bikes',NULL,'Mobility Startup','Fleet ERP & Web','Live & Fully Managed','green','100% Paperless KYC · Real-Time Fleet ERP','images/stories/omg-rental-bikes-brand.png','[{\"num\":\"3.5\",\"suffix\":\"X\",\"label\":\"Direct Bookings\"},{\"num\":\"45\",\"suffix\":\"%\",\"label\":\"Idle Fleet Reduction\"},{\"num\":\"#\",\"suffix\":\"1\",\"label\":\"Google Search Rank\"}]','[{\"value\":\"3.5X\",\"label\":\"Direct Bookings\"},{\"value\":\"100%\",\"label\":\"Digital KYC\"},{\"value\":\"45%\",\"label\":\"Idle Drop\"}]','Engineered a centralized cloud platform replacing paper contracts and manual phone bookings with real-time vehicle dispatch, paperless digital KYC verification, and #1 Google Maps ranking.','OMG Rental Bikes was running a 100+ vehicle fleet using paper ledger records, manual phone calls, and unverified Aadhaar card photocopies. Vehicle double-booking, missing maintenance tracking, and reliance on aggregator platforms squeezed margins.','Bluebase designed and engineered a full-stack digital operating system: real-time live inventory management, 90-second digital KYC with biometric validation, automated digital rental agreements, instant UPI payments, and localized SEO landing pages.','Scaled direct online bookings by 3.5X in 90 days, reduced idle vehicle turnaround by 45%, eliminated vehicle double-booking to zero, and achieved #1 Google Maps local ranking in target tourist hubs.',NULL,'[\"Laravel\",\"MySQL\",\"Tailwind CSS\",\"Alpine.js\",\"Razorpay\",\"DigiLocker API\",\"Cloudflare\"]','Bluebase did not just build a website; they automated our entire business. From customer verification to payment collection and fleet maintenance alerts, everything runs in one place.','Managing Partner','OMG Rental Bikes','https://omgrentalbikes.com','omgrentalbikes.com','pages.company.omg-rental-bikes',1,1,1,'2026-09-20 12:00:00','OMG Rental Bikes Case Study | Custom Fleet ERP & Booking Engine | Bluebase Technologies','Discover how Bluebase engineered a custom fleet management ERP, instant online booking portal, and digital growth engine for OMG Rental Bikes, scaling direct bookings by 3.5X.','omg rental bikes case study, fleet management software, bike rental booking engine, custom erp development, bluebase technologies','https://bluebasetechnologies.com/customer-stories/omg-rental-bikes','images/stories/omg-rental-bikes-brand.png','2026-09-20 12:00:00','2026-11-20 12:00:00'),(2,'Remote Paid Ads, Social Media Handle Management & WhatsApp Operations','aarohi-classic-2024','Aarohi Classic 2024',NULL,'Sports & Fitness Event','Remote Digital Marketing','100% Remote Operations','blue','350+ Competitors · Zero Downtime','images/stories/aarohi-classic-brand.png','[{\"num\":\"250\",\"suffix\":\"+\",\"label\":\"Online Registrations\"},{\"num\":\"4.2\",\"suffix\":\"X\",\"label\":\"Ad ROAS\"},{\"num\":\"100\",\"suffix\":\"%\",\"label\":\"Remote Off-Site\"}]','[{\"value\":\"250+\",\"label\":\"Online Registrations\"},{\"value\":\"4.2X\",\"label\":\"Ad ROAS\"},{\"value\":\"100%\",\"label\":\"Remote Off-Site\"}]','Managed the championship\'s complete digital workflow 100% remotely: targeted Meta and Google ad campaigns, high-impact social media creatives, online athlete registration intake, and WhatsApp communication.','A national bodybuilding championship needed to attract athletes from across multiple states on a strict 45-day deadline. Previous editions relied on physical gym posters and word-of-mouth, leading to chaotic on-spot cash registrations.','Bluebase took over 100% remote digital management: high-converting Meta and Instagram ad campaigns, automated category selection landing page, integrated Razorpay entry fee collection, and automated WhatsApp confirmation receipts.','Generated 250+ pre-paid athlete registrations before weigh-in day, achieved a 4.2X Return on Ad Spend (ROAS), and eliminated venue registration queues completely.',NULL,'[\"Meta Ads Manager\",\"WhatsApp Cloud API\",\"Razorpay\",\"Next.js\",\"Google Analytics 4\"]','Bluebase managed our entire registration funnel and social media handles remotely without us worrying about tech or ad management once.','Executive Organizer','Aarohi Classic Committee',NULL,'Championship 2024','pages.company.aarohi-classic-2024',2,1,1,'2026-10-05 12:00:00','Aarohi Classic 2024 Case Study | Event Tech, Ads & WhatsApp Automation | Bluebase Technologies','Learn how Bluebase powered Aarohi Classic 2024 with performance Meta ads, athlete registration portal, and WhatsApp Business automation.','aarohi classic 2024 case study, event registration portal, meta ads management, whatsapp business automation, bluebase technologies','https://bluebasetechnologies.com/customer-stories/aarohi-classic-2024','images/stories/aarohi-classic-brand.png','2026-10-05 12:00:00','2026-11-20 12:00:00'),(3,'Automated IndiaMART Medicine Buy-Lead Capture, Export Intent Filtering & Real-Time CRM Synchronization','indiamart-lead-automation','Pharmaceutical Exporters',NULL,'Pharma Lead Tech','Medicine Export Automation','Chrome Extension','amber','Instant Desk Alerts · 100% Lead Capture','images/stories/screens-clicks.jpg','[{\"num\":\"<10\",\"suffix\":\"s\",\"label\":\"Lead Alert\"},{\"num\":\"4.5\",\"suffix\":\" hrs\",\"label\":\"Saved / Day\"},{\"num\":\"3.2\",\"suffix\":\"X\",\"label\":\"Lead Qualification\"}]','[{\"value\":\"<10s\",\"label\":\"Lead Alert\"},{\"value\":\"4.5 hrs\",\"label\":\"Saved / Day\"},{\"value\":\"3.2X\",\"label\":\"Qualification\"}]','Engineered a bespoke Chrome browser extension for a pharmaceutical manufacturer exporting generic medicines globally, automatically filtering bulk commercial orders from retail prescription noise and syncing qualified leads to CRM in real time.','International medicine export inquiries on B2B directories like IndiaMART arrive around the clock. The sales desk wasted over 4 hours daily copying and pasting buyer phone numbers and weeding out single-strip retail prescription inquiries from genuine commercial container export buyers.','Engineered a lightweight Manifest V3 Chromium browser extension that sits directly in the sales desk browser, continuously detects incoming buy-leads, parses order volume and medicine name, applies keyword score filtering, and syncs directly into the export CRM.','Immediate sub-10-second alerts for commercial export orders, 4.5 employee hours saved daily, and a 3.2X increase in fast turnaround quote submissions before overseas competitors respond.',NULL,'[\"Chromium Manifest V3\",\"JavaScript ES6+\",\"REST APIs\",\"Node.js\",\"CRM Webhooks\"]','Our export team now receives commercial container inquiries seconds after they post, while spam and domestic prescriptions get filtered automatically.','VP of International Sales','Global Pharma Exporter',NULL,'Browser Automation','pages.company.indiamart-lead-automation',3,1,1,'2026-10-20 12:00:00','Pharma Export Lead Automation Case Study | IndiaMART CRM Sync | Bluebase Technologies','Learn how Bluebase engineered a custom Chromium browser automation extension for a pharma exporter, filtering bulk export orders and syncing leads to CRM in real time.','indiamart lead automation, custom chrome extension, pharma export crm sync, sales automation, bluebase technologies','https://bluebasetechnologies.com/customer-stories/indiamart-lead-automation','images/stories/pharma-export-automation.jpg','2026-10-20 12:00:00','2026-11-20 12:00:00');
+/*!40000 ALTER TABLE `case_studies` ENABLE KEYS */;
+UNLOCK TABLES;
+
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

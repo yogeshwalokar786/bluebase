@@ -84,6 +84,8 @@ Route::get('/customer-stories/aarohi-classic-2024', [CompanyController::class, '
 Route::get('/case-studies/aarohi-classic-2024', fn() => redirect()->route('customer-stories.aarohi-classic-2024', [], 301));
 Route::get('/customer-stories/indiamart-lead-automation', [CompanyController::class, 'indiamartLeadAutomationStory'])->name('customer-stories.indiamart-lead-automation');
 Route::get('/case-studies/indiamart-lead-automation', fn() => redirect()->route('customer-stories.indiamart-lead-automation', [], 301));
+Route::get('/customer-stories/{slug}', [CompanyController::class, 'showStory'])->name('customer-stories.show');
+Route::get('/case-studies/{slug}', fn($slug) => redirect()->route('customer-stories.show', ['slug' => $slug], 301));
 Route::get('/compliance-security', [CompanyController::class, 'complianceSecurity'])->name('compliance-security');
 Route::get('/how-we-work', [CompanyController::class, 'howWeWork'])->name('how-we-work');
 Route::get('/company/how-we-work', fn() => redirect()->route('how-we-work', [], 301))->name('company.how-we-work');
@@ -162,6 +164,15 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
         Route::delete('/blogs/{id}', [BlogCmsController::class, 'destroy'])->name('blogs.destroy');
         Route::post('/blogs/{id}/toggle', [BlogCmsController::class, 'togglePublish'])->name('blogs.toggle');
         Route::post('/blogs/category/ajax', [BlogCmsController::class, 'ajaxStoreCategory'])->name('blogs.category.ajax');
+
+        // Case Studies CMS
+        Route::get('/case-studies', [\App\Http\Controllers\Admin\CaseStudyCmsController::class, 'index'])->name('case-studies.index');
+        Route::get('/case-studies/create', [\App\Http\Controllers\Admin\CaseStudyCmsController::class, 'create'])->name('case-studies.create');
+        Route::post('/case-studies', [\App\Http\Controllers\Admin\CaseStudyCmsController::class, 'store'])->name('case-studies.store');
+        Route::get('/case-studies/{id}/edit', [\App\Http\Controllers\Admin\CaseStudyCmsController::class, 'edit'])->name('case-studies.edit');
+        Route::post('/case-studies/{id}', [\App\Http\Controllers\Admin\CaseStudyCmsController::class, 'update'])->name('case-studies.update');
+        Route::delete('/case-studies/{id}', [\App\Http\Controllers\Admin\CaseStudyCmsController::class, 'destroy'])->name('case-studies.destroy');
+        Route::post('/case-studies/{id}/toggle', [\App\Http\Controllers\Admin\CaseStudyCmsController::class, 'toggle'])->name('case-studies.toggle');
 
         // Careers & Job Openings CMS
         Route::get('/careers', [JobOpeningCmsController::class, 'index'])->name('careers.index');

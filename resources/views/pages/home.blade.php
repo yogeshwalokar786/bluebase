@@ -1075,6 +1075,51 @@
 
       <div class="client-success-grid" data-viewport="true" data-animation="fade-up">
 
+        @if(isset($latestCaseStudies) && $latestCaseStudies->isNotEmpty())
+          @foreach($latestCaseStudies as $story)
+          <article class="client-story-card">
+            <div class="cs-card-media">
+              <img src="{{ asset($story->hero_image) }}?v=3" alt="{{ $story->client_name }}" loading="lazy">
+              <div class="cs-media-badges">
+                <span class="cs-badge-cat">{{ $story->industry }}</span>
+                @if(!empty($story->status_badge))
+                <span class="cs-badge-status {{ ($story->status_color ?? '') === 'green' ? 'live' : (($story->status_color ?? '') === 'blue' ? 'event' : 'tool') }}">
+                  <span class="cs-dot-indicator {{ $story->status_color ?? 'green' }}"></span> {{ $story->status_badge }}
+                </span>
+                @endif
+              </div>
+            </div>
+            <div class="cs-card-body">
+              @if(!empty($story->metric_chip))
+                <div class="cs-metric-chip">{{ $story->metric_chip }}</div>
+              @endif
+              <h3 class="cs-card-title">
+                <a href="{{ $story->url ?? route('customer-stories.show', $story->slug) }}" style="color:inherit;text-decoration:none;">{{ $story->title }}</a>
+              </h3>
+              <p class="cs-card-desc">
+                {{ $story->excerpt }}
+              </p>
+              <div class="cs-card-footer">
+                <a href="{{ $story->url ?? route('customer-stories.show', $story->slug) }}" class="cs-read-btn">
+                  <span>Read Case Study</span>
+                  <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
+                </a>
+                @if(!empty($story->project_url))
+                <a href="{{ $story->project_url }}" target="_blank" rel="noopener noreferrer" class="cs-live-pill">
+                  <span>{{ $story->project_url_label ?? 'Visit Project' }}</span>
+                  <svg viewBox="0 0 16 16"><path d="M6 3h7v7M13 3L7 9"/></svg>
+                </a>
+                @else
+                <a href="{{ route('contact') }}" class="cs-live-pill">
+                  <span>{{ $story->project_url_label ?? 'Learn More' }}</span>
+                  <svg viewBox="0 0 16 16"><path d="M6 3h7v7M13 3L7 9"/></svg>
+                </a>
+                @endif
+              </div>
+            </div>
+          </article>
+          @endforeach
+        @else
         <!-- Card 1: OMG Rental Bikes -->
         <article class="client-story-card">
           <div class="cs-card-media">
@@ -1170,6 +1215,7 @@
             </div>
           </div>
         </article>
+        @endif
 
       </div>
 

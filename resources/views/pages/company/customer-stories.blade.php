@@ -16,24 +16,14 @@
   "mainEntity": {
     "@type": "ItemList",
     "itemListElement": [
+      @foreach($caseStudies as $idx => $story)
       {
         "@type": "ListItem",
-        "position": 1,
-        "url": "{{ route('customer-stories.omg-rental-bikes') }}",
-        "name": "OMG Rental Bikes — 100+ Vehicle Fleet Management System & Instant Online Booking Engine"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "url": "{{ route('customer-stories.aarohi-classic-2024') }}",
-        "name": "Aarohi Classic 2024 — Digital Event Tech, Performance Ads & WhatsApp Automation"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "url": "{{ route('customer-stories.indiamart-lead-automation') }}",
-        "name": "Pharma Export Automation — Automating IndiaMART Medicine Buy-Lead Capture & Real-Time CRM Sync"
-      }
+        "position": {{ $idx + 1 }},
+        "url": "{{ $story->url ?? route('customer-stories.show', $story->slug) }}",
+        "name": "{{ addslashes($story->title) }}"
+      }{{ !$loop->last ? ',' : '' }}
+      @endforeach
     ]
   }
 }
@@ -730,14 +720,15 @@
   </section>
 
   <!-- ========================================================================
-       2. FEATURED SPOTLIGHT: OMG RENTAL BIKES
+       2. FEATURED SPOTLIGHT: DYNAMIC CASE STUDY
        ======================================================================== -->
+  @if(isset($featuredStory) && $featuredStory)
   <section class="cs-featured-section" id="featured-story">
     <div class="container">
       
       <div style="margin-bottom: 32px;" data-viewport="true">
         <span class="section-tag">Featured Success Story</span>
-        <h2 class="section-title">Automating Fleet Operations for <mark>OMG Rental Bikes</mark></h2>
+        <h2 class="section-title">Automating Operations for <mark>{{ $featuredStory->client_name }}</mark></h2>
       </div>
 
       <div class="cs-featured-card" data-viewport="true">
@@ -745,65 +736,64 @@
         <!-- Left: Story Details -->
         <div>
           <div class="cs-featured-meta">
-            <span class="cs-badge-pill">Mobility &amp; Fleet ERP</span>
-            <span class="cs-badge-pill status">Live in Production</span>
+            <span class="cs-badge-pill">{{ $featuredStory->service_tag ?? $featuredStory->industry }}</span>
+            <span class="cs-badge-pill status">{{ $featuredStory->status_badge ?? 'Live in Production' }}</span>
           </div>
 
           <h3 class="cs-featured-title">
-            Custom Fleet Management ERP, Online Booking Engine &amp; Paperless KYC
+            {{ $featuredStory->title }}
           </h3>
 
           <p class="cs-featured-desc">
-            OMG Rental Bikes partnered with Bluebase Technologies to eliminate manual spreadsheets, handwritten KYC contracts, and 25% third-party aggregator commissions. We engineered a real-time web booking engine, custom cloud fleet software with automated PDF rental agreements, and fully manage their #1 local Google Maps ranking.
+            {{ $featuredStory->excerpt }}
           </p>
 
-          <!-- 3 Highlight Metrics -->
+          <!-- Highlight Metrics -->
+          @if(!empty($featuredStory->featured_stats) && is_array($featuredStory->featured_stats))
           <div class="cs-featured-stats">
+            @foreach($featuredStory->featured_stats as $stat)
             <div class="cs-stat-item">
-              <div class="cs-stat-num">3.5<span>X</span></div>
-              <div class="cs-stat-lbl">Direct Bookings</div>
+              <div class="cs-stat-num">{{ $stat['num'] ?? '' }}<span>{{ $stat['suffix'] ?? '' }}</span></div>
+              <div class="cs-stat-lbl">{{ $stat['label'] ?? '' }}</div>
             </div>
-            <div class="cs-stat-item">
-              <div class="cs-stat-num">45<span>%</span></div>
-              <div class="cs-stat-lbl">Idle Fleet Reduction</div>
-            </div>
-            <div class="cs-stat-item">
-              <div class="cs-stat-num">#<span>1</span></div>
-              <div class="cs-stat-lbl">Google Search Rank</div>
-            </div>
+            @endforeach
           </div>
+          @endif
 
           <!-- CTAs -->
           <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap;">
-            <a href="{{ route('customer-stories.omg-rental-bikes') }}" class="c-btn -primary" style="padding: 13px 26px;">
+            <a href="{{ $featuredStory->url ?? route('customer-stories.show', $featuredStory->slug) }}" class="c-btn -primary" style="padding: 13px 26px;">
               <span class="c-btn__txt">Read In-Depth Case Study</span>
               <span class="c-btn__ico">
                 <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
                 <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
               </span>
             </a>
-            <a href="https://omgrentalbikes.com" target="_blank" rel="noopener noreferrer" class="c-btn -secondary" style="padding: 13px 22px;">
-              <span class="c-btn__txt">Visit Live Website</span>
+            @if(!empty($featuredStory->project_url))
+            <a href="{{ $featuredStory->project_url }}" target="_blank" rel="noopener noreferrer" class="c-btn -secondary" style="padding: 13px 22px;">
+              <span class="c-btn__txt">{{ !empty($featuredStory->project_url_label) ? 'Visit ' . $featuredStory->project_url_label : 'Visit Live Website' }}</span>
               <span class="c-btn__ico">
                 <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
                 <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
               </span>
             </a>
+            @endif
           </div>
         </div>
 
         <!-- Right: Visual Device Showcase -->
         <div class="cs-featured-visual">
-          <img src="{{ asset('images/stories/omg-rental-bikes-brand.png') }}?v=2" alt="OMG Rental Bikes Brand Showcase" loading="lazy">
+          <img src="{{ asset($featuredStory->hero_image) }}?v=3" alt="{{ $featuredStory->client_name }} Brand Showcase" loading="lazy">
         </div>
 
       </div>
 
     </div>
   </section>
+  @endif
 
   <!-- ========================================================================
-       3. CURATED CASE STUDIES GRID
+       3. CURATED CASE STUDIES GRID (DYNAMIC FROM DATABASE)
        ======================================================================== -->
   <section class="cs-grid-section">
     <div class="container">
@@ -819,134 +809,68 @@
       </div>
 
       <div class="cs-cards-grid">
-        
-        <!-- Case Study Card 1: OMG Rental Bikes -->
-        <article class="cs-story-card" data-category="mobility" data-viewport="true">
+        @forelse($caseStudies as $story)
+        <article class="cs-story-card" data-category="{{ \Illuminate\Support\Str::slug($story->industry ?? 'general') }}" data-viewport="true">
           <div class="cs-card-img-wrap">
-            <img src="{{ asset('images/stories/omg-rental-bikes-brand.png') }}?v=2" alt="OMG Rental Bikes Platform" loading="lazy">
+            <img src="{{ asset($story->hero_image) }}?v=3" alt="{{ $story->client_name }}" loading="lazy">
             <div class="cs-card-tag-floating">
-              <span class="cs-tag-badge">Mobility Startup</span>
-              <span class="cs-tag-badge" style="background: rgba(4, 120, 87, 0.9);">100% Managed</span>
+              <span class="cs-tag-badge">{{ $story->industry }}</span>
+              @if(!empty($story->status_badge))
+                <span class="cs-tag-badge" style="{{ ($story->status_color ?? '') === 'green' ? 'background: rgba(4, 120, 87, 0.9);' : (($story->status_color ?? '') === 'blue' ? 'background: rgba(29, 78, 216, 0.9);' : 'background: rgba(217, 119, 6, 0.9);') }}">
+                  {{ $story->status_badge }}
+                </span>
+              @endif
             </div>
           </div>
 
           <div class="cs-card-body">
             <div class="cs-card-client-row">
-              <span class="cs-card-client-name">OMG Rental Bikes</span>
-              <span style="font-size: 0.78rem; color: var(--color-text-muted);">Fleet ERP &amp; Web</span>
+              <span class="cs-card-client-name">{{ $story->client_name }}</span>
+              <span style="font-size: 0.78rem; color: var(--color-text-muted);">{{ $story->service_tag }}</span>
             </div>
 
             <h3 class="cs-card-title">
-              Custom Fleet Management ERP, Online Booking Engine &amp; Local SEO Domination
+              {{ $story->title }}
             </h3>
 
             <p class="cs-card-desc">
-              Engineered a centralized cloud platform replacing paper contracts and manual phone bookings with real-time vehicle dispatch, paperless digital KYC verification, and #1 Google Maps ranking.
+              {{ $story->excerpt }}
             </p>
 
+            @if(!empty($story->stats_pills) && is_array($story->stats_pills))
             <div class="cs-card-stats-row">
-              <div class="cs-card-stat-pill"><strong>3.5X</strong> Direct Bookings</div>
-              <div class="cs-card-stat-pill"><strong>100%</strong> Digital KYC</div>
-              <div class="cs-card-stat-pill"><strong>45%</strong> Idle Drop</div>
+              @foreach($story->stats_pills as $pill)
+                <div class="cs-card-stat-pill"><strong>{{ $pill['value'] ?? '' }}</strong> {{ $pill['label'] ?? '' }}</div>
+              @endforeach
             </div>
+            @endif
 
             <div class="cs-card-footer">
-              <a href="{{ route('customer-stories.omg-rental-bikes') }}" class="cs-read-link">
+              <a href="{{ $story->url ?? route('customer-stories.show', $story->slug) }}" class="cs-read-link">
                 <span>Read Full Case Study</span>
                 <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
               </a>
-              <a href="https://omgrentalbikes.com" target="_blank" rel="noopener noreferrer" style="font-size: 0.82rem; color: var(--color-text-muted); text-decoration: underline;">
-                omgrentalbikes.com &nearr;
-              </a>
+              @if(!empty($story->project_url))
+                <a href="{{ $story->project_url }}" target="_blank" rel="noopener noreferrer" style="font-size: 0.82rem; color: var(--color-text-muted); text-decoration: underline;">
+                  {{ $story->project_url_label ?? 'Visit Project' }} &nearr;
+                </a>
+              @else
+                <span style="font-size: 0.82rem; color: var(--color-text-muted);">
+                  {{ $story->project_url_label ?? $story->industry }}
+                </span>
+              @endif
             </div>
           </div>
         </article>
-
-        <!-- Case Study Card 2: Aarohi Classic 2024 -->
-        <article class="cs-story-card" data-category="event" data-viewport="true">
-          <div class="cs-card-img-wrap">
-            <img src="{{ asset('images/stories/aarohi-classic-brand.png') }}?v=2" alt="Aarohi Classic 2024 Event Digital Operations" loading="lazy">
-            <div class="cs-card-tag-floating">
-              <span class="cs-tag-badge">Sports &amp; Fitness Event</span>
-              <span class="cs-tag-badge" style="background: rgba(29, 78, 216, 0.9);">100% Remote Ops</span>
-            </div>
-          </div>
-
-          <div class="cs-card-body">
-            <div class="cs-card-client-row">
-              <span class="cs-card-client-name">Aarohi Classic 2024</span>
-              <span style="font-size: 0.78rem; color: var(--color-text-muted);">Remote Digital Marketing</span>
-            </div>
-
-            <h3 class="cs-card-title">
-              Remote Paid Ads, Social Media Handle Management &amp; WhatsApp Operations
-            </h3>
-
-            <p class="cs-card-desc">
-              Managed the championship's complete digital workflow 100% remotely: targeted Meta and Google ad campaigns, high-impact social media creatives, online athlete registration intake, and WhatsApp communication.
-            </p>
-
-            <div class="cs-card-stats-row">
-              <div class="cs-card-stat-pill"><strong>250+</strong> Online Registrations</div>
-              <div class="cs-card-stat-pill"><strong>4.2X</strong> Ad ROAS</div>
-              <div class="cs-card-stat-pill"><strong>100%</strong> Remote Off-Site</div>
-            </div>
-
-            <div class="cs-card-footer">
-              <a href="{{ route('customer-stories.aarohi-classic-2024') }}" class="cs-read-link">
-                <span>Read Full Case Study</span>
-                <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-              </a>
-              <span style="font-size: 0.82rem; color: var(--color-text-muted);">
-                Championship 2024
-              </span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 3: IndiaMART Lead Automation Extension -->
-        <article class="cs-story-card" data-category="automation" data-viewport="true">
-          <div class="cs-card-img-wrap">
-            <img src="{{ asset('images/stories/screens-clicks.jpg') }}?v=3" alt="Pharmaceutical Medicine Export Lead Automation Extension" loading="lazy">
-            <div class="cs-card-tag-floating">
-              <span class="cs-tag-badge">Pharma Lead Tech</span>
-              <span class="cs-tag-badge" style="background: rgba(16, 185, 129, 0.9);">Chrome Extension</span>
-            </div>
-          </div>
-
-          <div class="cs-card-body">
-            <div class="cs-card-client-row">
-              <span class="cs-card-client-name">Pharmaceutical Exporters</span>
-              <span style="font-size: 0.78rem; color: var(--color-text-muted);">Medicine Export Automation</span>
-            </div>
-
-            <h3 class="cs-card-title">
-              Automated IndiaMART Medicine Buy-Lead Capture, Export Intent Filtering &amp; Real-Time CRM Synchronization
-            </h3>
-
-            <p class="cs-card-desc">
-              Engineered a bespoke Chrome browser extension for a pharmaceutical manufacturer exporting generic medicines globally, automatically filtering bulk commercial orders from retail prescription noise and syncing qualified leads to CRM in real time.
-            </p>
-
-            <div class="cs-card-stats-row">
-              <div class="cs-card-stat-pill"><strong>&lt;10s</strong> Lead Alert</div>
-              <div class="cs-card-stat-pill"><strong>4.5 hrs</strong> Saved / Day</div>
-              <div class="cs-card-stat-pill"><strong>3.2X</strong> Qualification</div>
-            </div>
-
-            <div class="cs-card-footer">
-              <a href="{{ route('customer-stories.indiamart-lead-automation') }}" class="cs-read-link">
-                <span>Read Full Case Study</span>
-                <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
-              </a>
-              <span style="font-size: 0.82rem; color: var(--color-text-muted);">
-                Browser Automation
-              </span>
-            </div>
-          </div>
-        </article>
-
+        @empty
+        <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px;">
+          <p style="color: var(--color-text-muted);">No case studies available at the moment.</p>
+        </div>
+        @endforelse
       </div>
+
+    </div>
+  </section>
 
     </div>
   </section>
