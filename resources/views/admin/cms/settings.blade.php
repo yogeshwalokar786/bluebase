@@ -354,6 +354,50 @@
         </div>
       </div>
 
+      <h3
+        style="font-size: 1.05rem; font-weight: 700; margin-top: 32px; margin-bottom: 16px; color: var(--accent); border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
+        5. Inbound IMAP Mailbox Synchronization (Optional)
+      </h3>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">
+        Connect directly to your mail server (e.g. Gmail, cPanel Webmail, or Outlook) over IMAP SSL to sync incoming external emails straight into your Dashboard Webmail module without opening a separate email application.
+      </p>
+
+      <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px;">
+        <div class="form-group">
+          <label class="form-label">IMAP Host</label>
+          <input type="text" name="imap_host" value="{{ $settings['imap_host'] ?? 'imap.gmail.com' }}"
+            placeholder="e.g. imap.gmail.com or mail.bluebasetechnologies.com" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">IMAP Port</label>
+          <input type="number" name="imap_port" value="{{ $settings['imap_port'] ?? '993' }}"
+            placeholder="993" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Encryption</label>
+          <select name="imap_encryption" class="form-control">
+            <option value="ssl" {{ ($settings['imap_encryption'] ?? 'ssl') === 'ssl' ? 'selected' : '' }}>SSL (Port 993)</option>
+            <option value="tls" {{ ($settings['imap_encryption'] ?? '') === 'tls' ? 'selected' : '' }}>TLS</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 10px;">
+        <div class="form-group">
+          <label class="form-label">IMAP Username</label>
+          <input type="text" name="imap_username" value="{{ $settings['imap_username'] ?? '' }}"
+            placeholder="Leave blank to use SMTP username" class="form-control" autocomplete="off">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">IMAP Password</label>
+          <input type="password" name="imap_password" value="{{ $settings['imap_password'] ?? '' }}"
+            placeholder="Leave blank to use SMTP password" class="form-control" autocomplete="new-password">
+        </div>
+      </div>
+
       <div style="margin-top: 28px;">
         <button type="submit" class="btn btn-primary" style="padding: 10px 24px; font-size: 0.95rem;">Save Site
           Settings</button>

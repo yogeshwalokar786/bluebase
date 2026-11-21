@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\TestimonialCmsController;
 use App\Http\Controllers\Admin\SettingsCmsController;
 use App\Http\Controllers\Admin\FileManagerController;
 use App\Http\Controllers\Admin\SeoController;
+use App\Http\Controllers\Admin\MailController;
 
 // ==========================================
 // 1. PUBLIC MARKETING WEBSITE
@@ -197,7 +198,19 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     });
     Route::get('/inquiries', fn() => redirect()->route('admin.leads.inquiries'))->name('inquiries');
 
-    // 3. Media Manager & File Library
+    // 3. Webmail & Communications Center
+    Route::prefix('mail')->name('mail.')->group(function () {
+        Route::get('/', [MailController::class, 'index'])->name('index');
+        Route::post('/send', [MailController::class, 'send'])->name('send');
+        Route::post('/sync', [MailController::class, 'sync'])->name('sync');
+        Route::post('/{id}/star', [MailController::class, 'toggleStar'])->name('star');
+        Route::post('/{id}/read', [MailController::class, 'toggleRead'])->name('read');
+        Route::post('/{id}/trash', [MailController::class, 'moveToTrash'])->name('trash');
+        Route::post('/{id}/restore', [MailController::class, 'restore'])->name('restore');
+        Route::delete('/{id}', [MailController::class, 'destroy'])->name('destroy');
+    });
+
+    // 4. Media Manager & File Library
     Route::prefix('filemanager')->name('filemanager.')->group(function () {
         Route::get('/', [FileManagerController::class, 'index'])->name('index');
         Route::get('/api/files', [FileManagerController::class, 'apiFiles'])->name('api.files');

@@ -1289,6 +1289,14 @@
       </a>
 
       <div class="menu-group-title">Management</div>
+      <a href="{{ route('admin.mail.index') }}" class="nav-item {{ request()->routeIs('admin.mail*') ? 'active' : '' }}">
+        <span class="nav-item-content">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span>Webmail &amp; Inbox</span>
+        </span>
+        <span class="nav-count">{{ rescue(fn() => \App\Models\EmailMessage::where('folder', 'inbox')->where('is_read', false)->count(), 0) }}</span>
+      </a>
+
       <a href="{{ route('admin.leads.inquiries') }}" class="nav-item {{ request()->routeIs('admin.leads.inquiries*') ? 'active' : '' }}">
         <span class="nav-item-content">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>

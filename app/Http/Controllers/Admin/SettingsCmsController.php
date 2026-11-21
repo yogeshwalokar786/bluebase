@@ -47,6 +47,11 @@ class SettingsCmsController extends Controller
             'smtp_password',
             'mail_from_address',
             'mail_from_name',
+            'imap_host',
+            'imap_port',
+            'imap_encryption',
+            'imap_username',
+            'imap_password',
         ];
 
         foreach ($allowedKeys as $key) {

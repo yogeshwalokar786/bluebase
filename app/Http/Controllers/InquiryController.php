@@ -8,6 +8,8 @@ use App\Models\TrialRequest;
 use App\Models\PartnerApplication;
 use App\Models\NewsletterSubscriber;
 use App\Models\SiteSetting;
+use App\Models\EmailMessage;
+use App\Services\MailboxService;
 use App\Mail\InquiryConfirmationMail;
 use App\Mail\AdminInquiryNotificationMail;
 use Illuminate\Http\Request;
@@ -306,36 +308,46 @@ class InquiryController extends Controller
     }
 
     /**
-     * Configure dynamic SMTP and dispatch user confirmation and admin notification emails.
+     * Configure dynamic SMTP, register inquiry in Webmail inbox, and dispatch confirmation/admin emails.
      * Wrapped in defensive try/catch to ensure user requests never fail on mail transport issues.
      */
     protected function sendInquiryEmails(array $data): void
     {
         try {
-            // 1. Dynamic runtime SMTP override from database settings if present
-            $host = SiteSetting::get('smtp_host');
-            if (!empty($host)) {
-                config([
-                    'mail.default' => 'smtp',
-                    'mail.mailers.smtp.host' => $host,
-                    'mail.mailers.smtp.port' => (int) SiteSetting::get('smtp_port', 587),
-                    'mail.mailers.smtp.encryption' => SiteSetting::get('smtp_encryption', 'tls') ?: null,
-                    'mail.mailers.smtp.username' => SiteSetting::get('smtp_username'),
-                    'mail.mailers.smtp.password' => SiteSetting::get('smtp_password'),
-                ]);
-            }
-            $fromAddress = SiteSetting::get('mail_from_address') ?: SiteSetting::get('contact_email', config('mail.from.address'));
-            if (!empty($fromAddress)) {
-                config(['mail.from.address' => $fromAddress]);
-            }
-            $fromName = SiteSetting::get('mail_from_name') ?: SiteSetting::get('site_name', config('mail.from.name'));
-            if (!empty($fromName)) {
-                config(['mail.from.name' => $fromName]);
-            }
+            MailboxService::configureRuntimeSmtp();
+
+            // 1. Record incoming inquiry into EmailMessage (Inbox)
+            $incoming = MailboxService::recordIncomingInquiry(
+                $data['type'] ?? 'contact',
+                $data,
+                $data['reference_id'] ?? null
+            );
 
             // 2. Dispatch Confirmation Mail to Inquirer
             if (!empty($data['email'])) {
                 Mail::to($data['email'])->send(new InquiryConfirmationMail($data));
+
+                // Log outgoing automated confirmation into Sent folder
+                if ($incoming) {
+                    try {
+                        EmailMessage::create([
+                            'folder' => 'sent',
+                            'inquiry_type' => $data['type'] ?? 'contact',
+                            'inquiry_id' => $data['reference_id'] ?? null,
+                            'parent_id' => $incoming->id,
+                            'sender_name' => config('mail.from.name', 'Bluebase Technologies'),
+                            'sender_email' => config('mail.from.address', 'info@bluebasetechnologies.com'),
+                            'recipient_name' => $data['name'] ?? null,
+                            'recipient_email' => $data['email'],
+                            'subject' => 'Confirmation: ' . ($incoming->subject ?? 'We Received Your Request'),
+                            'body' => "Thank you for reaching out to Bluebase Technologies. Our engineering team has received your inquiry and is reviewing your specifications.",
+                            'is_read' => true,
+                            'is_starred' => false,
+                            'status' => 'sent',
+                            'sent_at' => now(),
+                        ]);
+                    } catch (\Throwable $e) {}
+                }
             }
 
             // 3. Dispatch Notification Mail to Admin / Sales Desk
