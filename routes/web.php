@@ -130,6 +130,9 @@ Route::post('/free-trial', [InquiryController::class, 'storeTrial'])->name('free
 Route::post('/partner/apply', [InquiryController::class, 'storePartner'])->name('partner.apply');
 Route::post('/newsletter/subscribe', [InquiryController::class, 'storeNewsletter'])->name('newsletter.subscribe');
 
+// Inbound Email Webhook (for external forwarders, Postmark, Mailgun, cPanel email piping)
+Route::post('/mail/inbound', [MailController::class, 'incomingWebhook'])->name('mail.inbound');
+
 // ==========================================
 // 2. ADMIN AUTHENTICATION
 // ==========================================

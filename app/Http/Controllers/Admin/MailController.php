@@ -20,6 +20,15 @@ class MailController extends Controller
             }
         } catch (\Throwable $e) {}
 
+        // Automatic background IMAP synchronization (throttled every 120 seconds)
+        try {
+            $lastSync = cache()->get('admin_webmail_last_sync');
+            if (!$lastSync || now()->diffInSeconds($lastSync) >= 120) {
+                MailboxService::syncImapInbox();
+                cache()->put('admin_webmail_last_sync', now(), 120);
+            }
+        } catch (\Throwable $e) {}
+
         $folder = $request->input('folder', 'inbox');
         $search = trim($request->input('search', ''));
         $selectedId = $request->input('selected_id');
@@ -244,5 +253,40 @@ class MailController extends Controller
 
         return redirect()->route('admin.mail.index', ['folder' => 'inbox'])
             ->with('success', $note);
+    }
+
+    /**
+     * Inbound Email Webhook (for Postmark, Mailgun, SendGrid, cPanel, or custom mail forwarders).
+     */
+    public function incomingWebhook(Request $request)
+    {
+        EmailMessage::ensureTableExists();
+
+        $senderEmail = $request->input('from_email') ?: ($request->input('sender') ?: $request->input('From'));
+        $senderName = $request->input('from_name') ?: ($request->input('from') ?: 'External Sender');
+        $recipientEmail = $request->input('to_email') ?: ($request->input('recipient') ?: $request->input('To', 'info@bluebasetechnologies.com'));
+        $subject = $request->input('subject') ?: '(No Subject)';
+        $body = $request->input('body') ?: ($request->input('text') ?: ($request->input('html') ?: ''));
+
+        if (empty($senderEmail) || empty($body)) {
+            return response()->json(['error' => 'Missing sender or body payload'], 400);
+        }
+
+        $email = EmailMessage::create([
+            'folder' => 'inbox',
+            'inquiry_type' => 'inbound_webhook',
+            'sender_name' => $senderName,
+            'sender_email' => $senderEmail,
+            'recipient_name' => 'Bluebase Desk',
+            'recipient_email' => $recipientEmail,
+            'subject' => $subject,
+            'body' => $body,
+            'is_read' => false,
+            'is_starred' => false,
+            'status' => 'received',
+            'sent_at' => now(),
+        ]);
+
+        return response()->json(['success' => true, 'id' => $email->id]);
     }
 }

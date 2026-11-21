@@ -15,6 +15,10 @@ return Application::configure(basePath: dirname(__DIR__))
             guests: '/admin/login',
             users: '/admin'
         );
+        $middleware->validateCsrfTokens(except: [
+            'mail/inbound',
+            'api/*',
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
