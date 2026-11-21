@@ -208,6 +208,7 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     // 3. Site Settings
     Route::get('/settings', [SettingsCmsController::class, 'index'])->name('settings');
     Route::post('/settings', [SettingsCmsController::class, 'update'])->name('settings.update');
+    Route::post('/settings/test-email', [SettingsCmsController::class, 'sendTestEmail'])->name('settings.test_email');
 
     // Safe fallbacks for retired admin routes
     Route::get('/seo/{any?}', fn() => redirect()->route('admin.dashboard'))->where('any', '.*');

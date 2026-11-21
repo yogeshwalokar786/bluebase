@@ -40,6 +40,13 @@ class SettingsCmsController extends Controller
             'hero_video_url',
             'hero_video_overlay_opacity',
             'hero_video_poster',
+            'smtp_host',
+            'smtp_port',
+            'smtp_encryption',
+            'smtp_username',
+            'smtp_password',
+            'mail_from_address',
+            'mail_from_name',
         ];
 
         foreach ($allowedKeys as $key) {
@@ -56,6 +63,50 @@ class SettingsCmsController extends Controller
         } catch (\Throwable $e) {}
 
         return back()->with('success', 'Site configuration and CMS settings updated successfully.');
+    }
+
+    public function sendTestEmail(Request $request)
+    {
+        $request->validate([
+            'test_email' => 'required|email',
+        ]);
+
+        $recipient = $request->input('test_email');
+
+        try {
+            $host = SiteSetting::get('smtp_host');
+            if (!empty($host)) {
+                config([
+                    'mail.default' => 'smtp',
+                    'mail.mailers.smtp.host' => $host,
+                    'mail.mailers.smtp.port' => (int) SiteSetting::get('smtp_port', 587),
+                    'mail.mailers.smtp.encryption' => SiteSetting::get('smtp_encryption', 'tls') ?: null,
+                    'mail.mailers.smtp.username' => SiteSetting::get('smtp_username'),
+                    'mail.mailers.smtp.password' => SiteSetting::get('smtp_password'),
+                ]);
+            }
+            $fromAddress = SiteSetting::get('mail_from_address') ?: SiteSetting::get('contact_email', config('mail.from.address'));
+            if (!empty($fromAddress)) {
+                config(['mail.from.address' => $fromAddress]);
+            }
+            $fromName = SiteSetting::get('mail_from_name') ?: SiteSetting::get('site_name', config('mail.from.name'));
+            if (!empty($fromName)) {
+                config(['mail.from.name' => $fromName]);
+            }
+
+            \Illuminate\Support\Facades\Mail::raw(
+                "Hello,\n\nThis is an automated SMTP verification test email from " . config('mail.from.name') . ".\nIf you received this message, your SMTP credentials and delivery pipeline are working properly!\n\nHost: " . config('mail.mailers.smtp.host') . "\nPort: " . config('mail.mailers.smtp.port') . "\nEncryption: " . (config('mail.mailers.smtp.encryption') ?? 'none') . "\nSender: " . config('mail.from.address') . "\nTimestamp: " . now()->toIso8601String() . "\n\nRegards,\nBluebase Cloud Engineering",
+                function ($message) use ($recipient) {
+                    $message->to($recipient)
+                            ->subject('SMTP Verification Test — Bluebase Technologies');
+                }
+            );
+
+            return back()->with('success', "Test email successfully sent to {$recipient} via SMTP!");
+        } catch (\Throwable $e) {
+            \Illuminate\Support\Facades\Log::error('SMTP Test email failed: ' . $e->getMessage());
+            return back()->with('error', 'SMTP Connection Failed: ' . $e->getMessage());
+        }
     }
 }
 

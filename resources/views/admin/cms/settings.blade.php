@@ -295,10 +295,90 @@
         });
       </script>
 
+      <h3
+        style="font-size: 1.05rem; font-weight: 700; margin-top: 32px; margin-bottom: 16px; color: var(--accent); border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
+        4. SMTP &amp; Automated Email Delivery
+      </h3>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">
+        Configure outbound SMTP credentials. When inquiries (Contact form, Project Estimate, Demo Request, Partner Application) are submitted, the platform automatically sends a confirmation email to the user and a lead alert to the admin email.
+      </p>
+
+      <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px;">
+        <div class="form-group">
+          <label class="form-label">SMTP Host</label>
+          <input type="text" name="smtp_host" value="{{ $settings['smtp_host'] ?? env('MAIL_HOST', 'smtp.gmail.com') }}"
+            placeholder="e.g. smtp.gmail.com or mail.bluebasetechnologies.com" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Port</label>
+          <input type="number" name="smtp_port" value="{{ $settings['smtp_port'] ?? env('MAIL_PORT', 587) }}"
+            placeholder="587" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Encryption</label>
+          <select name="smtp_encryption" class="form-control">
+            <option value="tls" {{ ($settings['smtp_encryption'] ?? env('MAIL_ENCRYPTION', 'tls')) === 'tls' ? 'selected' : '' }}>TLS (Port 587 / STARTTLS)</option>
+            <option value="ssl" {{ ($settings['smtp_encryption'] ?? env('MAIL_ENCRYPTION')) === 'ssl' ? 'selected' : '' }}>SSL (Port 465)</option>
+            <option value="none" {{ ($settings['smtp_encryption'] ?? env('MAIL_ENCRYPTION')) === 'none' ? 'selected' : '' }}>None</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 10px;">
+        <div class="form-group">
+          <label class="form-label">SMTP Username / Email</label>
+          <input type="text" name="smtp_username" value="{{ $settings['smtp_username'] ?? env('MAIL_USERNAME', 'info@bluebasetechnologies.com') }}"
+            placeholder="info@bluebasetechnologies.com" class="form-control" autocomplete="off">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">SMTP Password / App Password</label>
+          <input type="password" name="smtp_password" value="{{ $settings['smtp_password'] ?? env('MAIL_PASSWORD', '') }}"
+            placeholder="Enter SMTP password or Google App Password" class="form-control" autocomplete="new-password">
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 10px;">
+        <div class="form-group">
+          <label class="form-label">Sender Email Address (From)</label>
+          <input type="email" name="mail_from_address" value="{{ $settings['mail_from_address'] ?? env('MAIL_FROM_ADDRESS', 'info@bluebasetechnologies.com') }}"
+            placeholder="info@bluebasetechnologies.com" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Sender Display Name (From Name)</label>
+          <input type="text" name="mail_from_name" value="{{ $settings['mail_from_name'] ?? env('MAIL_FROM_NAME', 'Bluebase Technologies') }}"
+            placeholder="Bluebase Technologies" class="form-control">
+        </div>
+      </div>
+
       <div style="margin-top: 28px;">
         <button type="submit" class="btn btn-primary" style="padding: 10px 24px; font-size: 0.95rem;">Save Site
           Settings</button>
       </div>
+    </form>
+  </div>
+
+  <!-- Test SMTP Verification Card -->
+  <div class="card" style="max-width: 960px; margin-top: 24px; border: 1px dashed var(--accent);">
+    <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: var(--text-main);">
+      Test Outbound SMTP Delivery
+    </h3>
+    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
+      Send a live test verification email to confirm that your SMTP server host, port, TLS handshake, and authentication credentials are functioning as expected.
+    </p>
+
+    <form action="{{ route('admin.settings.test_email') }}" method="POST" style="display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap;">
+      @csrf
+      <div class="form-group" style="flex: 1; min-width: 260px; margin-bottom: 0;">
+        <label class="form-label">Recipient Email Address</label>
+        <input type="email" name="test_email" required class="form-control" placeholder="your-email@example.com" value="{{ auth()->user()->email ?? 'info@bluebasetechnologies.com' }}">
+      </div>
+      <button type="submit" class="btn btn-secondary" style="padding: 10px 20px; font-weight: 600;">
+        Send Test Email
+      </button>
     </form>
   </div>
 @endsection

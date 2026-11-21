@@ -7,7 +7,11 @@ use App\Models\DemoBooking;
 use App\Models\TrialRequest;
 use App\Models\PartnerApplication;
 use App\Models\NewsletterSubscriber;
+use App\Models\SiteSetting;
+use App\Mail\InquiryConfirmationMail;
+use App\Mail\AdminInquiryNotificationMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class InquiryController extends Controller
@@ -107,8 +111,9 @@ class InquiryController extends Controller
         $validated['status'] = 'new';
 
         // 4. Persist to MySQL database with defensive safety
+        $inquiry = null;
         try {
-            ContactInquiry::create($validated);
+            $inquiry = ContactInquiry::create($validated);
         } catch (\Throwable $e) {
             \Illuminate\Support\Facades\Log::error('ContactInquiry insertion error: ' . $e->getMessage(), $validated);
         }
@@ -130,7 +135,20 @@ class InquiryController extends Controller
             \Illuminate\Support\Facades\Log::warning('CRM lead sync non-fatal: ' . $crmError->getMessage());
         }
 
-        // 6. Consume verification token so it cannot be re-used
+        // 6. Send user confirmation and admin alert via SMTP
+        $this->sendInquiryEmails([
+            'type' => 'contact',
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'phone' => $validated['phone'] ?? null,
+            'company' => $validated['company'] ?? null,
+            'service' => $validated['service'],
+            'message' => $validated['message'],
+            'reference_id' => $inquiry?->id,
+            'ip_address' => $validated['ip_address'] ?? $request->ip(),
+        ]);
+
+        // 7. Consume verification token so it cannot be re-used
         session()->forget('human_verified_token');
 
         return back()->with('success', 'Thank you! Your message has been received. Our enterprise engineering team will get back to you within 24 hours.');
@@ -154,11 +172,25 @@ class InquiryController extends Controller
             'notes' => 'nullable|string',
         ]);
 
+        $demo = null;
         try {
-            DemoBooking::create($validated);
+            $demo = DemoBooking::create($validated);
         } catch (\Throwable $e) {
             \Illuminate\Support\Facades\Log::info('Demo booking submitted: ' . $validated['email']);
         }
+
+        // Send user confirmation and admin alert via SMTP
+        $this->sendInquiryEmails([
+            'type' => 'demo',
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'phone' => $validated['phone'] ?? null,
+            'company' => $validated['company'] ?? null,
+            'service' => $validated['interested_product'] ?? 'Product Demo Consultation',
+            'message' => $validated['notes'] ?? 'Demo booking consultation requested.',
+            'reference_id' => $demo?->id,
+            'ip_address' => $request->ip(),
+        ]);
 
         return back()->with('success', 'Demo scheduled successfully! A calendar invitation and confirmation has been sent to your email.');
     }
@@ -178,8 +210,9 @@ class InquiryController extends Controller
             'sap_version' => 'nullable|string|max:255',
         ]);
 
+        $trial = null;
         try {
-            TrialRequest::create($validated);
+            $trial = TrialRequest::create($validated);
         } catch (\Throwable $e) {
             \Illuminate\Support\Facades\Log::info('Trial request submitted: ' . $validated['email']);
         }
@@ -200,6 +233,19 @@ class InquiryController extends Controller
             \Illuminate\Support\Facades\Log::warning('CRM lead sync non-fatal: ' . $crmError->getMessage());
         }
 
+        // Send user confirmation and admin alert via SMTP
+        $this->sendInquiryEmails([
+            'type' => 'estimate',
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'phone' => null,
+            'company' => $validated['company'] ?? null,
+            'service' => 'Project Architecture Audit / Free Trial',
+            'message' => 'Cloud: ' . ($validated['cloud_platform'] ?? 'N/A') . ' | Architecture: ' . ($validated['sap_version'] ?? 'N/A'),
+            'reference_id' => $trial?->id,
+            'ip_address' => $request->ip(),
+        ]);
+
         return back()->with('success', 'Trial account provisioned! Check your inbox for your Bluebase cloud credentials and sandbox access.');
     }
 
@@ -215,11 +261,25 @@ class InquiryController extends Controller
             'message' => 'nullable|string',
         ]);
 
+        $partner = null;
         try {
-            PartnerApplication::create($validated);
+            $partner = PartnerApplication::create($validated);
         } catch (\Throwable $e) {
             \Illuminate\Support\Facades\Log::info('Partner application submitted: ' . $validated['email']);
         }
+
+        // Send user confirmation and admin alert via SMTP
+        $this->sendInquiryEmails([
+            'type' => 'partner',
+            'name' => $validated['contact_name'],
+            'email' => $validated['email'],
+            'phone' => $validated['phone'] ?? null,
+            'company' => $validated['company_name'],
+            'service' => $validated['partner_type'] ?? 'Enterprise Partnership',
+            'message' => $validated['message'] ?? 'Alliance & Partner inquiry',
+            'reference_id' => $partner?->id,
+            'ip_address' => $request->ip(),
+        ]);
 
         return back()->with('success', 'Partner application submitted! Our Global Alliance Director will contact you shortly.');
     }
@@ -243,6 +303,51 @@ class InquiryController extends Controller
         }
 
         return back()->with('success', 'Subscribed successfully! You will receive our monthly enterprise architecture digest.');
+    }
+
+    /**
+     * Configure dynamic SMTP and dispatch user confirmation and admin notification emails.
+     * Wrapped in defensive try/catch to ensure user requests never fail on mail transport issues.
+     */
+    protected function sendInquiryEmails(array $data): void
+    {
+        try {
+            // 1. Dynamic runtime SMTP override from database settings if present
+            $host = SiteSetting::get('smtp_host');
+            if (!empty($host)) {
+                config([
+                    'mail.default' => 'smtp',
+                    'mail.mailers.smtp.host' => $host,
+                    'mail.mailers.smtp.port' => (int) SiteSetting::get('smtp_port', 587),
+                    'mail.mailers.smtp.encryption' => SiteSetting::get('smtp_encryption', 'tls') ?: null,
+                    'mail.mailers.smtp.username' => SiteSetting::get('smtp_username'),
+                    'mail.mailers.smtp.password' => SiteSetting::get('smtp_password'),
+                ]);
+            }
+            $fromAddress = SiteSetting::get('mail_from_address') ?: SiteSetting::get('contact_email', config('mail.from.address'));
+            if (!empty($fromAddress)) {
+                config(['mail.from.address' => $fromAddress]);
+            }
+            $fromName = SiteSetting::get('mail_from_name') ?: SiteSetting::get('site_name', config('mail.from.name'));
+            if (!empty($fromName)) {
+                config(['mail.from.name' => $fromName]);
+            }
+
+            // 2. Dispatch Confirmation Mail to Inquirer
+            if (!empty($data['email'])) {
+                Mail::to($data['email'])->send(new InquiryConfirmationMail($data));
+            }
+
+            // 3. Dispatch Notification Mail to Admin / Sales Desk
+            $adminEmail = SiteSetting::get('contact_email') ?? config('mail.from.address') ?? 'info@bluebasetechnologies.com';
+            if (!empty($adminEmail)) {
+                Mail::to($adminEmail)->send(new AdminInquiryNotificationMail($data));
+            }
+        } catch (\Throwable $e) {
+            \Illuminate\Support\Facades\Log::error('SMTP Inquiry email dispatch failed: ' . $e->getMessage(), [
+                'inquiry' => $data,
+            ]);
+        }
     }
 }
 
