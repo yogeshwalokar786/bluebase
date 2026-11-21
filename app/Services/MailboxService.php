@@ -63,6 +63,41 @@ class MailboxService
         $parentId = $payload['parent_id'] ?? null;
         $inquiryType = $payload['inquiry_type'] ?? 'direct';
         $inquiryId = $payload['inquiry_id'] ?? null;
+        $includeSignature = filter_var($payload['include_signature'] ?? true, FILTER_VALIDATE_BOOLEAN);
+
+        // Append corporate signature if requested and not already present
+        if ($includeSignature && !empty($payload['signature'])) {
+            if (!str_contains($body, trim($payload['signature']))) {
+                $body .= "\n\n" . trim($payload['signature']);
+            }
+        } elseif ($includeSignature) {
+            $defaultSig = self::getDefaultSignature();
+            if (!str_contains($body, '--')) {
+                $body .= "\n\n" . $defaultSig;
+            }
+        }
+
+        // Process file attachments if uploaded
+        $savedAttachments = [];
+        if (!empty($payload['attachments']) && is_array($payload['attachments'])) {
+            foreach ($payload['attachments'] as $file) {
+                if ($file instanceof \Illuminate\Http\UploadedFile && $file->isValid()) {
+                    $filename = time() . '_' . preg_replace('/[^A-Za-z0-9_\-\.]/', '_', $file->getClientOriginalName());
+                    $dir = public_path('uploads/mail_attachments');
+                    if (!is_dir($dir)) {
+                        @mkdir($dir, 0755, true);
+                    }
+                    $file->move($dir, $filename);
+                    $savedAttachments[] = [
+                        'name' => $file->getClientOriginalName(),
+                        'path' => 'uploads/mail_attachments/' . $filename,
+                        'url' => asset('uploads/mail_attachments/' . $filename),
+                        'size' => filesize($dir . '/' . $filename),
+                        'mime' => $file->getClientMimeType(),
+                    ];
+                }
+            }
+        }
 
         // Wrap message in clean enterprise HTML styling
         $formattedHtml = self::buildFormattedEmailHtml($subject, $body, $fromName);
@@ -71,7 +106,7 @@ class MailboxService
         $errorMessage = null;
 
         try {
-            Mail::html($formattedHtml, function ($message) use ($toEmail, $toName, $subject, $fromAddress, $fromName, $payload) {
+            Mail::html($formattedHtml, function ($message) use ($toEmail, $toName, $subject, $fromAddress, $fromName, $payload, $savedAttachments) {
                 $message->from($fromAddress, $fromName)
                     ->replyTo($fromAddress, $fromName)
                     ->to($toEmail, $toName)
@@ -82,6 +117,18 @@ class MailboxService
                 }
                 if (!empty($payload['bcc'])) {
                     $message->bcc(array_map('trim', explode(',', $payload['bcc'])));
+                }
+
+                if (!empty($savedAttachments)) {
+                    foreach ($savedAttachments as $att) {
+                        $fullPath = public_path($att['path']);
+                        if (file_exists($fullPath)) {
+                            $message->attach($fullPath, [
+                                'as' => $att['name'],
+                                'mime' => $att['mime'] ?? null,
+                            ]);
+                        }
+                    }
                 }
             });
         } catch (\Throwable $e) {
@@ -103,6 +150,7 @@ class MailboxService
             'bcc' => $payload['bcc'] ?? null,
             'subject' => $subject,
             'body' => $body,
+            'attachments' => !empty($savedAttachments) ? $savedAttachments : null,
             'is_read' => true,
             'is_starred' => false,
             'status' => $status,
@@ -122,6 +170,23 @@ class MailboxService
         }
 
         return $sentRecord;
+    }
+
+    /**
+     * Get or build corporate default email signature.
+     */
+    public static function getDefaultSignature(): string
+    {
+        $custom = SiteSetting::get('mail_signature');
+        if (!empty($custom)) {
+            return $custom;
+        }
+
+        $fromName = SiteSetting::get('mail_from_name', config('mail.from.name', 'Bluebase Technologies'));
+        $fromEmail = SiteSetting::get('mail_from_address', config('mail.from.address', 'info@bluebasetechnologies.com'));
+        $phone = SiteSetting::get('contact_phone', '+1 (800) 555-BLUE');
+
+        return "--\nBest regards,\n{$fromName}\nBluebase Technologies\nEmail: {$fromEmail} | Tel: {$phone}\nWebsite: https://bluebasetechnologies.com\nDigital Engineering, Cloud Architecture & Autonomous AI Systems";
     }
 
     /**

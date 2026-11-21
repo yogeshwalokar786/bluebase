@@ -203,6 +203,8 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
         Route::get('/', [MailController::class, 'index'])->name('index');
         Route::post('/send', [MailController::class, 'send'])->name('send');
         Route::post('/sync', [MailController::class, 'sync'])->name('sync');
+        Route::post('/signature', [MailController::class, 'updateSignature'])->name('signature');
+        Route::post('/bulk', [MailController::class, 'bulk'])->name('bulk');
         Route::post('/{id}/star', [MailController::class, 'toggleStar'])->name('star');
         Route::post('/{id}/read', [MailController::class, 'toggleRead'])->name('read');
         Route::post('/{id}/trash', [MailController::class, 'moveToTrash'])->name('trash');

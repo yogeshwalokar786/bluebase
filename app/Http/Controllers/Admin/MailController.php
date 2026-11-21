@@ -80,7 +80,9 @@ class MailController extends Controller
             }
         }
 
-        return view('admin.mail.index', compact('messages', 'folder', 'search', 'selectedMessage', 'thread', 'counts'));
+        $signature = MailboxService::getDefaultSignature();
+
+        return view('admin.mail.index', compact('messages', 'folder', 'search', 'selectedMessage', 'thread', 'counts', 'signature'));
     }
 
     public function send(Request $request)
@@ -95,10 +97,19 @@ class MailController extends Controller
             'parent_id' => 'nullable|integer',
             'inquiry_id' => 'nullable|integer',
             'inquiry_type' => 'nullable|string',
+            'signature' => 'nullable|string',
+            'include_signature' => 'nullable',
+            'attachments.*' => 'nullable|file|max:10240', // 10MB per file
         ]);
 
+        $payload = $validated;
+        if ($request->hasFile('attachments')) {
+            $payload['attachments'] = $request->file('attachments');
+        }
+        $payload['include_signature'] = $request->has('include_signature');
+
         try {
-            $sent = MailboxService::sendMail($validated);
+            $sent = MailboxService::sendMail($payload);
             return redirect()->route('admin.mail.index', [
                 'folder' => $request->input('folder', 'sent'),
                 'selected_id' => $sent->id,
@@ -106,6 +117,66 @@ class MailController extends Controller
         } catch (\Throwable $e) {
             return back()->withInput()->with('error', 'Failed to dispatch email: ' . $e->getMessage());
         }
+    }
+
+    public function updateSignature(Request $request)
+    {
+        $request->validate([
+            'mail_signature' => 'required|string',
+        ]);
+
+        try {
+            \App\Models\SiteSetting::set('mail_signature', $request->input('mail_signature'));
+            return back()->with('success', 'Email signature updated successfully.');
+        } catch (\Throwable $e) {
+            return back()->with('error', 'Failed to update signature: ' . $e->getMessage());
+        }
+    }
+
+    public function bulk(Request $request)
+    {
+        $action = $request->input('action');
+        $ids = $request->input('ids', []);
+
+        if (empty($ids) || !is_array($ids)) {
+            return back()->with('error', 'Please select at least one email message.');
+        }
+
+        switch ($action) {
+            case 'trash':
+                EmailMessage::whereIn('id', $ids)->update(['folder' => 'trash']);
+                $msg = count($ids) . ' message(s) moved to Trash.';
+                break;
+            case 'restore':
+                foreach ($ids as $id) {
+                    $m = EmailMessage::find($id);
+                    if ($m) {
+                        $m->update(['folder' => ($m->status === 'sent') ? 'sent' : 'inbox']);
+                    }
+                }
+                $msg = count($ids) . ' message(s) restored.';
+                break;
+            case 'delete':
+                EmailMessage::whereIn('id', $ids)->delete();
+                $msg = count($ids) . ' message(s) permanently deleted.';
+                break;
+            case 'mark_read':
+                EmailMessage::whereIn('id', $ids)->update(['is_read' => true]);
+                $msg = count($ids) . ' message(s) marked as read.';
+                break;
+            case 'mark_unread':
+                EmailMessage::whereIn('id', $ids)->update(['is_read' => false]);
+                $msg = count($ids) . ' message(s) marked as unread.';
+                break;
+            case 'star':
+                EmailMessage::whereIn('id', $ids)->update(['is_starred' => true]);
+                $msg = count($ids) . ' message(s) starred.';
+                break;
+            default:
+                $msg = 'No action performed.';
+        }
+
+        return back()->with('success', $msg);
     }
 
     public function toggleStar(Request $request, $id)

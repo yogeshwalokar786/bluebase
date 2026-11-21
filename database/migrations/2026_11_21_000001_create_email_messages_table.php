@@ -23,6 +23,7 @@ return new class extends Migration
                 $table->string('bcc')->nullable();
                 $table->string('subject');
                 $table->longText('body');
+                $table->json('attachments')->nullable();
                 $table->boolean('is_read')->default(false);
                 $table->boolean('is_starred')->default(false);
                 $table->string('status')->default('received'); // received, sent, delivered, failed, draft

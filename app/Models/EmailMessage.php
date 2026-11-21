@@ -21,6 +21,7 @@ class EmailMessage extends Model
         'bcc',
         'subject',
         'body',
+        'attachments',
         'is_read',
         'is_starred',
         'status',
@@ -32,6 +33,7 @@ class EmailMessage extends Model
     protected $casts = [
         'is_read' => 'boolean',
         'is_starred' => 'boolean',
+        'attachments' => 'array',
         'sent_at' => 'datetime',
     ];
 
@@ -56,6 +58,7 @@ class EmailMessage extends Model
                     $table->string('bcc')->nullable();
                     $table->string('subject');
                     $table->longText('body');
+                    $table->json('attachments')->nullable();
                     $table->boolean('is_read')->default(false);
                     $table->boolean('is_starred')->default(false);
                     $table->string('status')->default('received');
@@ -69,6 +72,12 @@ class EmailMessage extends Model
                     $table->index('sender_email');
                     $table->index('recipient_email');
                 });
+            } else {
+                if (!Schema::hasColumn('email_messages', 'attachments')) {
+                    Schema::table('email_messages', function (Blueprint $table) {
+                        $table->json('attachments')->nullable()->after('body');
+                    });
+                }
             }
         } catch (\Throwable $e) {
             \Illuminate\Support\Facades\Log::warning('EmailMessage ensureTableExists: ' . $e->getMessage());
