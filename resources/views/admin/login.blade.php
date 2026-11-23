@@ -172,7 +172,7 @@
           <input type="checkbox" name="remember" checked>
           <span>Keep me signed in</span>
         </label>
-        <a href="{{ route('home') }}" style="color: #60A5FA; text-decoration: none;">&larr; View Website</a>
+        <a href="{{ rtrim(str_replace('/public', '', route('home')), '/') . '/' }}" style="color: #60A5FA; text-decoration: none;">&larr; View Website</a>
       </div>
 
       <button type="submit" class="btn-submit">Sign In to Dashboard &rarr;</button>

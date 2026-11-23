@@ -22,6 +22,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // Enforce canonical base URL in production to prevent /public from appearing in generated URLs
+        if (request()->hasHeader('host')) {
+            $host = request()->getHost();
+            if (str_contains($host, 'bluebasetechnologies.com')) {
+                \Illuminate\Support\Facades\URL::forceScheme('https');
+                \Illuminate\Support\Facades\URL::forceRootUrl('https://bluebasetechnologies.com');
+            }
+        }
+
         View::composer(['partials.client-marquee', 'pages.*'], function ($view) {
             try {
                 if (Schema::hasTable('client_logos')) {
