@@ -1007,8 +1007,8 @@
             </div>
           </div>
         @empty
-          <div style="grid-column: 1 / -1; padding: 3rem 1.5rem; text-align: center; background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(255, 255, 255, 0.12); border-radius: 14px;">
-            <p style="color: #94a3b8; font-size: 1.05rem; margin-bottom: 1rem;">No positions currently open in this category. We are always happy to connect with standout engineers and designers.</p>
+          <div style="grid-column: 1 / -1; padding: 3.5rem 1.5rem; text-align: center; background: #f8fafc; border: 1px dashed var(--color-gray-200); border-radius: 14px;">
+            <p style="color: var(--color-gray-600); font-size: 1.05rem; margin-bottom: 1.25rem;">No open positions at the moment. We are always happy to connect with standout engineers and designers.</p>
             <a href="mailto:careers@bluebasetechnologies.com?subject=Spontaneous%20Application%20-%20Engineering" class="career-apply-btn" style="display: inline-block;">
               Send Open Application &rarr;
             </a>
