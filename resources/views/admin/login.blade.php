@@ -159,12 +159,12 @@
       
       <div class="form-group">
         <label class="form-label" for="email">Work Email</label>
-        <input type="email" id="email" name="email" class="form-input" value="{{ old('email') }}" required autofocus placeholder="admin@bluebasetechnologies.com">
+        <input type="email" id="email" name="email" class="form-input" value="{{ old('email') }}" required autofocus placeholder="name@example.com">
       </div>
 
       <div class="form-group">
         <label class="form-label" for="password">Password</label>
-        <input type="password" id="password" name="password" class="form-input" required placeholder="Enter your password">
+        <input type="password" id="password" name="password" class="form-input" required placeholder="••••••••">
       </div>
 
       <div class="form-meta">
