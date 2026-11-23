@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Enterprise Mobile App Development & Offline Mobility | Bluebase')
-@section('meta_description', 'Build robust iOS, Android, and cross-platform mobile apps with guaranteed offline data synchronization for warehouses, field services, and frontline teams.')
+@section('title', 'Offline Mobile App Development | Bluebase Technologies')
+@section('meta_description', 'Build mobile applications with guaranteed offline data sync for warehouses, logistics hubs, and field operations. Get your offline mobile roadmap.')
 
 @section('content')
 <main id="main-content">

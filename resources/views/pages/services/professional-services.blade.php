@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Dedicated Engineering Pods & Strategic Consulting | Bluebase')
-@section('meta_description', 'Augment your product team with elite cross-functional engineering pods: Tech Leads, Senior Full-Stack Engineers, AI Specialists, and DevOps Architects.')
+@section('title', 'Dedicated Software Engineering Pods | Bluebase Tech')
+@section('meta_description', 'Hire dedicated engineering teams and full-stack developers to build modern web and mobile applications on demand. Scale your engineering team today.')
 
 @section('content')
 <main id="main-content">

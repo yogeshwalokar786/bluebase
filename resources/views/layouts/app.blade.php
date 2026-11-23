@@ -3,8 +3,8 @@
   $seo = rescue(fn() => \App\Models\PageSeo::forRoute($currentRoute), null);
   $globalSettings = rescue(fn() => \App\Models\SiteSetting::all()->pluck('value', 'key'), collect());
 
-  $pageTitle = $__env->yieldContent('title', $seo->meta_title ?? $globalSettings['seo_default_title'] ?? 'Top Custom Software, Web & Mobile App Development Company in India | Bluebase Technologies');
-  $pageDescription = $__env->yieldContent('meta_description', $seo->meta_description ?? $globalSettings['seo_default_description'] ?? 'Bluebase Technologies is a leading custom software, web, and mobile app development company in India. We engineer bespoke websites, enterprise web apps, SaaS MVPs, and mobile applications.');
+  $pageTitle = $__env->yieldContent('title', $seo->meta_title ?? $globalSettings['seo_default_title'] ?? 'Web & Mobile App Development Company India | Bluebase');
+  $pageDescription = $__env->yieldContent('meta_description', $seo->meta_description ?? $globalSettings['seo_default_description'] ?? 'Bluebase Technologies builds custom web applications, SaaS MVPs, and mobile apps for ambitious businesses in India. Get a free proposal today.');
   $pageKeywords = $__env->yieldContent('meta_keywords', $seo->meta_keywords ?? $globalSettings['seo_default_keywords'] ?? 'custom software development company india, web development company india, mobile app development india, saas development india, website design company, it services india, bluebase technologies');
   $canonicalUrl = $__env->yieldContent('canonical_url', $seo->canonical_url ?? url()->current());
   $ogImage = $__env->yieldContent('og_image', $seo->og_image ?? $globalSettings['seo_default_og_image'] ?? 'images/bluebase-og-cover.jpg');

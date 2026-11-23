@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'OMG Rental Bikes Case Study | Custom Fleet ERP & Booking Engine | Bluebase Technologies')
-@section('meta_description', 'Discover how Bluebase engineered a custom fleet management ERP, instant online booking portal, and digital growth engine for OMG Rental Bikes, scaling direct bookings by 3.5X.')
+@section('title', 'Bike Rental Fleet ERP Case Study | Bluebase Technologies')
+@section('meta_description', 'Discover how Bluebase engineered a custom fleet ERP and instant booking engine for OMG Rental Bikes, multiplying reservations. Read our client review.')
 @section('meta_keywords', 'omg rental bikes case study, fleet management software, bike rental booking engine, custom erp development, bluebase technologies')
 @section('canonical_url', url('/customer-stories/omg-rental-bikes'))
 @section('og_image', 'images/stories/omg-rental-bikes-brand.png')

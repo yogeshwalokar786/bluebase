@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Become a Partner | Bluebase Partner Network')
-@section('meta_description', 'Join our global partner program. Get access to engineering accelerators, referral commissions, co-marketing opportunities, and dedicated architect support.')
+@section('title', 'Join Our Global Partner Program | Bluebase Technologies')
+@section('meta_description', 'Apply to become a Bluebase solution partner. Gain access to engineering accelerators, referral commissions, and tech support. Submit an application.')
 
 @section('content')
 <main id="main-content">

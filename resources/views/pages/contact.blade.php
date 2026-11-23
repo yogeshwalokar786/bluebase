@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Contact Bluebase Technologies | Start Your Web, Mobile or Software Project')
-@section('meta_description', 'Reach out to Bluebase Technologies. Discuss your custom website, web app, mobile application, or software project with our digital engineering team. Fast response within 24 hours.')
+@section('title', 'Contact Web & Software Developers | Bluebase Technologies')
+@section('meta_description', 'Get in touch with Bluebase Technologies to discuss your web development, mobile app, or software project. Receive a detailed proposal in 24 hours.')
 @section('meta_keywords', 'contact bluebase, hire developers, web development inquiry, mobile app quote, custom software estimate, project consultation')
 @section('canonical_url', url('/contact'))
 

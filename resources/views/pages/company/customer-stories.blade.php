@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Client Success Stories & Software Case Studies | Bluebase Technologies')
-@section('meta_description', 'Explore real-world software engineering case studies from Bluebase Technologies. Custom bike rental fleet platforms, national championship digital operations, and B2B export automation.')
+@section('title', 'Client Case Studies & Software Results | Bluebase Tech')
+@section('meta_description', 'Read real customer success stories showing how custom web platforms, booking portals, and mobile apps drive measurable growth. Explore case studies.')
 @section('meta_keywords', 'client success stories, software case studies, web development portfolio, fleet erp case study, b2b automation case study, bluebase technologies')
 @section('canonical_url', url('/customer-stories'))
 

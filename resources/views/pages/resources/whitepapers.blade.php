@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Founder & Developer Guides | Practical Digital Product Playbooks | Bluebase')
-@section('meta_description', 'Actionable engineering guides, MVP launch blueprints, mobile app frameworks, and tech stack decision matrices—written by builders for ambitious founders.')
+@section('title', 'Digital Engineering Whitepapers & Guides | Bluebase')
+@section('meta_description', 'Download technical whitepapers and architecture guides on cloud computing, enterprise web development, and mobile solutions. Access free research.')
 
 @push('styles')
 <style>

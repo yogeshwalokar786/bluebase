@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'UI/UX Design Systems & Modern Frontend Engineering | Bluebase')
-@section('meta_description', 'Transform complex enterprise software into delightful, intuitive digital experiences with custom design systems, modern React/Vue frontends, and accessibility compliance.')
+@section('title', 'Modern Enterprise UX Design Services | Bluebase Tech')
+@section('meta_description', 'Deliver intuitive enterprise user interfaces and mobile web experiences tailored for frontline operations. Book a user experience consultation.')
 
 @section('content')
 <main id="main-content">

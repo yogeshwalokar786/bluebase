@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Legacy System Modernization & Cloud Migration | Bluebase')
-@section('meta_description', 'Modernize legacy applications, decouple mission-critical databases, and migrate to cloud platforms with guaranteed business continuity and zero data loss.')
+@section('title', 'Core Enterprise Migration Services | Bluebase Tech')
+@section('meta_description', 'Modernize enterprise systems and migrate critical workflows smoothly without downtime or business interruption. Consult our software architects.')
 
 @section('content')
 <main id="main-content">

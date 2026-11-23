@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Real-Time Inventory Control & Warehouse Systems | Bluebase')
-@section('meta_description', 'Custom inventory tracking, automated cycle counting, and multi-location warehouse management software engineered for zero stock discrepancies.')
+@section('title', 'Warehouse Inventory Management Systems | Bluebase Tech')
+@section('meta_description', 'Eliminate stock discrepancies with automated barcode scanning, multi-location tracking, and real-time inventory updates. Book an inventory demo.')
 
 @section('content')
 <main id="main-content">

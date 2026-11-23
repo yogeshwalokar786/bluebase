@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Top Custom Software, Web & Mobile App Development Company in India | Bluebase Technologies')
-@section('meta_description', 'Bluebase Technologies is a leading custom software, web, and mobile app development company in India. We engineer enterprise-grade web applications, SaaS MVPs, iOS & Android mobile apps, and bespoke digital software for high-growth businesses in India and worldwide.')
+@section('title', 'Web & Mobile App Development Company India | Bluebase')
+@section('meta_description', 'Bluebase Technologies builds custom web applications, SaaS MVPs, and mobile apps for ambitious businesses in India. Get a free proposal today.')
 @section('meta_keywords', 'custom software development company india, web development company india, mobile app development company india, saas mvp development india, website design company india, bespoke software engineering, it services india, hire developers india, bluebase technologies')
 @section('canonical_url', url('/'))
 @section('og_image', 'images/bluebase-og-cover.jpg')

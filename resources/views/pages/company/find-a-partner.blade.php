@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Find a Solution Partner & System Integrator | Bluebase')
-@section('meta_description', 'Connect with certified Bluebase implementation partners, cloud architects, and regional technology specialists in North America, Europe, and APAC.')
+@section('title', 'Find a Solution & Integration Partner | Bluebase Tech')
+@section('meta_description', 'Connect with certified implementation partners and software specialists to launch custom web and mobile applications quickly. Find a partner nearby.')
 
 @section('content')
 <main id="main-content">

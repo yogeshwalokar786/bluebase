@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Defense & Mission-Critical Software Engineering | Bluebase')
-@section('meta_description', 'High-assurance software engineering for defense contractors, government agencies, and regulated industries requiring air-gapped security and compliance.')
+@section('title', 'High-Security Government Software | Bluebase Technologies')
+@section('meta_description', 'Engineer resilient software systems meeting strict compliance, air-gapped security, and data governance standards. Consult our security engineers.')
 
 @section('content')
 <main id="main-content">

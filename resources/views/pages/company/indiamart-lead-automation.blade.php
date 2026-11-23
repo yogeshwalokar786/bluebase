@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Pharma Export Lead Automation Case Study | IndiaMART CRM Sync | Bluebase Technologies')
-@section('meta_description', 'Learn how Bluebase engineered a custom Chromium browser automation extension for a pharma exporter, filtering bulk export orders and syncing leads to CRM in real time.')
+@section('title', 'B2B Lead Automation Case Study | Bluebase Technologies')
+@section('meta_description', 'Discover how our custom browser extension automates B2B portal inquiries and syncs CRM data in real time for pharma exporters. View project details.')
 @section('meta_keywords', 'indiamart lead automation, custom chrome extension, pharma export crm sync, sales automation, bluebase technologies')
 @section('canonical_url', url('/customer-stories/indiamart-lead-automation'))
 @section('og_image', 'images/stories/pharma-export-automation.jpg')

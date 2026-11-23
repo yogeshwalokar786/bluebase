@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Privacy Policy & Data Protection | Bluebase Technologies')
-@section('meta_description', 'Learn how Bluebase Technologies collects, protects, and manages your personal and business data in compliance with GDPR, CCPA, and international data privacy laws.')
+@section('title', 'Privacy Policy & Data Security Notice | Bluebase Tech')
+@section('meta_description', 'Read the Bluebase Technologies privacy policy to understand how we safeguard your personal information and project data. Review our terms online.')
 @section('meta_keywords', 'privacy policy, data protection, gdpr compliance, ccpa, security governance, bluebase technologies')
 @section('canonical_url', url('/privacy-policy'))
 

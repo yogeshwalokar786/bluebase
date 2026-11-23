@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'E-Commerce Development Services | Custom Online Stores | Bluebase Technologies')
-@section('meta_description', 'Custom e-commerce store development, bespoke storefronts, and payment gateway integrations with Stripe, Razorpay, and Shopify. Engineered for speed and maximum checkout conversions.')
+@section('title', 'Custom E-Commerce Development Services | Bluebase Tech')
+@section('meta_description', 'Grow digital sales with custom e-commerce development. We deliver secure checkout flows, inventory automation, and fast loading. Request a proposal.')
 @section('meta_keywords', 'ecommerce website development, custom ecommerce stores, shopify development, payment gateway integration, headless commerce, bluebase technologies')
 @section('canonical_url', url('/ecommerce-development'))
 

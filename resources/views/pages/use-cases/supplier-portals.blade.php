@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Custom B2B & Supplier Collaboration Portals | Bluebase')
-@section('meta_description', 'Streamline procurement, purchase orders, RFQs, and invoice approvals with secure, self-service supplier portals engineered by Bluebase.')
+@section('title', 'Custom B2B Supplier Portal Software | Bluebase Tech')
+@section('meta_description', 'Streamline purchase orders, vendor invoices, and quotation approvals with custom self-service B2B supplier portals. Request a demo consultation.')
 
 @section('content')
 <main id="main-content">

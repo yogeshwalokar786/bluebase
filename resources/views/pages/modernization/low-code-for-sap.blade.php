@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Rapid Application Engineering & Agile Delivery | Bluebase')
-@section('meta_description', 'Ship production-grade enterprise software 4x faster with Bluebase')
+@section('title', 'Enterprise Low-Code App Platform | Bluebase Technologies')
+@section('meta_description', 'Accelerate enterprise software development with modern low-code frameworks and secure core system integrations. Request a platform demo today.')
 
 @section('content')
 <main id="main-content">

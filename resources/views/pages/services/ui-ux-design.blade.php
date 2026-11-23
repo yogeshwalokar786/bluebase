@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'UI/UX Product Design & Prototyping Services | Bluebase Technologies')
-@section('meta_description', 'High-converting user experience and interface design for web and mobile products. Complete Figma design systems, wireframing, clickable interactive prototypes, and developer-ready design tokens.')
+@section('title', 'UI/UX Product Design & Prototyping Agency | Bluebase')
+@section('meta_description', 'Create intuitive digital products with user-first UI/UX design. We deliver interactive Figma prototypes and scalable design systems. Book a review.')
 @section('meta_keywords', 'ui ux design services, product design studio, figma prototypes, mobile app ui ux, web design systems, user experience design, bluebase technologies')
 @section('canonical_url', url('/ui-ux-design'))
 

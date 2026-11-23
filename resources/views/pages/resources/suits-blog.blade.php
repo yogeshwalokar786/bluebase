@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Engineering Blog & Technical Insights | Bluebase')
-@section('meta_description', 'In-depth technical articles, architectural blueprints, AI system designs, and software engineering best practices from the Bluebase engineering team.')
+@section('title', 'Enterprise Software Insights & Strategy | Bluebase Tech')
+@section('meta_description', 'Explore strategic insights on business digitization, custom ERP engineering, and modern web application development. Read executive tech articles.')
 
 @section('content')
 <main id="main-content">

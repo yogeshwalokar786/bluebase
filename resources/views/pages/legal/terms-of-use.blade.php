@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Terms of Service & Master Services Agreement | Bluebase Technologies')
-@section('meta_description', 'Master Services Agreement, terms of service, engagement models, warranty terms, and 100% intellectual property ownership provisions for Bluebase engineering clients.')
+@section('title', 'Terms of Use & Service Agreement | Bluebase Technologies')
+@section('meta_description', 'Review terms of use governing access to Bluebase Technologies websites, digital engineering services, and intellectual property. Read full agreement.')
 @section('meta_keywords', 'terms of service, master services agreement, msa, intellectual property ownership, engineering contracts, bluebase technologies')
 @section('canonical_url', url('/terms-of-use'))
 

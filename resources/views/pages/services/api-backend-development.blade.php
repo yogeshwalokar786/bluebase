@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'API & Backend Development Services | Scalable Architectures | Bluebase Technologies')
-@section('meta_description', 'High-performance backend systems, RESTful and GraphQL APIs, third-party integrations, and scalable database architectures engineered with Laravel, Node.js, and Redis.')
+@section('title', 'API & Backend Development Services | Bluebase Tech')
+@section('meta_description', 'Engineer resilient REST and GraphQL APIs with microservices architecture, enterprise security, and cloud scalability. Schedule a tech consultation.')
 @section('meta_keywords', 'api development services, backend software development, rest api developers, laravel backend, nodejs microservices, database architecture, bluebase technologies')
 @section('canonical_url', url('/api-backend-development'))
 

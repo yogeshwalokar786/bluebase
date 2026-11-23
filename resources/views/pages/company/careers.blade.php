@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Careers at Bluebase Technologies | Join Our Remote Engineering Team')
-@section('meta_description', 'Explore software engineering, design, and developer career opportunities at Bluebase Technologies. 100% remote-first culture, high ownership, and modern tech stacks.')
+@section('title', 'Engineering Careers & Developer Jobs | Bluebase Tech')
+@section('meta_description', 'Join our remote engineering team at Bluebase Technologies. Explore developer and UI/UX designer openings with high ownership. Apply for positions now.')
 @section('meta_keywords', 'software engineer jobs, remote developer careers, laravel developer jobs, react engineer hiring, tech jobs remote, bluebase technologies')
 @section('canonical_url', url('/careers'))
 

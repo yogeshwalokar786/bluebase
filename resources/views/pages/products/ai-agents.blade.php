@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Autonomous AI Agents & Enterprise Workflow Automation | Bluebase')
-@section('meta_description', 'Deploy autonomous, multi-agent AI systems that execute complex enterprise workflows with deterministic safety and enterprise governance.')
+@section('title', 'Autonomous AI Agents for Business | Bluebase Technologies')
+@section('meta_description', 'Deploy autonomous AI agents that automate repetitive business workflows, document reviews, and customer inquiries securely. Request an AI demo now.')
 
 @section('content')
 <main id="main-content">

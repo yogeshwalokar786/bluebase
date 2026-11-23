@@ -43,8 +43,8 @@ class PageSeo extends Model
 
         return (object)[
             'page_name' => $defaultTitle ?? 'Bluebase',
-            'meta_title' => $defaultTitle ? "{$defaultTitle} | Bluebase" : 'Bluebase Technologies | Digital Engineering & Autonomous AI Services',
-            'meta_description' => $defaultDesc ?? 'Bluebase is an elite digital engineering and autonomous AI services platform building cloud-native architectures, AI copilots, and enterprise web & mobile products.',
+            'meta_title' => $defaultTitle ? "{$defaultTitle} | Bluebase" : 'Web & Mobile App Development Company India | Bluebase',
+            'meta_description' => $defaultDesc ?? 'Bluebase Technologies builds custom web applications, SaaS MVPs, and mobile apps for ambitious businesses in India. Get a free proposal today.',
             'meta_keywords' => 'digital engineering, AI agents, enterprise mobility, SAP integration, cloud architecture',
             'canonical_url' => url()->current(),
             'og_image' => 'images/stories/omg-rental-bikes-brand.png',

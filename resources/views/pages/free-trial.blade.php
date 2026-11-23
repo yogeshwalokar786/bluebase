@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Free Project Estimate & Milestone Roadmap | Bluebase Technologies')
-@section('meta_description', 'Request a free 30-minute discovery consultation, project estimate, and custom milestone roadmap for your website, web application, or mobile software.')
+@section('title', 'Free Project Estimate & Consultation | Bluebase Tech')
+@section('meta_description', 'Request a free 30-minute discovery consultation, project estimate, and custom milestone roadmap for your software project. Book your session now.')
 @section('meta_keywords', 'free project estimate, website cost estimate, app development quote, software architecture audit, bluebase technologies')
 @section('canonical_url', url('/free-trial'))
 

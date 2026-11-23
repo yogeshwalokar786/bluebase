@@ -5,8 +5,8 @@
   @section('meta_description', $currentCategory->meta_description ?: ('Explore articles and guides about ' . $currentCategory->name . ' by Bluebase Technologies.'))
   @section('canonical_url', route('blog.category', $currentCategory->slug))
 @else
-  @section('title', 'Tech & Business Growth Blog | Web, Mobile & Software Insights | Bluebase Technologies')
-  @section('meta_description', 'Actionable guides, web and mobile development playbooks, digital marketing strategies, and software cost breakdowns for founders and business owners.')
+  @section('title', 'Software Development Insights & Tech Blog | Bluebase')
+  @section('meta_description', 'Read actionable guides on custom software engineering, website development, mobile apps, and business automation. Browse our latest insights today.')
   @section('meta_keywords', 'business tech blog, web development guides, custom software blog, mobile app development insights, website cost 2026, bluebase technologies')
   @section('canonical_url', route('blog'))
 @endif

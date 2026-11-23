@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Smart Manufacturing & Industry 4.0 Software | Bluebase')
-@section('meta_description', 'Bridge shop-floor PLCs, SCADA systems, and cloud analytics with custom manufacturing execution software (MES) and real-time OEE dashboards.')
+@section('title', 'Manufacturing Execution Software | Bluebase Technologies')
+@section('meta_description', 'Optimize plant floor productivity with custom manufacturing execution software, live telemetry, and quality tracking. Contact our engineering team.')
 
 @section('content')
 <main id="main-content">

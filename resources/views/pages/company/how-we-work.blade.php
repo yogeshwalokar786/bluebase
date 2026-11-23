@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'How We Work — Direct Developer Access & Agile Sprints | Bluebase Technologies')
-@section('meta_description', 'Explore our engineering delivery model: Direct senior developer access, 2-week milestone sprints, 100% client code ownership, fixed transparent pricing, and free technical consultation.')
+@section('title', 'Agile Software Engineering Methodology | Bluebase Tech')
+@section('meta_description', 'Discover our transparent development process: direct senior engineer access, bi-weekly sprints, and full source code ownership. Partner with us today.')
 @section('meta_keywords', 'how we work, agile sprints, transparent software pricing, dedicated developer access, client code ownership, bluebase technologies')
 @section('canonical_url', url('/how-we-work'))
 

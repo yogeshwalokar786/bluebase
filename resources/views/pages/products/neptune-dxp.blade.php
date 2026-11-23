@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Custom Software & Full-Stack Engineering Services | Bluebase')
-@section('meta_description', 'Bluebase provides custom software engineering, full-stack web development, and distributed cloud architectures with dedicated senior engineering pods.')
+@section('title', 'Digital Experience Platform Solutions | Bluebase Tech')
+@section('meta_description', 'Develop and deploy unified digital experiences across mobile, desktop, and tablet devices with modern web tools. Explore our platform features.')
 
 @section('content')
 <main id="main-content">

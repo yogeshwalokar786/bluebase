@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Cloud-Native Architecture & Modernization Advisory | Bluebase')
-@section('meta_description', 'Migrate legacy monoliths to Kubernetes, serverless microservices, and modern cloud-native architectures on AWS, Azure, and Google Cloud.')
+@section('title', 'Custom Enterprise App Development | Bluebase Technologies')
+@section('meta_description', 'Build responsive web portals and mobile applications integrated directly with enterprise resource planning systems. Schedule an engineering call.')
 
 @section('content')
 <main id="main-content">

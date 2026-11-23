@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Mobile App Development Services | iOS & Android Apps | Bluebase Technologies')
-@section('meta_description', 'Custom cross-platform mobile app development with Flutter and React Native. Smooth native performance, offline sync, biometric security, and complete App Store release.')
+@section('title', 'Mobile App Development Company in India | Bluebase Tech')
+@section('meta_description', 'Build high-performance iOS and Android mobile apps with Flutter and React Native. Enjoy native speeds and secure cloud sync. Get a free quote today.')
 @section('meta_keywords', 'mobile app development, flutter app developers, react native apps, ios and android app development, cross platform mobile apps, bluebase technologies')
 @section('canonical_url', url('/mobile-app-development'))
 

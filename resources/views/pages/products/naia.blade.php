@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Generative AI, Custom LLMs & AI Copilots | Bluebase')
-@section('meta_description', 'Custom LLM fine-tuning, retrieval-augmented generation (RAG), and domain-specific AI copilots engineered on your proprietary enterprise data.')
+@section('title', 'Enterprise AI Assistant Platform | Bluebase Technologies')
+@section('meta_description', 'Empower your enterprise team with an intelligent conversational assistant integrated into your private knowledge base. Start an assistant trial.')
 
 @section('content')
 <main id="main-content">

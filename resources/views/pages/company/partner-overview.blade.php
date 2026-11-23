@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Technology Alliances & Partner Ecosystem | Bluebase')
-@section('meta_description', 'Partner with Bluebase to co-innovate, co-sell, and deliver world-class digital engineering and AI solutions to enterprise clients globally.')
+@section('title', 'Technology Partner Ecosystem Program | Bluebase Tech')
+@section('meta_description', 'Join the Bluebase partner ecosystem to co-build digital solutions, earn referral revenue, and deliver custom web software. Become a trusted partner.')
 
 @section('content')
 <main id="main-content">

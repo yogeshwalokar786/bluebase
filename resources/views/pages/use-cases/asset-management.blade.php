@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Enterprise Asset Management & Industrial IoT | Bluebase')
-@section('meta_description', 'Engineer custom IoT telemetry platforms, predictive maintenance engines, and mobile asset tracking applications for heavy industry and manufacturing.')
+@section('title', 'Asset Tracking & Telemetry Software | Bluebase Tech')
+@section('meta_description', 'Monitor industrial machinery, track assets in real time, and reduce downtime with custom cloud IoT software. Speak with an IoT specialist today.')
 
 @section('content')
 <main id="main-content">

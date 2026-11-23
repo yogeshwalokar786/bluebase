@@ -31,8 +31,8 @@ class BlogSeeder extends Seeder
                 'excerpt' => 'Discover why building your entire business on social media leaves you vulnerable to sudden algorithm drops and account bans, and why a dedicated business website remains your most valuable 24/7 digital asset.',
                 'is_published' => true,
                 'published_at' => now()->subDays(1),
-                'meta_title' => 'Why Social Media Is Not Enough: The Case for an Owned Business Website',
-                'meta_description' => 'Learn why growing businesses need their own professional website instead of relying solely on Instagram or Facebook pages for sales and credibility.',
+                'meta_title' => 'Why Social Media Is Not Enough for Business | Bluebase',
+                'meta_description' => 'Learn why growing businesses need a custom website instead of relying on social pages. Protect your brand credibility and consult our web team.',
                 'content' => <<<'HTML'
 <h2>The Danger of Building on "Rented Land"</h2>
 <p>Today, almost every business owner starts by creating an Instagram page or Facebook account. It is quick, free, and easy to post photos. But as your business grows, relying entirely on social media becomes one of the biggest hidden risks to your revenue.</p>
@@ -83,8 +83,8 @@ HTML
                 'excerpt' => 'Clicking the blue "Boost Post" button usually results in empty likes and random clicks from outside your area. Here is how smart businesses use targeted Meta ads and direct WhatsApp funnels to generate serious paying clients.',
                 'is_published' => true,
                 'published_at' => now()->subDays(2),
-                'meta_title' => 'Stop Wasting Money on Boost Post: The WhatsApp Inquiries Guide',
-                'meta_description' => 'Why boosting social media posts rarely gets paying customers, and how a targeted ad campaign with direct WhatsApp routing delivers real client inquiries.',
+                'meta_title' => 'Boost Post vs Targeted WhatsApp Ads Guide | Bluebase',
+                'meta_description' => 'Stop wasting budget on boosted posts. Learn how targeted Meta campaigns and WhatsApp lead routing generate high-value inquiries. Read our guide.',
                 'content' => <<<'HTML'
 <h2>Why the Blue "Boost Post" Button Fails Most Businesses</h2>
 <p>If you run a business Instagram or Facebook page, you have certainly seen the prompt: <em>"This post is performing better than 85% of your recent posts. Boost it for ₹500 to reach 4,000 more people."</em></p>
@@ -140,8 +140,8 @@ HTML
                 'excerpt' => 'When customer orders, staff tasks, and billing records are scattered across WhatsApp chats and messy spreadsheets, mistakes happen. Learn how a simple custom business portal gives you total control.',
                 'is_published' => true,
                 'published_at' => now()->subDays(3),
-                'meta_title' => 'How Custom Business Software Replaces Spreadsheet Chaos — Bluebase',
-                'meta_description' => 'Discover how simple custom web portals help growing businesses replace messy Excel sheets, automate booking agreements, and save 20 hours every week.',
+                'meta_title' => 'Replace Spreadsheet Chaos with Custom Software | Bluebase',
+                'meta_description' => 'Discover how simple custom web portals help growing companies replace messy Excel sheets and automate booking workflows. Request a consultation.',
                 'content' => <<<'HTML'
 <h2>The Breaking Point of Every Growing Business</h2>
 <p>When you start a business, keeping records in a notebook or an Excel sheet works fine. You communicate with staff on WhatsApp, save customer documents on a phone, and remember things in your head.</p>
@@ -198,8 +198,8 @@ HTML
                 'excerpt' => 'When someone nearby searches for your service on Google Maps, do they find you or your competitor? Discover 5 simple, proven steps to rank your Google Business Profile and get daily customer calls.',
                 'is_published' => true,
                 'published_at' => now()->subDays(4),
-                'meta_title' => 'How to Rank on Google Maps (GMB) for Local Customers — Bluebase',
-                'meta_description' => 'A practical guide for local businesses to optimize Google Business Profile, rank higher on Google Maps, and get direct phone calls from nearby customers.',
+                'meta_title' => 'Rank Higher on Google Maps for Local Customers | Bluebase',
+                'meta_description' => 'A practical SEO guide for local businesses to optimize Google Business Profile and capture nearby customer calls. Read actionable growth tips.',
                 'content' => <<<'HTML'
 <h2>The Most Profitable Search on the Internet: "Near Me"</h2>
 <p>Think about the last time you needed a car mechanic, an eye doctor, an interior designer, or a rental bike in a hurry. What did you do? You opened your phone and typed what you needed on Google or Google Maps.</p>
@@ -264,8 +264,8 @@ HTML
                 'excerpt' => 'Confused by website quotes ranging from ₹3,000 to ₹3,00,000? Here is an honest, transparent breakdown of what you actually need, what drives website costs, and how to avoid costly traps.',
                 'is_published' => true,
                 'published_at' => now()->subDays(5),
-                'meta_title' => 'How Much Does a Business Website Cost? Transparent 2026 Guide',
-                'meta_description' => 'A transparent guide for business owners explaining realistic website costs, the danger of cheap templates, and what to look for before hiring a developer.',
+                'meta_title' => 'How Much Does a Website Cost in 2026? | Bluebase Guide',
+                'meta_description' => 'A transparent pricing guide explaining realistic website costs, custom development value, and avoiding cheap templates. Request a project quote.',
                 'content' => <<<'HTML'
 <h2>Why Website Pricing Is So Confusing</h2>
 <p>If you have ever asked three different web developers for a quote, you probably received three wildly different numbers: one freelancer offered to do it for ₹3,000, another quoted ₹35,000, and an agency asked for ₹2,50,000.</p>
@@ -330,8 +330,8 @@ HTML
                 'excerpt' => 'A website is not a one-time printed brochure; it is your digital storefront. Learn why contact forms silently stop sending emails, why security updates matter, and how regular maintenance protects your income.',
                 'is_published' => true,
                 'published_at' => now()->subDays(6),
-                'meta_title' => 'Why Websites Stop Working Silently: Business Owner Maintenance Guide',
-                'meta_description' => 'A non-technical guide explaining why websites break silently, the importance of cloud backups, and how routine maintenance protects your inquiries.',
+                'meta_title' => 'Why Websites Break Silently & Maintenance Guide | Bluebase',
+                'meta_description' => 'Understand why websites stop working unexpectedly, the importance of cloud backups, and how routine maintenance protects revenue. Explore plans.',
                 'content' => <<<'HTML'
 <h2>The Mystery of the "Silent Form Failure"</h2>
 <p>A few months ago, a business owner called our office in frustration. For two straight weeks, their phone had stopped ringing with website inquiries. They assumed business was simply slow during that season.</p>
@@ -388,8 +388,8 @@ HTML
                 'excerpt' => 'Read the real journey of how an urban bike rental business eliminated manual registers, stopped double-booking vehicles, and made customer checkouts paperless and fast.',
                 'is_published' => true,
                 'published_at' => now()->subDays(7),
-                'meta_title' => 'Case Study: How OMG Rental Bikes Scaled 400% with Bluebase',
-                'meta_description' => 'How Bluebase built an automated rental booking portal and paperless digital KYC system for OMG Rental Bikes, scaling bookings by 400%.',
+                'meta_title' => 'OMG Rental Bikes Scaling Case Study | Bluebase Tech',
+                'meta_description' => 'Discover how automated rental booking software and digital KYC helped OMG Rental Bikes scale reservations by 400%. Read our client success story.',
                 'content' => <<<'HTML'
 <h2>The Story of an Ambitious Rental Business</h2>
 <p>OMG Rental Bikes (<a href="https://omgrentalbikes.com" target="_blank" rel="noopener">omgrentalbikes.com</a>) is one of the fastest-growing two-wheeler vehicle rental services in Central India. Whether travelers need a comfortable scooter for a day of local sightseeing or an enthusiast needs a premium motorcycle for a weekend road trip, OMG Rental Bikes is their first choice.</p>

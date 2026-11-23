@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Supply Chain & Logistics Software Engineering | Bluebase')
-@section('meta_description', 'Custom warehouse management, fleet dispatch, route optimization, and real-time tracking systems engineered for high-velocity logistics operations.')
+@section('title', 'Logistics & Warehouse Management Software | Bluebase')
+@section('meta_description', 'Engineer high-velocity dispatch systems, fleet routing tools, and warehouse software to accelerate shipments. Connect with our logistics team.')
 
 @section('content')
 <main id="main-content">

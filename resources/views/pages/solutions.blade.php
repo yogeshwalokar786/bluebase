@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Digital Engineering Solutions | Bluebase Technologies')
-@section('meta_description', 'Purpose-built digital engineering solutions for founders, startups, and growing businesses: SaaS MVP development, custom web platforms, e-commerce stores, and code optimization.')
+@section('title', 'Custom Software Solutions for Businesses | Bluebase Tech')
+@section('meta_description', 'Discover bespoke software solutions designed for growing enterprises: workflow automation, custom portals, and cloud apps. Explore tailored systems.')
 @section('meta_keywords', 'digital engineering solutions, startup tech solutions, saas mvp builder, custom ecommerce systems, scalable web architecture, bluebase technologies')
 @section('canonical_url', url('/solutions'))
 
