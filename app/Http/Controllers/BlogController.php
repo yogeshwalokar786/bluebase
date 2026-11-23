@@ -45,7 +45,7 @@ class BlogController extends Controller
     protected function renderBlogListing(Request $request, ?BlogCategory $currentCategory = null)
     {
         $selectedCategory = $currentCategory ? $currentCategory->slug : $request->query('category', 'all');
-        $searchQuery = trim($request->query('q', ''));
+        $searchQuery = trim($request->query('search', $request->query('q', '')));
 
         // Query builder for published blogs
         $query = Blog::published()->with('blogCategory');

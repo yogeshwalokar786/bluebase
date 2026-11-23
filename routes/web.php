@@ -131,6 +131,15 @@ Route::post('/free-trial', [InquiryController::class, 'storeTrial'])->name('free
 Route::post('/partner/apply', [InquiryController::class, 'storePartner'])->name('partner.apply');
 Route::post('/newsletter/subscribe', [InquiryController::class, 'storeNewsletter'])->name('newsletter.subscribe');
 
+// Favicon Fallback Route (guarantees 200 OK across proxies and cPanel rewrites)
+Route::get('/favicon.ico', function () {
+    $path = public_path('favicon.ico');
+    if (!file_exists($path)) {
+        $path = public_path('images/favicon.ico');
+    }
+    return file_exists($path) ? response()->file($path, ['Content-Type' => 'image/x-icon']) : abort(404);
+});
+
 // Inbound Email Webhook (for external forwarders, Postmark, Mailgun, cPanel email piping)
 Route::post('/mail/inbound', [MailController::class, 'incomingWebhook'])->name('mail.inbound');
 

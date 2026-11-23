@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Bluebase Technologies | Custom Web, Mobile App & Software Development')
-@section('meta_description', 'Bluebase Technologies is a remote-first digital engineering studio. We build high-performance custom websites, web applications, mobile apps, SaaS MVPs, and e-commerce platforms for growing brands worldwide.')
-@section('meta_keywords', 'web development company, custom software development, mobile app development, saas mvp development, ecommerce web development, bluebase technologies')
+@section('title', 'Top Custom Software, Web & Mobile App Development Company in India | Bluebase Technologies')
+@section('meta_description', 'Bluebase Technologies is a leading custom software, web, and mobile app development company in India. We engineer enterprise-grade web applications, SaaS MVPs, iOS & Android mobile apps, and bespoke digital software for high-growth businesses in India and worldwide.')
+@section('meta_keywords', 'custom software development company india, web development company india, mobile app development company india, saas mvp development india, website design company india, bespoke software engineering, it services india, hire developers india, bluebase technologies')
 @section('canonical_url', url('/'))
+@section('og_image', 'images/bluebase-og-cover.jpg')
 
 @push('schema')
 <script type="application/ld+json">
@@ -11,13 +12,34 @@
   "@@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "Bluebase Technologies",
+  "alternateName": ["Bluebase", "Bluebase Tech India"],
   "url": "https://bluebasetechnologies.com",
-  "logo": "https://bluebasetechnologies.com/images/favicon.ico",
-  "image": "https://bluebasetechnologies.com/images/blogs/social-media-vs-owned-website.jpg",
-  "description": "Bluebase Technologies is a remote-first digital engineering studio building custom websites, web apps, mobile apps, SaaS MVPs, and business software.",
+  "logo": "https://bluebasetechnologies.com/images/logo-icon.png",
+  "image": "https://bluebasetechnologies.com/images/bluebase-og-cover.jpg",
+  "description": "Leading custom software, web, and mobile app development company in India building bespoke web apps, mobile apps, SaaS MVPs, and business software.",
   "email": "info@bluebasetechnologies.com",
+  "telephone": "+91 79727 65119",
   "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "IN"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 20.5937,
+    "longitude": 78.9629
+  },
   "openingHours": "Mo-Fr 09:00-18:00",
+  "areaServed": [
+    {
+      "@type": "Country",
+      "name": "India"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Worldwide"
+    }
+  ],
   "sameAs": [
     "https://linkedin.com/company/bluebase",
     "https://twitter.com/bluebase_tech",
