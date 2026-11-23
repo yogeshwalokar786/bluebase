@@ -785,12 +785,12 @@
       </h1>
 
       <p class="careers-desc">
-        Join Bluebase as a full-stack engineer, AI systems architect, or cloud specialist. We are a high-agency, remote-first engineering studio where top engineers write production code, experiment with autonomous agent frameworks, and solve real architectural problems.
+        Join Bluebase as a full-stack developer, mobile engineer, or UI/UX designer. We are a high-agency, remote-first engineering studio where top developers write clean production code, ship modern web and mobile apps, and solve real architectural problems.
       </p>
 
       <div class="careers-hero-actions">
         <a href="#openPositions" class="c-btn -primary" style="padding: 14px 28px; font-size: 0.95rem;">
-          <span class="c-btn__txt">View Open Positions (6)</span>
+          <span class="c-btn__txt">View Open Positions ({{ $jobs->count() }})</span>
           <span class="c-btn__ico">
             <span class="c-btn__ico-base">
               <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
@@ -920,29 +920,31 @@
         <div class="careers-stack-header">
           <div>
             <span style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em; color: #38bdf8; font-weight: 700;">Our Production Toolchain</span>
-            <h3 style="font-size: 1.8rem; font-weight: 800; margin: 6px 0 0; color: #ffffff;">The Technologies We Love Shipping With</h3>
+            <h3 style="font-size: 1.8rem; font-weight: 800; margin: 6px 0 0; color: #ffffff;">The Technologies We Build &amp; Ship With</h3>
           </div>
           <p style="color: #94a3b8; font-size: 0.95rem; max-width: 440px; margin: 0; line-height: 1.5;">
-            We don't chase every fleeting trend, but we aggressively adopt tools that make engineers 10x faster and systems 10x more resilient.
+            We focus on battle-tested, high-productivity technologies that ship clean web architectures, high-performance mobile apps, and scalable digital products.
           </p>
         </div>
 
         <div class="careers-stack-pill-cloud">
-          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> Go (Golang)</div>
-          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> React 19 &amp; Next.js</div>
-          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> TypeScript</div>
-          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> Python &amp; FastAPI</div>
-          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> PyTorch &amp; HuggingFace</div>
-          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> Multi-Agent LLMs</div>
-          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> Qdrant &amp; pgvector</div>
-          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> PostgreSQL</div>
-          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> Redis &amp; Kafka</div>
-          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> Docker &amp; Kubernetes</div>
-          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> AWS &amp; Cloudflare</div>
-          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> Terraform IaC</div>
-          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> React Native &amp; SQLite</div>
-          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> Laravel 11 / PHP 8.3</div>
-          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> Cursor AI &amp; Linear</div>
+          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> Laravel &amp; PHP 8.3</div>
+          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> React.js &amp; Next.js</div>
+          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> Vue.js &amp; Inertia</div>
+          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> Flutter (iOS &amp; Android)</div>
+          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> React Native</div>
+          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> Node.js &amp; Express</div>
+          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> RESTful APIs &amp; Webhooks</div>
+          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> MySQL &amp; PostgreSQL</div>
+          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> Redis Caching &amp; Queues</div>
+          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> Tailwind CSS &amp; Blade</div>
+          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> WordPress &amp; WooCommerce</div>
+          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> Shopify Custom Stores</div>
+          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> AWS &amp; DigitalOcean</div>
+          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> Docker Containers</div>
+          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> Cloudflare CDN &amp; Security</div>
+          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> Figma &amp; Design Systems</div>
+          <div class="careers-stack-pill"><span style="color: #38bdf8;">#</span> Git &amp; CI/CD Pipelines</div>
         </div>
       </div>
     </div>

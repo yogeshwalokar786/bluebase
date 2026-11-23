@@ -60,10 +60,10 @@ class JobOpening extends Model
     public function getCategoryLabelAttribute(): string
     {
         return match ($this->category) {
-            'backend' => 'Backend & Full-Stack',
-            'ai' => 'AI & Machine Learning',
-            'mobile-cloud' => 'Mobile & DevOps',
-            'design' => 'Design & Architecture',
+            'backend' => 'Web & Backend',
+            'frontend' => 'Frontend & Web Apps',
+            'mobile-cloud' => 'Mobile App Development',
+            'design' => 'UI/UX Design',
             default => ucfirst(str_replace('-', ' ', $this->category)),
         };
     }

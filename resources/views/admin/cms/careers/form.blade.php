@@ -62,10 +62,10 @@
           <div class="form-group">
             <label for="category" class="form-label" style="font-weight: 600;">Filter Category <span style="color: #EF4444;">*</span></label>
             <select name="category" id="category" class="form-select" required>
-              <option value="backend" {{ old('category', $job->category) === 'backend' ? 'selected' : '' }}>Backend &amp; Full-Stack</option>
-              <option value="ai" {{ old('category', $job->category) === 'ai' ? 'selected' : '' }}>AI &amp; Machine Learning</option>
-              <option value="mobile-cloud" {{ old('category', $job->category) === 'mobile-cloud' ? 'selected' : '' }}>Mobile &amp; DevOps</option>
-              <option value="design" {{ old('category', $job->category) === 'design' ? 'selected' : '' }}>Design &amp; Architecture</option>
+              <option value="backend" {{ old('category', $job->category) === 'backend' ? 'selected' : '' }}>Web &amp; Backend Development</option>
+              <option value="frontend" {{ old('category', $job->category) === 'frontend' ? 'selected' : '' }}>Frontend &amp; Web Apps</option>
+              <option value="mobile-cloud" {{ old('category', $job->category) === 'mobile-cloud' ? 'selected' : '' }}>Mobile App Development</option>
+              <option value="design" {{ old('category', $job->category) === 'design' ? 'selected' : '' }}>UI/UX Design</option>
             </select>
             @error('category')
               <div style="color: #EF4444; font-size: 0.8rem; margin-top: 4px;">{{ $message }}</div>

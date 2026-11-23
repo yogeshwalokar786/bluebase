@@ -28,19 +28,19 @@ class CompanyController extends Controller
                 'count' => $jobs->count(),
             ],
             'backend' => [
-                'label' => 'Backend & Full-Stack (' . $jobs->where('category', 'backend')->count() . ')',
+                'label' => 'Web & Backend (' . $jobs->where('category', 'backend')->count() . ')',
                 'count' => $jobs->where('category', 'backend')->count(),
             ],
-            'ai' => [
-                'label' => 'AI & Machine Learning (' . $jobs->where('category', 'ai')->count() . ')',
-                'count' => $jobs->where('category', 'ai')->count(),
+            'frontend' => [
+                'label' => 'Frontend & Web Apps (' . $jobs->where('category', 'frontend')->count() . ')',
+                'count' => $jobs->where('category', 'frontend')->count(),
             ],
             'mobile-cloud' => [
-                'label' => 'Mobile & DevOps (' . $jobs->where('category', 'mobile-cloud')->count() . ')',
+                'label' => 'Mobile Apps (' . $jobs->where('category', 'mobile-cloud')->count() . ')',
                 'count' => $jobs->where('category', 'mobile-cloud')->count(),
             ],
             'design' => [
-                'label' => 'Design & Architecture (' . $jobs->where('category', 'design')->count() . ')',
+                'label' => 'UI/UX Design (' . $jobs->where('category', 'design')->count() . ')',
                 'count' => $jobs->where('category', 'design')->count(),
             ],
         ];
