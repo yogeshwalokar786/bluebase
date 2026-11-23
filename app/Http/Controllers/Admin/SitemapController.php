@@ -219,9 +219,6 @@ class SitemapController extends Controller
             ['url_path' => '/how-we-work', 'priority' => 0.8, 'changefreq' => 'monthly'],
             ['url_path' => '/compliance-security', 'priority' => 0.8, 'changefreq' => 'monthly'],
             ['url_path' => '/careers', 'priority' => 0.8, 'changefreq' => 'weekly'],
-            ['url_path' => '/become-a-partner', 'priority' => 0.8, 'changefreq' => 'monthly'],
-            ['url_path' => '/find-a-partner', 'priority' => 0.8, 'changefreq' => 'monthly'],
-            ['url_path' => '/partner-overview', 'priority' => 0.8, 'changefreq' => 'monthly'],
             ['url_path' => '/blog', 'priority' => 0.9, 'changefreq' => 'daily'],
 
             // Core Engineering Services
@@ -234,28 +231,6 @@ class SitemapController extends Controller
             ['url_path' => '/api-backend-development', 'priority' => 0.9, 'changefreq' => 'weekly'],
             ['url_path' => '/website-redesign', 'priority' => 0.9, 'changefreq' => 'weekly'],
             ['url_path' => '/maintenance-support', 'priority' => 0.9, 'changefreq' => 'weekly'],
-            ['url_path' => '/professional-services', 'priority' => 0.8, 'changefreq' => 'weekly'],
-
-            // Enterprise Modernization & SAP
-            ['url_path' => '/modernization/low-code-for-sap', 'priority' => 0.8, 'changefreq' => 'monthly'],
-            ['url_path' => '/modernization/sap-fiori', 'priority' => 0.8, 'changefreq' => 'monthly'],
-            ['url_path' => '/modernization/move-to-s-4hana', 'priority' => 0.8, 'changefreq' => 'monthly'],
-            ['url_path' => '/modernization/sap-integration', 'priority' => 0.8, 'changefreq' => 'monthly'],
-            ['url_path' => '/modernization/sap-native', 'priority' => 0.8, 'changefreq' => 'monthly'],
-
-            // Product Suites & AI Agents
-            ['url_path' => '/products/naia', 'priority' => 0.8, 'changefreq' => 'monthly'],
-            ['url_path' => '/products/neptune-dxp', 'priority' => 0.8, 'changefreq' => 'monthly'],
-            ['url_path' => '/products/ai-agents', 'priority' => 0.8, 'changefreq' => 'monthly'],
-
-            // Industry Use Cases
-            ['url_path' => '/use-cases/asset-management', 'priority' => 0.8, 'changefreq' => 'monthly'],
-            ['url_path' => '/use-cases/industry-manufacturing', 'priority' => 0.8, 'changefreq' => 'monthly'],
-            ['url_path' => '/use-cases/industry-defense', 'priority' => 0.8, 'changefreq' => 'monthly'],
-            ['url_path' => '/use-cases/supplier-portals', 'priority' => 0.8, 'changefreq' => 'monthly'],
-            ['url_path' => '/use-cases/stock-inventory-management', 'priority' => 0.8, 'changefreq' => 'monthly'],
-            ['url_path' => '/use-cases/use-case-warehouse-and-logistics', 'priority' => 0.8, 'changefreq' => 'monthly'],
-            ['url_path' => '/use-cases/run-mobile-in-offline', 'priority' => 0.8, 'changefreq' => 'monthly'],
 
             // Legal & Terms
             ['url_path' => '/privacy-policy', 'priority' => 0.4, 'changefreq' => 'yearly'],

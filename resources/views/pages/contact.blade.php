@@ -312,7 +312,7 @@
             <h3 class="card-title-lg">Dedicated Shared Slack Channels</h3>
             <p class="card-text">Every client pod gets a direct shared Slack or Teams channel for instant, asynchronous communication.</p>
           </div>
-          <a href="{{ route('services.professional') }}" class="c-btn -link">
+          <a href="{{ route('services') }}" class="c-btn -link">
                     <span class="c-btn__txt">Pod Communication</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">

@@ -173,7 +173,7 @@
             <h3 class="card-title-lg">System Architecture Diagrams</h3>
             <p class="card-text">Visual component blueprints illustrating cloud infrastructure, microservices, databases, and third-party APIs.</p>
           </div>
-          <a href="{{ route('products.neptune-dxp') }}" class="c-btn -link">
+          <a href="{{ route('services.web-development') }}" class="c-btn -link">
                     <span class="c-btn__txt">View Sample Architectures</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -193,7 +193,7 @@
             <h3 class="card-title-lg">Milestone Sprint Breakdown</h3>
             <p class="card-text">Granular two-week sprint deliverables with tangible user stories, acceptance criteria, and deployment gates.</p>
           </div>
-          <a href="{{ route('modernization.low-code-for-sap') }}" class="c-btn -link">
+          <a href="{{ route('how-we-work') }}" class="c-btn -link">
                     <span class="c-btn__txt">Sprint Methodology</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -213,7 +213,7 @@
             <h3 class="card-title-lg">Transparent Cost Modeling</h3>
             <p class="card-text">Fixed-fee sprint pricing or dedicated pod rates with zero hidden licensing fees or infrastructure markups.</p>
           </div>
-          <a href="{{ route('services.professional') }}" class="c-btn -link">
+          <a href="{{ route('services') }}" class="c-btn -link">
                     <span class="c-btn__txt">Pod Pricing</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
