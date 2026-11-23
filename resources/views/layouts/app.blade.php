@@ -1,7 +1,7 @@
 @php
   $currentRoute = request()->route()?->getName() ?? 'home';
-  $seo = \App\Models\PageSeo::forRoute($currentRoute);
-  $globalSettings = \App\Models\SiteSetting::all()->pluck('value', 'key');
+  $seo = rescue(fn() => \App\Models\PageSeo::forRoute($currentRoute), null);
+  $globalSettings = rescue(fn() => \App\Models\SiteSetting::all()->pluck('value', 'key'), collect());
 
   $pageTitle = $__env->yieldContent('title', $seo->meta_title ?? $globalSettings['seo_default_title'] ?? 'Bluebase Technologies | Custom Web, Mobile App & Software Development');
   $pageDescription = $__env->yieldContent('meta_description', $seo->meta_description ?? $globalSettings['seo_default_description'] ?? 'Bluebase Technologies is a remote-first digital engineering studio building custom websites, web applications, mobile apps, SaaS MVPs, and business software.');
@@ -11,8 +11,30 @@
   $twitterHandle = $globalSettings['seo_twitter_handle'] ?? '@bluebase_tech';
   $robotsTag = $__env->yieldContent('robots', $seo->robots ?? $globalSettings['seo_robots'] ?? 'index, follow');
   $googleVerification = $globalSettings['seo_google_verification'] ?? null;
-  $headerScripts = $globalSettings['seo_header_scripts'] ?? null;
-  $footerScripts = $globalSettings['seo_footer_scripts'] ?? null;
+  $bingVerification = $globalSettings['seo_bing_verification'] ?? null;
+  $pinterestVerification = $globalSettings['seo_pinterest_verification'] ?? null;
+
+  // Master Tracking Switch
+  $trackingActive = ($globalSettings['tracking_scripts_enabled'] ?? '1') !== '0';
+
+  // Major Pixels & Analytics Tags
+  $gtmId = $globalSettings['analytics_gtm_id'] ?? null;
+  $gtmActive = $trackingActive && ($globalSettings['analytics_gtm_enabled'] ?? '1') !== '0' && !empty($gtmId);
+
+  $ga4Id = $globalSettings['analytics_ga4_id'] ?? null;
+  $ga4Active = $trackingActive && ($globalSettings['analytics_ga4_enabled'] ?? '1') !== '0' && !empty($ga4Id);
+
+  $pixelId = $globalSettings['analytics_meta_pixel_id'] ?? null;
+  $pixelActive = $trackingActive && ($globalSettings['analytics_meta_pixel_enabled'] ?? '1') !== '0' && !empty($pixelId);
+
+  $clarityId = $globalSettings['analytics_clarity_id'] ?? null;
+  $clarityActive = $trackingActive && ($globalSettings['analytics_clarity_enabled'] ?? '1') !== '0' && !empty($clarityId);
+
+  // Precision Placement Zones
+  $customHeadScripts = $trackingActive ? ($globalSettings['custom_head_scripts'] ?? $globalSettings['seo_header_scripts'] ?? null) : null;
+  $customBodyOpenScripts = $trackingActive ? ($globalSettings['custom_body_open_scripts'] ?? null) : null;
+  $customFooterScripts = $trackingActive ? ($globalSettings['custom_footer_scripts'] ?? $globalSettings['seo_footer_scripts'] ?? null) : null;
+  $customGlobalCss = $globalSettings['custom_global_css'] ?? null;
 @endphp
 <!DOCTYPE html>
 <html lang="en">
@@ -57,6 +79,12 @@
   <!-- Search Engine Verification -->
   @if($googleVerification)
     <meta name="google-site-verification" content="{{ $googleVerification }}">
+  @endif
+  @if($bingVerification)
+    <meta name="msvalidate.01" content="{{ $bingVerification }}">
+  @endif
+  @if($pinterestVerification)
+    <meta name="p:domain_verify" content="{{ $pinterestVerification }}">
   @endif
 
   <!-- Favicon -->
@@ -116,13 +144,83 @@
   <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ file_exists(public_path('css/style.css')) ? filemtime(public_path('css/style.css')) : time() }}">
   @stack('styles')
 
-  <!-- Injected Custom Header Scripts (e.g. Analytics / GTM) -->
-  @if($headerScripts)
-    {!! $headerScripts !!}
+  <!-- Custom Global CSS Injected via Admin -->
+  @if($customGlobalCss)
+    <style id="bluebase-custom-css">
+      {!! $customGlobalCss !!}
+    </style>
+  @endif
+
+  <!-- Google Tag Manager (Head) -->
+  @if($gtmActive)
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','{{ $gtmId }}');</script>
+  @endif
+
+  <!-- Google Analytics 4 (GA4 gtag.js) -->
+  @if($ga4Active)
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ $ga4Id }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{{ $ga4Id }}');
+    </script>
+  @endif
+
+  <!-- Meta (Facebook) Pixel Code (Head) -->
+  @if($pixelActive)
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '{{ $pixelId }}');
+      fbq('track', 'PageView');
+    </script>
+  @endif
+
+  <!-- Microsoft Clarity -->
+  @if($clarityActive)
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "{{ $clarityId }}");
+    </script>
+  @endif
+
+  <!-- Injected Custom Header Scripts -->
+  @if($customHeadScripts)
+    {!! $customHeadScripts !!}
   @endif
 </head>
 
 <body class="@yield('body_class', '')">
+  <!-- Google Tag Manager (noscript body fallback) -->
+  @if($gtmActive)
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ $gtmId }}"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  @endif
+
+  <!-- Meta (Facebook) Pixel (noscript body fallback) -->
+  @if($pixelActive)
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id={{ $pixelId }}&ev=PageView&noscript=1" alt="" /></noscript>
+  @endif
+
+  <!-- Injected Custom Body Open Scripts -->
+  @if($customBodyOpenScripts)
+    {!! $customBodyOpenScripts !!}
+  @endif
 
   <!-- Site Navigation Header -->
   @include('partials.header')
@@ -151,8 +249,8 @@
   @stack('scripts')
 
   <!-- Injected Custom Footer Scripts -->
-  @if($footerScripts)
-    {!! $footerScripts !!}
+  @if($customFooterScripts)
+    {!! $customFooterScripts !!}
   @endif
 </body>
 

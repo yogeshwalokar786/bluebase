@@ -4,6 +4,14 @@
 @section('page_title', 'Global CMS & Enterprise Site Configuration')
 
 @section('content')
+  <div style="display: flex; gap: 12px; margin-bottom: 20px;">
+    <a href="{{ route('admin.settings') }}" class="btn btn-primary btn-sm">Site Settings</a>
+    <a href="{{ route('admin.code_placement.index') }}" class="btn btn-secondary btn-sm">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 14px; height: 14px; margin-right: 4px; vertical-align: middle;"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      Code Placement, Pixels &amp; Analytics
+    </a>
+  </div>
+
   <div class="card" style="max-width: 960px;">
     <form action="{{ route('admin.settings.update') }}" method="POST">
       @csrf

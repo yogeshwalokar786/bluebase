@@ -1359,6 +1359,13 @@
           <span>Site Settings</span>
         </span>
       </a>
+
+      <a href="{{ route('admin.code_placement.index') }}" class="nav-item {{ request()->routeIs('admin.code_placement*') ? 'active' : '' }}">
+        <span class="nav-item-content">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <span>Code Placement &amp; Pixels</span>
+        </span>
+      </a>
     </div>
 
     <div class="sidebar-footer">

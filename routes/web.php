@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\SettingsCmsController;
 use App\Http\Controllers\Admin\FileManagerController;
 use App\Http\Controllers\Admin\SeoController;
 use App\Http\Controllers\Admin\MailController;
+use App\Http\Controllers\Admin\CodePlacementController;
 
 // ==========================================
 // 1. PUBLIC MARKETING WEBSITE
@@ -229,6 +230,10 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::get('/settings', [SettingsCmsController::class, 'index'])->name('settings');
     Route::post('/settings', [SettingsCmsController::class, 'update'])->name('settings.update');
     Route::post('/settings/test-email', [SettingsCmsController::class, 'sendTestEmail'])->name('settings.test_email');
+
+    // 4. Code Placement, Pixels & Analytics Tracking
+    Route::get('/code-placement', [CodePlacementController::class, 'index'])->name('code_placement.index');
+    Route::post('/code-placement', [CodePlacementController::class, 'update'])->name('code_placement.update');
 
     // Safe fallbacks for retired admin routes
     Route::get('/seo/{any?}', fn() => redirect()->route('admin.dashboard'))->where('any', '.*');
