@@ -209,8 +209,11 @@ class SeoController extends Controller
 
     public function generateSitemap()
     {
-        $baseUrl = rtrim(config('app.url') && !str_contains(config('app.url'), 'localhost') ? config('app.url') : 'https://bluebasetechnologies.com', '/');
+        $rawAppUrl = config('app.url', '');
+        $isLocal = empty($rawAppUrl) || str_contains($rawAppUrl, 'localhost') || str_contains($rawAppUrl, '127.0.0.1') || str_contains($rawAppUrl, '::1');
+        $baseUrl = rtrim($isLocal ? 'https://bluebasetechnologies.com' : $rawAppUrl, '/');
         $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
+        $xml .= '<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>' . "\n";
         $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" ' .
                 'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ' .
                 'xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">' . "\n";

@@ -52,9 +52,12 @@ class SitemapController extends Controller
      */
     public function generate()
     {
-        $baseUrl = rtrim(config('app.url') && !str_contains(config('app.url'), 'localhost') ? config('app.url') : 'https://bluebasetechnologies.com', '/');
+        $rawAppUrl = config('app.url', '');
+        $isLocal = empty($rawAppUrl) || str_contains($rawAppUrl, 'localhost') || str_contains($rawAppUrl, '127.0.0.1') || str_contains($rawAppUrl, '::1');
+        $baseUrl = rtrim($isLocal ? 'https://bluebasetechnologies.com' : $rawAppUrl, '/');
 
         $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
+        $xml .= '<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>' . "\n";
         $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"' . "\n";
         $xml .= '        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"' . "\n";
         $xml .= '        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"' . "\n";
@@ -199,6 +202,22 @@ class SitemapController extends Controller
         return Response::make($content, 200, [
             'Content-Type' => 'application/xml; charset=utf-8',
             'X-Robots-Tag' => 'noindex',
+        ]);
+    }
+
+    /**
+     * Serve public /sitemap.xsl stylesheet for browsers
+     */
+    public function publicSitemapXsl()
+    {
+        $xslPath = public_path('sitemap.xsl');
+        if (!File::exists($xslPath)) {
+            abort(404);
+        }
+
+        $content = File::get($xslPath);
+        return Response::make($content, 200, [
+            'Content-Type' => 'text/xsl; charset=utf-8',
         ]);
     }
 
