@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\FileManagerController;
 use App\Http\Controllers\Admin\SeoController;
 use App\Http\Controllers\Admin\MailController;
 use App\Http\Controllers\Admin\CodePlacementController;
+use App\Http\Controllers\Admin\SitemapController;
 
 // ==========================================
 // 1. PUBLIC MARKETING WEBSITE
@@ -112,7 +113,7 @@ Route::get('/tech-blog', fn() => redirect()->route('blog', [], 301));
 Route::get('/tech-blog/{slug}', fn($slug) => redirect()->route('blog.show', ['slug' => $slug], 301));
 Route::get('/privacy-policy', [ResourceController::class, 'privacyPolicy'])->name('privacy-policy');
 Route::get('/terms-of-use', [ResourceController::class, 'termsOfUse'])->name('terms-of-use');
-Route::get('/sitemap.xml', [SeoController::class, 'publicSitemap'])->name('sitemap.xml');
+Route::get('/sitemap.xml', [SitemapController::class, 'publicSitemap'])->name('sitemap.xml');
 
 // Inquiries & Interactive Public Forms
 Route::get('/contact', [InquiryController::class, 'contactForm'])->name('contact');
@@ -243,6 +244,15 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     // 4. Code Placement, Pixels & Analytics Tracking
     Route::get('/code-placement', [CodePlacementController::class, 'index'])->name('code_placement.index');
     Route::post('/code-placement', [CodePlacementController::class, 'update'])->name('code_placement.update');
+
+    // 5. XML Sitemap Generator & Manager
+    Route::get('/sitemap', [SitemapController::class, 'index'])->name('sitemap.index');
+    Route::post('/sitemap/generate', [SitemapController::class, 'generate'])->name('sitemap.generate');
+    Route::get('/sitemap/download', [SitemapController::class, 'download'])->name('sitemap.download');
+
+    // Compatibility aliases for legacy sitemap routes
+    Route::get('/seo/sitemap', fn() => redirect()->route('admin.sitemap.index'))->name('seo.sitemap.index');
+    Route::post('/seo/sitemap/generate', [SitemapController::class, 'generate'])->name('seo.sitemap.generate');
 
     // Safe fallbacks for retired admin routes
     Route::get('/seo/{any?}', fn() => redirect()->route('admin.dashboard'))->where('any', '.*');

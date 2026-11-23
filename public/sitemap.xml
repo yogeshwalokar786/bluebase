@@ -1,195 +1,270 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
-    <loc>https://bluebasetechnologies.com/</loc>
-    <lastmod>2026-11-20</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>http://127.0.0.1:8000/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://bluebasetechnologies.com/services</loc>
-    <lastmod>2026-11-20</lastmod>
+    <loc>http://127.0.0.1:8000/services</loc>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://bluebasetechnologies.com/solutions</loc>
-    <lastmod>2026-11-20</lastmod>
+    <loc>http://127.0.0.1:8000/solutions</loc>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://bluebasetechnologies.com/customer-stories</loc>
-    <lastmod>2026-11-20</lastmod>
+    <loc>http://127.0.0.1:8000/customer-stories</loc>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://bluebasetechnologies.com/contact</loc>
-    <lastmod>2026-11-20</lastmod>
+    <loc>http://127.0.0.1:8000/contact</loc>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://bluebasetechnologies.com/free-trial</loc>
-    <lastmod>2026-11-20</lastmod>
+    <loc>http://127.0.0.1:8000/free-trial</loc>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://bluebasetechnologies.com/web-development</loc>
-    <lastmod>2026-11-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://bluebasetechnologies.com/website-design</loc>
-    <lastmod>2026-11-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://bluebasetechnologies.com/mobile-app-development</loc>
-    <lastmod>2026-11-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://bluebasetechnologies.com/saas-mvp-development</loc>
-    <lastmod>2026-11-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://bluebasetechnologies.com/ecommerce-development</loc>
-    <lastmod>2026-11-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://bluebasetechnologies.com/ui-ux-design</loc>
-    <lastmod>2026-11-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://bluebasetechnologies.com/api-backend-development</loc>
-    <lastmod>2026-11-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://bluebasetechnologies.com/website-redesign</loc>
-    <lastmod>2026-11-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://bluebasetechnologies.com/maintenance-support</loc>
-    <lastmod>2026-11-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://bluebasetechnologies.com/customer-stories/omg-rental-bikes</loc>
-    <lastmod>2026-11-20</lastmod>
+    <loc>http://127.0.0.1:8000/company</loc>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bluebasetechnologies.com/customer-stories/aarohi-classic-2024</loc>
-    <lastmod>2026-11-20</lastmod>
+    <loc>http://127.0.0.1:8000/how-we-work</loc>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bluebasetechnologies.com/customer-stories/indiamart-lead-automation</loc>
-    <lastmod>2026-11-20</lastmod>
+    <loc>http://127.0.0.1:8000/compliance-security</loc>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bluebasetechnologies.com/company</loc>
-    <lastmod>2026-11-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://bluebasetechnologies.com/how-we-work</loc>
-    <lastmod>2026-11-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://bluebasetechnologies.com/compliance-security</loc>
-    <lastmod>2026-11-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://bluebasetechnologies.com/careers</loc>
-    <lastmod>2026-11-20</lastmod>
+    <loc>http://127.0.0.1:8000/careers</loc>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bluebasetechnologies.com/blog</loc>
-    <lastmod>2026-11-20</lastmod>
+    <loc>http://127.0.0.1:8000/become-a-partner</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://127.0.0.1:8000/find-a-partner</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://127.0.0.1:8000/partner-overview</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://127.0.0.1:8000/blog</loc>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>http://127.0.0.1:8000/web-development</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>http://127.0.0.1:8000/website-design</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>http://127.0.0.1:8000/mobile-app-development</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>http://127.0.0.1:8000/saas-mvp-development</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>http://127.0.0.1:8000/ecommerce-development</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>http://127.0.0.1:8000/ui-ux-design</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>http://127.0.0.1:8000/api-backend-development</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>http://127.0.0.1:8000/website-redesign</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>http://127.0.0.1:8000/maintenance-support</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>http://127.0.0.1:8000/professional-services</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bluebasetechnologies.com/blog/why-relying-only-on-instagram-facebook-is-risky-for-business</loc>
-    <lastmod>2026-11-20</lastmod>
+    <loc>http://127.0.0.1:8000/modernization/low-code-for-sap</loc>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bluebasetechnologies.com/blog/stop-wasting-money-on-boost-post-get-real-whatsapp-inquiries</loc>
-    <lastmod>2026-11-20</lastmod>
+    <loc>http://127.0.0.1:8000/modernization/sap-fiori</loc>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bluebasetechnologies.com/blog/business-trapped-in-excel-whatsapp-how-custom-software-saves-hours</loc>
-    <lastmod>2026-11-20</lastmod>
+    <loc>http://127.0.0.1:8000/modernization/move-to-s-4hana</loc>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bluebasetechnologies.com/blog/how-local-businesses-rank-on-google-maps-get-daily-calls</loc>
-    <lastmod>2026-11-20</lastmod>
+    <loc>http://127.0.0.1:8000/modernization/sap-integration</loc>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bluebasetechnologies.com/blog/how-much-business-website-cost-transparent-guide</loc>
-    <lastmod>2026-11-20</lastmod>
+    <loc>http://127.0.0.1:8000/modernization/sap-native</loc>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bluebasetechnologies.com/blog/why-websites-stop-working-guide-to-website-maintenance-for-business-owners</loc>
-    <lastmod>2026-11-20</lastmod>
+    <loc>http://127.0.0.1:8000/products/naia</loc>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bluebasetechnologies.com/blog/case-study-how-omg-rental-bikes-automated-fleet-operations-scaled-400-percent</loc>
-    <lastmod>2026-11-20</lastmod>
+    <loc>http://127.0.0.1:8000/products/neptune-dxp</loc>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bluebasetechnologies.com/privacy-policy</loc>
-    <lastmod>2026-11-20</lastmod>
+    <loc>http://127.0.0.1:8000/products/ai-agents</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://127.0.0.1:8000/use-cases/asset-management</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://127.0.0.1:8000/use-cases/industry-manufacturing</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://127.0.0.1:8000/use-cases/industry-defense</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://127.0.0.1:8000/use-cases/supplier-portals</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://127.0.0.1:8000/use-cases/stock-inventory-management</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://127.0.0.1:8000/use-cases/use-case-warehouse-and-logistics</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://127.0.0.1:8000/use-cases/run-mobile-in-offline</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://127.0.0.1:8000/privacy-policy</loc>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://bluebasetechnologies.com/terms-of-use</loc>
-    <lastmod>2026-11-20</lastmod>
+    <loc>http://127.0.0.1:8000/terms-of-use</loc>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>http://127.0.0.1:8000/customer-stories/omg-rental-bikes</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>http://127.0.0.1:8000/customer-stories/aarohi-classic-2024</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>http://127.0.0.1:8000/customer-stories/indiamart-lead-automation</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
   </url>
 </urlset>

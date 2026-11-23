@@ -1366,6 +1366,13 @@
           <span>Code Placement &amp; Pixels</span>
         </span>
       </a>
+
+      <a href="{{ route('admin.sitemap.index') }}" class="nav-item {{ request()->routeIs('admin.sitemap*') ? 'active' : '' }}">
+        <span class="nav-item-content">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><path d="M5 16v-4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4"/><line x1="12" y1="8" x2="12" y2="12"/></svg>
+          <span>Sitemap Generator</span>
+        </span>
+      </a>
     </div>
 
     <div class="sidebar-footer">
