@@ -100,6 +100,10 @@
                 <input type="text" name="image" id="blog_image"
                   value="{{ old('image', $blog->image ?? 'images/stories/screens-clicks.jpg') }}" class="form-control"
                   placeholder="images/stories/screens-clicks.jpg or uploads/...">
+                <button type="button" class="btn btn-primary" onclick="openBlogBannerModal()" style="background: linear-gradient(135deg, #0050e7, #1d68ff); font-weight: 700; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 15px; height: 15px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  Auto-Generate Banner
+                </button>
                 <button type="button" class="btn btn-secondary btn-filemanager" data-target="#blog_image"
                   data-preview="#blog_image_preview" data-type="image">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 15px; height: 15px;">
@@ -118,7 +122,13 @@
                 @endif
               </div>
             </div>
-            <div class="form-hint">Click &ldquo;Browse Media&rdquo; to pick from the central media library or upload new high-resolution graphics.</div>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 8px; flex-wrap: wrap; gap: 8px;">
+              <div class="form-hint" style="margin-top: 0;">Click &ldquo;Auto-Generate Banner&rdquo; to create a branded textured banner or &ldquo;Browse Media&rdquo; for existing uploads.</div>
+              <label style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.78rem; color: var(--text-muted); cursor: pointer;">
+                <input type="checkbox" name="auto_generate_banner" value="1" style="accent-color: #3b82f6;">
+                Auto-generate banner on save if empty
+              </label>
+            </div>
           </div>
 
           <!-- Excerpt Editor -->
@@ -569,5 +579,439 @@
       });
     }
   });
+  </script>
+
+  <!-- ================= BANNER STUDIO MODAL DIALOG ================= -->
+  <style>
+    .banner-modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(5px);
+      z-index: 1050;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .banner-modal-backdrop.open {
+      display: flex;
+    }
+    .banner-modal-dialog {
+      width: 1060px;
+      max-width: 96vw;
+      max-height: 92vh;
+      background: #090E23;
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .banner-modal-header {
+      padding: 14px 20px;
+      background: rgba(15, 23, 42, 0.9);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #ffffff;
+      font-weight: 700;
+    }
+    .banner-modal-body {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 20px;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .banner-modal-body {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <div class="banner-modal-backdrop" id="blogBannerModal">
+    <div class="banner-modal-dialog">
+      <div class="banner-modal-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2" style="width: 18px; height: 18px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span>Auto-Generate Branded Textured Banner</span>
+        </div>
+        <button type="button" onclick="closeBlogBannerModal()" style="background: none; border: none; color: var(--text-dim); cursor: pointer; padding: 4px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 18px; height: 18px;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <div class="banner-modal-body">
+        <!-- Left: Live Preview Canvas -->
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="width: 100%; aspect-ratio: 16/9; background: #070B19; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06);">
+            <canvas id="formBannerCanvas" width="1280" height="720" style="width: 100%; height: 100%; display: block; object-fit: contain;"></canvas>
+          </div>
+          <div style="font-size: 0.75rem; color: var(--text-dim); display: flex; justify-content: space-between;">
+            <span>1280 &times; 720 HD &bull; Bluebase Corporate Aesthetic</span>
+            <span style="color: var(--accent);">Live Rendering</span>
+          </div>
+        </div>
+
+        <!-- Right: Generator Controls -->
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label" style="font-size: 0.78rem;">Headline Text</label>
+            <textarea id="modalBannerTitle" rows="3" class="form-control" style="font-size: 0.82rem;" oninput="renderFormBannerCanvas()"></textarea>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label" style="font-size: 0.78rem;">Category Tag Pill</label>
+            <input type="text" id="modalBannerCategory" class="form-control" style="font-size: 0.82rem;" oninput="renderFormBannerCanvas()">
+          </div>
+
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label" style="font-size: 0.78rem;">Texture Pattern</label>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
+              <button type="button" class="btn btn-secondary btn-sm modal-texture-btn active" data-texture="cyber_grid" onclick="selectModalTexture('cyber_grid', this)" style="padding: 6px 8px; font-size: 0.75rem;">
+                Cyber Grid
+              </button>
+              <button type="button" class="btn btn-secondary btn-sm modal-texture-btn" data-texture="abstract_circuit" onclick="selectModalTexture('abstract_circuit', this)" style="padding: 6px 8px; font-size: 0.75rem;">
+                Abstract Circuit
+              </button>
+              <button type="button" class="btn btn-secondary btn-sm modal-texture-btn" data-texture="tech_mesh" onclick="selectModalTexture('tech_mesh', this)" style="padding: 6px 8px; font-size: 0.75rem;">
+                Geometric Mesh
+              </button>
+              <button type="button" class="btn btn-secondary btn-sm modal-texture-btn" data-texture="executive_carbon" onclick="selectModalTexture('executive_carbon', this)" style="padding: 6px 8px; font-size: 0.75rem;">
+                Carbon Matrix
+              </button>
+              <button type="button" class="btn btn-secondary btn-sm modal-texture-btn" data-texture="glass_aura" onclick="selectModalTexture('glass_aura', this)" style="padding: 6px 8px; font-size: 0.75rem;">
+                Obsidian Aura
+              </button>
+              <button type="button" class="btn btn-secondary btn-sm modal-texture-btn" data-texture="minimal_frame" onclick="selectModalTexture('minimal_frame', this)" style="padding: 6px 8px; font-size: 0.75rem;">
+                Minimal Luxury
+              </button>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label" style="font-size: 0.78rem;">Alignment</label>
+              <select id="modalBannerAlign" class="form-control" style="font-size: 0.8rem; padding: 5px 8px;" onchange="renderFormBannerCanvas()">
+                <option value="left" selected>Left</option>
+                <option value="center">Center</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label" style="font-size: 0.78rem;">Font Scale</label>
+              <select id="modalBannerScale" class="form-control" style="font-size: 0.8rem; padding: 5px 8px;" onchange="renderFormBannerCanvas()">
+                <option value="auto" selected>Auto</option>
+                <option value="50">50px</option>
+                <option value="42">42px</option>
+                <option value="36">36px</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding: 12px 20px; background: rgba(15, 23, 42, 0.9); border-top: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between;">
+        <button type="button" class="btn btn-secondary" onclick="downloadFormBanner()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 14px; height: 14px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download JPG
+        </button>
+        <div style="display: flex; gap: 10px;">
+          <button type="button" class="btn btn-secondary" onclick="closeBlogBannerModal()">Cancel</button>
+          <button type="button" class="btn btn-primary" id="btnModalApplyBanner" onclick="applyGeneratedBannerToForm()" style="font-weight: 700;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 14px; height: 14px;"><polyline points="20 6 9 17 4 12"/></svg>
+            Apply to Blog Article
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let modalTexture = 'cyber_grid';
+    let modalAccent = { primary: '#0050e7', light: '#3b82f6' };
+
+    function openBlogBannerModal() {
+      const modal = document.getElementById('blogBannerModal');
+      const titleInput = document.getElementById('articleTitle');
+      const catSelect = document.getElementById('categorySelect');
+
+      const title = titleInput ? titleInput.value.trim() : '';
+      let cat = 'ENTERPRISE ARCHITECTURE';
+      if (catSelect && catSelect.selectedIndex >= 0) {
+        cat = catSelect.options[catSelect.selectedIndex].text.trim();
+      }
+
+      document.getElementById('modalBannerTitle').value = title || 'Your Article Title';
+      document.getElementById('modalBannerCategory').value = cat || 'Cloud Architecture';
+
+      if (modal) modal.classList.add('open');
+      renderFormBannerCanvas();
+    }
+
+    function closeBlogBannerModal() {
+      const modal = document.getElementById('blogBannerModal');
+      if (modal) modal.classList.remove('open');
+    }
+
+    function selectModalTexture(name, btn) {
+      modalTexture = name;
+      document.querySelectorAll('.modal-texture-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderFormBannerCanvas();
+    }
+
+    function renderFormBannerCanvas() {
+      const canvas = document.getElementById('formBannerCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const width = 1280;
+      const height = 720;
+
+      // Base gradient
+      ctx.clearRect(0, 0, width, height);
+      const bgGrad = ctx.createLinearGradient(0, 0, width, height);
+      bgGrad.addColorStop(0, '#070B19');
+      bgGrad.addColorStop(0.5, '#0B1229');
+      bgGrad.addColorStop(1, '#050814');
+      ctx.fillStyle = bgGrad;
+      ctx.fillRect(0, 0, width, height);
+
+      // Texture
+      if (modalTexture === 'cyber_grid') {
+        drawModalCyberGrid(ctx, width, height);
+      } else if (modalTexture === 'abstract_circuit') {
+        drawModalAbstractCircuit(ctx, width, height);
+      } else if (modalTexture === 'tech_mesh') {
+        drawModalTechMesh(ctx, width, height);
+      } else if (modalTexture === 'executive_carbon') {
+        drawModalExecutiveCarbon(ctx, width, height);
+      } else if (modalTexture === 'glass_aura') {
+        drawModalGlassAura(ctx, width, height);
+      } else {
+        drawModalMinimalFrame(ctx, width, height);
+      }
+
+      // Ambient radial glow
+      const radial = ctx.createRadialGradient(width - 100, 100, 30, width - 100, 100, 480);
+      radial.addColorStop(0, modalAccent.primary + '33');
+      radial.addColorStop(0.7, modalAccent.primary + '0A');
+      radial.addColorStop(1, 'transparent');
+      ctx.fillStyle = radial;
+      ctx.fillRect(0, 0, width, height);
+
+      // Top bar
+      ctx.fillStyle = modalAccent.primary;
+      ctx.fillRect(0, 0, width, 5);
+
+      // Text elements
+      const title = document.getElementById('modalBannerTitle').value.trim() || 'Article Title';
+      const category = (document.getElementById('modalBannerCategory').value.trim() || 'ENTERPRISE ARCHITECTURE').toUpperCase();
+      const align = document.getElementById('modalBannerAlign').value;
+      const startX = (align === 'center') ? width / 2 : 110;
+
+      // Category Pill
+      ctx.textAlign = (align === 'center') ? 'center' : 'left';
+      ctx.textBaseline = 'middle';
+      const kickerText = 'BLUEBASE TECHNOLOGIES • ' + category;
+      ctx.font = '700 13px Inter, -apple-system, sans-serif';
+      const kickerWidth = ctx.measureText(kickerText).width + 36;
+      const pillY = 160;
+
+      ctx.save();
+      ctx.fillStyle = 'rgba(0, 80, 231, 0.22)';
+      ctx.strokeStyle = modalAccent.light;
+      ctx.lineWidth = 1.2;
+      if (align === 'center') {
+        drawModalRoundRect(ctx, (width / 2) - (kickerWidth / 2), pillY - 16, kickerWidth, 32, 6, true, true);
+      } else {
+        drawModalRoundRect(ctx, 110, pillY - 16, kickerWidth, 32, 6, true, true);
+      }
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillText(kickerText, (align === 'center') ? width / 2 : 128, pillY);
+      ctx.restore();
+
+      // Headline
+      let fontSize = 44;
+      const scaleSetting = document.getElementById('modalBannerScale').value;
+      if (scaleSetting === 'auto') {
+        if (title.length > 70) fontSize = 36;
+        else if (title.length > 45) fontSize = 40;
+        else fontSize = 48;
+      } else {
+        fontSize = parseInt(scaleSetting);
+      }
+
+      ctx.font = `800 ${fontSize}px Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`;
+      ctx.fillStyle = '#FFFFFF';
+      ctx.textAlign = (align === 'center') ? 'center' : 'left';
+
+      const lines = getModalWrappedLines(ctx, title, 1060);
+      const lineHeight = fontSize * 1.35;
+      const titleStartY = pillY + 80;
+
+      lines.forEach((line, index) => {
+        const y = titleStartY + (index * lineHeight);
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.8)';
+        ctx.shadowBlur = 12;
+        ctx.fillText(line, startX, y);
+        ctx.shadowColor = 'transparent';
+      });
+
+      // Watermark
+      ctx.font = '500 13px Inter, -apple-system, sans-serif';
+      ctx.fillStyle = '#94A3B8';
+      ctx.fillText('bluebasetechnologies.com  •  Cloud Architecture, Software Modernization & Autonomous AI', startX, height - 65);
+    }
+
+    function drawModalCyberGrid(ctx, width, height) {
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
+      ctx.lineWidth = 1;
+      const spacing = 50;
+      for (let x = 0; x <= width; x += spacing) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, height); ctx.stroke();
+      }
+      for (let y = 0; y <= height; y += spacing) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(width, y); ctx.stroke();
+      }
+    }
+    function drawModalAbstractCircuit(ctx, width, height) {
+      drawModalCyberGrid(ctx, width, height);
+      ctx.strokeStyle = 'rgba(0, 229, 255, 0.15)';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(800, 80); ctx.lineTo(1050, 80); ctx.lineTo(1120, 160); ctx.lineTo(1280, 160);
+      ctx.stroke();
+    }
+    function drawModalTechMesh(ctx, width, height) {
+      ctx.strokeStyle = 'rgba(139, 92, 246, 0.08)';
+      ctx.lineWidth = 1;
+      const step = 80;
+      for (let x = 0; x < width; x += step) {
+        for (let y = 0; y < height; y += step) {
+          ctx.strokeRect(x, y, step, step);
+          ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + step, y + step); ctx.stroke();
+        }
+      }
+    }
+    function drawModalExecutiveCarbon(ctx, width, height) {
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.015)';
+      for (let y = 0; y < height; y += 6) ctx.fillRect(0, y, width, 2);
+    }
+    function drawModalGlassAura(ctx, width, height) {
+      const aura = ctx.createRadialGradient(width * 0.7, height * 0.35, 20, width * 0.7, height * 0.35, 450);
+      aura.addColorStop(0, 'rgba(0, 80, 231, 0.25)');
+      aura.addColorStop(1, 'transparent');
+      ctx.fillStyle = aura;
+      ctx.fillRect(0, 0, width, height);
+    }
+    function drawModalMinimalFrame(ctx, width, height) {
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+      ctx.lineWidth = 1;
+      ctx.strokeRect(40, 40, width - 80, height - 80);
+    }
+
+    function drawModalRoundRect(ctx, x, y, width, height, radius, fill, stroke) {
+      ctx.beginPath();
+      ctx.moveTo(x + radius, y);
+      ctx.lineTo(x + width - radius, y);
+      ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+      ctx.lineTo(x + width, y + height - radius);
+      ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+      ctx.lineTo(x + radius, y + height);
+      ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+      ctx.lineTo(x, y + radius);
+      ctx.quadraticCurveTo(x, y, x + radius, y);
+      ctx.closePath();
+      if (fill) ctx.fill();
+      if (stroke) ctx.stroke();
+    }
+
+    function getModalWrappedLines(ctx, text, maxWidth) {
+      const words = text.split(' ');
+      const lines = [];
+      let currentLine = words[0];
+      for (let i = 1; i < words.length; i++) {
+        const word = words[i];
+        const width = ctx.measureText(currentLine + ' ' + word).width;
+        if (width < maxWidth) {
+          currentLine += ' ' + word;
+        } else {
+          lines.push(currentLine);
+          currentLine = word;
+        }
+      }
+      lines.push(currentLine);
+      return lines.slice(0, 4);
+    }
+
+    function applyGeneratedBannerToForm() {
+      const canvas = document.getElementById('formBannerCanvas');
+      const title = document.getElementById('modalBannerTitle').value.trim();
+      const category = document.getElementById('modalBannerCategory').value.trim();
+      const slugInput = document.getElementById('articleSlug');
+      const slug = slugInput ? slugInput.value.trim() : '';
+      const btn = document.getElementById('btnModalApplyBanner');
+
+      const dataUrl = canvas.toDataURL('image/jpeg', 0.92);
+
+      btn.disabled = true;
+      btn.innerText = 'Saving Banner...';
+
+      fetch("{{ route('admin.cms.blogs.generate_banner') }}", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          title: title,
+          category: category,
+          slug: slug,
+          image_data: dataUrl
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        btn.disabled = false;
+        btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 14px; height: 14px;"><polyline points="20 6 9 17 4 12"/></svg> Apply to Blog Article';
+
+        if (data.success && data.image_url) {
+          const imgInput = document.getElementById('blog_image');
+          const ogImgInput = document.getElementById('og_image');
+          const preview = document.getElementById('blog_image_preview');
+
+          if (imgInput) imgInput.value = data.image_url;
+          if (ogImgInput) ogImgInput.value = data.image_url;
+          if (preview) {
+            preview.innerHTML = `<img src="${data.full_url}" alt="Preview" style="max-height: 100%; border-radius: 6px;">`;
+          }
+
+          closeBlogBannerModal();
+          alert('Branded banner image generated and applied successfully to this article!');
+        } else {
+          alert(data.message || 'Error generating banner.');
+        }
+      })
+      .catch(err => {
+        btn.disabled = false;
+        btn.innerHTML = 'Apply to Blog Article';
+        alert('Failed to save banner: ' + err.message);
+      });
+    }
+
+    function downloadFormBanner() {
+      const canvas = document.getElementById('formBannerCanvas');
+      const slugInput = document.getElementById('articleSlug');
+      const slug = (slugInput && slugInput.value.trim()) ? slugInput.value.trim() : 'blog-banner-' + Date.now();
+      const link = document.createElement('a');
+      link.download = slug + '.jpg';
+      link.href = canvas.toDataURL('image/jpeg', 0.92);
+      link.click();
+    }
   </script>
 @endsection

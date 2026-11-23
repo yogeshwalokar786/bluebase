@@ -168,6 +168,8 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
         Route::delete('/blogs/{id}', [BlogCmsController::class, 'destroy'])->name('blogs.destroy');
         Route::post('/blogs/{id}/toggle', [BlogCmsController::class, 'togglePublish'])->name('blogs.toggle');
         Route::post('/blogs/category/ajax', [BlogCmsController::class, 'ajaxStoreCategory'])->name('blogs.category.ajax');
+        Route::post('/blogs/generate-banner', [BlogCmsController::class, 'generateBanner'])->name('blogs.generate_banner');
+        Route::get('/banner-studio', [BlogCmsController::class, 'bannerStudio'])->name('banner_studio');
 
         // Case Studies CMS
         Route::get('/case-studies', [\App\Http\Controllers\Admin\CaseStudyCmsController::class, 'index'])->name('case-studies.index');

@@ -1313,6 +1313,13 @@
         <span class="nav-count">{{ rescue(fn() => \App\Models\Blog::count(), 0) }}</span>
       </a>
 
+      <a href="{{ route('admin.cms.banner_studio') }}" class="nav-item {{ request()->routeIs('admin.cms.banner_studio*') ? 'active' : '' }}">
+        <span class="nav-item-content">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <span>Banner Studio</span>
+        </span>
+      </a>
+
       <a href="{{ route('admin.cms.case-studies.index') }}" class="nav-item {{ request()->routeIs('admin.cms.case-studies*') ? 'active' : '' }}">
         <span class="nav-item-content">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>

@@ -89,6 +89,16 @@ class BlogCmsController extends Controller
             $categoryName = $cat->name;
         }
 
+        // Automatic Banner Generation if chosen or if image field is empty
+        $imagePath = $request->image;
+        if ($request->has('auto_generate_banner') || (empty($imagePath) && $request->filled('title'))) {
+            try {
+                $imagePath = \App\Services\BannerGeneratorService::generateServerSideBanner($request->title, $categoryName, ['slug' => $slug]);
+            } catch (\Throwable $e) {
+                \Illuminate\Support\Facades\Log::warning('Auto banner generation in store failed: ' . $e->getMessage());
+            }
+        }
+
         Blog::create([
             'title' => $request->title,
             'slug' => $slug,
@@ -97,7 +107,7 @@ class BlogCmsController extends Controller
             'author' => $request->author,
             'author_role' => $request->author_role ?: 'Principal Systems Architect',
             'read_time' => $request->read_time ?: '5 min read',
-            'image' => $request->image ?: 'images/stories/screens-clicks.jpg',
+            'image' => $imagePath ?: 'images/stories/screens-clicks.jpg',
             'excerpt' => $request->excerpt,
             'content' => $request->content,
             'is_published' => $request->has('is_published'),
@@ -111,7 +121,7 @@ class BlogCmsController extends Controller
             'canonical_url' => $request->canonical_url,
             'og_title' => $request->og_title ?: ($request->meta_title ?: $request->title),
             'og_description' => $request->og_description ?: ($request->meta_description ?: Str::limit(strip_tags($request->excerpt), 155)),
-            'og_image' => $request->og_image ?: $request->image,
+            'og_image' => $request->og_image ?: $imagePath,
             'robots' => $request->robots ?: 'index, follow',
             'schema_type' => $request->schema_type ?: 'TechArticle',
         ]);
@@ -181,6 +191,16 @@ class BlogCmsController extends Controller
             }
         }
 
+        // Automatic Banner Generation if chosen
+        $imagePath = $request->image ?: $blog->image;
+        if ($request->has('auto_generate_banner') && $request->filled('title')) {
+            try {
+                $imagePath = \App\Services\BannerGeneratorService::generateServerSideBanner($request->title, $categoryName, ['slug' => $slug]);
+            } catch (\Throwable $e) {
+                \Illuminate\Support\Facades\Log::warning('Auto banner generation in update failed: ' . $e->getMessage());
+            }
+        }
+
         $blog->update([
             'title' => $request->title,
             'slug' => $slug,
@@ -189,7 +209,7 @@ class BlogCmsController extends Controller
             'author' => $request->author,
             'author_role' => $request->author_role ?: $blog->author_role,
             'read_time' => $request->read_time ?: $blog->read_time,
-            'image' => $request->image ?: $blog->image,
+            'image' => $imagePath,
             'excerpt' => $request->excerpt,
             'content' => $request->content,
             'is_published' => $isPublished,
@@ -203,7 +223,7 @@ class BlogCmsController extends Controller
             'canonical_url' => $request->canonical_url,
             'og_title' => $request->og_title ?: $blog->og_title,
             'og_description' => $request->og_description ?: $blog->og_description,
-            'og_image' => $request->og_image ?: $blog->og_image,
+            'og_image' => $request->og_image ?: $imagePath,
             'robots' => $request->robots ?: 'index, follow',
             'schema_type' => $request->schema_type ?: 'TechArticle',
         ]);
@@ -266,5 +286,60 @@ class BlogCmsController extends Controller
             ],
             'message' => "Category '{$category->name}' created successfully.",
         ]);
+    }
+
+    /**
+     * AJAX endpoint to generate or save a branded textured banner image.
+     */
+    public function generateBanner(Request $request)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'category' => 'nullable|string|max:100',
+            'image_data' => 'nullable|string',
+            'slug' => 'nullable|string|max:255',
+            'accent' => 'nullable|string|max:50',
+        ]);
+
+        try {
+            if ($request->filled('image_data')) {
+                $path = \App\Services\BannerGeneratorService::saveBase64Banner(
+                    $request->image_data,
+                    $request->title,
+                    $request->slug
+                );
+            } else {
+                $path = \App\Services\BannerGeneratorService::generateServerSideBanner(
+                    $request->title,
+                    $request->category ?: 'Enterprise Architecture',
+                    [
+                        'slug' => $request->slug,
+                        'accent' => $request->accent ?? 'blue',
+                    ]
+                );
+            }
+
+            return response()->json([
+                'success' => true,
+                'image_url' => $path,
+                'full_url' => asset($path),
+                'message' => 'Branded textured banner generated and saved successfully!',
+            ]);
+        } catch (\Throwable $e) {
+            \Illuminate\Support\Facades\Log::error('generateBanner failed: ' . $e->getMessage());
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed to generate banner: ' . $e->getMessage(),
+            ], 500);
+        }
+    }
+
+    /**
+     * Dedicated full-page Banner Studio tool for creating banners for any blog or custom title.
+     */
+    public function bannerStudio(Request $request)
+    {
+        $blogs = Blog::orderBy('title')->get(['id', 'title', 'slug', 'category', 'image']);
+        return view('admin.cms.blogs.banner-studio', compact('blogs'));
     }
 }
