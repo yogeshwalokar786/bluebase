@@ -3,8 +3,11 @@
   $seo = rescue(fn() => cache()->remember("page_seo_{$currentRoute}", 3600, fn() => \App\Models\PageSeo::forRoute($currentRoute)), null);
   $globalSettings = rescue(fn() => cache()->remember('global_site_settings', 3600, fn() => \App\Models\SiteSetting::all()->pluck('value', 'key')), collect());
 
-  $pageTitle = $__env->yieldContent('title', $seo->meta_title ?? $globalSettings['seo_default_title'] ?? 'Web & Mobile App Development Company India | Bluebase');
-  $pageDescription = $__env->yieldContent('meta_description', $seo->meta_description ?? $globalSettings['seo_default_description'] ?? 'Bluebase Technologies builds custom web applications, SaaS MVPs, and mobile apps for ambitious businesses in India. Get a free proposal today.');
+  $rawTitle = (string) $__env->yieldContent('title', $seo->meta_title ?? $globalSettings['seo_default_title'] ?? 'Web & Mobile App Development Company India | Bluebase');
+  $pageTitle = htmlspecialchars(html_entity_decode(html_entity_decode($rawTitle, ENT_QUOTES | ENT_HTML5, 'UTF-8'), ENT_QUOTES | ENT_HTML5, 'UTF-8'), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+
+  $rawDescription = (string) $__env->yieldContent('meta_description', $seo->meta_description ?? $globalSettings['seo_default_description'] ?? 'Bluebase Technologies builds custom web applications, SaaS MVPs, and mobile apps for ambitious businesses in India. Get a free proposal today.');
+  $pageDescription = htmlspecialchars(html_entity_decode(html_entity_decode($rawDescription, ENT_QUOTES | ENT_HTML5, 'UTF-8'), ENT_QUOTES | ENT_HTML5, 'UTF-8'), ENT_QUOTES | ENT_HTML5, 'UTF-8');
   $pageKeywords = $__env->yieldContent('meta_keywords', $seo->meta_keywords ?? $globalSettings['seo_default_keywords'] ?? 'custom software development company india, web development company india, mobile app development india, saas development india, website design company, it services india, bluebase technologies');
   $canonicalUrl = $__env->yieldContent('canonical_url', $seo->canonical_url ?? url()->current());
   $ogImage = $__env->yieldContent('og_image', $seo->og_image ?? $globalSettings['seo_default_og_image'] ?? 'images/bluebase-og-cover.jpg');
@@ -46,8 +49,8 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <!-- Primary Meta SEO -->
-  <title>{{ $pageTitle }}</title>
-  <meta name="description" content="{{ $pageDescription }}">
+  <title>{!! $pageTitle !!}</title>
+  <meta name="description" content="{!! $pageDescription !!}">
   @if($pageKeywords)
     <meta name="keywords" content="{{ $pageKeywords }}">
   @endif
@@ -57,8 +60,8 @@
   <!-- OpenGraph Social Sharing (LinkedIn, Facebook, Slack, WhatsApp) -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
-  <meta property="og:title" content="{{ $pageTitle }}">
-  <meta property="og:description" content="{{ $pageDescription }}">
+  <meta property="og:title" content="{!! $pageTitle !!}">
+  <meta property="og:description" content="{!! $pageDescription !!}">
   <meta property="og:url" content="{{ $canonicalUrl }}">
   <meta property="og:site_name" content="{{ $globalSettings['site_name'] ?? 'Bluebase Technologies' }}">
   @if($ogImage)
@@ -66,20 +69,20 @@
     <meta property="og:image:secure_url" content="{{ str_starts_with($ogImage, 'http') ? $ogImage : asset($ogImage) }}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="{{ $pageTitle }}">
+    <meta property="og:image:alt" content="{!! $pageTitle !!}">
   @endif
 
   <!-- Twitter / X Cards -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ $pageTitle }}">
-  <meta name="twitter:description" content="{{ $pageDescription }}">
+  <meta name="twitter:title" content="{!! $pageTitle !!}">
+  <meta name="twitter:description" content="{!! $pageDescription !!}">
   @if($twitterHandle)
     <meta name="twitter:site" content="{{ $twitterHandle }}">
     <meta name="twitter:creator" content="{{ $twitterHandle }}">
   @endif
   @if($ogImage)
     <meta name="twitter:image" content="{{ str_starts_with($ogImage, 'http') ? $ogImage : asset($ogImage) }}">
-    <meta name="twitter:image:alt" content="{{ $pageTitle }}">
+    <meta name="twitter:image:alt" content="{!! $pageTitle !!}">
   @endif
 
   <!-- Regional Geo Tags (India Target & Global Delivery) -->
