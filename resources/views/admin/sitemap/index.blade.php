@@ -34,9 +34,12 @@
       </div>
 
       <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
-        <a href="{{ url('/sitemap.xml') }}" target="_blank" class="btn btn-secondary btn-sm" style="font-weight: 600;">
+        <a href="https://bluebasetechnologies.com/sitemap.xml" target="_blank" class="btn btn-secondary btn-sm" style="font-weight: 600;">
           <svg style="width: 14px; height: 14px; margin-right: 4px; vertical-align: middle;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
           Open Live sitemap.xml
+        </a>
+        <a href="{{ url('/sitemap.xml') }}" target="_blank" class="btn btn-secondary btn-sm" style="font-weight: 600; opacity: 0.85;">
+          View /sitemap.xml
         </a>
         @if($exists)
           <a href="{{ route('admin.sitemap.download') }}" class="btn btn-secondary btn-sm" style="font-weight: 600;">
@@ -98,7 +101,7 @@
     </p>
 
     <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 16px;">
-      <input type="text" readonly value="{{ url('/sitemap.xml') }}" class="form-control" style="font-family: monospace; font-size: 0.88rem; background: #070B19; color: #E2E8F0;" id="sitemapUrlField">
+      <input type="text" readonly value="https://bluebasetechnologies.com/sitemap.xml" class="form-control" style="font-family: monospace; font-size: 0.88rem; background: #070B19; color: #E2E8F0;" id="sitemapUrlField">
       <button type="button" class="btn btn-secondary" onclick="copySitemapUrl(this)" style="font-weight: 600; white-space: nowrap;">Copy URL</button>
     </div>
 

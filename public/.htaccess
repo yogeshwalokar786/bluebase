@@ -90,10 +90,12 @@
     # Sitemaps: prevent caching, deliver pure text/xml to avoid blank screen on mobile/tablets
     <FilesMatch "sitemap\.xml$">
         Header set Content-Type "text/xml; charset=utf-8"
-        Header set Cache-Control "no-cache, no-store, must-revalidate, max-age=0"
+        Header set Cache-Control "no-cache, no-store, must-revalidate, max-age=0, s-maxage=0"
         Header set Pragma "no-cache"
         Header set Expires "0"
         Header set X-Robots-Tag "noindex"
+        Header set CDN-Cache-Control "no-cache"
+        Header set Cloudflare-CDN-Cache-Control "no-cache"
     </FilesMatch>
 
     # Immutable cache headers for static image/font assets
