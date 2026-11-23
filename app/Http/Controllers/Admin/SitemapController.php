@@ -108,6 +108,10 @@ class SitemapController extends Controller
      */
     public function publicSitemap()
     {
+        if (str_starts_with(request()->getHost(), 'www.')) {
+            return redirect('https://bluebasetechnologies.com/sitemap.xml', 301);
+        }
+
         $sitemapPath = public_path('sitemap.xml');
         if (!File::exists($sitemapPath)) {
             $this->generate();
@@ -117,7 +121,7 @@ class SitemapController extends Controller
 
         // Guarantee that canonical domain https://bluebasetechnologies.com is always used
         $content = str_replace(
-            ['http://127.0.0.1:8000', 'https://127.0.0.1:8000', 'http://localhost:8000', 'https://localhost:8000', 'http://localhost', 'https://localhost'],
+            ['http://127.0.0.1:8000', 'https://127.0.0.1:8000', 'http://localhost:8000', 'https://localhost:8000', 'http://localhost', 'https://localhost', 'https://www.bluebasetechnologies.com', 'http://www.bluebasetechnologies.com'],
             'https://bluebasetechnologies.com',
             $content
         );
@@ -127,7 +131,6 @@ class SitemapController extends Controller
             'Cache-Control' => 'no-cache, no-store, must-revalidate, max-age=0, s-maxage=0',
             'Pragma' => 'no-cache',
             'Expires' => '0',
-            'X-Robots-Tag' => 'noindex',
             'CDN-Cache-Control' => 'no-cache',
             'Cloudflare-CDN-Cache-Control' => 'no-cache',
         ]);
