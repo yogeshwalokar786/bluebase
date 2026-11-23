@@ -64,7 +64,6 @@ Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 Route::get('/privacy-policy', [ResourceController::class, 'privacyPolicy'])->name('privacy-policy');
 Route::get('/terms-of-use', [ResourceController::class, 'termsOfUse'])->name('terms-of-use');
 Route::get('/sitemap.xml', [SitemapController::class, 'publicSitemap'])->name('sitemap.xml');
-Route::get('/sitemap.xsl', [SitemapController::class, 'publicSitemapXsl'])->name('sitemap.xsl');
 
 // Inquiries, Forms & Rate Limiting Shield
 Route::get('/contact', [InquiryController::class, 'contactForm'])->name('contact');
