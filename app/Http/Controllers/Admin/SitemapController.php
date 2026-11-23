@@ -111,7 +111,10 @@ class SitemapController extends Controller
 
         $content = File::get($sitemapPath);
         return Response::make($content, 200, [
-            'Content-Type' => 'application/xml; charset=utf-8',
+            'Content-Type' => 'text/xml; charset=utf-8',
+            'Cache-Control' => 'no-cache, no-store, must-revalidate, max-age=0',
+            'Pragma' => 'no-cache',
+            'Expires' => '0',
             'X-Robots-Tag' => 'noindex',
         ]);
     }
