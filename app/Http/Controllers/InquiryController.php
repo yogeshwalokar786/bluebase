@@ -12,6 +12,8 @@ use App\Models\EmailMessage;
 use App\Services\MailboxService;
 use App\Mail\InquiryConfirmationMail;
 use App\Mail\AdminInquiryNotificationMail;
+use App\Services\SecurityShieldService;
+use App\Rules\NoUrlsOrLinks;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -66,9 +68,14 @@ class InquiryController extends Controller
 
     public function storeContact(Request $request)
     {
-        // 1. Invisible Honeypot Security Check (catches naive crawlers)
-        if ($request->filled('_hp_contact_check')) {
-            return back()->with('success', 'Thank you! Your message has been received. Our enterprise engineering team will get back to you within 24 hours.');
+        // 1. Comprehensive Security Shield & Anti-Spam URL Check
+        if ($securityError = SecurityShieldService::validateSubmissionSecurity($request)) {
+            if ($securityError === 'HONEYPOT_TRAPPED') {
+                return back()->with('success', 'Thank you! Your message has been received. Our enterprise engineering team will get back to you within 24 hours.');
+            }
+            return back()->withInput()->withErrors([
+                'message' => $securityError,
+            ]);
         }
 
         // 2. Advanced Human Verification Cryptographic Token Validation
@@ -96,19 +103,21 @@ class InquiryController extends Controller
             ]);
         }
 
-        // 3. Strict Input Validation
+        // 3. Strict Input Validation with Anti-URL Protection
+        $noUrl = new NoUrlsOrLinks();
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'company' => 'nullable|string|max:255',
-            'phone' => 'nullable|string|max:50',
-            'service' => 'required|string|max:255',
-            'message' => 'required|string|min:10',
+            'name' => ['required', 'string', 'max:255', $noUrl],
+            'email' => ['required', 'email', 'max:255'],
+            'company' => ['nullable', 'string', 'max:255', $noUrl],
+            'phone' => ['nullable', 'string', 'max:50', $noUrl],
+            'service' => ['required', 'string', 'max:255', $noUrl],
+            'message' => ['required', 'string', 'min:10', $noUrl],
         ], [
             'service.required' => 'Please select the primary project interest for your message.',
             'message.min' => 'Please provide at least 10 characters describing your project.',
         ]);
 
+        $validated = SecurityShieldService::sanitize($validated);
         $validated['ip_address'] = $request->ip();
         $validated['status'] = 'new';
 
@@ -163,16 +172,26 @@ class InquiryController extends Controller
 
     public function storeDemo(Request $request)
     {
+        if ($securityError = SecurityShieldService::validateSubmissionSecurity($request)) {
+            if ($securityError === 'HONEYPOT_TRAPPED') {
+                return back()->with('success', 'Thank you! Your demo request has been received.');
+            }
+            return back()->withInput()->withErrors(['notes' => $securityError]);
+        }
+
+        $noUrl = new NoUrlsOrLinks();
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'company' => 'required|string|max:255',
-            'phone' => 'nullable|string|max:50',
-            'job_title' => 'nullable|string|max:255',
-            'current_erp' => 'nullable|string|max:255',
-            'interested_product' => 'nullable|string|max:255',
-            'notes' => 'nullable|string',
+            'name' => ['required', 'string', 'max:255', $noUrl],
+            'email' => ['required', 'email', 'max:255'],
+            'company' => ['required', 'string', 'max:255', $noUrl],
+            'phone' => ['nullable', 'string', 'max:50', $noUrl],
+            'job_title' => ['nullable', 'string', 'max:255', $noUrl],
+            'current_erp' => ['nullable', 'string', 'max:255', $noUrl],
+            'interested_product' => ['nullable', 'string', 'max:255', $noUrl],
+            'notes' => ['nullable', 'string', $noUrl],
         ]);
+
+        $validated = SecurityShieldService::sanitize($validated);
 
         $demo = null;
         try {
@@ -204,13 +223,23 @@ class InquiryController extends Controller
 
     public function storeTrial(Request $request)
     {
+        if ($securityError = SecurityShieldService::validateSubmissionSecurity($request)) {
+            if ($securityError === 'HONEYPOT_TRAPPED') {
+                return back()->with('success', 'Trial account provisioned!');
+            }
+            return back()->withInput()->withErrors(['name' => $securityError]);
+        }
+
+        $noUrl = new NoUrlsOrLinks();
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'company' => 'required|string|max:255',
-            'cloud_platform' => 'nullable|string|max:255',
-            'sap_version' => 'nullable|string|max:255',
+            'name' => ['required', 'string', 'max:255', $noUrl],
+            'email' => ['required', 'email', 'max:255'],
+            'company' => ['required', 'string', 'max:255', $noUrl],
+            'cloud_platform' => ['nullable', 'string', 'max:255', $noUrl],
+            'sap_version' => ['nullable', 'string', 'max:255', $noUrl],
         ]);
+
+        $validated = SecurityShieldService::sanitize($validated);
 
         $trial = null;
         try {
@@ -253,15 +282,25 @@ class InquiryController extends Controller
 
     public function storePartner(Request $request)
     {
+        if ($securityError = SecurityShieldService::validateSubmissionSecurity($request)) {
+            if ($securityError === 'HONEYPOT_TRAPPED') {
+                return back()->with('success', 'Partner application submitted!');
+            }
+            return back()->withInput()->withErrors(['message' => $securityError]);
+        }
+
+        $noUrl = new NoUrlsOrLinks();
         $validated = $request->validate([
-            'partner_type' => 'nullable|string|max:255',
-            'company_name' => 'required|string|max:255',
-            'contact_name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'phone' => 'nullable|string|max:50',
-            'country' => 'nullable|string|max:100',
-            'message' => 'nullable|string',
+            'partner_type' => ['nullable', 'string', 'max:255', $noUrl],
+            'company_name' => ['required', 'string', 'max:255', $noUrl],
+            'contact_name' => ['required', 'string', 'max:255', $noUrl],
+            'email' => ['required', 'email', 'max:255'],
+            'phone' => ['nullable', 'string', 'max:50', $noUrl],
+            'country' => ['nullable', 'string', 'max:100', $noUrl],
+            'message' => ['nullable', 'string', $noUrl],
         ]);
+
+        $validated = SecurityShieldService::sanitize($validated);
 
         $partner = null;
         try {
@@ -288,10 +327,17 @@ class InquiryController extends Controller
 
     public function storeNewsletter(Request $request)
     {
+        if ($securityError = SecurityShieldService::validateSubmissionSecurity($request)) {
+            return $request->expectsJson() 
+                ? response()->json(['message' => 'Invalid email address.'], 422) 
+                : back()->withErrors(['email' => 'Invalid email address.']);
+        }
+
         $validated = $request->validate([
-            'email' => 'required|email|max:255',
+            'email' => ['required', 'email:rfc,dns', 'max:255', new NoUrlsOrLinks()],
         ]);
 
+        $validated = SecurityShieldService::sanitize($validated);
         $validated['ip_address'] = $request->ip();
 
         try {

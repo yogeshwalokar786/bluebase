@@ -115,22 +115,22 @@ Route::get('/privacy-policy', [ResourceController::class, 'privacyPolicy'])->nam
 Route::get('/terms-of-use', [ResourceController::class, 'termsOfUse'])->name('terms-of-use');
 Route::get('/sitemap.xml', [SitemapController::class, 'publicSitemap'])->name('sitemap.xml');
 
-// Inquiries & Interactive Public Forms
+// Inquiries & Interactive Public Forms with Rate Limiting Shield
 Route::get('/contact', [InquiryController::class, 'contactForm'])->name('contact');
-Route::post('/contact', [InquiryController::class, 'storeContact'])->name('contact.store');
-Route::post('/contact/security-verify', [InquiryController::class, 'generateSecurityToken'])->name('contact.security.verify');
+Route::post('/contact', [InquiryController::class, 'storeContact'])->middleware('throttle:10,1')->name('contact.store');
+Route::post('/contact/security-verify', [InquiryController::class, 'generateSecurityToken'])->middleware('throttle:30,1')->name('contact.security.verify');
 
 Route::get('/client-portal', fn() => redirect(env('CRM_URL', 'https://crm.bluebasetechnologies.com/login')))->name('client-portal');
 Route::get('/crm', fn() => redirect(env('CRM_URL', 'https://crm.bluebasetechnologies.com/login')))->name('crm');
 
 Route::get('/book-a-demo', fn() => redirect()->route('contact', [], 301))->name('book-a-demo');
-Route::post('/book-a-demo', [InquiryController::class, 'storeContact'])->name('book-a-demo.store');
+Route::post('/book-a-demo', [InquiryController::class, 'storeContact'])->middleware('throttle:10,1')->name('book-a-demo.store');
 
 Route::get('/free-trial', [InquiryController::class, 'trialForm'])->name('free-trial');
-Route::post('/free-trial', [InquiryController::class, 'storeTrial'])->name('free-trial.store');
+Route::post('/free-trial', [InquiryController::class, 'storeTrial'])->middleware('throttle:10,1')->name('free-trial.store');
 
-Route::post('/partner/apply', [InquiryController::class, 'storePartner'])->name('partner.apply');
-Route::post('/newsletter/subscribe', [InquiryController::class, 'storeNewsletter'])->name('newsletter.subscribe');
+Route::post('/partner/apply', [InquiryController::class, 'storePartner'])->middleware('throttle:10,1')->name('partner.apply');
+Route::post('/newsletter/subscribe', [InquiryController::class, 'storeNewsletter'])->middleware('throttle:10,1')->name('newsletter.subscribe');
 
 // Favicon Fallback Route (guarantees 200 OK across proxies and cPanel rewrites)
 Route::get('/favicon.ico', function () {
@@ -149,7 +149,7 @@ Route::post('/mail/inbound', [MailController::class, 'incomingWebhook'])->name('
 // ==========================================
 Route::get('/login', fn() => redirect()->route('admin.login'))->name('login');
 Route::get('/admin/login', [AdminAuthController::class, 'showLogin'])->name('admin.login');
-Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login.submit');
+Route::post('/admin/login', [AdminAuthController::class, 'login'])->middleware('throttle:5,1')->name('admin.login.submit');
 Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 
 // ==========================================

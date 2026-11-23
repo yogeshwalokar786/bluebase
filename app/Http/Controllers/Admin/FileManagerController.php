@@ -61,10 +61,11 @@ class FileManagerController extends Controller
      */
     public function upload(Request $request)
     {
+        $allowedMimes = 'mimes:jpg,jpeg,png,gif,webp,svg,ico,mp4,webm,pdf,doc,docx,xls,xlsx,csv,zip,ttf,woff,woff2';
         $request->validate([
-            'file' => 'nullable|file|max:25600', // 25MB max
+            'file' => "nullable|file|max:25600|{$allowedMimes}", // 25MB max
             'files' => 'nullable|array',
-            'files.*' => 'file|max:25600',
+            'files.*' => "file|max:25600|{$allowedMimes}",
         ]);
 
         $uploaded = [];
@@ -85,9 +86,20 @@ class FileManagerController extends Controller
             File::makeDirectory($destDir, 0755, true);
         }
 
+        $forbiddenExtensions = ['php', 'phtml', 'phar', 'php3', 'php4', 'php5', 'pht', 'sh', 'bash', 'exe', 'bat', 'cmd', 'cgi', 'py', 'pl', 'js', 'vbs', 'html', 'htm', 'htaccess', 'ini', 'env'];
+        $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg', 'ico', 'mp4', 'webm', 'pdf', 'doc', 'docx', 'xls', 'xlsx', 'csv', 'zip', 'ttf', 'woff', 'woff2'];
+
         foreach ($filesToProcess as $file) {
             $origName = $file->getClientOriginalName();
             $ext = strtolower($file->getClientOriginalExtension());
+
+            if (in_array($ext, $forbiddenExtensions) || !in_array($ext, $allowedExtensions)) {
+                return response()->json([
+                    'success' => false,
+                    'message' => "Security Block: File extension .{$ext} is strictly prohibited.",
+                ], 403);
+            }
+
             $nameWithoutExt = pathinfo($origName, PATHINFO_FILENAME);
             $cleanName = Str::slug($nameWithoutExt) . '-' . time() . '-' . Str::random(4) . '.' . $ext;
 

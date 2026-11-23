@@ -220,7 +220,14 @@
 
               <div class="form-group" style="margin-bottom: 24px;">
                 <label class="form-label" style="font-weight: 600; font-size: 0.9rem; margin-bottom: 6px; display: block;">Project Details / Message *</label>
-                <textarea name="message" class="form-control" rows="4" required placeholder="Tell us about your project, idea, or requirements..." style="width: 100%; padding: 12px 14px; border: 1px solid var(--color-gray-300); border-radius: 8px; font-size: 0.95rem;">{{ old('message') }}</textarea>
+                <textarea name="message" id="contactMessageInput" class="form-control" rows="4" required placeholder="Tell us about your project, idea, or requirements..." style="width: 100%; padding: 12px 14px; border: 1px solid var(--color-gray-300); border-radius: 8px; font-size: 0.95rem;">{{ old('message') }}</textarea>
+                <div style="font-size: 0.78rem; color: var(--color-gray-500); margin-top: 5px;">
+                  Note: For anti-spam and security compliance, URLs, web links, and domain references are strictly prohibited in inquiries.
+                </div>
+                <div id="urlBlockedWarning" style="display: none; align-items: center; gap: 8px; margin-top: 8px; padding: 10px 14px; border-radius: 8px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); color: #DC2626; font-size: 0.82rem; font-weight: 600;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                  <span>Security Notice: URLs, web addresses, and links (e.g. http://, www., .com) are strictly prohibited. Please remove links to submit.</span>
+                </div>
               </div>
 
               <!-- Invisible Security Honeypot -->
@@ -766,8 +773,48 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // Real-Time Client-Side URL Detection
+  const urlRegex = /(?:https?:\/\/|ftp:\/\/|www\.|\.[a-z]{2,8}\/|\b[a-z0-9\-\._]+\.(?:com|org|net|xyz|top|ru|cn|in|io|co|biz|site|online|app|dev)\b)/i;
+  const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
+  const urlWarning = document.getElementById('urlBlockedWarning');
+
+  function checkFormForUrls() {
+    if (!form) return false;
+    const inputs = form.querySelectorAll('input[type="text"], input[type="tel"], textarea');
+    let hasUrl = false;
+    inputs.forEach(function(input) {
+      if (input.name !== '_token' && input.name !== 'verification_token' && input.value && urlRegex.test(input.value)) {
+        hasUrl = true;
+        input.style.borderColor = '#EF4444';
+      } else if (input.style.borderColor === 'rgb(239, 68, 68)' || input.style.borderColor === '#ef4444') {
+        input.style.borderColor = '';
+      }
+    });
+
+    if (urlWarning) {
+      urlWarning.style.display = hasUrl ? 'flex' : 'none';
+    }
+    if (submitBtn) {
+      submitBtn.disabled = hasUrl;
+      submitBtn.style.opacity = hasUrl ? '0.5' : '1';
+      submitBtn.style.cursor = hasUrl ? 'not-allowed' : 'pointer';
+    }
+    return hasUrl;
+  }
+
   if (form) {
+    form.addEventListener('input', checkFormForUrls);
+    form.addEventListener('paste', function() {
+      setTimeout(checkFormForUrls, 50);
+    });
+
     form.addEventListener('submit', function(e) {
+      if (checkFormForUrls()) {
+        e.preventDefault();
+        if (urlWarning) urlWarning.style.display = 'flex';
+        return;
+      }
+
       if (!isVerified || !tokenInput.value) {
         e.preventDefault();
         widget.classList.remove('error-shake');
