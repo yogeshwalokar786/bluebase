@@ -28,7 +28,7 @@
                         <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
                       </span>
                     </span>
-                  </a> <a href="{{ route('free-trial') }}" class="c-btn -secondary">
+                  </a> <a href="{{ route('contact') }}" class="c-btn -secondary">
                     <span class="c-btn__txt">Request Design Audit</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -356,7 +356,7 @@
                       </span>
                     </span>
                   </a>
-            <a href="{{ route('free-trial') }}" class="c-btn -outline-white" style="padding: 14px 32px; font-size: 1.05rem;">
+            <a href="{{ route('contact') }}" class="c-btn -outline-white" style="padding: 14px 32px; font-size: 1.05rem;">
                     <span class="c-btn__txt">Request a Project Proposal</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">

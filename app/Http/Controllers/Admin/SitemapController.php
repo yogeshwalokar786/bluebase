@@ -214,7 +214,6 @@ class SitemapController extends Controller
             ['url_path' => '/solutions', 'priority' => 0.9, 'changefreq' => 'weekly'],
             ['url_path' => '/customer-stories', 'priority' => 0.9, 'changefreq' => 'weekly'],
             ['url_path' => '/contact', 'priority' => 0.9, 'changefreq' => 'monthly'],
-            ['url_path' => '/free-trial', 'priority' => 0.9, 'changefreq' => 'monthly'],
             ['url_path' => '/company', 'priority' => 0.8, 'changefreq' => 'monthly'],
             ['url_path' => '/how-we-work', 'priority' => 0.8, 'changefreq' => 'monthly'],
             ['url_path' => '/compliance-security', 'priority' => 0.8, 'changefreq' => 'monthly'],

@@ -73,8 +73,7 @@ Route::post('/contact/security-verify', [InquiryController::class, 'generateSecu
 Route::get('/client-portal', fn() => redirect(env('CRM_URL', 'https://crm.bluebasetechnologies.com/login')))->name('client-portal');
 Route::get('/crm', fn() => redirect(env('CRM_URL', 'https://crm.bluebasetechnologies.com/login')))->name('crm');
 
-Route::get('/free-trial', [InquiryController::class, 'trialForm'])->name('free-trial');
-Route::post('/free-trial', [InquiryController::class, 'storeTrial'])->middleware('throttle:10,1')->name('free-trial.store');
+Route::redirect('/free-trial', '/contact', 301);
 
 Route::post('/newsletter/subscribe', [InquiryController::class, 'storeNewsletter'])->middleware('throttle:10,1')->name('newsletter.subscribe');
 

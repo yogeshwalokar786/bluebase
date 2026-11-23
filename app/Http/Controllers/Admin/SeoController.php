@@ -232,7 +232,6 @@ class SeoController extends Controller
                 ['url_path' => '/solutions', 'priority' => 0.9, 'changefreq' => 'weekly'],
                 ['url_path' => '/customer-stories', 'priority' => 0.9, 'changefreq' => 'weekly'],
                 ['url_path' => '/contact', 'priority' => 0.9, 'changefreq' => 'monthly'],
-                ['url_path' => '/free-trial', 'priority' => 0.9, 'changefreq' => 'monthly'],
                 ['url_path' => '/web-development', 'priority' => 0.9, 'changefreq' => 'weekly'],
                 ['url_path' => '/website-design', 'priority' => 0.9, 'changefreq' => 'weekly'],
                 ['url_path' => '/mobile-app-development', 'priority' => 0.9, 'changefreq' => 'weekly'],

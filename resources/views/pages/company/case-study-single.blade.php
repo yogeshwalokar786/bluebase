@@ -356,7 +356,7 @@
             @endif
 
             <div style="margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--color-gray-200);">
-              <a href="{{ route('free-trial') }}" class="c-btn -primary" style="width: 100%; justify-content: center; text-align: center; padding: 12px 20px;">
+              <a href="{{ route('contact') }}" class="c-btn -primary" style="width: 100%; justify-content: center; text-align: center; padding: 12px 20px;">
                 <span class="c-btn__txt">Start Similar Project</span>
               </a>
             </div>

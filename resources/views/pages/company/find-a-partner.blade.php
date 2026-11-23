@@ -177,7 +177,7 @@
             <h3 class="card-title-lg">APAC Cloud & AI Accelerators</h3>
             <p class="card-text">High-velocity MVP engineering and rapid application delivery for high-growth Asian startups and conglomerates.</p>
           </div>
-          <a href="{{ route('free-trial') }}" class="c-btn -link">
+          <a href="{{ route('contact') }}" class="c-btn -link">
                     <span class="c-btn__txt">Connect in APAC</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -356,7 +356,7 @@
                       </span>
                     </span>
                   </a>
-            <a href="{{ route('free-trial') }}" class="c-btn -outline-white" style="padding: 14px 32px; font-size: 1.05rem;">
+            <a href="{{ route('contact') }}" class="c-btn -outline-white" style="padding: 14px 32px; font-size: 1.05rem;">
                     <span class="c-btn__txt">Request a Project Proposal</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">

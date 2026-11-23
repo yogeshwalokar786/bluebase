@@ -652,7 +652,7 @@
             <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
           </span>
         </a>
-        <a href="{{ route('free-trial') }}" class="c-btn -secondary" style="padding: 14px 26px;">
+        <a href="{{ route('contact') }}" class="c-btn -secondary" style="padding: 14px 26px;">
           <span class="c-btn__txt">Request Project Estimate</span>
         </a>
       </div>
@@ -1014,7 +1014,7 @@
                 <span class="c-btn__ico-hover"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>
               </span>
             </a>
-            <a href="{{ route('free-trial') }}" class="c-btn -outline-white" style="padding: 14px 32px; font-size: 1.05rem;">
+            <a href="{{ route('contact') }}" class="c-btn -outline-white" style="padding: 14px 32px; font-size: 1.05rem;">
               <span class="c-btn__txt">Request Project Estimate</span>
               <span class="c-btn__ico">
                 <span class="c-btn__ico-base"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg></span>

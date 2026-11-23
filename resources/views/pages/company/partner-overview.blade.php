@@ -197,7 +197,7 @@
             <h3 class="card-title-lg">Technical Enablement & Training</h3>
             <p class="card-text">Access technical workshops, architectural blueprints, and direct Slack access to Bluebase principal architects.</p>
           </div>
-          <a href="{{ route('free-trial') }}" class="c-btn -link">
+          <a href="{{ route('contact') }}" class="c-btn -link">
                     <span class="c-btn__txt">Partner Training</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -356,7 +356,7 @@
                       </span>
                     </span>
                   </a>
-            <a href="{{ route('free-trial') }}" class="c-btn -outline-white" style="padding: 14px 32px; font-size: 1.05rem;">
+            <a href="{{ route('contact') }}" class="c-btn -outline-white" style="padding: 14px 32px; font-size: 1.05rem;">
                     <span class="c-btn__txt">Request a Project Proposal</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">

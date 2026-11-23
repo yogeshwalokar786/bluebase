@@ -28,7 +28,7 @@
                         <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
                       </span>
                     </span>
-                  </a> <a href="{{ route('free-trial') }}" class="c-btn -secondary">
+                  </a> <a href="{{ route('contact') }}" class="c-btn -secondary">
                     <span class="c-btn__txt">Request Rate Card & Pod Models</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -105,7 +105,7 @@
               </div>
               <h3 class="feature-card-title">Flexible Scaling Up or Down</h3>
               <p class="feature-card-desc">Scale team velocity as your roadmap demands with transparent monthly pod pricing and zero long-term termination penalties.</p>
-              <a href="{{ route('free-trial') }}" class="c-btn -link">
+              <a href="{{ route('contact') }}" class="c-btn -link">
                     <span class="c-btn__txt">Pod Pricing</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
@@ -356,7 +356,7 @@
                       </span>
                     </span>
                   </a>
-            <a href="{{ route('free-trial') }}" class="c-btn -outline-white" style="padding: 14px 32px; font-size: 1.05rem;">
+            <a href="{{ route('contact') }}" class="c-btn -outline-white" style="padding: 14px 32px; font-size: 1.05rem;">
                     <span class="c-btn__txt">Request a Project Proposal</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">

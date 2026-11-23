@@ -221,7 +221,7 @@
                       </span>
                     </span>
                   </a>
-            <a href="{{ route('free-trial') }}" class="c-btn -outline-white" style="padding: 14px 32px; font-size: 1.05rem;">
+            <a href="{{ route('contact') }}" class="c-btn -outline-white" style="padding: 14px 32px; font-size: 1.05rem;">
                     <span class="c-btn__txt">Request a Project Proposal</span>
                     <span class="c-btn__ico">
                       <span class="c-btn__ico-base">
