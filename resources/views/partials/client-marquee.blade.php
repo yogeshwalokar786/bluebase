@@ -1,11 +1,7 @@
 @php
   $logos = $clientLogos ?? null;
   if (!$logos) {
-      try {
-          $logos = \App\Models\ClientLogo::active()->get();
-      } catch (\Throwable $e) {
-          $logos = collect();
-      }
+      $logos = rescue(fn() => cache()->remember('active_client_logos', 3600, fn() => \App\Models\ClientLogo::active()->get()), collect());
   }
   $headingText = $heading ?? ($marqueeHeading ?? 'Trusted by modern brands, ambitious startups, and fast-growing businesses worldwide');
 @endphp

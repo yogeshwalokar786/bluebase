@@ -67,6 +67,12 @@ class SettingsCmsController extends Controller
             SiteSetting::set('hero_video_enabled', $request->has('hero_video_enabled') ? '1' : '0');
         } catch (\Throwable $e) {}
 
+        // Invalidate frontend cache
+        rescue(function () {
+            cache()->forget('site_settings_home');
+            cache()->forget('global_site_settings');
+        });
+
         return back()->with('success', 'Site configuration and CMS settings updated successfully.');
     }
 

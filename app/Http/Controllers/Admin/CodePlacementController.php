@@ -69,6 +69,12 @@ class CodePlacementController extends Controller
             SiteSetting::set('seo_footer_scripts', $customFooter, 'seo');
         }
 
+        // Invalidate cached global tracking settings
+        rescue(function () {
+            cache()->forget('global_site_settings');
+            cache()->forget('site_settings_home');
+        });
+
         return redirect()->route('admin.code_placement.index')->with('success', 'Code placement, analytics pixels, and tracking configurations updated successfully.');
     }
 }

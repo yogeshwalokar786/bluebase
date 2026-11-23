@@ -443,8 +443,7 @@
 
     @if($videoEnabled)
       <div class="hero-video-wrap" aria-hidden="true">
-        <video class="hero-video-elem" id="heroBgVideo" autoplay loop muted playsinline preload="auto" poster="{{ asset($videoPoster) }}">
-          <source src="{{ asset($videoUrl) }}" type="video/mp4">
+        <video class="hero-video-elem" id="heroBgVideo" autoplay loop muted playsinline preload="none" poster="{{ asset($videoPoster) }}" data-video-src="{{ asset($videoUrl) }}">
           <img src="{{ asset('images/hero-v2-bg.svg') }}" alt="" class="hero-bg">
         </video>
         <div class="hero-video-overlay" style="opacity: {{ $overlayOpacity }};"></div>
@@ -764,7 +763,7 @@
             We operate as an agile, remote-first software studio. You communicate directly with the engineers writing your code, reviewing live staging links as each milestone progresses.
           </p>
           <div class="sticky-image-wrap hide-on-mobile">
-            <img src="{{ asset('images/illustrations/workflow-canvas.jpg') }}" alt="Bluebase Engineering Workflow">
+            <img src="{{ asset('images/illustrations/workflow-canvas.jpg') }}" alt="Bluebase Engineering Workflow" loading="lazy" decoding="async">
           </div>
           <div style="margin-top: 24px;">
             <a href="{{ route('contact') }}" class="c-btn -primary" style="display: inline-flex;">
@@ -1034,7 +1033,7 @@
               </span>
             </a>
           </div>
-          <img src="{{ asset('images/illustrations/ui-illustration.jpg') }}" alt="Bluebase Product Experience" class="hide-on-mobile" style="max-height: 260px; object-fit: cover; border-radius: 12px; margin-top: 20px;">
+          <img src="{{ asset('images/illustrations/ui-illustration.jpg') }}" alt="Bluebase Product Experience" class="hide-on-mobile" style="max-height: 260px; object-fit: cover; border-radius: 12px; margin-top: 20px;" loading="lazy" decoding="async">
         </div>
 
         <!-- Cards Right -->
@@ -1293,7 +1292,7 @@
           @foreach($latestBlogs as $index => $blog)
             <article class="article-card stagger-{{ ($index % 3) + 1 }}" data-viewport="true">
               <div class="article-thumb-wrap">
-                <img src="{{ asset($blog->image ?: 'images/blogs/social-media-vs-owned-website.jpg') }}?v=2" alt="{{ $blog->title }}" class="article-thumb">
+                <img src="{{ asset($blog->image ?: 'images/blogs/social-media-vs-owned-website.jpg') }}?v=2" alt="{{ $blog->title }}" class="article-thumb" loading="lazy" decoding="async">
               </div>
               <div class="article-body">
                 <div>
@@ -1322,7 +1321,7 @@
           <!-- Fallback Proper Bluebase Customer Guides -->
           <article class="article-card stagger-1" data-viewport="true">
             <div class="article-thumb-wrap">
-              <img src="{{ asset('images/blogs/social-media-vs-owned-website.jpg') }}" alt="Why Relying Only on Instagram or Facebook Is Risky" class="article-thumb">
+              <img src="{{ asset('images/blogs/social-media-vs-owned-website.jpg') }}" alt="Why Relying Only on Instagram or Facebook Is Risky" class="article-thumb" loading="lazy" decoding="async">
             </div>
             <div class="article-body">
               <div>
@@ -1345,7 +1344,7 @@
 
           <article class="article-card stagger-2" data-viewport="true">
             <div class="article-thumb-wrap">
-              <img src="{{ asset('images/blogs/whatsapp-meta-ads-leads.jpg') }}" alt="Stop Wasting Money on Boost Post" class="article-thumb">
+              <img src="{{ asset('images/blogs/whatsapp-meta-ads-leads.jpg') }}" alt="Stop Wasting Money on Boost Post" class="article-thumb" loading="lazy" decoding="async">
             </div>
             <div class="article-body">
               <div>
@@ -1368,7 +1367,7 @@
 
           <article class="article-card stagger-3" data-viewport="true">
             <div class="article-thumb-wrap">
-              <img src="{{ asset('images/blogs/bike-rental-fleet-automation.jpg') }}" alt="Case Study: OMG Rental Bikes" class="article-thumb">
+              <img src="{{ asset('images/blogs/bike-rental-fleet-automation.jpg') }}" alt="Case Study: OMG Rental Bikes" class="article-thumb" loading="lazy" decoding="async">
             </div>
             <div class="article-body">
               <div>
@@ -1532,36 +1531,64 @@
     const iconPlay = document.getElementById('heroVideoIconPlay');
     const stateLabel = document.getElementById('heroVideoStateLabel');
 
-    if (video && toggleBtn) {
-      toggleBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        if (video.paused) {
-          video.play().then(function() {
-            if (iconPause) iconPause.style.display = 'block';
-            if (iconPlay) iconPlay.style.display = 'none';
-            if (stateLabel) stateLabel.textContent = 'Engineering Studio Live';
-            toggleBtn.classList.remove('is-paused');
-          }).catch(function(err) {
-            console.log('Video play error:', err);
-          });
-        } else {
-          video.pause();
-          if (iconPause) iconPause.style.display = 'none';
-          if (iconPlay) iconPlay.style.display = 'block';
-          if (stateLabel) stateLabel.textContent = 'Studio Feed Paused';
-          toggleBtn.classList.add('is-paused');
-        }
-      });
+    if (video) {
+      // High-Performance Background Video Loader (Desktop only, deferred after initial paint)
+      const isDesktop = window.innerWidth >= 768;
+      const isSaveData = navigator.connection && (navigator.connection.saveData === true || navigator.connection.effectiveType === '2g');
 
-      document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-          if (!video.paused) video.pause();
+      if (isDesktop && !isSaveData) {
+        const loadHeroVideo = function() {
+          const src = video.getAttribute('data-video-src');
+          if (!src || video.querySelector('source')) return;
+
+          const source = document.createElement('source');
+          source.src = src;
+          source.type = 'video/mp4';
+          video.appendChild(source);
+          video.load();
+          video.play().catch(function() {
+            // Autoplay restricted by browser; keep poster visible
+          });
+        };
+
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(function() { setTimeout(loadHeroVideo, 400); });
         } else {
-          if (!toggleBtn.classList.contains('is-paused')) {
-            video.play().catch(function() {});
-          }
+          window.addEventListener('load', function() { setTimeout(loadHeroVideo, 400); });
         }
-      });
+      }
+
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          if (video.paused) {
+            video.play().then(function() {
+              if (iconPause) iconPause.style.display = 'block';
+              if (iconPlay) iconPlay.style.display = 'none';
+              if (stateLabel) stateLabel.textContent = 'Engineering Studio Live';
+              toggleBtn.classList.remove('is-paused');
+            }).catch(function(err) {
+              console.log('Video play error:', err);
+            });
+          } else {
+            video.pause();
+            if (iconPause) iconPause.style.display = 'none';
+            if (iconPlay) iconPlay.style.display = 'block';
+            if (stateLabel) stateLabel.textContent = 'Studio Feed Paused';
+            toggleBtn.classList.add('is-paused');
+          }
+        });
+
+        document.addEventListener('visibilitychange', function() {
+          if (document.hidden) {
+            if (!video.paused) video.pause();
+          } else {
+            if (!toggleBtn.classList.contains('is-paused')) {
+              video.play().catch(function() {});
+            }
+          }
+        });
+      }
     }
   });
 </script>

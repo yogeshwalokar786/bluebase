@@ -1,7 +1,7 @@
 @php
   $currentRoute = request()->route()?->getName() ?? 'home';
-  $seo = rescue(fn() => \App\Models\PageSeo::forRoute($currentRoute), null);
-  $globalSettings = rescue(fn() => \App\Models\SiteSetting::all()->pluck('value', 'key'), collect());
+  $seo = rescue(fn() => cache()->remember("page_seo_{$currentRoute}", 3600, fn() => \App\Models\PageSeo::forRoute($currentRoute)), null);
+  $globalSettings = rescue(fn() => cache()->remember('global_site_settings', 3600, fn() => \App\Models\SiteSetting::all()->pluck('value', 'key')), collect());
 
   $pageTitle = $__env->yieldContent('title', $seo->meta_title ?? $globalSettings['seo_default_title'] ?? 'Web & Mobile App Development Company India | Bluebase');
   $pageDescription = $__env->yieldContent('meta_description', $seo->meta_description ?? $globalSettings['seo_default_description'] ?? 'Bluebase Technologies builds custom web applications, SaaS MVPs, and mobile apps for ambitious businesses in India. Get a free proposal today.');
@@ -170,14 +170,17 @@
   </script>
   @stack('schema')
 
-  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <!-- High-Speed Asynchronous Web Fonts: Inter & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap">
+  </noscript>
 
-  <!-- Core Stylesheet with Cache Busting -->
+  <!-- Core Stylesheet with Preload and Version Hash -->
+  <link rel="preload" as="style" href="{{ asset('css/style.css') }}?v={{ file_exists(public_path('css/style.css')) ? filemtime(public_path('css/style.css')) : time() }}">
   <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ file_exists(public_path('css/style.css')) ? filemtime(public_path('css/style.css')) : time() }}">
   @stack('styles')
 
@@ -281,8 +284,8 @@
     </svg>
   </button>
 
-  <!-- Core JavaScript -->
-  <script src="{{ asset('js/main.js') }}"></script>
+  <!-- Core JavaScript (Non-Blocking Deferred) -->
+  <script src="{{ asset('js/main.js') }}" defer></script>
   @stack('scripts')
 
   <!-- Injected Custom Footer Scripts -->
