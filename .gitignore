@@ -1,5 +1,10 @@
 *.log
 .DS_Store
+.env
+.env.*
+!.env.example
+*.sql
+database.sql
 .env.backup
 .env.production
 .phpactor.json
