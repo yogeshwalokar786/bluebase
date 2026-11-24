@@ -50,9 +50,6 @@ Route::get('/careers', [CompanyController::class, 'careers'])->name('careers');
 Route::get('/compliance-security', [CompanyController::class, 'complianceSecurity'])->name('compliance-security');
 
 Route::get('/customer-stories', [CompanyController::class, 'customerStories'])->name('customer-stories');
-Route::get('/customer-stories/omg-rental-bikes', [CompanyController::class, 'omgRentalBikesStory'])->name('customer-stories.omg-rental-bikes');
-Route::get('/customer-stories/aarohi-classic-2024', [CompanyController::class, 'aarohiClassicStory'])->name('customer-stories.aarohi-classic-2024');
-Route::get('/customer-stories/indiamart-lead-automation', [CompanyController::class, 'indiamartLeadAutomationStory'])->name('customer-stories.indiamart-lead-automation');
 Route::get('/customer-stories/{slug}', [CompanyController::class, 'showStory'])->name('customer-stories.show');
 
 // Blog & Resources

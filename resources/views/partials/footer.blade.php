@@ -34,8 +34,8 @@
           <h4>Client Stories</h4>
           <ul>
             <li><a href="{{ route('customer-stories') }}">Client Success Hub</a></li>
-            <li><a href="{{ route('customer-stories.omg-rental-bikes') }}">OMG Rental Bikes</a></li>
-            <li><a href="{{ route('customer-stories.aarohi-classic-2024') }}">Aarohi Classic 2024</a></li>
+            <li><a href="{{ route('customer-stories.show', 'omg-rental-bikes') }}">OMG Rental Bikes</a></li>
+            <li><a href="{{ route('customer-stories.show', 'aarohi-classic-2024') }}">Aarohi Classic 2024</a></li>
             <li><a href="{{ route('blog') }}">Bluebase Tech Blog</a></li>
           </ul>
         </div>

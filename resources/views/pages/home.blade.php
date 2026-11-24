@@ -1155,13 +1155,13 @@
           <div class="cs-card-body">
             <div class="cs-metric-chip">100% Paperless KYC · Real-Time Fleet ERP</div>
             <h3 class="cs-card-title">
-              <a href="{{ route('customer-stories.omg-rental-bikes') }}" style="color:inherit;text-decoration:none;">Custom Fleet ERP, Online Booking Engine &amp; Growth System.</a>
+              <a href="{{ route('customer-stories.show', 'omg-rental-bikes') }}" style="color:inherit;text-decoration:none;">Custom Fleet ERP, Online Booking Engine &amp; Growth System.</a>
             </h3>
             <p class="cs-card-desc">
               Built their complete digital operating system: real-time vehicle inventory, paperless digital KYC, automated rental agreements, and high-converting direct booking engine.
             </p>
             <div class="cs-card-footer">
-              <a href="{{ route('customer-stories.omg-rental-bikes') }}" class="cs-read-btn">
+              <a href="{{ route('customer-stories.show', 'omg-rental-bikes') }}" class="cs-read-btn">
                 <span>Read Case Study</span>
                 <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
               </a>
@@ -1187,13 +1187,13 @@
           <div class="cs-card-body">
             <div class="cs-metric-chip">350+ Competitors · Zero Downtime</div>
             <h3 class="cs-card-title">
-              <a href="{{ route('customer-stories.aarohi-classic-2024') }}" style="color:inherit;text-decoration:none;">Centralized Competitor Registration &amp; Event Operations Desk.</a>
+              <a href="{{ route('customer-stories.show', 'aarohi-classic-2024') }}" style="color:inherit;text-decoration:none;">Centralized Competitor Registration &amp; Event Operations Desk.</a>
             </h3>
             <p class="cs-card-desc">
               Replaced offline paperwork with an automated athlete registration portal, category weight verification desks, and instant WhatsApp athlete receipts.
             </p>
             <div class="cs-card-footer">
-              <a href="{{ route('customer-stories.aarohi-classic-2024') }}" class="cs-read-btn">
+              <a href="{{ route('customer-stories.show', 'aarohi-classic-2024') }}" class="cs-read-btn">
                 <span>Read Case Study</span>
                 <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
               </a>
@@ -1219,13 +1219,13 @@
           <div class="cs-card-body">
             <div class="cs-metric-chip">Instant Desk Alerts · 100% Lead Capture</div>
             <h3 class="cs-card-title">
-              <a href="{{ route('customer-stories.indiamart-lead-automation') }}" style="color:inherit;text-decoration:none;">Automated Buy-Lead Capture &amp; Real-Time Export CRM Sync.</a>
+              <a href="{{ route('customer-stories.show', 'indiamart-lead-automation') }}" style="color:inherit;text-decoration:none;">Automated Buy-Lead Capture &amp; Real-Time Export CRM Sync.</a>
             </h3>
             <p class="cs-card-desc">
               Engineered a custom Chrome extension that monitors buyer inquiries in real time, auto-filters retail noise, and syncs high-value bulk medicine leads directly into the CRM.
             </p>
             <div class="cs-card-footer">
-              <a href="{{ route('customer-stories.indiamart-lead-automation') }}" class="cs-read-btn">
+              <a href="{{ route('customer-stories.show', 'indiamart-lead-automation') }}" class="cs-read-btn">
                 <span>Read Case Study</span>
                 <svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4V10"/></svg>
               </a>

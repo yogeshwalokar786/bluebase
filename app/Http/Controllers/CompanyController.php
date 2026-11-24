@@ -87,26 +87,7 @@ class CompanyController extends Controller
             abort(404);
         }
 
-        if (!empty($story->view_blade) && view()->exists($story->view_blade)) {
-            return view($story->view_blade, compact('story'));
-        }
-
         return view('pages.company.case-study-single', compact('story'));
-    }
-
-    public function omgRentalBikesStory()
-    {
-        return $this->showStory('omg-rental-bikes');
-    }
-
-    public function aarohiClassicStory()
-    {
-        return $this->showStory('aarohi-classic-2024');
-    }
-
-    public function indiamartLeadAutomationStory()
-    {
-        return $this->showStory('indiamart-lead-automation');
     }
 
     private function fallbackCaseStudies()
@@ -135,9 +116,15 @@ class CompanyController extends Controller
                     ['value' => '45%', 'label' => 'Idle Drop'],
                 ],
                 'excerpt' => 'Engineered a centralized cloud platform replacing paper contracts and manual phone bookings with real-time vehicle dispatch, paperless digital KYC verification, and #1 Google Maps ranking.',
+                'challenge' => 'OMG Rental Bikes was running a 100+ vehicle fleet using paper ledger records, manual phone calls, and unverified Aadhaar card photocopies. Vehicle double-booking, missing maintenance tracking, and reliance on aggregator platforms squeezed margins.',
+                'solution' => 'Bluebase designed and engineered a full-stack digital operating system: real-time live inventory management, 90-second digital KYC with biometric validation, automated digital rental agreements, instant UPI payments, and localized SEO landing pages.',
+                'results' => 'Scaled direct online bookings by 3.5X in 90 days, reduced idle vehicle turnaround by 45%, eliminated vehicle double-booking to zero, and achieved #1 Google Maps local ranking in target tourist hubs.',
+                'technologies' => ['Laravel', 'MySQL', 'Tailwind CSS', 'Alpine.js', 'Razorpay', 'DigiLocker API', 'Cloudflare'],
+                'testimonial_quote' => 'Bluebase did not just build a website; they automated our entire business. From customer verification to payment collection and fleet maintenance alerts, everything runs in one place.',
+                'testimonial_author' => 'Managing Partner',
+                'testimonial_role' => 'OMG Rental Bikes',
                 'project_url' => 'https://omgrentalbikes.com',
                 'project_url_label' => 'omgrentalbikes.com',
-                'view_blade' => 'pages.company.omg-rental-bikes',
                 'display_order' => 1,
                 'is_featured' => true,
                 'is_published' => true,
@@ -165,9 +152,15 @@ class CompanyController extends Controller
                     ['value' => '100%', 'label' => 'Remote Off-Site'],
                 ],
                 'excerpt' => 'Managed the championship\'s complete digital workflow 100% remotely: targeted Meta and Google ad campaigns, high-impact social media creatives, online athlete registration intake, and WhatsApp communication.',
+                'challenge' => 'A national bodybuilding championship needed to attract athletes from across multiple states on a strict 45-day deadline. Previous editions relied on physical gym posters and word-of-mouth, leading to chaotic on-spot cash registrations.',
+                'solution' => 'Bluebase took over 100% remote digital management: high-converting Meta and Instagram ad campaigns, automated category selection landing page, integrated Razorpay entry fee collection, and automated WhatsApp confirmation receipts.',
+                'results' => 'Generated 250+ pre-paid athlete registrations before weigh-in day, achieved a 4.2X Return on Ad Spend (ROAS), and eliminated venue registration queues completely.',
+                'technologies' => ['Meta Ads Manager', 'WhatsApp Cloud API', 'Razorpay', 'Next.js', 'Google Analytics 4'],
+                'testimonial_quote' => 'Bluebase managed our entire registration funnel and social media handles remotely without us worrying about tech or ad management once.',
+                'testimonial_author' => 'Executive Organizer',
+                'testimonial_role' => 'Aarohi Classic Committee',
                 'project_url' => null,
                 'project_url_label' => 'Championship 2024',
-                'view_blade' => 'pages.company.aarohi-classic-2024',
                 'display_order' => 2,
                 'is_featured' => true,
                 'is_published' => true,
@@ -195,9 +188,15 @@ class CompanyController extends Controller
                     ['value' => '3.2X', 'label' => 'Qualification'],
                 ],
                 'excerpt' => 'Engineered a bespoke Chrome browser extension for a pharmaceutical manufacturer exporting generic medicines globally, automatically filtering bulk commercial orders from retail prescription noise and syncing qualified leads to CRM in real time.',
+                'challenge' => 'International medicine export inquiries on B2B directories like IndiaMART arrive around the clock. The sales desk wasted over 4 hours daily copying and pasting buyer phone numbers and weeding out single-strip retail prescription inquiries from genuine commercial container export buyers.',
+                'solution' => 'Engineered a lightweight Manifest V3 Chromium browser extension that sits directly in the sales desk browser, continuously detects incoming buy-leads, parses order volume and medicine name, applies keyword score filtering, and syncs directly into the export CRM.',
+                'results' => 'Immediate sub-10-second alerts for commercial export orders, 4.5 employee hours saved daily, and a 3.2X increase in fast turnaround quote submissions before overseas competitors respond.',
+                'technologies' => ['Chromium Manifest V3', 'JavaScript ES6+', 'REST APIs', 'Node.js', 'CRM Webhooks'],
+                'testimonial_quote' => 'Our export team now receives commercial container inquiries seconds after they post, while spam and domestic prescriptions get filtered automatically.',
+                'testimonial_author' => 'VP of International Sales',
+                'testimonial_role' => 'Global Pharma Exporter',
                 'project_url' => null,
                 'project_url_label' => 'Browser Automation',
-                'view_blade' => 'pages.company.indiamart-lead-automation',
                 'display_order' => 3,
                 'is_featured' => true,
                 'is_published' => true,

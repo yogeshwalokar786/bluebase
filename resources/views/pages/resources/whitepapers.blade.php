@@ -680,7 +680,7 @@
             </ul>
           </div>
           <div class="guide-card-action">
-            <a href="{{ route('customer-stories.omg-rental-bikes') }}" class="c-btn -link" style="color: var(--color-accent); font-weight: 600;">
+            <a href="{{ route('customer-stories.show', 'omg-rental-bikes') }}" class="c-btn -link" style="color: var(--color-accent); font-weight: 600;">
               <span class="c-btn__txt">View Live Case Study</span>
             </a>
             <span style="font-size: 0.8rem; color: #047857; font-weight: 600;">OMG Rental Bikes</span>
