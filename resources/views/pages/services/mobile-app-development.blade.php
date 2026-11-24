@@ -423,7 +423,7 @@
       <div class="process-step-box stagger-1" data-viewport="true">
         <div class="process-num">01</div>
         <h3 class="process-step-title">Mobile Architecture</h3>
-        <p class="process-step-desc">We map screen flows, define local caching strategies, select third-party SDKs, and establish API contracts within 48 hours.</p>
+        <p class="process-step-desc">We map screen flows, define local caching strategies, select third-party SDKs, and establish API contracts within 24 business hours.</p>
       </div>
 
       <div class="process-step-box stagger-2" data-viewport="true">
@@ -617,7 +617,7 @@
           Ready to Build Your Mobile App?<br><mark>Let's Launch on iOS &amp; Android</mark>.
         </h2>
         <p style="color: rgba(255, 255, 255, 0.85); font-size: 1.1rem; max-width: 640px; margin: 0 auto 32px; line-height: 1.6;" class="stagger-2" data-viewport="true">
-          Share your mobile app vision and receive a comprehensive technical proposal, architecture roadmap, and transparent estimate within 24 hours.
+          Share your mobile app vision and receive a comprehensive technical proposal, architecture roadmap, and transparent estimate within 24 business hours.
         </p>
         <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;" class="stagger-2" data-viewport="true">
           <a href="{{ route('contact') }}?service=mobile-app-development" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">

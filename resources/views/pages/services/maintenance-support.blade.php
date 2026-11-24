@@ -929,7 +929,7 @@
       <div class="process-step-box stagger-1" data-viewport="true">
         <div class="process-num">01</div>
         <h3 class="process-step-title">Handover &amp; Telemetry</h3>
-        <p class="process-step-desc">Upon product deployment, we establish synthetic uptime monitors, automated S3 snapshot backups, and configure alert channels within 24 hours.</p>
+        <p class="process-step-desc">Upon product deployment, we establish synthetic uptime monitors, automated S3 snapshot backups, and configure alert channels within 24 business hours.</p>
       </div>
 
       <div class="process-step-box stagger-2" data-viewport="true">

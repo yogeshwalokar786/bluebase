@@ -546,7 +546,7 @@
         <div class="consult-step-card">
           <div class="consult-step-num-box">03</div>
           <div class="consult-step-content">
-            <h3>48-Hour Deliverables Package</h3>
+            <h3>24-Hour Deliverables Package</h3>
             <p>You receive an actionable written report containing stack recommendations, sprint milestones, and fixed pricing with zero pressure to buy.</p>
           </div>
         </div>
@@ -560,7 +560,7 @@
         </span>
 
         <h3 style="font-size: 1.4rem; font-weight: 800; color: #ffffff; margin-bottom: 12px;">
-          What You Receive in 48 Hours
+          What You Receive in 24 Business Hours
         </h3>
         <p style="font-size: 0.88rem; color: #94a3b8; line-height: 1.6; margin-bottom: 24px;">
           Even if you choose not to hire Bluebase, this consultation provides immediate technical clarity for your engineering roadmap:
@@ -736,7 +736,7 @@
         Sprint Slots Available
       </span>
       <h2>Ready to Build with <mark>Direct Senior Engineers</mark>?</h2>
-      <p>Schedule a free 30-minute technical discovery call. We'll evaluate your requirements, answer your questions, and deliver a detailed milestone proposal within 48 hours.</p>
+      <p>Schedule a free 30-minute technical discovery call. We'll evaluate your requirements, answer your questions, and deliver a detailed milestone proposal within 24 business hours.</p>
       
       <div class="sec-cta-actions">
         <a href="{{ route('contact') }}" class="c-btn -primary">

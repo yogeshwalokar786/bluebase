@@ -474,7 +474,7 @@
         </div>
 
         <div class="blog-cta-card-note">
-          Have an upcoming web application, SaaS product, or mobile app to build? Schedule a free discovery call to review requirements and receive a milestone roadmap within 48 hours.
+          Have an upcoming web application, SaaS product, or mobile app to build? Schedule a free discovery call to review requirements and receive a milestone roadmap within 24 business hours.
         </div>
       </div>
 

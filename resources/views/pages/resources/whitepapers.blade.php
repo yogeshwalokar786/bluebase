@@ -807,7 +807,7 @@
         <span class="section-tag">Next Move</span>
         <h2>Ready to Turn These Playbooks Into Working Software?</h2>
         <p>
-          Skip the lengthy agency pitches and get direct access to skilled builders. Tell us about your web, mobile, or SaaS project and receive a detailed milestone breakdown within 48 hours.
+          Skip the lengthy agency pitches and get direct access to skilled builders. Tell us about your web, mobile, or SaaS project and receive a detailed milestone breakdown within 24 business hours.
         </p>
         <div class="guide-bottom-actions">
           <a href="{{ route('contact') }}" class="c-btn -primary" style="padding: 16px 36px; font-size: 1rem;">

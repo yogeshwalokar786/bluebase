@@ -434,7 +434,7 @@
           Ready to Elevate Your Website &amp; UI/UX?<br><mark>Let's Design Something Exceptional</mark>.
         </h2>
         <p style="color: rgba(255, 255, 255, 0.85); font-size: 1.1rem; max-width: 640px; margin: 0 auto 32px; line-height: 1.6;" class="stagger-2" data-viewport="true">
-          Share your product vision and receive a tailored design proposal, wireframe walkthrough, and transparent estimate within 24 hours.
+          Share your product vision and receive a tailored design proposal, wireframe walkthrough, and transparent estimate within 24 business hours.
         </p>
         <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;" class="stagger-2" data-viewport="true">
           <a href="{{ route('contact') }}?service=website-design" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">

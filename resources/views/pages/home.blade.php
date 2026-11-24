@@ -1496,7 +1496,7 @@
               </button>
               <div class="accordion-content">
                 <div class="accordion-inner">
-                  <p>After an initial discovery call, we prepare a scope and milestone plan within 48 to 72 hours. We work in focused 2-week agile sprints, delivering reviewable, testable code to live staging environments in sprint one.</p>
+                  <p>After an initial discovery call, we prepare a scope and milestone plan within 24 business hours. We work in focused 2-week agile sprints, delivering reviewable, testable code to live staging environments in sprint one.</p>
                 </div>
               </div>
             </div>

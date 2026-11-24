@@ -125,7 +125,7 @@
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FF9E33" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
             </div>
             <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 12px;">Application Received</h3>
-            <p style="color: var(--color-gray-600); max-width: 520px; margin: 0 auto 24px;">Thank you for applying to the Bluebase Partner Network. Our Alliance Director will review your profile and contact you within 24 hours.</p>
+            <p style="color: var(--color-gray-600); max-width: 520px; margin: 0 auto 24px;">Thank you for applying to the Bluebase Partner Network. Our team will review your profile and contact you within 24 business hours.</p>
             <a href="{{ route('home') }}" class="c-btn -secondary"><span class="c-btn__txt">Return to Home</span></a>
           </div>
         </div>

@@ -1014,7 +1014,7 @@
       <div class="process-step-box stagger-1" data-viewport="true">
         <div class="process-num">01</div>
         <h3 class="process-step-title">Scope &amp; Architecture</h3>
-        <p class="process-step-desc">We map out user flows, define data models, select the ideal technology stack, and establish a fixed milestone roadmap within 48 hours.</p>
+        <p class="process-step-desc">We map out user flows, define data models, select the ideal technology stack, and establish a fixed milestone roadmap within 24 business hours.</p>
       </div>
 
       <div class="process-step-box stagger-2" data-viewport="true">
@@ -1117,7 +1117,7 @@
           Ready to Launch Your SaaS MVP?<br><mark>Let's Build It Right</mark>.
         </h2>
         <p style="color: rgba(255, 255, 255, 0.85); font-size: 1.1rem; max-width: 640px; margin: 0 auto 32px; line-height: 1.6;" class="stagger-2" data-viewport="true">
-          Tell us about your SaaS idea and receive a comprehensive technical architecture plan and transparent milestone estimate within 24 hours.
+          Tell us about your SaaS idea and receive a comprehensive technical architecture plan and transparent milestone estimate within 24 business hours.
         </p>
         <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;" class="stagger-2" data-viewport="true">
           <a href="{{ route('contact') }}?service=saas-mvp-development" class="c-btn -primary" style="padding: 14px 32px; font-size: 1.05rem;">
@@ -1145,7 +1145,7 @@
         </div>
 
         <div class="cta-pills-row stagger-3" data-viewport="true">
-          <div class="cta-pill-item">Fast 24-Hour Response</div>
+          <div class="cta-pill-item">24 Business Hours Response</div>
           <div class="cta-pill-item">Fixed Milestone Pricing</div>
           <div class="cta-pill-item">100% Code Ownership</div>
           <div class="cta-pill-item">Direct Engineer Access</div>

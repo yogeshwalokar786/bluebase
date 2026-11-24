@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Enterprise Security & Compliance Standards | Bluebase')
-@section('meta_description', 'Review enterprise data security protocols, ISO standards, GDPR compliance, and guaranteed client intellectual property ownership. Learn more today.')
-@section('meta_keywords', 'security standards, soc 2 type ii, iso 27001, gdpr data protection, zero trust security, intellectual property ownership, bluebase technologies')
+@section('title', 'Security Standards & Data Protection | Bluebase')
+@section('meta_description', 'Learn about Bluebase Technologies application security standards, data protection practices, OWASP hardening, and client intellectual property ownership.')
+@section('meta_keywords', 'security standards, web application security, data protection, secure coding, owasp top 10, intellectual property ownership, bluebase technologies')
 @section('canonical_url', url('/compliance-security'))
 
 @section('content')
@@ -81,8 +81,8 @@
     </div>
 
     <div class="hero-badges stagger-4" data-viewport="true">
-      <div class="hero-badge-item">SOC 2 Aligned</div>
-      <div class="hero-badge-item">ISO 27001</div>
+      <div class="hero-badge-item">OWASP Hardened</div>
+      <div class="hero-badge-item">Encrypted &amp; Isolated</div>
       <div class="hero-badge-item">100% IP Ownership</div>
     </div>
 
@@ -101,8 +101,8 @@
           </svg>
         </div>
         <div class="framework-info">
-          <strong>SOC 2 Type II</strong>
-          <span>Trust Services Criteria</span>
+          <strong>Secure SDLC</strong>
+          <span>Safe Development Lifecycle</span>
         </div>
       </div>
 
@@ -114,8 +114,8 @@
           </svg>
         </div>
         <div class="framework-info">
-          <strong>ISO/IEC 27001</strong>
-          <span>Information Security ISMS</span>
+          <strong>End-to-End Encryption</strong>
+          <span>TLS 1.3 &amp; AES-256 at Rest</span>
         </div>
       </div>
 
@@ -127,8 +127,8 @@
           </svg>
         </div>
         <div class="framework-info">
-          <strong>GDPR &amp; DPDP</strong>
-          <span>Data Sovereignty &amp; Privacy</span>
+          <strong>Data Privacy</strong>
+          <span>Isolated Storage &amp; Sanitization</span>
         </div>
       </div>
 
@@ -152,8 +152,8 @@
           </svg>
         </div>
         <div class="framework-info">
-          <strong>HIPAA Ready</strong>
-          <span>BAA &amp; ePHI Isolation Standards</span>
+          <strong>Role-Based Access</strong>
+          <span>Least Privilege Principle (RBAC)</span>
         </div>
       </div>
 
@@ -165,8 +165,8 @@
           </svg>
         </div>
         <div class="framework-info">
-          <strong>PCI-DSS Ready</strong>
-          <span>Zero Raw PAN Storage Model</span>
+          <strong>Payment Isolation</strong>
+          <span>Zero Raw Card Data Storage</span>
         </div>
       </div>
 
@@ -445,7 +445,7 @@
                 <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2a6 6 0 0 0-6 6c0 3 2 5.5 5 6v-2a4 4 0 1 1 4 0v2c3-.5 5-3 5-6a6 6 0 0 0-6-6z"/></svg>
                 Geographic Data Sovereignty
               </div>
-              <p>Data residency tailored to your jurisdiction (US-East, EU Frankfurt, India Mumbai, AP-Southeast) ensuring GDPR &amp; DPDP compliance.</p>
+              <p>Data residency tailored to your preferred hosting region (US, EU, India, Singapore) ensuring proper data localization and user privacy compliance.</p>
             </div>
 
             <div class="control-item">
@@ -928,7 +928,7 @@ document.addEventListener('DOMContentLoaded', function() {
       "@@id": "{{ url()->current() }}#webpage",
       "url": "{{ url()->current() }}",
       "name": "Security, Compliance & Governance Standards | Bluebase Technologies",
-      "description": "Enterprise-grade security, SOC 2 Type II controls, ISO/IEC 27001 ISMS, GDPR data residency, zero-trust infrastructure, and guaranteed 100% client IP ownership.",
+      "description": "Secure application engineering, OWASP Top 10 hardening, data encryption in-transit and at-rest, and guaranteed 100% client IP ownership.",
       "publisher": {
         "@@type": "Organization",
         "name": "Bluebase Technologies",
