@@ -104,18 +104,20 @@ class DatabaseSeeder extends Seeder
         // 5. Site Settings CMS
         $settings = [
             'site_name' => 'Bluebase Technologies',
-            'site_tagline' => 'Digital Engineering & Autonomous AI Services',
+            'site_tagline' => 'Digital Engineering Studio',
             'contact_email' => 'info@bluebasetechnologies.com',
-            'contact_phone' => '+1 (800) 555-BLUE',
+            'contact_phone' => '+91 79727 65119',
             'support_email' => 'info@bluebasetechnologies.com',
-            'office_address' => '742 Innovation Way, Suite 400, San Francisco, CA 94107',
-            'business_hours' => 'Monday - Friday: 8:00 AM - 6:00 PM PST',
-            'linkedin_url' => 'https://linkedin.com/company/bluebase',
-            'twitter_url' => 'https://twitter.com/bluebase_tech',
+            'office_address' => 'India',
+            'business_hours' => 'Monday - Friday: 9:00 AM - 7:00 PM IST',
+            'linkedin_url' => 'https://www.linkedin.com/company/bluebase-technologies',
+            'twitter_url' => 'https://x.com/bluebase_tech',
+            'facebook_url' => 'https://www.facebook.com/bluebasetechnologies',
+            'instagram_url' => 'https://www.instagram.com/bluebase_tech',
             'github_url' => 'https://github.com/bluebase-tech',
-            'hero_badge' => 'NEXT-GEN ENTERPRISE PLATFORM',
-            'hero_title' => 'Empower Your Enterprise With Autonomous AI & Digital Engineering',
-            'hero_subtitle' => 'Turn complex legacy systems into ultra-fast, offline-capable, AI-augmented applications without downtime.',
+            'hero_badge' => 'DIGITAL ENGINEERING STUDIO',
+            'hero_title' => 'Empower Your Business With High-Performance Custom Software & Digital Engineering',
+            'hero_subtitle' => 'Turn complex manual workflows into fast, modern, and reliable web & mobile applications.',
         ];
 
         foreach ($settings as $key => $val) {

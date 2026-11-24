@@ -183,7 +183,7 @@ HTML
 
             // Article 4: Business Growth & Marketing
             [
-                'title' => 'How Local Businesses Rank #1 on Google Maps and Get Daily Calls from Nearby Customers',
+                'title' => 'How Local Businesses Rank Higher on Google Maps and Get Daily Calls from Nearby Customers',
                 'slug' => 'how-local-businesses-rank-on-google-maps-get-daily-calls',
                 'category' => 'Business Growth & Marketing',
                 'category_slug' => 'business-growth-marketing',

@@ -296,7 +296,7 @@
     <!-- Footer -->
     <div class="email-footer">
       <p style="margin: 0 0 8px 0; font-weight: 600; color: #f8fafc;">
-        Bluebase Technologies Inc.
+        Bluebase Technologies
       </p>
       <p style="margin: 0 0 12px 0;">
         Remote-First Digital Engineering Studio &bull;

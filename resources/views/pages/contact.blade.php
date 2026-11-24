@@ -388,7 +388,7 @@
                 </button>
                 <div class="accordion-content">
                   <div class="accordion-inner">
-                    <p>Bluebase is a modern digital engineering and AI consultancy startup. We provide end-to-end custom software development, autonomous AI agent workflows, generative AI fine-tuning, cloud-native modernization, offline-first mobile applications, and dedicated cross-functional engineering pods.</p>
+                    <p>Bluebase is a digital engineering studio. We provide end-to-end custom software development, high-performance web applications, cloud infrastructure, offline-first mobile applications, and dedicated cross-functional engineering pods.</p>
                   </div>
                 </div>
               </div>
@@ -499,7 +499,7 @@
 
           <div class="cta-pills-row stagger-3" data-viewport="true">
             <div class="cta-pill-item">Dedicated senior engineering pods</div>
-            <div class="cta-pill-item">Autonomous AI &amp; custom LLMs</div>
+            <div class="cta-pill-item">Modern web &amp; mobile architectures</div>
             <div class="cta-pill-item">100% client-owned code &amp; IP</div>
             <div class="cta-pill-item">Enterprise SOC 2 &amp; ISO 27001</div>
             <div class="cta-pill-item">Sprint-one velocity guarantee</div>

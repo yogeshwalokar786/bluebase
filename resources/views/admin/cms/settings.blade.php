@@ -132,17 +132,29 @@
         3. Social &amp; Developer Links
       </h3>
 
-      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
         <div class="form-group">
           <label class="form-label">LinkedIn URL</label>
           <input type="url" name="linkedin_url"
-            value="{{ $settings['linkedin_url'] ?? 'https://linkedin.com/company/bluebase' }}" class="form-control">
+            value="{{ $settings['linkedin_url'] ?? 'https://www.linkedin.com/company/bluebase-technologies' }}" class="form-control">
         </div>
 
         <div class="form-group">
           <label class="form-label">Twitter / X URL</label>
           <input type="url" name="twitter_url"
-            value="{{ $settings['twitter_url'] ?? 'https://twitter.com/bluebase_tech' }}" class="form-control">
+            value="{{ $settings['twitter_url'] ?? 'https://x.com/bluebase_tech' }}" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Facebook URL</label>
+          <input type="url" name="facebook_url"
+            value="{{ $settings['facebook_url'] ?? 'https://www.facebook.com/bluebasetechnologies' }}" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Instagram URL</label>
+          <input type="url" name="instagram_url"
+            value="{{ $settings['instagram_url'] ?? 'https://www.instagram.com/bluebase_tech' }}" class="form-control">
         </div>
 
         <div class="form-group">

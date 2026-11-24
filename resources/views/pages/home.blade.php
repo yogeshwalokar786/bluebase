@@ -41,8 +41,10 @@
     }
   ],
   "sameAs": [
-    "https://linkedin.com/company/bluebase",
-    "https://twitter.com/bluebase_tech",
+    "https://www.linkedin.com/company/bluebase-technologies",
+    "https://x.com/bluebase_tech",
+    "https://www.instagram.com/bluebase_tech",
+    "https://www.facebook.com/bluebasetechnologies",
     "https://github.com/bluebase-tech"
   ]
 }
@@ -944,7 +946,7 @@
 
             <!-- Bottom Pill inside Bluebase Box -->
             <div class="system-arch-work-footer">
-              <span class="system-arch-pill -highlight">Clean architecture &middot; Sub-10ms queries &middot; 100% Client Code Ownership</span>
+              <span class="system-arch-pill -highlight">Clean architecture &middot; High-Performance Queries &middot; 100% Client Code Ownership</span>
             </div>
           </div>
 
@@ -1185,7 +1187,7 @@
             </div>
           </div>
           <div class="cs-card-body">
-            <div class="cs-metric-chip">350+ Competitors · Zero Downtime</div>
+            <div class="cs-metric-chip">350+ Competitors · 99.9% Peak Uptime</div>
             <h3 class="cs-card-title">
               <a href="{{ route('customer-stories.show', 'aarohi-classic-2024') }}" style="color:inherit;text-decoration:none;">Centralized Competitor Registration &amp; Event Operations Desk.</a>
             </h3>
@@ -1217,7 +1219,7 @@
             </div>
           </div>
           <div class="cs-card-body">
-            <div class="cs-metric-chip">Instant Desk Alerts · 100% Lead Capture</div>
+            <div class="cs-metric-chip">Instant Desk Alerts · Automated Lead Capture</div>
             <h3 class="cs-card-title">
               <a href="{{ route('customer-stories.show', 'indiamart-lead-automation') }}" style="color:inherit;text-decoration:none;">Automated Buy-Lead Capture &amp; Real-Time Export CRM Sync.</a>
             </h3>
