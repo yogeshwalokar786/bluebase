@@ -552,12 +552,6 @@
         "@@type": "PostalAddress",
         "addressCountry": "IN"
       },
-      "openingHoursSpecification": {
-        "@@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "opens": "09:30",
-        "closes": "19:00"
-      },
       "contactPoint": [
         {
           "@@type": "ContactPoint",
