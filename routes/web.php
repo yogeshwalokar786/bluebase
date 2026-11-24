@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\FileManagerController;
 use App\Http\Controllers\Admin\MailController;
 use App\Http\Controllers\Admin\CodePlacementController;
 use App\Http\Controllers\Admin\SitemapController;
+use App\Http\Controllers\Admin\TestimonialCmsController;
 
 // ==========================================
 // 1. PUBLIC MARKETING WEBSITE
@@ -126,6 +127,7 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
         Route::delete('/blogs/{id}', [BlogCmsController::class, 'destroy'])->name('blogs.destroy');
         Route::post('/blogs/{id}/toggle', [BlogCmsController::class, 'togglePublish'])->name('blogs.toggle');
         Route::post('/blogs/category/ajax', [BlogCmsController::class, 'ajaxStoreCategory'])->name('blogs.category.ajax');
+        Route::post('/blogs/categories/ajax', [BlogCmsController::class, 'ajaxStoreCategory'])->name('blogs.categories.ajax');
         Route::post('/blogs/generate-banner', [BlogCmsController::class, 'generateBanner'])->name('blogs.generate_banner');
         Route::get('/banner-studio', [BlogCmsController::class, 'bannerStudio'])->name('banner_studio');
 
@@ -146,6 +148,14 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
         Route::post('/careers/{id}', [JobOpeningCmsController::class, 'update'])->name('careers.update');
         Route::delete('/careers/{id}', [JobOpeningCmsController::class, 'destroy'])->name('careers.destroy');
         Route::post('/careers/{id}/toggle', [JobOpeningCmsController::class, 'toggle'])->name('careers.toggle');
+
+        // Testimonials CMS
+        Route::get('/testimonials', [TestimonialCmsController::class, 'index'])->name('testimonials.index');
+        Route::get('/testimonials/create', [TestimonialCmsController::class, 'create'])->name('testimonials.create');
+        Route::post('/testimonials', [TestimonialCmsController::class, 'store'])->name('testimonials.store');
+        Route::get('/testimonials/{id}/edit', [TestimonialCmsController::class, 'edit'])->name('testimonials.edit');
+        Route::post('/testimonials/{id}', [TestimonialCmsController::class, 'update'])->name('testimonials.update');
+        Route::delete('/testimonials/{id}', [TestimonialCmsController::class, 'destroy'])->name('testimonials.destroy');
     });
 
     // 2. Contact Inquiries Management
