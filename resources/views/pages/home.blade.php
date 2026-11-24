@@ -439,13 +439,20 @@
     @php
       $videoEnabled = ($settings['hero_video_enabled'] ?? '1') !== '0';
       $videoUrl = $settings['hero_video_url'] ?? 'videos/corporate-office.mp4';
+      if (str_starts_with($videoUrl, 'https://videos/') || str_starts_with($videoUrl, 'http://videos/')) {
+          $videoUrl = preg_replace('#^https?://#', '', $videoUrl);
+      }
       $videoPoster = $settings['hero_video_poster'] ?? 'images/hero-video-poster.jpg';
+      if (str_starts_with($videoPoster, 'https://images/') || str_starts_with($videoPoster, 'http://images/')) {
+          $videoPoster = preg_replace('#^https?://#', '', $videoPoster);
+      }
       $overlayOpacity = $settings['hero_video_overlay_opacity'] ?? '0.65';
     @endphp
 
     @if($videoEnabled)
       <div class="hero-video-wrap" aria-hidden="true">
-        <video class="hero-video-elem" id="heroBgVideo" autoplay loop muted playsinline preload="none" poster="{{ asset($videoPoster) }}" data-video-src="{{ asset($videoUrl) }}">
+        <video class="hero-video-elem" id="heroBgVideo" autoplay loop muted playsinline webkit-playsinline preload="auto" poster="{{ asset($videoPoster) }}">
+          <source src="{{ asset($videoUrl) }}" type="video/mp4">
           <img src="{{ asset('images/hero-v2-bg.svg') }}" alt="" class="hero-bg">
         </video>
         <div class="hero-video-overlay" style="opacity: {{ $overlayOpacity }};"></div>
@@ -1534,31 +1541,33 @@
     const stateLabel = document.getElementById('heroVideoStateLabel');
 
     if (video) {
-      // High-Performance Background Video Loader (Desktop only, deferred after initial paint)
-      const isDesktop = window.innerWidth >= 768;
-      const isSaveData = navigator.connection && (navigator.connection.saveData === true || navigator.connection.effectiveType === '2g');
+      // Ensure muted state in DOM for strict browser autoplay compliance
+      video.muted = true;
+      video.defaultMuted = true;
 
-      if (isDesktop && !isSaveData) {
-        const loadHeroVideo = function() {
-          const src = video.getAttribute('data-video-src');
-          if (!src || video.querySelector('source')) return;
-
-          const source = document.createElement('source');
-          source.src = src;
-          source.type = 'video/mp4';
-          video.appendChild(source);
-          video.load();
-          video.play().catch(function() {
-            // Autoplay restricted by browser; keep poster visible
+      // Ensure autoplay starts reliably across all browsers & devices
+      const tryPlay = function() {
+        const p = video.play();
+        if (p !== undefined) {
+          p.then(function() {
+            if (iconPause) iconPause.style.display = 'block';
+            if (iconPlay) iconPlay.style.display = 'none';
+          }).catch(function() {
+            // Autoplay policy restricted; trigger on first user interaction
+            const unlockPlay = function() {
+              video.play().catch(function() {});
+              window.removeEventListener('click', unlockPlay);
+              window.removeEventListener('touchstart', unlockPlay);
+              window.removeEventListener('scroll', unlockPlay);
+            };
+            window.addEventListener('click', unlockPlay, { once: true, passive: true });
+            window.addEventListener('touchstart', unlockPlay, { once: true, passive: true });
+            window.addEventListener('scroll', unlockPlay, { once: true, passive: true });
           });
-        };
-
-        if ('requestIdleCallback' in window) {
-          requestIdleCallback(function() { setTimeout(loadHeroVideo, 400); });
-        } else {
-          window.addEventListener('load', function() { setTimeout(loadHeroVideo, 400); });
         }
-      }
+      };
+
+      tryPlay();
 
       if (toggleBtn) {
         toggleBtn.addEventListener('click', function(e) {

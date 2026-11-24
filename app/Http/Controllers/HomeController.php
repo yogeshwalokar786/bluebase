@@ -12,7 +12,17 @@ class HomeController extends Controller
     public function index()
     {
         $settings = rescue(fn() => cache()->remember('site_settings_home', 3600, function () {
-            return SiteSetting::all()->pluck('value', 'key')->toArray();
+            $items = SiteSetting::all()->pluck('value', 'key')->toArray();
+            foreach (['hero_video_url', 'hero_video_poster'] as $k) {
+                if (!empty($items[$k]) && (str_starts_with($items[$k], 'https://videos/') || str_starts_with($items[$k], 'http://videos/') || str_starts_with($items[$k], 'https://images/') || str_starts_with($items[$k], 'http://images/'))) {
+                    $cleaned = preg_replace('#^https?://#', '', $items[$k]);
+                    $items[$k] = $cleaned;
+                    try {
+                        SiteSetting::where('key', $k)->update(['value' => $cleaned]);
+                    } catch (\Throwable $e) {}
+                }
+            }
+            return $items;
         }), []);
 
         $latestBlogs = rescue(function () {

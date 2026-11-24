@@ -208,7 +208,7 @@
         <div class="media-picker-group">
           <div class="media-picker-input-wrap">
             <input type="text" name="hero_video_url" id="hero_video_url"
-              value="{{ $settings['hero_video_url'] ?? 'videos/corporate-office.mp4' }}" class="form-control">
+              value="{{ str_starts_with($settings['hero_video_url'] ?? '', 'https://videos/') ? substr($settings['hero_video_url'], 8) : ($settings['hero_video_url'] ?? 'videos/corporate-office.mp4') }}" class="form-control">
             <button type="button" class="btn btn-secondary btn-filemanager" data-target="#hero_video_url"
               data-preview="#admin_hero_video_preview">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -268,12 +268,18 @@
         <label class="form-label">Live Video Stream Preview</label>
         <div style="position: relative; max-width: 640px; border-radius: 8px; overflow: hidden; background: #070B19; border: 1px solid var(--border-color); aspect-ratio: 16/9;">
           <video id="admin_hero_video_player" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;">
-            <source src="{{ asset($settings['hero_video_url'] ?? 'videos/corporate-office.mp4') }}" type="video/mp4">
+            @php
+              $adminVideoSrc = $settings['hero_video_url'] ?? 'videos/corporate-office.mp4';
+              if (str_starts_with($adminVideoSrc, 'https://videos/')) {
+                  $adminVideoSrc = substr($adminVideoSrc, 8);
+              }
+            @endphp
+            <source src="{{ asset($adminVideoSrc) }}" type="video/mp4">
           </video>
           <div id="admin_preview_overlay" style="position: absolute; inset: 0; background: radial-gradient(circle at 50% 35%, rgba(7, 11, 25, 0.45) 0%, rgba(7, 11, 25, 0.82) 85%), linear-gradient(180deg, rgba(7, 11, 25, 0.70) 0%, rgba(0, 80, 231, 0.38) 45%, rgba(7, 11, 25, 0.90) 100%); opacity: {{ $settings['hero_video_overlay_opacity'] ?? '0.65' }}; pointer-events: none;"></div>
           <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: #fff; padding: 20px; pointer-events: none;">
             <span style="font-size: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase; color: #93C5FD; font-weight: 600;">Hero Preview</span>
-            <span style="font-size: 1.25rem; font-weight: 700; margin-top: 4px;">We Engineer Scalable Software & AI Systems</span>
+            <span style="font-size: 1.25rem; font-weight: 700; margin-top: 4px;">We Build Web, Mobile &amp; Digital Products</span>
           </div>
         </div>
       </div>

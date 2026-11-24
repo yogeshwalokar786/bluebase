@@ -57,6 +57,8 @@ class SettingsCmsController extends Controller
             'imap_password',
         ];
 
+        $socialKeys = ['twitter_url', 'linkedin_url', 'facebook_url', 'instagram_url', 'github_url', 'youtube_url'];
+
         foreach ($allowedKeys as $key) {
             if ($request->exists($key)) {
                 $val = $request->input($key);
@@ -64,8 +66,15 @@ class SettingsCmsController extends Controller
                     $val = trim($val);
                     if ($val === '') {
                         $val = null;
-                    } elseif (str_ends_with($key, '_url') && !str_starts_with($val, 'http://') && !str_starts_with($val, 'https://')) {
+                    } elseif (in_array($key, $socialKeys, true) && !str_starts_with($val, 'http://') && !str_starts_with($val, 'https://')) {
                         $val = 'https://' . ltrim($val, '@/');
+                    } elseif (in_array($key, ['hero_video_url', 'hero_video_poster'], true) && $val !== null) {
+                        // Strip accidental https:// or http:// if pointing to local videos or images directory
+                        if (str_starts_with($val, 'https://videos/') || str_starts_with($val, 'http://videos/')) {
+                            $val = preg_replace('#^https?://#', '', $val);
+                        } elseif (str_starts_with($val, 'https://images/') || str_starts_with($val, 'http://images/')) {
+                            $val = preg_replace('#^https?://#', '', $val);
+                        }
                     }
                 }
                 try {
