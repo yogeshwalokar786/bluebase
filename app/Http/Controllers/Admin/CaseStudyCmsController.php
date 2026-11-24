@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\CaseStudy;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 class CaseStudyCmsController extends Controller
@@ -57,6 +58,34 @@ class CaseStudyCmsController extends Controller
         $data['is_published'] = $request->has('is_published');
         $data['is_featured'] = $request->has('is_featured');
 
+        // Direct file uploads for hero image
+        if ($request->hasFile('hero_image_file')) {
+            $file = $request->file('hero_image_file');
+            $extension = $file->getClientOriginalExtension() ?: 'jpg';
+            $baseName = Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME));
+            $filename = time() . '_' . $baseName . '.' . $extension;
+            $destination = public_path('images/stories');
+            if (!File::isDirectory($destination)) {
+                File::makeDirectory($destination, 0755, true, true);
+            }
+            $file->move($destination, $filename);
+            $data['hero_image'] = 'images/stories/' . $filename;
+        }
+
+        // Direct file upload for client logo
+        if ($request->hasFile('client_logo_file')) {
+            $file = $request->file('client_logo_file');
+            $extension = $file->getClientOriginalExtension() ?: 'png';
+            $baseName = Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME));
+            $filename = time() . '_' . $baseName . '.' . $extension;
+            $destination = public_path('images/clients');
+            if (!File::isDirectory($destination)) {
+                File::makeDirectory($destination, 0755, true, true);
+            }
+            $file->move($destination, $filename);
+            $data['client_logo'] = 'images/clients/' . $filename;
+        }
+
         // Handle JSON array fields if submitted as lines/commas
         $data['technologies'] = $this->parseJsonArray($request->input('technologies_raw'));
         $data['stats_pills'] = $this->parseStatsPills($request->input('stats_pills_raw'));
@@ -87,6 +116,34 @@ class CaseStudyCmsController extends Controller
 
         $data['is_published'] = $request->has('is_published');
         $data['is_featured'] = $request->has('is_featured');
+
+        // Direct file uploads for hero image
+        if ($request->hasFile('hero_image_file')) {
+            $file = $request->file('hero_image_file');
+            $extension = $file->getClientOriginalExtension() ?: 'jpg';
+            $baseName = Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME));
+            $filename = time() . '_' . $baseName . '.' . $extension;
+            $destination = public_path('images/stories');
+            if (!File::isDirectory($destination)) {
+                File::makeDirectory($destination, 0755, true, true);
+            }
+            $file->move($destination, $filename);
+            $data['hero_image'] = 'images/stories/' . $filename;
+        }
+
+        // Direct file upload for client logo
+        if ($request->hasFile('client_logo_file')) {
+            $file = $request->file('client_logo_file');
+            $extension = $file->getClientOriginalExtension() ?: 'png';
+            $baseName = Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME));
+            $filename = time() . '_' . $baseName . '.' . $extension;
+            $destination = public_path('images/clients');
+            if (!File::isDirectory($destination)) {
+                File::makeDirectory($destination, 0755, true, true);
+            }
+            $file->move($destination, $filename);
+            $data['client_logo'] = 'images/clients/' . $filename;
+        }
 
         $data['technologies'] = $this->parseJsonArray($request->input('technologies_raw'));
         $data['stats_pills'] = $this->parseStatsPills($request->input('stats_pills_raw'));
@@ -127,6 +184,8 @@ class CaseStudyCmsController extends Controller
             'status_color' => 'nullable|string|max:50',
             'metric_chip' => 'nullable|string|max:255',
             'hero_image' => 'nullable|string|max:255',
+            'hero_image_file' => 'nullable|image|max:10240',
+            'client_logo_file' => 'nullable|image|max:5120',
             'excerpt' => 'required|string',
             'challenge' => 'nullable|string',
             'solution' => 'nullable|string',

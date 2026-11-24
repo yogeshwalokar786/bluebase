@@ -77,7 +77,7 @@
   </div>
 </div>
 
-<form action="{{ $isEdit ? route('admin.cms.case-studies.update', $story->id) : route('admin.cms.case-studies.store') }}" method="POST">
+<form action="{{ $isEdit ? route('admin.cms.case-studies.update', $story->id) : route('admin.cms.case-studies.store') }}" method="POST" enctype="multipart/form-data">
   @csrf
 
   <div class="form-grid">
@@ -103,6 +103,38 @@
           <div class="form-group">
             <label>URL Slug (auto-generated if empty)</label>
             <input type="text" name="slug" class="form-control" value="{{ old('slug', $story->slug) }}" placeholder="e.g. omg-rental-bikes">
+          </div>
+        </div>
+
+        <!-- Client Logo Picker with File Manager & Direct Upload -->
+        <div class="form-group">
+          <label style="font-weight: 600; color: var(--text);">Client Brand Logo</label>
+          <div class="media-picker-group">
+            <div class="media-picker-input-wrap">
+              <input type="text" name="client_logo" id="client_logo"
+                value="{{ old('client_logo', $story->client_logo) }}" class="form-control"
+                placeholder="images/clients/logo.png or uploads/...">
+              <button type="button" class="btn btn-secondary btn-filemanager" data-target="#client_logo"
+                data-preview="#client_logo_preview" data-type="image">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 15px; height: 15px;">
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <circle cx="8.5" cy="8.5" r="1.5" />
+                  <polyline points="21 15 16 10 5 21" />
+                </svg>
+                Browse Media
+              </button>
+            </div>
+            <div class="media-preview-container" id="client_logo_preview" style="width: 120px; height: 60px;">
+              @if($story->client_logo)
+                <img src="{{ asset($story->client_logo) }}" alt="Preview" onerror="this.style.display='none';">
+              @else
+                <div class="media-preview-placeholder">No logo</div>
+              @endif
+            </div>
+          </div>
+          <div style="margin-top: 6px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+            <div class="hint" style="margin-top: 0;">Select from media library or upload a file directly:</div>
+            <input type="file" name="client_logo_file" id="client_logo_file" accept="image/*" style="font-size: 0.8rem; color: var(--text-muted);" onchange="previewDirectFile(this, '#client_logo_preview')">
           </div>
         </div>
 
@@ -139,10 +171,36 @@
           <input type="text" name="metric_chip" class="form-control" value="{{ old('metric_chip', $story->metric_chip) }}" placeholder="e.g. 100% Paperless KYC · Real-Time Fleet ERP">
         </div>
 
+        <!-- Hero Image Picker with File Manager & Direct Upload (Like Blogs) -->
         <div class="form-group">
-          <label>Hero Image Path</label>
-          <input type="text" name="hero_image" class="form-control" value="{{ old('hero_image', $story->hero_image) }}" placeholder="images/stories/omg-rental-bikes-brand.png">
-          <div class="hint">Relative path inside public/ directory or URL.</div>
+          <label class="form-label" style="font-weight: 600; color: var(--text);">Featured Hero &amp; Thumbnail Image</label>
+          <div class="media-picker-group">
+            <div class="media-picker-input-wrap">
+              <input type="text" name="hero_image" id="hero_image"
+                value="{{ old('hero_image', $story->hero_image ?? 'images/stories/omg-rental-bikes-brand.png') }}" class="form-control"
+                placeholder="images/stories/omg-rental-bikes-brand.png or uploads/...">
+              <button type="button" class="btn btn-secondary btn-filemanager" data-target="#hero_image"
+                data-preview="#hero_image_preview" data-type="image">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 15px; height: 15px;">
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <circle cx="8.5" cy="8.5" r="1.5" />
+                  <polyline points="21 15 16 10 5 21" />
+                </svg>
+                Browse Media
+              </button>
+            </div>
+            <div class="media-preview-container" id="hero_image_preview">
+              @if($story->hero_image)
+                <img src="{{ asset($story->hero_image) }}" alt="Preview" onerror="this.style.display='none';">
+              @else
+                <div class="media-preview-placeholder">No image selected</div>
+              @endif
+            </div>
+          </div>
+          <div style="margin-top: 8px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+            <div class="hint" style="margin-top: 0;">Click &ldquo;Browse Media&rdquo; to choose from media library, or upload directly from your device:</div>
+            <input type="file" name="hero_image_file" id="hero_image_file" accept="image/*" style="font-size: 0.8rem; color: var(--text-muted);" onchange="previewDirectFile(this, '#hero_image_preview')">
+          </div>
         </div>
 
         <div class="form-group">
@@ -303,5 +361,22 @@
 
   </div>
 </form>
+
+@push('scripts')
+<script>
+function previewDirectFile(input, previewSelector) {
+  if (input.files && input.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const container = document.querySelector(previewSelector);
+      if (container) {
+        container.innerHTML = '<img src="' + e.target.result + '" alt="Preview" style="max-height: 100%; max-width: 100%; border-radius: 6px; object-fit: contain;">';
+      }
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+</script>
+@endpush
 
 @endsection
