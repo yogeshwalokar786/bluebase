@@ -56,6 +56,8 @@
   @endif
   <meta name="robots" content="{{ $robotsTag }}">
   <link rel="canonical" href="{{ $canonicalUrl }}">
+  <link rel="help" type="text/plain" href="{{ url('/llms.txt') }}" title="LLMs.txt">
+  <link rel="alternate" type="text/plain" href="{{ url('/llms.txt') }}" title="LLMs.txt">
 
   <!-- OpenGraph Social Sharing (LinkedIn, Facebook, Slack, WhatsApp) -->
   <meta property="og:type" content="website">

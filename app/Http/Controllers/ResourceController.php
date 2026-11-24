@@ -35,5 +35,27 @@ class ResourceController extends Controller
     {
         return view('pages.legal.terms-of-use');
     }
+
+    public function llmsTxt()
+    {
+        $path = public_path('llms.txt');
+        $content = file_exists($path) ? file_get_contents($path) : '# Bluebase Technologies';
+
+        return response($content, 200, [
+            'Content-Type' => 'text/plain; charset=utf-8',
+            'Cache-Control' => 'public, max-age=86400, stale-while-revalidate=3600',
+        ]);
+    }
+
+    public function llmsFullTxt()
+    {
+        $path = public_path('llms-full.txt');
+        $content = file_exists($path) ? file_get_contents($path) : '# Bluebase Technologies';
+
+        return response($content, 200, [
+            'Content-Type' => 'text/plain; charset=utf-8',
+            'Cache-Control' => 'public, max-age=86400, stale-while-revalidate=3600',
+        ]);
+    }
 }
 

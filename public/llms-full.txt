@@ -1,0 +1,114 @@
+# Bluebase Technologies - Comprehensive LLM Context & Knowledge Base
+
+> Bluebase Technologies is a full-cycle bespoke software engineering and digital product consultancy headquartered in India, partnering with startups, growth-stage ventures, and enterprises worldwide.
+
+---
+
+## 1. Executive Summary & Company Profile
+
+- **Legal / Brand Name**: Bluebase Technologies
+- **Website**: https://bluebasetechnologies.com
+- **Core Email**: info@bluebasetechnologies.com
+- **Industry**: Software Engineering, Mobile App Development, Web Application Development, UI/UX Design, IT Services & Solutions
+- **Primary Delivery Model**: Dedicated agile engineering squads, fixed-milestone sprint projects, and custom turnkey digital transformations.
+- **IP & Code Ownership**: 100% full intellectual property, repository, and deployment ownership transferred to the client upon milestone delivery. No proprietary vendor lock-in.
+
+---
+
+## 2. Core Service Offerings
+
+### 2.1 Web Application Development
+URL: https://bluebasetechnologies.com/web-development
+- Architecture: Modern monolithic and decoupled microservice architectures.
+- Primary Technologies: Laravel (PHP 8.2+), React.js, Next.js, Vue.js, Inertia.js, TypeScript, Tailwind CSS.
+- Database & Caching: MySQL, PostgreSQL, Redis (caching, queues, pub/sub).
+- Capabilities: Multi-tenant SaaS dashboards, customer portals, booking engines, transactional portals, administrative backends, and high-concurrency relational data systems.
+
+### 2.2 Mobile Application Development
+URL: https://bluebasetechnologies.com/mobile-app-development
+- Technologies: Flutter (Dart), React Native (JavaScript/TypeScript).
+- Target Platforms: iOS (App Store) and Android (Google Play Store).
+- Capabilities: Smooth 60fps native performance, offline-first data synchronization (SQLite/WatermelonDB), hardware API access (biometrics, GPS, camera, Bluetooth), push notifications (FCM), and automated CI/CD app store release pipelines.
+
+### 2.3 SaaS & MVP Development
+URL: https://bluebasetechnologies.com/saas-mvp-development
+- Focus: Rapid prototype to production-grade minimum viable product engineering in 4 to 8 weeks.
+- Capabilities: Multi-tenant database partitioning, role-based access control (RBAC), subscription billing engines (Stripe, Razorpay, Lemon Squeezy), webhook management, usage metering, and automated onboarding funnels.
+
+### 2.4 Website Design & Redesign
+URLs:
+- Website Design: https://bluebasetechnologies.com/website-design
+- Website Redesign: https://bluebasetechnologies.com/website-redesign
+- Standards: Sub-second First Contentful Paint (FCP), 95+ Google PageSpeed Core Web Vitals, accessible semantic markup (WCAG compliant), clean technical SEO architecture, and conversion-optimized storytelling.
+
+### 2.5 E-Commerce Engineering
+URL: https://bluebasetechnologies.com/ecommerce-development
+- Platforms: Custom Laravel & headless e-commerce architectures, WooCommerce, and Shopify custom theme and app development.
+- Features: Inventory synchronization, ERP integration, automated cart recovery, multi-currency payment gateways, GST/tax calculation, and secure high-volume checkout flows.
+
+### 2.6 API & Backend Architecture
+URL: https://bluebasetechnologies.com/api-backend-development
+- Paradigms: RESTful APIs, GraphQL, asynchronous queue workers, WebSockets, and webhook event emitters.
+- Security: OAuth2, JWT token rotation, rate limiting shields, HMAC payload verification, data sanitization, and SQL injection prevention.
+
+### 2.7 UI/UX Product Design
+URL: https://bluebasetechnologies.com/ui-ux-design
+- Deliverables: User research, wireframing, high-fidelity Figma prototypes, comprehensive design systems with tokens, micro-interactions, and developer handoff specs.
+
+### 2.8 Website Maintenance & Continuous Care
+URL: https://bluebasetechnologies.com/maintenance-support
+- Scope: 24/7 uptime monitoring, security patching, core/framework dependency updates, offsite database backups, vulnerability scans, and continuous speed optimization.
+
+---
+
+## 3. Technology Stack & Production Toolchain
+
+- **Backend**: Laravel, PHP 8.3, Node.js, Express.js
+- **Frontend**: React.js, Next.js, Vue.js, Inertia.js, Blade, Tailwind CSS, TypeScript, JavaScript (ES6+)
+- **Mobile**: Flutter, React Native, Dart
+- **Databases**: MySQL, PostgreSQL, SQLite
+- **Caching & Message Queues**: Redis, Memcached
+- **Infrastructure & Cloud**: AWS (EC2, S3, RDS), DigitalOcean, Cloudflare (CDN, DNS, WAF, Edge Caching), Docker
+- **Tooling**: Git, GitHub Actions CI/CD, Figma, Vite
+
+---
+
+## 4. Delivery Methodology & Workflow
+
+URL: https://bluebasetechnologies.com/how-we-work
+
+1. **Sprint 0 - Technical Blueprint**: Clarify requirements, define architecture, choose optimal tech stack, model database schema, and commit to fixed milestones.
+2. **Sprint Cycles - Bi-Weekly Iterations**: Clean, modular code shipped to a live staging environment every two weeks for immediate client review.
+3. **Quality Assurance & Security Audits**: End-to-end functional testing, performance benchmarks, and security verification.
+4. **Production Deployment & Handover**: Zero-downtime deployment, server provisioning, DNS configuration, and complete handover of source code, credentials, and documentation.
+
+---
+
+## 5. Security & Intellectual Property Commitments
+
+URL: https://bluebasetechnologies.com/compliance-security
+
+- Mutual Non-Disclosure Agreement (NDA) executed prior to technical discovery.
+- 100% intellectual property (IP) and repository ownership belongs exclusively to the client.
+- Strict data privacy compliance and zero tracking of end-user data.
+- Isolated staging and production environments with zero-trust access controls.
+
+---
+
+## 6. Official URLs & Sitemap Index
+
+- Home: https://bluebasetechnologies.com/
+- Services: https://bluebasetechnologies.com/services
+- Solutions: https://bluebasetechnologies.com/solutions
+- Company: https://bluebasetechnologies.com/company
+- How We Work: https://bluebasetechnologies.com/how-we-work
+- Compliance & Security: https://bluebasetechnologies.com/compliance-security
+- Customer Stories: https://bluebasetechnologies.com/customer-stories
+- Careers: https://bluebasetechnologies.com/careers
+- Blog: https://bluebasetechnologies.com/blog
+- Contact & Inquiries: https://bluebasetechnologies.com/contact
+- Privacy Policy: https://bluebasetechnologies.com/privacy-policy
+- Terms of Use: https://bluebasetechnologies.com/terms-of-use
+- XML Sitemap: https://bluebasetechnologies.com/sitemap.xml
+- LLM Index: https://bluebasetechnologies.com/llms.txt
+- LLM Full Documentation: https://bluebasetechnologies.com/llms-full.txt
