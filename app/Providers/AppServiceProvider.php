@@ -28,6 +28,14 @@ class AppServiceProvider extends ServiceProvider
             if (str_contains($host, 'bluebasetechnologies.com')) {
                 \Illuminate\Support\Facades\URL::forceScheme('https');
                 \Illuminate\Support\Facades\URL::forceRootUrl('https://bluebasetechnologies.com');
+
+                // If browser navigated to /public or /public/*, 301 redirect immediately to clean URL
+                $uri = request()->server('REQUEST_URI', '');
+                if (preg_match('#^/public(?:/(.*))?$#i', $uri, $matches)) {
+                    $cleanPath = '/' . ($matches[1] ?? '');
+                    header("Location: https://bluebasetechnologies.com{$cleanPath}", true, 301);
+                    exit();
+                }
             }
         }
 

@@ -31,6 +31,9 @@
     RewriteCond %{THE_REQUEST} \s/+public(?:\s|\?) [NC]
     RewriteRule ^ / [L,R=301]
 
+    # Rewrite root request directly to public/index.php (prevents mod_dir from issuing 301 redirect to /public/)
+    RewriteRule ^$ public/index.php [L]
+
     # Rewrite all remaining requests to the public directory
     RewriteCond %{REQUEST_URI} !^/public/
     RewriteRule ^(.*)$ public/$1 [L]
