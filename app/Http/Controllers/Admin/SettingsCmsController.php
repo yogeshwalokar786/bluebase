@@ -28,9 +28,12 @@ class SettingsCmsController extends Controller
             'support_email',
             'office_address',
             'business_hours',
-            'linkedin_url',
             'twitter_url',
+            'linkedin_url',
+            'facebook_url',
+            'instagram_url',
             'github_url',
+            'youtube_url',
             'hero_badge',
             'hero_title',
             'hero_subtitle',
@@ -55,19 +58,32 @@ class SettingsCmsController extends Controller
         ];
 
         foreach ($allowedKeys as $key) {
-            if ($request->has($key)) {
+            if ($request->exists($key)) {
+                $val = $request->input($key);
+                if (is_string($val)) {
+                    $val = trim($val);
+                    if ($val === '') {
+                        $val = null;
+                    } elseif (str_ends_with($key, '_url') && !str_starts_with($val, 'http://') && !str_starts_with($val, 'https://')) {
+                        $val = 'https://' . ltrim($val, '@/');
+                    }
+                }
                 try {
-                    SiteSetting::set($key, $request->input($key));
-                } catch (\Throwable $e) {}
+                    SiteSetting::set($key, $val);
+                } catch (\Throwable $e) {
+                    \Log::error("Failed to save site setting [{$key}]: " . $e->getMessage());
+                }
             }
         }
 
         // Handle checkbox for video enabled
         try {
             SiteSetting::set('hero_video_enabled', $request->has('hero_video_enabled') ? '1' : '0');
-        } catch (\Throwable $e) {}
+        } catch (\Throwable $e) {
+            \Log::error("Failed to save hero_video_enabled: " . $e->getMessage());
+        }
 
-        // Invalidate frontend cache
+        // Invalidate frontend cache immediately
         rescue(function () {
             cache()->forget('site_settings_home');
             cache()->forget('global_site_settings');

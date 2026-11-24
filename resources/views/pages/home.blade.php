@@ -40,9 +40,13 @@
       "name": "Worldwide"
     }
   ],
-  "sameAs": [
-    "https://x.com/bluebase_tech"
-  ]
+  "sameAs": {!! json_encode(array_values(array_filter([
+    $globalSettings['twitter_url'] ?? 'https://x.com/bluebase_tech',
+    $globalSettings['linkedin_url'] ?? null,
+    $globalSettings['facebook_url'] ?? null,
+    $globalSettings['instagram_url'] ?? null,
+    $globalSettings['github_url'] ?? null,
+  ]))) !!}
 }
 </script>
 @endpush
