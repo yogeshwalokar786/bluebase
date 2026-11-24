@@ -41,11 +41,7 @@
     }
   ],
   "sameAs": [
-    "https://www.linkedin.com/company/bluebase-technologies",
-    "https://x.com/bluebase_tech",
-    "https://www.instagram.com/bluebase_tech",
-    "https://www.facebook.com/bluebasetechnologies",
-    "https://github.com/bluebase-tech"
+    "https://x.com/bluebase_tech"
   ]
 }
 </script>
