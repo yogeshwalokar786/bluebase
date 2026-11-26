@@ -20,7 +20,7 @@ Bluebase delivers high-velocity, high-ownership engineering solutions for startu
 
 - [Enterprise Solutions](https://bluebasetechnologies.com/solutions): Industry-tailored enterprise automation, customer portals, booking engines, and custom workflow software.
 - [How We Work](https://bluebasetechnologies.com/how-we-work): Agile 4-step delivery lifecycle — technical blueprinting, weekly sprint execution, staging QA, and production launch.
-- [Compliance & Security](https://bluebasetechnologies.com/compliance-security): Enterprise-grade data protection, ISO-aligned standards, NDAs, and 100% client code and IP ownership.
+- [Compliance & Security](https://bluebasetechnologies.com/compliance-security): Application security best practices, OWASP hardening, strict NDAs, and 100% client code and IP ownership.
 
 ## Verified Customer Stories
 

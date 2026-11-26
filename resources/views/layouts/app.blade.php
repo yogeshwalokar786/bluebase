@@ -135,6 +135,40 @@
           "@type": "PostalAddress",
           "addressCountry": "IN"
         },
+        "knowsAbout": [
+          "Web Application Development",
+          "Custom Software Engineering",
+          "Mobile App Development (iOS & Android)",
+          "SaaS MVP Development",
+          "Laravel Development",
+          "React.js and Next.js Development",
+          "Flutter and React Native Mobile Apps",
+          "RESTful API & Backend Engineering",
+          "UI/UX Design and Figma Prototyping",
+          "E-Commerce Development",
+          "Website Maintenance and Support"
+        ],
+        "areaServed": [
+          { "@type": "Country", "name": "India" },
+          { "@type": "Country", "name": "United States" },
+          { "@type": "Country", "name": "United Kingdom" },
+          { "@type": "Country", "name": "United Arab Emirates" }
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Software Development & Digital Services",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom Web Development", "url": "https://bluebasetechnologies.com/web-development" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mobile App Development", "url": "https://bluebasetechnologies.com/mobile-app-development" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SaaS MVP Development", "url": "https://bluebasetechnologies.com/saas-mvp-development" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "API & Backend Engineering", "url": "https://bluebasetechnologies.com/api-backend-development" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Website Design & Development", "url": "https://bluebasetechnologies.com/website-design" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Website Redesign Services", "url": "https://bluebasetechnologies.com/website-redesign" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "E-Commerce Development", "url": "https://bluebasetechnologies.com/ecommerce-development" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "UI/UX Product Design", "url": "https://bluebasetechnologies.com/ui-ux-design" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Website Maintenance & Support", "url": "https://bluebasetechnologies.com/maintenance-support" } }
+          ]
+        },
         "sameAs": {!! json_encode(array_values(array_filter([
           $globalSettings['twitter_url'] ?? 'https://x.com/bluebase_tech',
           $globalSettings['linkedin_url'] ?? null,

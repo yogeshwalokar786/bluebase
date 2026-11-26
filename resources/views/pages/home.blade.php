@@ -49,6 +49,54 @@
   ]))) !!}
 }
 </script>
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What services does Bluebase Technologies provide?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bluebase Technologies provides full-lifecycle software development for startups, modern brands, and growing businesses: custom web application engineering, SaaS MVP development, cross-platform mobile apps for iOS and Android, e-commerce online stores, UI/UX design in Figma, and custom API backend development."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does Bluebase engage with clients remotely?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We operate as a fully remote-first digital engineering team collaborating directly via Slack, Google Meet, and GitHub. Our core hours are on Indian Standard Time (IST / UTC+05:30), with guaranteed overlapping working hours for daily standups, sprint reviews, and immediate communication with clients across the globe."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who owns the intellectual property and code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You own 100% of all intellectual property, source code, repositories, design assets, and database architecture from day one. Everything is developed directly in your repositories with zero proprietary vendor lock-in or recurring licensing fees."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How fast can we start and ship our project?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "After an initial discovery call, we prepare a scope and milestone plan within 24 business hours. We work in focused 2-week agile sprints, delivering reviewable, testable code to live staging environments in sprint one."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does your pricing and payment structure work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We provide transparent, milestone-based pricing. Each milestone has clearly defined deliverables and acceptance criteria. You only release milestone payments after testing and approving the deliverables on staging, with zero surprise fees."
+      }
+    }
+  ]
+}
+</script>
 @endpush
 
 @push('styles')

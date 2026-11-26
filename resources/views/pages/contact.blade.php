@@ -27,6 +27,62 @@
   }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What services does Bluebase provide?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bluebase is a digital engineering studio. We provide end-to-end custom software development, high-performance web applications, cloud infrastructure, offline-first mobile applications, and dedicated engineering support."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does Bluebase engage with clients?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We offer two straightforward engagement models tailored to your project: Fixed-Scope Product Builds (milestone-based web and mobile development with clear delivery timelines) and Dedicated Monthly Retainers (dedicated developer capacity working directly on your roadmap)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who owns the intellectual property and code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You own 100% of all intellectual property, source code, data pipelines, and design assets created during our engagement. Everything is developed directly in your repositories with zero vendor lock-in."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How fast can development ramp up and start shipping?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We can typically begin project kickoff within 3 to 5 business days after scope approval. We work in rapid 2-week iterations, shipping tangible, testable code to staging environments from sprint one."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does Bluebase handle security, confidentiality, and data protection?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We adhere to industry-standard application security practices, encrypt all data in transit and at rest, and sign comprehensive Non-Disclosure Agreements (NDAs) before discussing any project architecture or business data. 100% of your code and intellectual property belongs to you."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you collaborate remotely across different time zones?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We are remote-first by design, which keeps our overhead low and our communication fast and documented. We collaborate seamlessly via shared communication channels, video sprint walkthroughs, and direct GitHub/GitLab pull requests with full visibility into every milestone."
+      }
+    }
+  ]
+}
+</script>
 @endpush
 
 @section('content')
