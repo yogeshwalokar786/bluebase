@@ -255,9 +255,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap">
   </noscript>
 
-  <!-- Core Stylesheet with Preload and Version Hash -->
-  <link rel="preload" as="style" href="{{ asset('css/style.css') }}?v={{ file_exists(public_path('css/style.css')) ? filemtime(public_path('css/style.css')) : time() }}">
-  <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ file_exists(public_path('css/style.css')) ? filemtime(public_path('css/style.css')) : time() }}">
+  <!-- Core Stylesheet with Preload and Version Hash (Minified for Production Performance) -->
+  <link rel="preload" as="style" href="{{ asset('css/style.min.css') }}?v={{ file_exists(public_path('css/style.min.css')) ? filemtime(public_path('css/style.min.css')) : time() }}">
+  <link rel="stylesheet" href="{{ asset('css/style.min.css') }}?v={{ file_exists(public_path('css/style.min.css')) ? filemtime(public_path('css/style.min.css')) : time() }}">
   @stack('styles')
 
   <!-- Custom Global CSS Injected via Admin -->
@@ -360,8 +360,8 @@
     </svg>
   </button>
 
-  <!-- Core JavaScript (Non-Blocking Deferred) -->
-  <script src="{{ asset('js/main.js') }}" defer></script>
+  <!-- Core JavaScript (Non-Blocking Deferred, Minified for Production) -->
+  <script src="{{ asset('js/main.min.js') }}?v={{ file_exists(public_path('js/main.min.js')) ? filemtime(public_path('js/main.min.js')) : time() }}" defer></script>
   @stack('scripts')
 
   <!-- Injected Custom Footer Scripts -->

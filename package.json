@@ -4,7 +4,8 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
-        "dev": "vite"
+        "dev": "vite",
+        "minify": "python scripts/minify_assets.py"
     },
     "devDependencies": {
         "@tailwindcss/vite": "^4.0.0",
