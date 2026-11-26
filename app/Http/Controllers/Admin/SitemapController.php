@@ -56,16 +56,25 @@ class SitemapController extends Controller
         // Dynamically scan all live site routes and published models in-memory (< 10ms)
         $urls = $this->scanLiveUrls($baseUrl);
 
-        // Build clean, simple, unstyled XML
+        // Build clean XML with International SEO hreflang annotations (W3C / Google standard)
         $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
-        $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
+        $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">' . "\n";
 
         foreach ($urls as $item) {
+            $loc = htmlspecialchars($item['loc'], ENT_XML1);
             $xml .= "  <url>\n";
-            $xml .= "    <loc>" . htmlspecialchars($item['loc'], ENT_XML1) . "</loc>\n";
+            $xml .= "    <loc>{$loc}</loc>\n";
             $xml .= "    <lastmod>{$item['lastmod']}</lastmod>\n";
             $xml .= "    <changefreq>{$item['changefreq']}</changefreq>\n";
             $xml .= "    <priority>{$item['priority']}</priority>\n";
+            $xml .= "    <xhtml:link rel=\"alternate\" hreflang=\"x-default\" href=\"{$loc}\"/>\n";
+            $xml .= "    <xhtml:link rel=\"alternate\" hreflang=\"en\" href=\"{$loc}\"/>\n";
+            $xml .= "    <xhtml:link rel=\"alternate\" hreflang=\"en-US\" href=\"{$loc}\"/>\n";
+            $xml .= "    <xhtml:link rel=\"alternate\" hreflang=\"en-GB\" href=\"{$loc}\"/>\n";
+            $xml .= "    <xhtml:link rel=\"alternate\" hreflang=\"en-IN\" href=\"{$loc}\"/>\n";
+            $xml .= "    <xhtml:link rel=\"alternate\" hreflang=\"en-AE\" href=\"{$loc}\"/>\n";
+            $xml .= "    <xhtml:link rel=\"alternate\" hreflang=\"en-CA\" href=\"{$loc}\"/>\n";
+            $xml .= "    <xhtml:link rel=\"alternate\" hreflang=\"en-AU\" href=\"{$loc}\"/>\n";
             $xml .= "  </url>\n";
         }
 

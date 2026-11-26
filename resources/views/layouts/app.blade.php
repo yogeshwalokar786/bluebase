@@ -59,9 +59,25 @@
   <link rel="help" type="text/plain" href="{{ url('/llms.txt') }}" title="LLMs.txt">
   <link rel="alternate" type="text/plain" href="{{ url('/llms.txt') }}" title="LLMs.txt">
 
+  <!-- International SEO: Multi-Region Hreflang Annotations -->
+  <meta http-equiv="content-language" content="en">
+  <link rel="alternate" hreflang="x-default" href="{{ $canonicalUrl }}">
+  <link rel="alternate" hreflang="en" href="{{ $canonicalUrl }}">
+  <link rel="alternate" hreflang="en-US" href="{{ $canonicalUrl }}">
+  <link rel="alternate" hreflang="en-GB" href="{{ $canonicalUrl }}">
+  <link rel="alternate" hreflang="en-IN" href="{{ $canonicalUrl }}">
+  <link rel="alternate" hreflang="en-AE" href="{{ $canonicalUrl }}">
+  <link rel="alternate" hreflang="en-CA" href="{{ $canonicalUrl }}">
+  <link rel="alternate" hreflang="en-AU" href="{{ $canonicalUrl }}">
+
   <!-- OpenGraph Social Sharing (LinkedIn, Facebook, Slack, WhatsApp) -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="en_GB">
+  <meta property="og:locale:alternate" content="en_IN">
+  <meta property="og:locale:alternate" content="en_AE">
+  <meta property="og:locale:alternate" content="en_CA">
+  <meta property="og:locale:alternate" content="en_AU">
   <meta property="og:title" content="{!! $pageTitle !!}">
   <meta property="og:description" content="{!! $pageDescription !!}">
   <meta property="og:url" content="{{ $canonicalUrl }}">
@@ -87,7 +103,10 @@
     <meta name="twitter:image:alt" content="{!! $pageTitle !!}">
   @endif
 
-  <!-- Regional Geo Tags (India Target & Global Delivery) -->
+  <!-- International Distribution & Engineering Delivery -->
+  <meta name="coverage" content="Worldwide">
+  <meta name="distribution" content="Global">
+  <meta name="target" content="all">
   <meta name="geo.region" content="IN">
   <meta name="geo.placename" content="India">
   <meta name="geo.position" content="20.5937;78.9629">
@@ -152,8 +171,24 @@
           { "@type": "Country", "name": "India" },
           { "@type": "Country", "name": "United States" },
           { "@type": "Country", "name": "United Kingdom" },
-          { "@type": "Country", "name": "United Arab Emirates" }
+          { "@type": "Country", "name": "United Arab Emirates" },
+          { "@type": "Country", "name": "Canada" },
+          { "@type": "Country", "name": "Australia" }
         ],
+        "availableLanguage": [
+          {
+            "@type": "Language",
+            "name": "English",
+            "alternateName": "en"
+          },
+          {
+            "@type": "Language",
+            "name": "Hindi",
+            "alternateName": "hi"
+          }
+        ],
+        "currenciesAccepted": "USD, EUR, GBP, AED, CAD, AUD, INR",
+        "paymentAccepted": "Bank Wire, Stripe, Credit Card, Razorpay, Wise",
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
           "name": "Software Development & Digital Services",
