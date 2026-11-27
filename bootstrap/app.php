@@ -12,6 +12,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->append(\App\Http\Middleware\SecurityHeadersMiddleware::class);
+        $middleware->append(\App\Http\Middleware\NegotiateMarkdownMiddleware::class);
         $middleware->redirectTo(
             guests: '/admin/login',
             users: '/admin'
