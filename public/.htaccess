@@ -111,6 +111,9 @@
 </IfModule>
 
 <IfModule mod_headers.c>
+    # RFC 8288 Link Header: advertise llms.txt and Markdown alternate for AI agents
+    Header set Link '<https://bluebasetechnologies.com/llms.txt>; rel="help"; type="text/plain", <https://bluebasetechnologies.com/llms.txt>; rel="alternate"; type="text/plain", <https://bluebasetechnologies.com/>; rel="alternate"; type="text/markdown"'
+
     # Sitemaps: prevent caching, deliver pure text/xml to avoid blank screen on mobile/tablets
     <FilesMatch "sitemap\.xml$">
         Header set Content-Type "text/xml; charset=utf-8"
