@@ -626,7 +626,7 @@
 @endpush
 
 @section('content')
-<main id="main-content">
+
 
   <!-- ========================================================================
        1. HERO SECTION
@@ -1027,7 +1027,7 @@
     </div>
   </section>
 
-</main>
+
 
 @push('scripts')
 <script>

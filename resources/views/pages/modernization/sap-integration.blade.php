@@ -4,7 +4,7 @@
 @section('meta_description', 'Connect legacy databases and modern web applications with secure REST APIs and real-time cloud data pipelines. Plan your system integration.')
 
 @section('content')
-<main id="main-content">
+
     <!-- HERO SECTION -->
     <section class="hero-section">
       <img src="{{ asset('images/hero-v2-bg.svg') }}" alt="" class="hero-bg" aria-hidden="true">
@@ -380,7 +380,7 @@
       </div>
     </div>
   </section>
-  </main>
+  
 
       <!-- SITE FOOTER -->
 @endsection

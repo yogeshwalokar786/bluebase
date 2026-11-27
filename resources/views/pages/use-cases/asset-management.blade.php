@@ -4,7 +4,7 @@
 @section('meta_description', 'Monitor industrial machinery, track assets in real time, and reduce downtime with custom cloud IoT software. Speak with an IoT specialist today.')
 
 @section('content')
-<main id="main-content">
+
     <!-- HERO SECTION -->
     <section class="hero-section">
       <img src="{{ asset('images/hero-v2-bg.svg') }}" alt="" class="hero-bg" aria-hidden="true">
@@ -380,7 +380,7 @@
       </div>
     </div>
   </section>
-  </main>
+  
 
       <!-- SITE FOOTER -->
 @endsection

@@ -490,7 +490,7 @@
 @endpush
 
 @section('content')
-<main id="main-content">
+
 
   <!-- ========================================================================
        HERO SECTION
@@ -825,5 +825,5 @@
     </div>
   </section>
 
-</main>
+
 @endsection

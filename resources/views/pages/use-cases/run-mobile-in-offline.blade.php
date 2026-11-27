@@ -4,7 +4,7 @@
 @section('meta_description', 'Build mobile applications with guaranteed offline data sync for warehouses, logistics hubs, and field operations. Get your offline mobile roadmap.')
 
 @section('content')
-<main id="main-content">
+
     <!-- HERO SECTION -->
     <section class="hero-section">
       <img src="{{ asset('images/hero-v2-bg.svg') }}" alt="" class="hero-bg" aria-hidden="true">
@@ -380,7 +380,7 @@
       </div>
     </div>
   </section>
-  </main>
+  
 
       <!-- SITE FOOTER -->
 @endsection

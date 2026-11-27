@@ -5,7 +5,7 @@
 @section('robots', 'noindex, follow')
 
 @section('content')
-<main id="main-content" style="background-color: var(--color-primary, #0a192f); min-height: 80vh; display: flex; align-items: center; padding: 120px 0 80px;">
+<section class="error-404-section" style="background-color: var(--color-primary, #0a192f); min-height: 80vh; display: flex; align-items: center; padding: 140px 0 80px;">
   <div class="container" style="max-width: 960px; margin: 0 auto; text-align: center; position: relative;">
     
     <!-- Subtle Background Glow -->
@@ -83,5 +83,5 @@
 
     </div>
   </div>
-</main>
+</section>
 @endsection

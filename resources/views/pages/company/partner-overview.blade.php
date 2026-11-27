@@ -4,7 +4,7 @@
 @section('meta_description', 'Join the Bluebase partner ecosystem to co-build digital solutions, earn referral revenue, and deliver custom web software. Become a trusted partner.')
 
 @section('content')
-<main id="main-content">
+
     <!-- HERO SECTION -->
     <section class="hero-section">
       <img src="{{ asset('images/hero-v2-bg.svg') }}" alt="" class="hero-bg" aria-hidden="true">
@@ -380,7 +380,7 @@
       </div>
     </div>
   </section>
-  </main>
+  
 
       <!-- SITE FOOTER -->
 @endsection

@@ -87,6 +87,7 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height, 80px) + 24px);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -1141,12 +1142,15 @@ ol {
   position: relative;
   background-color: var(--color-primary);
   color: #ffffff;
-  padding-top: calc(var(--header-height) + 60px);
+  padding-top: calc(var(--header-height) + 64px);
   padding-bottom: 80px;
   overflow: hidden;
-  min-height: 88vh;
+  min-height: calc(88vh - var(--header-height));
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  box-sizing: border-box;
 }
 
 /* --------------------------------------------------------------------------
@@ -3530,6 +3534,27 @@ ol {
   letter-spacing: -0.02em;
 }
 
+/* ==========================================================================
+   PAGE HERO SECTIONS CLEARANCE BELOW FIXED HEADER
+   ========================================================================== */
+.careers-hero,
+.cs-single-hero,
+.cs-hub-hero,
+.guide-hero,
+.subpage-hero {
+  padding-top: calc(var(--header-height) + 56px) !important;
+}
+
+@media (max-width: 768px) {
+  .careers-hero,
+  .cs-single-hero,
+  .cs-hub-hero,
+  .guide-hero,
+  .subpage-hero {
+    padding-top: calc(var(--header-height, 70px) + 48px) !important;
+  }
+}
+
 .subpage-title mark {
   background: transparent;
   color: var(--color-accent);
@@ -4050,7 +4075,7 @@ input[type="radio"] {
   }
 
   .hero-section {
-    padding-top: calc(var(--header-height) + 36px);
+    padding-top: calc(var(--header-height) + 48px);
     padding-bottom: 60px;
   }
 
@@ -12708,7 +12733,7 @@ input:checked + .saas-slider:before {
 /* Hero Article Customizations - Exact font sizes matching previous */
 .hero-section.-article-hero {
   min-height: auto;
-  padding-top: calc(var(--header-height) + 36px);
+  padding-top: calc(var(--header-height) + 52px);
   padding-bottom: 48px;
 }
 
@@ -14144,8 +14169,8 @@ input:checked + .saas-slider:before {
 
   /* 1. HERO SECTION */
   .hero-section {
-    padding-top: calc(var(--header-height, 70px) + 24px) !important;
-    padding-bottom: 50px !important;
+    padding-top: calc(var(--header-height, 70px) + 48px) !important;
+    padding-bottom: 56px !important;
     min-height: auto !important;
   }
 

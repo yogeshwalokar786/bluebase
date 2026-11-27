@@ -4,7 +4,7 @@
 @section('meta_description', 'Accelerate enterprise software development with modern low-code frameworks and secure core system integrations. Request a platform demo today.')
 
 @section('content')
-<main id="main-content">
+
     <!-- HERO SECTION -->
     <section class="hero-section">
       <img src="{{ asset('images/hero-v2-bg.svg') }}" alt="" class="hero-bg" aria-hidden="true">
@@ -380,7 +380,7 @@
       </div>
     </div>
   </section>
-  </main>
+  
 
       <!-- SITE FOOTER -->
 @endsection

@@ -768,7 +768,7 @@
 @endpush
 
 @section('content')
-<main id="main-content">
+
 
   <!-- 1. HERO SECTION -->
   <section class="careers-hero">
@@ -1241,7 +1241,7 @@
     </div>
   </div>
 
-</main>
+
 @endsection
 
 @push('scripts')

@@ -4,7 +4,7 @@
 @section('meta_description', 'Develop and deploy unified digital experiences across mobile, desktop, and tablet devices with modern web tools. Explore our platform features.')
 
 @section('content')
-<main id="main-content">
+
     <!-- HERO SECTION -->
     <section class="hero-section">
       <img src="{{ asset('images/hero-v2-bg.svg') }}" alt="" class="hero-bg" aria-hidden="true">
@@ -380,7 +380,7 @@
       </div>
     </div>
   </section>
-  </main>
+  
 
       <!-- SITE FOOTER -->
 @endsection

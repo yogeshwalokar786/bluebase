@@ -4,7 +4,7 @@
 @section('meta_description', 'Apply to become a Bluebase solution partner. Gain access to engineering accelerators, referral commissions, and tech support. Submit an application.')
 
 @section('content')
-<main id="main-content">
+
     <!-- HERO SECTION -->
     <section class="hero-section">
       <img src="{{ asset('images/hero-v2-bg.svg') }}" alt="" class="hero-bg" aria-hidden="true">
@@ -330,7 +330,7 @@
       </div>
     </div>
   </section>
-  </main>
+  
 
       <!-- SITE FOOTER -->
 @endsection

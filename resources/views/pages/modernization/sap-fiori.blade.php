@@ -4,7 +4,7 @@
 @section('meta_description', 'Deliver intuitive enterprise user interfaces and mobile web experiences tailored for frontline operations. Book a user experience consultation.')
 
 @section('content')
-<main id="main-content">
+
     <!-- HERO SECTION -->
     <section class="hero-section">
       <img src="{{ asset('images/hero-v2-bg.svg') }}" alt="" class="hero-bg" aria-hidden="true">
@@ -380,7 +380,7 @@
       </div>
     </div>
   </section>
-  </main>
+  
 
       <!-- SITE FOOTER -->
 @endsection

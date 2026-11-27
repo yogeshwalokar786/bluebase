@@ -480,7 +480,7 @@
 <!-- ========================================================================
      MAIN CONTENT
      ======================================================================== -->
-<main id="main-content">
+
 
   <!-- 1. HERO SECTION WITH RUNNING CORPORATE OFFICE BACKGROUND VIDEO -->
   <section class="hero-section {{ ($settings['hero_video_enabled'] ?? '1') !== '0' ? 'has-video-bg' : '' }}">
@@ -1576,7 +1576,7 @@
     </div>
   </section>
 
-</main>
+
 @endsection
 
 @push('scripts')
