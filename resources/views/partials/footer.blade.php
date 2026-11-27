@@ -71,7 +71,7 @@
         </p>
 
         <!-- Live Newsletter Form connected to MySQL DB -->
-        <form action="{{ route('newsletter.subscribe') }}" method="POST" style="margin-top: 20px; display: flex; gap: 8px; max-width: 420px;">
+        <form action="{{ route('newsletter.subscribe') }}" method="POST" toolname="subscribe_newsletter" tooldescription="Subscribe work email to Bluebase engineering newsletter and technical insights" style="margin-top: 20px; display: flex; gap: 8px; max-width: 420px;">
           @csrf
           <input type="email" name="email" placeholder="Enter your work email..." required style="flex: 1; padding: 10px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.06); color: #fff; font-size: 0.9rem;">
           <button type="submit" class="c-btn -primary" style="padding: 10px 18px; font-size: 0.85rem;">Subscribe</button>

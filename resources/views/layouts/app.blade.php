@@ -364,6 +364,80 @@
   <script src="{{ asset('js/main.min.js') }}?v={{ file_exists(public_path('js/main.min.js')) ? filemtime(public_path('js/main.min.js')) : time() }}" defer></script>
   @stack('scripts')
 
+  <!-- WebMCP (In-Browser Model Context Protocol Agent Tools) -->
+  <script>
+    (function() {
+      function registerWebMCP() {
+        if (typeof window !== 'undefined' && window.navigator && window.navigator.modelContext && typeof window.navigator.modelContext.registerTool === 'function') {
+          try {
+            window.navigator.modelContext.registerTool({
+              name: 'get_bluebase_services',
+              description: 'Retrieve information about custom software engineering, web development, mobile apps, and SaaS services offered by Bluebase Technologies.',
+              inputSchema: {
+                type: 'object',
+                properties: {
+                  category: {
+                    type: 'string',
+                    description: 'Service category (e.g. web, mobile, saas, design, backend, all)',
+                    enum: ['web', 'mobile', 'saas', 'design', 'backend', 'all']
+                  }
+                }
+              },
+              execute: async function(args) {
+                return {
+                  provider: 'Bluebase Technologies',
+                  website: 'https://bluebasetechnologies.com',
+                  services: [
+                    { name: 'Web App Development', url: 'https://bluebasetechnologies.com/web-development' },
+                    { name: 'Mobile App Development', url: 'https://bluebasetechnologies.com/mobile-app-development' },
+                    { name: 'SaaS MVP Engineering', url: 'https://bluebasetechnologies.com/saas-mvp-development' },
+                    { name: 'Website Design & Build', url: 'https://bluebasetechnologies.com/website-design' },
+                    { name: 'API & Backend Engineering', url: 'https://bluebasetechnologies.com/api-backend-development' },
+                    { name: 'UI/UX Product Design', url: 'https://bluebasetechnologies.com/ui-ux-design' },
+                    { name: 'Website Maintenance & Support', url: 'https://bluebasetechnologies.com/maintenance-support' }
+                  ],
+                  contactEmail: 'info@bluebasetechnologies.com',
+                  contactUrl: 'https://bluebasetechnologies.com/contact'
+                };
+              }
+            });
+
+            window.navigator.modelContext.registerTool({
+              name: 'request_project_estimate',
+              description: 'Submit an inquiry or project scope request to Bluebase Technologies for custom software, mobile app, or web engineering.',
+              inputSchema: {
+                type: 'object',
+                required: ['name', 'email', 'project_overview'],
+                properties: {
+                  name: { type: 'string', description: 'Contact name' },
+                  email: { type: 'string', description: 'Business email address' },
+                  phone: { type: 'string', description: 'Phone or WhatsApp number' },
+                  project_overview: { type: 'string', description: 'Brief description of project requirements' },
+                  estimated_budget: { type: 'string', description: 'Estimated budget range' }
+                }
+              },
+              execute: async function(args) {
+                return {
+                  success: true,
+                  message: 'Project inquiry prepared. Submit via https://bluebasetechnologies.com/contact or email info@bluebasetechnologies.com.',
+                  contactUrl: 'https://bluebasetechnologies.com/contact'
+                };
+              }
+            });
+          } catch (e) {
+            console.debug('WebMCP tool registration:', e);
+          }
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', registerWebMCP);
+      } else {
+        registerWebMCP();
+      }
+    })();
+  </script>
+
   <!-- Injected Custom Footer Scripts -->
   @if($customFooterScripts)
     {!! $customFooterScripts !!}
