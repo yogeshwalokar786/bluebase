@@ -4,37 +4,48 @@
     </IfModule>
 
     RewriteEngine On
+    RewriteBase /
 
-    # Redirect www to non-www (Canonical 301 Redirect)
+    # 1. Canonical: Redirect www to non-www (HTTP or HTTPS -> https://bluebasetechnologies.com)
+    RewriteCond %{HTTP_HOST} ^www\.bluebasetechnologies\.com$ [NC]
+    RewriteRule ^ https://bluebasetechnologies.com%{REQUEST_URI} [L,R=301,NE]
+
     RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-    RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+    RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301,NE]
 
-    # Force HTTPS for bluebasetechnologies.com (Canonical 301 Redirect)
+    # 2. Canonical: Force HTTPS on non-www
     RewriteCond %{HTTPS} off
     RewriteCond %{HTTP:X-Forwarded-Proto} !https
-    RewriteCond %{HTTP_HOST} ^bluebasetechnologies\.com$ [NC]
-    RewriteRule ^ https://bluebasetechnologies.com%{REQUEST_URI} [L,R=301]
+    RewriteCond %{HTTP:CF-Visitor} !'"scheme":"https"'
+    RewriteRule ^ https://bluebasetechnologies.com%{REQUEST_URI} [L,R=301,NE]
 
-    # Handle Authorization Header
+    # 3. Canonical: Redirect direct /index.php requests to clean root URL
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/+index\.php[?\s] [NC]
+    RewriteRule ^ https://bluebasetechnologies.com/ [L,R=301,NE]
+
+    # 4. Canonical: Strip /public/ or /public from requested URLs
+    RewriteCond %{THE_REQUEST} \s/+public/([^\s?]*) [NC]
+    RewriteRule ^ https://bluebasetechnologies.com/%1 [L,R=301,NE]
+
+    RewriteCond %{THE_REQUEST} \s/+public(?:\s|\?) [NC]
+    RewriteRule ^ https://bluebasetechnologies.com/ [L,R=301,NE]
+
+    # 5. Canonical: Redirect non-folder trailing slashes to clean URL
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} ^/(.+)/+$
+    RewriteRule ^ https://bluebasetechnologies.com/%1 [L,R=301,NE]
+
+    # 6. Authorization & Security Headers
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
-    # Handle X-XSRF-Token Header
     RewriteCond %{HTTP:x-xsrf-token} .
     RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:X-XSRF-Token}]
 
-    # Redirect /public/ requests to root URL
-    RewriteCond %{THE_REQUEST} \s/+public/([^\s?]*) [NC]
-    RewriteRule ^ /%1 [L,R=301,NE]
-
-    # Redirect exact /public requests to root URL
-    RewriteCond %{THE_REQUEST} \s/+public(?:\s|\?) [NC]
-    RewriteRule ^ / [L,R=301]
-
-    # Rewrite root request directly to public/index.php (prevents mod_dir from issuing 301 redirect to /public/)
+    # 7. Rewrite root request directly to public/index.php (prevents mod_dir redirect to /public/)
     RewriteRule ^$ public/index.php [L]
 
-    # Rewrite all remaining requests to the public directory
+    # 8. Rewrite all remaining requests to the public directory
     RewriteCond %{REQUEST_URI} !^/public/
     RewriteRule ^(.*)$ public/$1 [L]
 </IfModule>
