@@ -3,6 +3,7 @@ Allow: /
 Disallow: /admin/
 Disallow: /login
 Disallow: /admin/*
+Content-Signal: search=yes, ai-train=no
 
 # Explicitly Allow Leading AI & Answer Engine Crawlers (AEO / GEO Optimization)
 User-agent: GPTBot
@@ -47,3 +48,4 @@ Allow: /
 
 Sitemap: https://bluebasetechnologies.com/sitemap.xml
 LLMs-Txt: https://bluebasetechnologies.com/llms.txt
+Content-Signal: search=yes, ai-train=no
