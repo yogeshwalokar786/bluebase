@@ -34,6 +34,14 @@ class SecurityHeadersMiddleware
         $response->headers->set('Referrer-Policy', 'strict-origin-when-cross-origin');
         $response->headers->set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
 
+        // 3. RFC 8288 Link Header advertising llms.txt and Markdown alternates for AI agents and crawlers
+        $linkHeaders = [
+            '<https://bluebasetechnologies.com/llms.txt>; rel="help"; type="text/plain"',
+            '<https://bluebasetechnologies.com/llms.txt>; rel="alternate"; type="text/plain"',
+            '<' . $request->url() . '>; rel="alternate"; type="text/markdown"',
+        ];
+        $response->headers->set('Link', implode(', ', $linkHeaders));
+
         // Remove server fingerprinting headers
         $response->headers->remove('X-Powered-By');
         if (function_exists('header_remove')) {

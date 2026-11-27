@@ -37,6 +37,7 @@ class NegotiateMarkdownMiddleware
                     'Vary' => 'Accept',
                     'Cache-Control' => 'public, max-age=3600',
                     'X-Content-Type-Options' => 'nosniff',
+                    'Link' => '<https://bluebasetechnologies.com/llms.txt>; rel="help"; type="text/plain", <https://bluebasetechnologies.com/llms.txt>; rel="alternate"; type="text/plain", <https://bluebasetechnologies.com/>; rel="canonical"',
                 ]);
             }
         }
