@@ -344,8 +344,8 @@
   <!-- Flash Notification Messages -->
   @include('partials.flash')
 
-  <!-- Main Content Wrapper -->
-  <main id="main-content">
+  <!-- Main Content Wrapper (guaranteed offset below fixed header) -->
+  <main id="main-content" style="padding-top: var(--header-height);">
     @yield('content')
   </main>
 

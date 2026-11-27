@@ -525,6 +525,16 @@ ol {
 }
 
 /* ==========================================================================
+   MAIN CONTENT WRAPPER - FIXED HEADER OFFSET
+   ========================================================================== */
+#main-content {
+  padding-top: var(--header-height);
+  display: block;
+  position: relative;
+  width: 100%;
+}
+
+/* ==========================================================================
    SCROLLED FLOATING PILL / CAPSULE NAVBAR (Neptune Signature Design)
    ========================================================================== */
 .site-header.scrolled {
@@ -1142,7 +1152,7 @@ ol {
   position: relative;
   background-color: var(--color-primary);
   color: #ffffff;
-  padding-top: calc(var(--header-height) + 54px) !important;
+  padding-top: 64px !important;
   padding-bottom: 84px !important;
   overflow: hidden;
   box-sizing: border-box;
@@ -3531,14 +3541,15 @@ ol {
 }
 
 /* ==========================================================================
-   PAGE HERO SECTIONS CLEARANCE BELOW FIXED HEADER
+   PAGE HERO SECTIONS CLEARANCE (Offset handled by #main-content)
    ========================================================================== */
 .careers-hero,
 .cs-single-hero,
 .cs-hub-hero,
 .guide-hero,
 .subpage-hero {
-  padding-top: calc(var(--header-height) + 56px) !important;
+  padding-top: 60px !important;
+  display: block !important;
 }
 
 @media (max-width: 768px) {
@@ -3547,7 +3558,8 @@ ol {
   .cs-hub-hero,
   .guide-hero,
   .subpage-hero {
-    padding-top: calc(var(--header-height, 70px) + 48px) !important;
+    padding-top: 40px !important;
+    display: block !important;
   }
 }
 
@@ -4071,7 +4083,7 @@ input[type="radio"] {
   }
 
   .hero-section {
-    padding-top: calc(var(--header-height) + 44px) !important;
+    padding-top: 48px !important;
     padding-bottom: 60px !important;
     display: block !important;
   }
@@ -12730,8 +12742,8 @@ input:checked + .saas-slider:before {
 /* Hero Article Customizations - Exact font sizes matching previous */
 .hero-section.-article-hero {
   min-height: auto;
-  padding-top: calc(var(--header-height) + 52px);
-  padding-bottom: 48px;
+  padding-top: 50px !important;
+  padding-bottom: 48px !important;
 }
 
 .hero-section.-article-hero .hero-content {
@@ -14166,7 +14178,7 @@ input:checked + .saas-slider:before {
 
   /* 1. HERO SECTION */
   .hero-section {
-    padding-top: calc(var(--header-height, 70px) + 40px) !important;
+    padding-top: 36px !important;
     padding-bottom: 56px !important;
     min-height: auto !important;
     display: block !important;
