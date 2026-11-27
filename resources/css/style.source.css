@@ -1142,15 +1142,11 @@ ol {
   position: relative;
   background-color: var(--color-primary);
   color: #ffffff;
-  padding-top: calc(var(--header-height) + 64px);
-  padding-bottom: 80px;
+  padding-top: calc(var(--header-height) + 54px) !important;
+  padding-bottom: 84px !important;
   overflow: hidden;
-  min-height: calc(88vh - var(--header-height));
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   box-sizing: border-box;
+  display: block !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -4075,8 +4071,9 @@ input[type="radio"] {
   }
 
   .hero-section {
-    padding-top: calc(var(--header-height) + 48px);
-    padding-bottom: 60px;
+    padding-top: calc(var(--header-height) + 44px) !important;
+    padding-bottom: 60px !important;
+    display: block !important;
   }
 
   .stats-grid {
@@ -14169,9 +14166,10 @@ input:checked + .saas-slider:before {
 
   /* 1. HERO SECTION */
   .hero-section {
-    padding-top: calc(var(--header-height, 70px) + 48px) !important;
+    padding-top: calc(var(--header-height, 70px) + 40px) !important;
     padding-bottom: 56px !important;
     min-height: auto !important;
+    display: block !important;
   }
 
   .hero-pretitle {
